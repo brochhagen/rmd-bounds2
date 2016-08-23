@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: paper.aux
+The style file: unsrtnat.bst
+Database file #1: ./bounds-rmd.bib
+You've used 15 entries,
+            2481 wiz_defined-function locations,
+            650 strings with 6639 characters,
+and the built_in function-call counts, 5785 in all, are:
+= -- 526
+> -- 221
+< -- 15
++ -- 91
+- -- 61
+* -- 395
+:= -- 881
+add.period$ -- 46
+call.type$ -- 15
+change.case$ -- 28
+chr.to.int$ -- 15
+cite$ -- 15
+duplicate$ -- 314
+empty$ -- 564
+format.name$ -- 90
+if$ -- 1261
+int.to.chr$ -- 1
+int.to.str$ -- 16
+missing$ -- 16
+newline$ -- 82
+num.names$ -- 49
+pop$ -- 134
+preamble$ -- 1
+purify$ -- 15
+quote$ -- 0
+skip$ -- 204
+stack$ -- 0
+substring$ -- 314
+swap$ -- 57
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 99
+warning$ -- 0
+while$ -- 57
+width$ -- 0
+write$ -- 199

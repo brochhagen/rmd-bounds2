@@ -1,0 +1,62 @@
+\begin{thebibliography}{BJVRVR05}
+
+\bibitem[BJVRVR05]{benz+etal:2005}
+Anton Benz, Gerhard J{\"a}ger, Robert Van~Rooij, and Robert Van~Rooij, editors.
+\newblock {\em Game theory and pragmatics}.
+\newblock Springer, 2005.
+
+\bibitem[BLG16]{bergen+etal:2016}
+Leon Bergen, Roger Levy, and Noah~D Goodman.
+\newblock Pragmatic reasoning through semantic inference.
+\newblock {\em Semantics and Pragmatics}, 2016.
+
+\bibitem[FG12]{frank+goodman:2012}
+M.~C. Frank and N.~D. Goodman.
+\newblock Predicting pragmatic reasoning in language games.
+\newblock {\em Science}, 336(6084):998--998, 2012.
+
+\bibitem[FJ14]{franke+jaeger:2014}
+Michael Franke and Gerhard J{\"a}ger.
+\newblock Pragmatic back-and-forth reasoning.
+\newblock {\em Semantics, Pragmatics and the Case of Scalar Implicatures.},
+  pages 170--200, 2014.
+
+\bibitem[Gaz79]{gazdar:1979}
+Gerald Gazdar.
+\newblock {\em Pragmatics, Implicature, Presuposition and Logical Form}.
+\newblock Academic Press, New York, 1979.
+
+\bibitem[GK07]{griffiths+kalish:2007}
+Thomas~L. Griffiths and Michael~L. Kalish.
+\newblock Language evolution by iterated learning with bayesian agents.
+\newblock {\em Cognitive Science}, 31(3):441--480, 2007.
+
+\bibitem[Gri75]{grice:1975}
+Paul Grice.
+\newblock Logic and conversation.
+\newblock In {\em Studies in the Ways of Words}, chapter~2, pages 22--40.
+  Harvard University Press, Cambridge, MA, 1975.
+
+\bibitem[Hor72]{horn:1972}
+Laurence~R. Horn.
+\newblock {\em On the Semantic Properties of Logical Operators in English}.
+\newblock Indiana University Linguistics Club, Bloomington, IN, 1972.
+
+\bibitem[HS03]{hofbauer+sigmund:2003}
+Josef Hofbauer and Karl Sigmund.
+\newblock Evolutionary game dynamics.
+\newblock {\em Bulletin of the American Mathematical Society}, 40(04):479--520,
+  2003.
+
+\bibitem[NK99]{nowak+krakauer:1999}
+M.~A. Nowak and D.~C. Krakauer.
+\newblock The evolution of language.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  96(14):8028--8033, 1999.
+
+\bibitem[PTGew]{piantadosi+etal:underreview}
+Steven~T. Piantadosi, Joshua~B. Tenenbaum, and Noah~D. Goodman.
+\newblock Modeling the acquisition of quantifier semantics: a case study in
+  function word learnability, under review.
+
+\end{thebibliography}

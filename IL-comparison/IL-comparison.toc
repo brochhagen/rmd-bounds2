@@ -1,0 +1,4 @@
+\contentsline {section}{\numberline {1}Toy example}{1}{section.1}
+\contentsline {paragraph}{Results:}{2}{section*.2}
+\contentsline {section}{\numberline {2}Possibly add synchronic interaction}{2}{section.2}
+\contentsline {section}{\numberline {3}Conclusion}{2}{section.3}

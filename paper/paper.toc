@@ -1,0 +1,29 @@
+\contentsline {section}{\numberline {1}The semantics-pragmatics divide}{1}
+\contentsline {section}{\numberline {2}Conveying upper-bounds}{2}
+\contentsline {paragraph}{Function-based explanations.}{3}
+\contentsline {paragraph}{Learning-based explanations.}{3}
+\contentsline {paragraph}{Language (fragments).}{3}
+\contentsline {paragraph}{Signaling behavior.}{3}
+\contentsline {section}{\numberline {3}Linguistic structure \& selectional dynamics}{3}
+\contentsline {subsection}{\numberline {3.1}Expressiveness}{3}
+\contentsline {paragraph}{Symmetrized expected utility.}{3}
+\contentsline {subsection}{\numberline {3.2}Learnability}{4}
+\contentsline {subparagraph}{(II) Sequences and atomic observations.}{4}
+\contentsline {subparagraph}{(III) Observations as production.}{4}
+\contentsline {subparagraph}{(IV) Parametrized learning}{4}
+\contentsline {subsection}{\numberline {3.3}Summary}{4}
+\contentsline {paragraph}{Procedural description.}{4}
+\contentsline {section}{\numberline {4}Upper-bounds in weak scalar alternatives}{4}
+\contentsline {subsection}{\numberline {4.1}Analysis}{4}
+\contentsline {paragraph}{Languages.}{4}
+\contentsline {subsection}{\numberline {4.2}Model parameters \& procedure}{5}
+\contentsline {section}{\numberline {5}Discussion}{5}
+\contentsline {subparagraph}{(I) Cost for pragmatic reasoning.}{5}
+\contentsline {subparagraph}{(II) Negative learning bias.}{5}
+\contentsline {subparagraph}{(III) Inductive bias.}{5}
+\contentsline {subparagraph}{(IV) Uncertainty.}{6}
+\contentsline {subparagraph}{(V) More scalar pairs.}{6}
+\contentsline {subparagraph}{(VI) More lexica.}{6}
+\contentsline {subparagraph}{(VII) State frequencies.}{6}
+\contentsline {subparagraph}{(VIII) Reintroduction of communal learning.}{6}
+\contentsline {section}{\numberline {6}Conclusion}{6}

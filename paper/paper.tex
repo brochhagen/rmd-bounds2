@@ -1,0 +1,235 @@
+\documentclass[a4paper]{article}
+
+\usepackage{geometry}
+\usepackage{natbib}
+\bibpunct[,]{(}{)}{,}{a}{}{;}
+
+%--------------------
+\usepackage{gb4e}
+\noautomath
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+%\usepackage{stmaryrd}
+%\usepackage{multicol}
+%\usepackage{graphicx}
+\usepackage{color}
+%\newcommand{\mvalueof}[1]{\llbracket#1\rrbracket}
+\newcommand{\citeposs}[2][]{\citeauthor{#2}'s (\citeyear[#1]{#2})}
+\newcommand{\tuple}[1]{\ensuremath{\left\langle #1 \right\rangle}} 
+
+\newcommand{\hl}[1]{\textcolor[rgb]{.8,.33,.0}{#1}}% prints in orange
+%\newcommand{\argmax}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{max}}\;}
+%\newcommand{\argmin}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{min}}\;}
+%\newcommand{\sbna}{\exists\lnot\forall}
+
+%--------------------
+%
+%\usepackage{setspace}
+%\onehalfspacing
+%
+%-------------------
+
+
+\title{Communicative pressures at the semantics-pragmatics interface}
+
+\author{%\bf NAME1 and NAME2\\
+    ( -- draft \today --- )
+}
+
+
+\date{}
+
+\begin{document}
+\maketitle
+\section{The semantics-pragmatics divide}\label{sec:introduction}
+
+\begin{abstract} Natural languages allow for the conventional pragmatic enrichment of semantic structure in a notably productive fashion. As a result, the information conveyed often goes beyond the literal meaning of an expression. This raises a challenge to explain the regular selection of particular semantics over others in light of pragmatics. To address this challenge, we propose a general model for the analysis of linguistic pressures that integrates (iterated) Bayesian learning in the replicator-mutator dynamics commonly used in evolutionary game theory. This model allows for population-level analyses of rational probabilistic language users with varied degrees of pragmatic sophistication and distinct languages. In an application to scalar implicatures, we show that semantics that allow for pragmatic enrichment are selected for when languages are pressured towards learnability. Crucially, this result hinges on pragmatics to compensate for the disadvantage in expressivity that users of such languages incur otherwise.
+\end{abstract}
+
+In linguistic theorizing, it is common to draw a distinction between semantics and pragmatics. Broadly speaking, the former concerns the truth-conditional content of expressions, whereas the latter concerns information beyond such literal meanings. For instance, the integration of context and the derivation of defeasible inferences. Thus, the information conveyed by an utterance is seldom, if ever, solely determined by semantics, but rather in tandem with pragmatics.
+
+
+Much research in semantics and pragmatics is aimed at characterizing classes of expressions in terms of either domain, or their interplay. Thus, while there is disagreement on where their boundary lies, the distinction between semantics and pragmatics plays an important role in linguistics. However, an issue that has received little attention is the justification of semantic structure in light of pragmatics. That is, an account for the selection and pervasiveness of particular semantic structures over others under consideration of the informational enrichment provided by pragmatics. 
+
+%For instance, truth-conditionally, {\em Bill read five books} does not set an upper-bound to the amount of books that Bill read; he may have read six, seven, or more books. However, the (defeasible) inference that {\em Bill read no more than five books} may be drawn on pragmatic grounds. After all, if Bill had read, for example, six books, and had the speaker known this, she would have said so. In this manner, what is conveyed (pragmatically) can go beyond what is (literally) said. 
+
+
+
+%Prima facie, it is puzzling that {\em Bill read five books} does not semantically rule out its more informative or ``stronger'' alternatives. More poignantly, would it not serve language users better if weak(er) expressions such as {\em warm}, {\em or}, {\em some} or {\em big} were truth-conditionally incompatible with stronger alternatives such as, respectively, {\em hot}, {\em and}, {\em all} and {\em huge}? After all, analogously to the example sketched above, this is what a pragmatically enriched interpretation yields; an upper-bound that rules out these alternatives through a so-called scalar inference \citep{horn:1972,gazdar:1979}. The present investigation focuses on the lack of lexicalization of such upper-bounds in natural languages. That is, we seek to provide an explanation for the selection of the particular semantics of scalar expressions, which in turn hinges on the semantics-pragmatics distinction for what is ultimately conveyed to interlocutors. However, once a distinction between semantics and pragmatics is drawn, similar questions can be posed for other types of pragmatic inferences, such as ignorance and manner inferences. 
+
+
+A number of recent investigations have began to address issues pertaining to the development and selection of linguistic properties (see \citealt{steels:2015} and \citealt{tamariz+kirby:2016} for recent overviews). Our starting point is given by the overarching account of competing pressures that has crystallized across these approaches: Natural languages are pressured for successful communication, one the one hand, and for acquisition, on the other. That is, they need to be well-adapted to the communicative needs within a linguistic community, as well as be learnable to survive their faithful transmission across generations. 
+
+We proceed by instantiating these pressures in the replicator-mutator dynamics, commonly used in evolutionary game theory. This model allows for general and precise means to model the dynamics of linguistic pressures by combining functional pressure on successful communication, effects of learning biases on (iterated) Bayesian learning \citep{griffiths+kalish:2007}, and  probabilistic models of language use in populations with distinct lexica \citep{frank+goodman:2012,franke+jaeger:2014, bergen+etal:2016}. Drawing from the latter research strand allows us to make the distinction between semantics and pragmatics in communicative behavior precise. In this way, this model bridges the recent surge of synchronic probabilistic rational language use analyses with diachronic models of cultural evolution. We then analyze the prevalence of a lack of semantic upper-bounds in the literal meaning of weak scalar expressions. We show that a lack of upper-bounds is selected for when learners are biased towards simpler semantic representations, provided they have means to convey upper-bounds, i.e., provided that they can be derived via pragmatic reasoning.  
+
+\section{Simplicity and expressivity at the semantics-pragmatics interface, and beyond}
+
+\begin{itemize}
+  \item \hl{General introduction to the idea of competing pressures in shaping languages (\citealt{zipf:1949}, Piantadosi,...}
+  %Zipf's principle of least effort as an account of human behavior. In language he interpreted it as minimal articulation with maximal expliciteness
+  %Martinet 1962:139 describes language change as an interaction of `` ‘first,   the   requirements   of  communication,  the  need  for  the  speaker  to  convey  his  message,  and  second,  the principle of least effort, which makes him restrict his output of energy, both mental and physical, to the minimum compatible with achieving his ends
+  \item \hl{Idea in pragmatics: \citealt{clark+wilkes-gibbs:1986}, \citealt{horn:1984}}
+  %Principle of least collaborative effort The principle  of least  collaborative  effort:  In conversation, the  participants  try  to  minimize  their  collaborative  effort—the  work that both do from the initiation of each contribution to its mutual acceptance
+  \item \hl{Discuss Q- and R-predictions for language change (cf. \citealt{traugott:2004})}
+  \item \hl{Idea in LOT (\citealt{piantadosi+etal:underreview})}
+\end{itemize}
+
+\subsection{Competing pressures in cultural evolution}
+\begin{itemize}
+  \item \hl{discuss past research on interplay of pressures from a population-level perspective (see discussion in \citealt{kirby+etal:2015} for IL}
+  \item \hl{Learnability in iterated learning}
+  \item \hl{Expressivity in GT and some IL}
+  \item \hl{Sketch of replicator-mutator dynamics}
+\end{itemize}
+
+\hl{More detailed discussion of models of cultural evolution. Short overview of past research with a focus on the difference between pure IL and functional pressure together with IL. {\bf Possibly add a direct comparison of IL and RMD in the appendix using the setup of Griffiths \& Kalish 2007. This may not be necessary.}}
+
+The emergence and change of linguistic structure is driven by many factors, from biological and socio-ecological to cultural \citep{steels:2011,tamariz+kirby:2016}. Broadly put, social and ecological pressures determine communicative needs, while biology determines the architecture available for its use. Our focus is on the latter, cultural, factor, wherein linguistic structure is analyzed in terms of its use, as well as its transmission across generations. 
+
+As already mentioned in \S\ref{sec:introduction}, research on selectional forces that apply in the cultural evolution of language has focused on two main pressures: expressivity and learnability. However, while it is generally acknowledged that both play a pivotal role, past approaches have focused exclusively, or at least emphasized, the role of one over the other (a recent exception is \citealt{kirby+etal:2015}). 
+
+Expressiveness, or communicative efficiency, has been at the center of applications of evolutionary game theory to linguistics \citep{nowak+krakauer:1999,huttegger+zollman:2013},  \hl{explain RMD}
+
+
+In contrast, the iterated learning paradigm has focused on the effects of language transmission from generations of speakers to the next. \hl{explain IL}
+
+
+\section{Model}
+\subsection{Replicator-mutator dynamics}
+\subparagraph{(II) Sequences and atomic observations.} Before, the set of all observations was $O =$\linebreak  $\{\tuple{\tuple{s_1,m_i},\tuple{s_2,m_j}} | m_i, m_j \in M\}$. A member of $O$ encodes that a teacher produced $m_i$ in state $s_1$ and $m_j$ in $s_2$, i.e., it encodes one witnessed message for each state. A datum $d$ was a sequence of length $k$ of members of $O$. Learners witnessed such data sequences. Now, more in line with \citet{griffiths+kalish:2007}, $O = \{\tuple{s_i,m_j} | s_i \in S, m_j \in M\}$ and $d$ is a sequence of length $k$ of members of $O$. The main difference is that now some $d$ do not provide any production information for some states.
+
+\subparagraph{(III) Observations as production.} Instead of taking the space of all possible sequences of length $k$ into consideration, we take sample from $O$ $k$-times according to the production probabilities of each type; $P(o = \tuple{s,m} | t_i) = P(s) P(m|s,t_i)$. $n$ such $k$-length sequences are sampled for each type. As a consequence, the data used for computing $Q_i$ is not the same as that used for $j$ $(i \neq j)$.
+
+\subparagraph{(IV) Parametrized learning} $Q_{ij} \propto \sum_d P(d|t_i) F(t_j,d)$, where $F(t_j,d) \propto P(t_j|d)^l$ and $l =1$ corresponds to probability matching and, as $l$ increases towards infinity, to MAP.  	      
+
+The proportion of players of type $i$, $x_i$, is initialized as an arbitrary distribution over $T$. $p^\star \in \Delta(T)$ is learning a prior over (player) types dependent only on the lexicon of the type. 
+\begin{itemize}
+    \item $f_i = \sum_j x_j U(x_i,x_j)$
+    \item $\Phi = \sum_i x_i f_i$
+    \item $Q_{ij} \propto \sum_d P(d|t_i) \; P(t_j|d)$, where $P(t_j|d) \propto [P(t_j) P(d|t_j)]^l$, $d$ is a sequence of observations of length $k$ of the form \tuple{\tuple{s_i,m_j}, ... \tuple{s_k, m_l}}, and $l \geq 1$ is a learning parameter.
+	\item For parental learning (standard RMD): $\dot x_i = \sum_j Q_{ji} \frac{x_j f_j}{\Phi}$
+\end{itemize}
+
+
+\subsection{Expressiveness as fitness-relative replication}
+
+\paragraph{Symmetrized expected utility.} With $P \in \Delta(S)$ (uniform so far; $P = pr$):
+\begin{itemize}
+
+  \item $U(t_i,t_j) = [U_S(t_i,t_j) + U_R(t_i,t_j)] / 2$
+  \item $U_S(t_i,t_j) = \sum_s P(s) \; \sum_m P_S(m|s;t_i) \; \sum_{s'} P_R(s'|m,t_j) \; \delta(s,s')$, where $\delta(s,s')$ returns $1$ iff $s = s'$ and otherwise $0$
+  \item $U_R(t_i,t_j) = U_S(t_j,t_i)$
+\end{itemize}
+
+\subsection{Iterated learning as acquisition-based mutation}
+
+
+
+
+\subsection{Signaling behavior}
+\hl{Leave languages undefined until application}
+
+\paragraph{Signaling behavior.}
+\hl{Exposition of signaling behavior as reasoning hierarchy, which we use to make a distinction between semantic and pragmatic language users}
+
+With $\lambda \geq 1$ (rationality parameter), $\alpha \in [0,1]$ (pragmatic violations) and $pr \in \Delta(S)$ a common prior over $S$ (uniform so far):
+
+\begin{flalign}
+&R_{0}(s|m;L) \propto pr(s) L_{sm}\label{litl}\\
+&S_{0}(m|s;L) \propto \exp(\lambda \; L_{sm}) \label{lits}\\
+&R_{1}(s|m;L) \propto pr(s) S_{0}(m|s;L) \label{pragl}\\
+&S_{1}(m|s;L) \propto  \exp(\lambda \; R_{0}(s|m;L)^\alpha) \label{prags}
+\end{flalign}
+
+
+\section{Lack of semantic upper-bounds in lexical meaning}
+
+\paragraph{Procedural description.} The game is initialized with some arbitrary distribution over player types. At the game's onset we compute $Q$ once based on the sets  of sequences $D$ (one for each parent type). Replicator dynamics are computed based on the fitness of each type in the current population as usual. $Q$ is computed anew for each independent run (of $g$ generations) given that it depends on $D$, which is sampled from production probabilities.
+
+
+\paragraph{Languages.} We consider a population of players with two signaling behaviors, literal and Gricean (level $0$ and $1$ below), each equipped with one of $6$ lexicons. This yields a total of $12$ distinct player types $t \in T$. $|M| = |S| = 2$, i.e., a lexicon is a $(2,2)$-matrix. These are listed in Table \ref{tab:lexica}. 
+
+\begin{table}[h]
+\centering 
+\begin{tabular}{l c l}
+$L_1$ = $\begin{pmatrix} 0 & 0 \\ 1 & 1 \end{pmatrix}$ & 
+$L_2$ = $\begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$ & 
+$L_3$ = $\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}$\\[0.5cm]
+
+$L_4$ = $\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$ &
+$L_5$ = $\begin{pmatrix} 0 & 1 \\ 1 & 1 \end{pmatrix}$ &
+$L_6$ = $\begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}$
+\end{tabular}
+\caption{{\footnotesize Set of considered lexica.}}
+\label{tab:lexica}
+\end{table}
+
+As in the CogSci paper, $L_4$ (semantic upper-bound for $m_2$) and $L_5$ (no semantic upper-bound for $m_2$) are the target lexica. Gricean $L_5$ users can convey/infer the bound pragmatically, while literal/Gricean $L_4$ users do so semantically.
+
+
+\subsection{Model parameters \& procedure} 
+\begin{enumerate}
+  \item Sequence length $k$
+  \item Pragmatic production parameter $\alpha$
+  \item Rationality parameter $\lambda$
+  \item Learning prior over types (lexica); cost parameter $c$. $p^\star(t_i) \propto n - c \cdot r$ where $n$ is the total number of states and $r$ that of upper-bounded messages only true of $s_1$ in $t_i$'s lexicon (if only $s_1$ is true of a message, then this message encodes an upper-bound). Then the score for $L_1$, $L_3$, $L_5$ is $2$, that of $L_4$ and $L_6$ is $2-c$, and that of $L_2$ is $2-2c$; Normalization over lexica scores yields the prior over lexica (which is equal to the prior over types).   
+  \item Prior over meanings ($pr$). We assume that $pr(s) = \frac{1}{|S|}$ for all $s$.
+  \item True state distribution ($P$). We currently assume that $P = \frac{1}{|S|}$ but it may be interesting to vary this
+  \item Learning parameter $l \geq 1$ with $1$ corresponding to probability matching, and MAP as $l$ approaches infinity
+  \item $n$ is the sample of sequences of observations of length $k$ sampled from the production probabilities of each type
+  \item Number of generations $g$
+\end{enumerate}
+
+
+
+
+
+\section{Discussion}
+
+\section{Extensions}
+\subparagraph{(I) Cost for pragmatic reasoning.} At least in the CogSci setup the effect of adding cost to pragmatic reasoning is unsurprising: High cost for pragmatic signaling lowers the prevalence of pragmatic types. Lexica that semantically encode an upper-bound benefit the most from this. However, the cost needed to be substantial to make the pragmatic English-like lexicon stop being the incumbent type (particularly when learning is communal). 
+
+\subparagraph{(II) Negative learning bias.} Instead of penalizing complex semantics (semantic upper-bounds) one may consider penalizing simple semantics (no upper-bounds). This is useful as a sanity check but also yields unsurprising results in the CogSci setup: The more learners are biased against simple semantics, the more prevalent are lexica that semantically encode upper-bounds. 
+
+\subparagraph{(III) Inductive bias.} A second learning bias that codifies the idea that lexica should be uniform, i.e. be biased towards either lexicalizing an upper-bound for all weaker alternatives in a scalar pair or for none.
+
+\subparagraph{(IV)  Uncertainty.} The other advantage of non-upper bounded semantics lies in being non-committal to the negation of stronger alternatives when the speaker is uncertain. Adding this to the model requires the most changes to our present setup and some additional assumptions about the cues available to players to discern the speaker's knowledge about the state she is in. 
+
+\subparagraph{(V) More scalar pairs.} Taking into consideration more than one scalar pair. Preliminary results suggest that this does not influence the results in any meaningful way without further additions, e.g. by (III).
+
+\subparagraph{(VI) More lexica.} Not necessary. Preliminary results suggest that considering more lexica has no noteworthy effect on the dynamics (tested with all possible 2x2 lexica).
+
+\subparagraph{(VII) State frequencies.} Variations on state frequencies. This may have an interesting interaction with (III).
+
+\subparagraph{(VIII) Reintroduction of communal learning.} One possibility: The probably $N_{ij}$ with which a child of $t_i$ adopts $t_j$ could be the weighted sum of $Q_{ij}$ (as before) and a vector we get from learning from all of the population: $L_j = \sum_d P(d | \vec{p})  P(t_j | d)$, where $P(d | \vec{p}) = \sum_{i} P(d | t_i)  \vec{p}_i$ is the probability of observing $d$ when learning from a random member of the present population distribution.
+
+\section{Conclusion}
+
+%%% Old snippets %%%
+%\section{Conveying upper-bounds}
+%Scalar inferences refer to the pragmatic derivation of an upper-bound for weak scalar expressions to the effect that stronger alternatives are inferred to not hold, e.g. {\em some students came} may be taken to convey that {\em not all students came}. The order of an expression such as {\em some} with respect to an alternative, e.g., {\em all}, is induced by entailment. For instance, {\em all students came} entails {\em most students came}, which in turn entails {\em some students came}. In this sense, {\em some} is weaker than {\em all}. A considerable class of natural language expressions do not lexicalize an upper-bound and can be ordered in this fashion, allowing for their pragmatic strengthening. As alluded at above, examples in English include numerals, scalar adjectives, quantifiers, modals, and connectives. \hl{possibly add some typological data on universality, frequency, monomorphemic status}
+%
+%The pragmatic enrichment of the semantic content of such expressions is enabled by mutual reasoning \citep{grice:1975}. More specifically, it is driven by interlocutors' mutual expectations of rational language use. The hearer reasons about the speaker's choice of a weak alternative over a stronger one. Had the speaker known that a stronger alternatives holds, she would have said so as this would have been more informative. Since she did not, the hearer can infer that the stronger alternative does not hold. Analogously, a speaker who reasons about her addressee may rely on her to derive this inference. In this way, a strengthened, upper-bounded, state of affairs can be conveyed without codifying the bound explicitly in the semantics.
+%
+%However, while pragmatics offers means to convey upper-bounds, the question why they are not part of the lexical meaning of these expressions remains. There are two main explanatory venues for this pattern. The first targets the functional advantages a lack of upper-bounds may confer to language users, whereas the second focuses on a learnability advantage of simpler over more complex semantic representations. 
+%
+%\paragraph{Function-based explanations.} Two assumptions are key to the pragmatic strengthening of weak alternatives: (the assumption of) cooperation and knowledge about the issue at hand. That is, the hearer needs to assume the speaker to be as informative as possible, i.e., not to withhold information, and that the speaker is knowlegeable, e.g., she knows whether {\em all students came}. Conversely, the speaker needs to assume the hearer to regard these conditions as satisfied. It is not difficult to imagine scenarios where either or both of these conditions are not given. For instance, the speaker may (be assumed to) not want to disclose all information about the students' attendance, or may have left early without being able to verify the attendance to a satisfactory degree. 
+%
+%\hl{Discussion of functional pressures for a lack of upper-bounds}
+
+%\paragraph{Learning-based explanations.}
+%
+%\hl{Discussion of our main assumption that a lack of upper-bounds provides a learnability advantage framed in terms of relative representational simplicity over the codification of an upper-bound. {\bf Should this be made precise? If so, in which way?}}
+
+%\bibliographystyle{apacite}
+\bibliographystyle{unsrtnat}
+
+%\setlength{\bibleftmargin}{.125in}
+%\setlength{\bibindent}{-\bibleftmargin}
+\bibliography{./bounds-rmd}
+
+
+\end{document}
