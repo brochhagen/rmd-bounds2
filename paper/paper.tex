@@ -2,11 +2,11 @@
 
 \usepackage{geometry}
 \usepackage{natbib}
-\bibpunct[,]{(}{)}{,}{a}{}{;}
+\bibpunct[:]{(}{)}{,}{a}{}{;}
 
 %--------------------
-\usepackage{gb4e}
-\noautomath
+%\usepackage{gb4e}
+%\noautomath
 
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -33,7 +33,7 @@
 %-------------------
 
 
-\title{Communicative pressures at the semantics-pragmatics interface}
+\title{Communicative pressures at the semantics-pragmatics interface:\\ Learning biases may prevent the lexicalization of pragmatic inferences}
 
 \author{%\bf NAME1 and NAME2\\
     ( -- draft \today --- )
@@ -46,13 +46,16 @@
 \maketitle
 \section{The semantics-pragmatics divide}\label{sec:introduction}
 
-\begin{abstract} Natural languages allow for the conventional pragmatic enrichment of semantic structure in a notably productive fashion. As a result, the information conveyed often goes beyond the literal meaning of an expression. This raises a challenge to explain the regular selection of particular semantics over others in light of pragmatics. To address this challenge, we propose a general model for the analysis of linguistic pressures that integrates (iterated) Bayesian learning in the replicator-mutator dynamics commonly used in evolutionary game theory. This model allows for population-level analyses of rational probabilistic language users with varied degrees of pragmatic sophistication and distinct languages. In an application to scalar implicatures, we show that semantics that allow for pragmatic enrichment are selected for when languages are pressured towards learnability. Crucially, this result hinges on pragmatics to compensate for the disadvantage in expressivity that users of such languages incur otherwise.
+\begin{abstract} Natural languages allow for conventional pragmatic enrichments in a notably productive fashion. As a consequence, the information conveyed often goes beyond the literal meaning of expressions. In light of pragmatics, this raises the challenge to explain the regular selection of particular literal meanings over other putative alternatives. To address this challenge, we propose a general model for the analysis of linguistic pressures that integrates (iterated) Bayesian learning in the replicator-mutator dynamics commonly used in evolutionary game theory. This model allows for population-level analyses of rational probabilistic language users with varied degrees of pragmatic sophistication and distinct languages. In a case-study on the (failure of the) lexicalization of scalar implicatures, we show how simpler semantic representations are selected for when languages are pressured towards learnability provided that pragmatic reasoning can compensate for the disadvantage in expressivity that users of such languages would otherwise incur.
 \end{abstract}
 
-In linguistic theorizing, it is common to draw a distinction between semantics and pragmatics. Broadly speaking, the former concerns the truth-conditional content of expressions, whereas the latter concerns information beyond such literal meanings. For instance, the integration of context and the derivation of defeasible inferences. Thus, the information conveyed by an utterance is seldom, if ever, solely determined by semantics, but rather in tandem with pragmatics.
+In linguistic theorizing, it is common to draw a distinction between semantics and pragmatics. Broadly speaking, the former concerns the truth-conditional content of expressions, whereas the latter concerns information beyond such literal meanings. For instance, defeasible inferences licensed by interlocutors' mutual reasoning about rational language use. Thus, under this view, the information conveyed by an utterance is seldom, if ever, solely determined by semantics, but rather in tandem with pragmatics.
 
+Much research at the semantics-pragmatics interface has been aimed at characterizing expressions in terms of either domain, or their interplay. Therefore, while there is disagreement on where exactly their boundary lies, their distinction has played an important role in the field's development. Notwithstanding, an issue that has received little attention is the justification of semantic structure in light of pragmatics. That is, an account for the selection and pervasiveness of particular semantic structures over others under consideration of the informational enrichment provided by pragmatics. 
 
-Much research in semantics and pragmatics is aimed at characterizing classes of expressions in terms of either domain, or their interplay. Thus, while there is disagreement on where their boundary lies, the distinction between semantics and pragmatics plays an important role in linguistics. However, an issue that has received little attention is the justification of semantic structure in light of pragmatics. That is, an account for the selection and pervasiveness of particular semantic structures over others under consideration of the informational enrichment provided by pragmatics. 
+A number of recent investigations have began to address the development and selection of linguistic properties (see \citealt{steels:2015} and \citealt{tamariz+kirby:2016} for recent overviews). While their efforts have largely concentrated on compositional and combinatorial systems, our starting point is given by the overarching account of competing pressures that has crystallized across these approaches: Natural languages need to be well-adapted to the communicative needs within its linguistic community, but also need to be learnable to survive their faithful transmission across generations. More succinctly; natural languages are pressured for successful communication as well as acquisition.
+
+We proceed by modeling these pressures in the replicator-mutator dynamics commonly used in evolutionary game theory. This yields general and precise means to model the dynamics of linguistic pressures by combining functional pressure on successful communication, effects of learning biases on (iterated) Bayesian learning \citep{griffiths+kalish:2007}, and  probabilistic models of language use in populations with distinct lexica \citep{frank+goodman:2012,franke+jaeger:2014, bergen+etal:2016}. In this way, the model connects the recent surge of synchronic probabilistic rational language use analyses with diachronic models of cultural evolution. %We then analyze the prevalence of a lack of semantic upper-bounds in the literal meaning of weak scalar expressions. We show that a lack of upper-bounds is selected for when learners are biased towards simpler semantic representations, provided they have means to convey upper-bounds, i.e., provided that they can be derived via pragmatic reasoning.  
 
 %For instance, truth-conditionally, {\em Bill read five books} does not set an upper-bound to the amount of books that Bill read; he may have read six, seven, or more books. However, the (defeasible) inference that {\em Bill read no more than five books} may be drawn on pragmatic grounds. After all, if Bill had read, for example, six books, and had the speaker known this, she would have said so. In this manner, what is conveyed (pragmatically) can go beyond what is (literally) said. 
 
@@ -61,19 +64,23 @@ Much research in semantics and pragmatics is aimed at characterizing classes of 
 %Prima facie, it is puzzling that {\em Bill read five books} does not semantically rule out its more informative or ``stronger'' alternatives. More poignantly, would it not serve language users better if weak(er) expressions such as {\em warm}, {\em or}, {\em some} or {\em big} were truth-conditionally incompatible with stronger alternatives such as, respectively, {\em hot}, {\em and}, {\em all} and {\em huge}? After all, analogously to the example sketched above, this is what a pragmatically enriched interpretation yields; an upper-bound that rules out these alternatives through a so-called scalar inference \citep{horn:1972,gazdar:1979}. The present investigation focuses on the lack of lexicalization of such upper-bounds in natural languages. That is, we seek to provide an explanation for the selection of the particular semantics of scalar expressions, which in turn hinges on the semantics-pragmatics distinction for what is ultimately conveyed to interlocutors. However, once a distinction between semantics and pragmatics is drawn, similar questions can be posed for other types of pragmatic inferences, such as ignorance and manner inferences. 
 
 
-A number of recent investigations have began to address issues pertaining to the development and selection of linguistic properties (see \citealt{steels:2015} and \citealt{tamariz+kirby:2016} for recent overviews). Our starting point is given by the overarching account of competing pressures that has crystallized across these approaches: Natural languages are pressured for successful communication, one the one hand, and for acquisition, on the other. That is, they need to be well-adapted to the communicative needs within a linguistic community, as well as be learnable to survive their faithful transmission across generations. 
+\section{Simplicity and expressivity in semantics, pragmatics, and beyond}
+At least since \citeposs{zipf:1949} rationalization of the observation that word frequency rankings can be approximated by a power law distribution as competing hearer and speaker preferences, the idea that languages are shaped by trade-offs of competing pressures has played a pivotal role in synchronic and diachronic analyses (e.g. \citealt{martinet:1962, horn:1984,jaeger+vRooij:2007,jaeger:2007, piantadosi:2014,kirby+etal:2015}). A cornerstone principle, both in linguistics and cognitive science more generally, is that of simplicity \citep{chater+vitanyi:2003}. 
 
-We proceed by instantiating these pressures in the replicator-mutator dynamics, commonly used in evolutionary game theory. This model allows for general and precise means to model the dynamics of linguistic pressures by combining functional pressure on successful communication, effects of learning biases on (iterated) Bayesian learning \citep{griffiths+kalish:2007}, and  probabilistic models of language use in populations with distinct lexica \citep{frank+goodman:2012,franke+jaeger:2014, bergen+etal:2016}. Drawing from the latter research strand allows us to make the distinction between semantics and pragmatics in communicative behavior precise. In this way, this model bridges the recent surge of synchronic probabilistic rational language use analyses with diachronic models of cultural evolution. We then analyze the prevalence of a lack of semantic upper-bounds in the literal meaning of weak scalar expressions. We show that a lack of upper-bounds is selected for when learners are biased towards simpler semantic representations, provided they have means to convey upper-bounds, i.e., provided that they can be derived via pragmatic reasoning.  
-
-\section{Simplicity and expressivity at the semantics-pragmatics interface, and beyond}
-
-\begin{itemize}
-  \item \hl{General introduction to the idea of competing pressures in shaping languages (\citealt{zipf:1949}, Piantadosi,...}
-  %Zipf's principle of least effort as an account of human behavior. In language he interpreted it as minimal articulation with maximal expliciteness
+%Zipf's principle of least effort as an account of human behavior. In language he interpreted it as minimal articulation with maximal expliciteness
   %Martinet 1962:139 describes language change as an interaction of `` ‘first,   the   requirements   of  communication,  the  need  for  the  speaker  to  convey  his  message,  and  second,  the principle of least effort, which makes him restrict his output of energy, both mental and physical, to the minimum compatible with achieving his ends
-  \item \hl{Idea in pragmatics: \citealt{clark+wilkes-gibbs:1986}, \citealt{horn:1984}}
+
+More particular to natural communication, languages are pressured towards expressivity and learnability. Their opposition becomes clear when considering their consequences in the extreme (cf. \citealt{kemp+regier:2012,kirby+etal:2015}). On the one side, a language with a single form is extremely easy to learn but lacking in expressivity. On the other, a language that associates a distinct form with all possible meanings speakers may want to convey is expressive but challenging to acquire. However, acquiring a system to express a potentially infinite set of meanings through finite means, the so-called transmission bottleneck \citep{kirby:2002}, is not the only problem learners confront. Instead, the relevant challenge for our purpose is that of selecting between functionally similar, if not identical, lexical meanings. 
+
+
+\hl{explain scalar implicatures and the challenge that arises, then go for simplicity in lexical entries being codified as a preference in the learners}
+
+
+%Synchronically, \citeposs{clark+wilkes-gibbs:1986} {\em principle of least collaborative effort} and \citeposs{horn:1984} Q- and R-principles, amongst others, seek to explain linguistic behavior from speaker and hearer economy. For instance, speakers are taken to prefer to minimize utterance length whereas hearers prefer them to be longer for better understanding. The balance of these forces is thereby understood to drive phenomena such as the iterative decrease in utterance length in dialog \citep{kim+etal:2011, pickering+ferreira:2008, brennan+clark:1998} and the association of frequent meanings with unmarked forms \citep{grice:1975}.
   %Principle of least collaborative effort The principle  of least  collaborative  effort:  In conversation, the  participants  try  to  minimize  their  collaborative  effort—the  work that both do from the initiation of each contribution to its mutual acceptance
-  \item \hl{Discuss Q- and R-predictions for language change (cf. \citealt{traugott:2004})}
+
+%While his rationalization is not in want of detractors (see \citealt{piantadosi:2014} for a recent overview), 
+\begin{itemize}
   \item \hl{Idea in LOT (\citealt{piantadosi+etal:underreview})}
 \end{itemize}
 
@@ -146,6 +153,8 @@ With $\lambda \geq 1$ (rationality parameter), $\alpha \in [0,1]$ (pragmatic vio
 
 
 \section{Lack of semantic upper-bounds in lexical meaning}
+
+The observation that monomorphemic expression that lexically rule out stronger alternatives (e.g. {not all} as hypothetical `nall') are unattested across languages has received substantial support (most prominently in \citealt[252-267]{horn:1984} but also e.g. in \citealt{horn:1972,traugott:2004,vdAuwera:2010}). To the best of our knowledge, this claim stands unchallenged.
 
 \paragraph{Procedural description.} The game is initialized with some arbitrary distribution over player types. At the game's onset we compute $Q$ once based on the sets  of sequences $D$ (one for each parent type). Replicator dynamics are computed based on the fitness of each type in the current population as usual. $Q$ is computed anew for each independent run (of $g$ generations) given that it depends on $D$, which is sampled from production probabilities.
 

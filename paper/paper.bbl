@@ -1,4 +1,4 @@
-\begin{thebibliography}{15}
+\begin{thebibliography}{23}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -41,10 +41,10 @@ George Zipf.
 \newblock \emph{Human behavior and the principle of least effort}.
 \newblock Addison-Wesley Press, 1949.
 
-\bibitem[Clark and Wilkes-Gibbs(1986)]{clark+wilkes-gibbs:1986}
-Herbert~H. Clark and Deanna Wilkes-Gibbs.
-\newblock Referring as a collaborative process.
-\newblock \emph{Cognition}, 22\penalty0 (1):\penalty0 1--39, 1986.
+\bibitem[Martinet(1962)]{martinet:1962}
+Andr\'{e} Martinet.
+\newblock \emph{Functionalist View of Language}.
+\newblock Clarendon Press, Oxford, 1962.
 
 \bibitem[Horn(1984)]{horn:1984}
 Laurence~R. Horn.
@@ -53,23 +53,58 @@ Laurence~R. Horn.
 \newblock In D.~Schiffrin, editor, \emph{Meaning, Form and Use in Context},
   pages 11 -- 42. Georgetown University Press, Washington, 1984.
 
-\bibitem[Traugott(2004)]{traugott:2004}
-Elizabeth~Closs Traugott.
-\newblock Historical pragmatics.
-\newblock In Laurence~R. Horn and Gregory Wand, editors, \emph{The Handbook of
-  Pragmatics}, pages 538--561. Blackwell Publishing, 2004.
+\bibitem[J\"ager and van Rooij(2007)]{jaeger+vRooij:2007}
+Gerhard J\"ager and Robert van Rooij.
+\newblock Language structure: psychological and social constraints.
+\newblock \emph{Synthese}, 159\penalty0 (1):\penalty0 99--130, 2007.
+\newblock \doi{10.1007/s11229-006-9073-5}.
 
-\bibitem[Piantadosi et~al.(under review)Piantadosi, Tenenbaum, and
-  Goodman]{piantadosi+etal:underreview}
-Steven~T. Piantadosi, Joshua~B. Tenenbaum, and Noah~D. Goodman.
-\newblock Modeling the acquisition of quantifier semantics: a case study in
-  function word learnability, under review.
+\bibitem[J\"ager(2007)]{jaeger:2007}
+Gerhard J\"ager.
+\newblock Evolutionary game theory and typology: A case study.
+\newblock \emph{Language}, 83\penalty0 (1):\penalty0 74--109, 2007.
+\newblock \doi{10.2307/4490338}.
+
+\bibitem[Piantadosi(2014)]{piantadosi:2014}
+Steven~T Piantadosi.
+\newblock Zipf’s word frequency law in natural language: A critical review
+  and future directions.
+\newblock \emph{Psychonomic bulletin \& review}, 21\penalty0 (5):\penalty0
+  1112--1130, 2014.
+\newblock \doi{10.3758/s13423-014-0585-6}.
 
 \bibitem[Kirby et~al.(2015)Kirby, Tamariz, Cornish, and Smith]{kirby+etal:2015}
 Simon Kirby, Monica Tamariz, Hannah Cornish, and Kenny Smith.
 \newblock Compression and communication in the cultural evolution of linguistic
   structure.
 \newblock \emph{Cognition}, 141:\penalty0 87--102, 2015.
+
+\bibitem[Chater and Vit{\'{a}}nyi(2003)]{chater+vitanyi:2003}
+Nick Chater and Paul Vit{\'{a}}nyi.
+\newblock Simplicity: a unifying principle in cognitive science?
+\newblock \emph{Trends in Cognitive Sciences}, 7\penalty0 (1):\penalty0 19--22,
+  2003.
+\newblock \doi{10.1016/s1364-6613(02)00005-0}.
+
+\bibitem[Kemp and Regier(2012)]{kemp+regier:2012}
+C.~Kemp and T.~Regier.
+\newblock Kinship categories across languages reflect general communicative
+  principles.
+\newblock \emph{Science}, 336\penalty0 (6084):\penalty0 1049--1054, 2012.
+\newblock \doi{10.1126/science.1218811}.
+
+\bibitem[Kirby(2002)]{kirby:2002}
+Simon Kirby.
+\newblock Learning, bottlenecks and the evolution of recursive syntax.
+\newblock In Ted Briscoe, editor, \emph{Linguistic Evolution Through Language
+  Acquisition}, pages 173--204. Cambridge University Press ({CUP}), 2002.
+\newblock \doi{10.1017/cbo9780511486524.006}.
+
+\bibitem[Piantadosi et~al.(under review)Piantadosi, Tenenbaum, and
+  Goodman]{piantadosi+etal:underreview}
+Steven~T. Piantadosi, Joshua~B. Tenenbaum, and Noah~D. Goodman.
+\newblock Modeling the acquisition of quantifier semantics: a case study in
+  function word learnability, under review.
 
 \bibitem[Steels(2011)]{steels:2011}
 Luc Steels.
@@ -88,5 +123,23 @@ S.~M. Huttegger and K.~J.~S. Zollman.
 \newblock Methodology in biological game theory.
 \newblock \emph{The British Journal for the Philosophy of Science}, 64\penalty0
   (3):\penalty0 637--658, 2013.
+
+\bibitem[Horn(1972)]{horn:1972}
+Laurence~R. Horn.
+\newblock \emph{On the Semantic Properties of Logical Operators in English}.
+\newblock Indiana University Linguistics Club, Bloomington, IN, 1972.
+
+\bibitem[Traugott(2004)]{traugott:2004}
+Elizabeth~Closs Traugott.
+\newblock Historical pragmatics.
+\newblock In Laurence~R. Horn and Gregory Wand, editors, \emph{The Handbook of
+  Pragmatics}, pages 538--561. Blackwell Publishing, 2004.
+
+\bibitem[{van der Auwera}(2010)]{vdAuwera:2010}
+Johan {van der Auwera}.
+\newblock On the diachrony of negation.
+\newblock In \emph{The Expression of Negation}, pages 73--110. Walter de
+  Gruyter {GmbH}, 2010.
+\newblock \doi{10.1515/9783110219302.73}.
 
 \end{thebibliography}
