@@ -1,4 +1,4 @@
-\begin{thebibliography}{26}
+\begin{thebibliography}{31}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -14,6 +14,12 @@ Luc Steels.
 Monica Tamariz and Simon Kirby.
 \newblock The cultural evolution of language.
 \newblock \emph{Current Opinion in Psychology}, 8:\penalty0 37--43, 2016.
+
+\bibitem[Hofbauer and Sigmund(2003)]{hofbauer+sigmund:2003}
+Josef Hofbauer and Karl Sigmund.
+\newblock Evolutionary game dynamics.
+\newblock \emph{Bulletin of the American Mathematical Society}, 40\penalty0
+  (04):\penalty0 479--520, 2003.
 
 \bibitem[Griffiths and Kalish(2007)]{griffiths+kalish:2007}
 Thomas~L. Griffiths and Michael~L. Kalish.
@@ -79,6 +85,20 @@ Simon Kirby, Monica Tamariz, Hannah Cornish, and Kenny Smith.
   structure.
 \newblock \emph{Cognition}, 141:\penalty0 87--102, 2015.
 
+\bibitem[Grice(1975)]{grice:1975}
+Paul Grice.
+\newblock Logic and conversation.
+\newblock In \emph{Studies in the Ways of Words}, chapter~2, pages 22--40.
+  Harvard University Press, Cambridge, MA, 1975.
+
+\bibitem[Piantadosi et~al.(2012{\natexlab{a}})Piantadosi, Tily, and
+  Gibson]{piantadosi+etal:2012}
+Steven~T. Piantadosi, Harry Tily, and Edward Gibson.
+\newblock The communicative function of ambiguity in language.
+\newblock \emph{Cognition}, 122\penalty0 (3):\penalty0 280--291,
+  2012{\natexlab{a}}.
+\newblock \doi{10.1016/j.cognition.2011.10.004}.
+
 \bibitem[Chater and Vit{\'{a}}nyi(2003)]{chater+vitanyi:2003}
 Nick Chater and Paul Vit{\'{a}}nyi.
 \newblock Simplicity: a unifying principle in cognitive science?
@@ -128,18 +148,30 @@ Jacob Feldman.
 \newblock Minimization of boolean complexity in human concept learning.
 \newblock \emph{Nature}, 407\penalty0 (6804):\penalty0 630--633, 2000.
 
-\bibitem[Piantadosi et~al.(2012)Piantadosi, Tenenbaum, and
+\bibitem[Piantadosi et~al.(2012{\natexlab{b}})Piantadosi, Tenenbaum, and
   Goodman]{piantadosi+etal:2012a}
 Steven~T. Piantadosi, Joshua~B. Tenenbaum, and Noah~D. Goodman.
 \newblock Bootstrapping in a language of thought: A formal model of numerical
   concept learning.
-\newblock \emph{Cognition}, 123\penalty0 (2):\penalty0 199--217, 2012.
+\newblock \emph{Cognition}, 123\penalty0 (2):\penalty0 199--217,
+  2012{\natexlab{b}}.
 
 \bibitem[Piantadosi et~al.(under review)Piantadosi, Tenenbaum, and
   Goodman]{piantadosi+etal:underreview}
 Steven~T. Piantadosi, Joshua~B. Tenenbaum, and Noah~D. Goodman.
 \newblock Modeling the acquisition of quantifier semantics: a case study in
   function word learnability, under review.
+
+\bibitem[Benz et~al.(2005)Benz, J{\"a}ger, Van~Rooij, and
+  Van~Rooij]{benz+etal:2005}
+Anton Benz, Gerhard J{\"a}ger, Robert Van~Rooij, and Robert Van~Rooij, editors.
+\newblock \emph{Game theory and pragmatics}.
+\newblock Springer, 2005.
+
+\bibitem[Franke(2009)]{franke:2009}
+Michael Franke.
+\newblock \emph{Signal to Act: Game Theoretic Pragmatics}.
+\newblock PhD thesis, University of Amsterdam, 2009.
 
 \bibitem[Steels(2011)]{steels:2011}
 Luc Steels.
