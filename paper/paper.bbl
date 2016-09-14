@@ -1,4 +1,4 @@
-\begin{thebibliography}{31}
+\begin{thebibliography}{36}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -85,27 +85,6 @@ Simon Kirby, Monica Tamariz, Hannah Cornish, and Kenny Smith.
   structure.
 \newblock \emph{Cognition}, 141:\penalty0 87--102, 2015.
 
-\bibitem[Grice(1975)]{grice:1975}
-Paul Grice.
-\newblock Logic and conversation.
-\newblock In \emph{Studies in the Ways of Words}, chapter~2, pages 22--40.
-  Harvard University Press, Cambridge, MA, 1975.
-
-\bibitem[Piantadosi et~al.(2012{\natexlab{a}})Piantadosi, Tily, and
-  Gibson]{piantadosi+etal:2012}
-Steven~T. Piantadosi, Harry Tily, and Edward Gibson.
-\newblock The communicative function of ambiguity in language.
-\newblock \emph{Cognition}, 122\penalty0 (3):\penalty0 280--291,
-  2012{\natexlab{a}}.
-\newblock \doi{10.1016/j.cognition.2011.10.004}.
-
-\bibitem[Chater and Vit{\'{a}}nyi(2003)]{chater+vitanyi:2003}
-Nick Chater and Paul Vit{\'{a}}nyi.
-\newblock Simplicity: a unifying principle in cognitive science?
-\newblock \emph{Trends in Cognitive Sciences}, 7\penalty0 (1):\penalty0 19--22,
-  2003.
-\newblock \doi{10.1016/s1364-6613(02)00005-0}.
-
 \bibitem[Kemp and Regier(2012)]{kemp+regier:2012}
 C.~Kemp and T.~Regier.
 \newblock Kinship categories across languages reflect general communicative
@@ -119,6 +98,103 @@ Simon Kirby.
 \newblock In Ted Briscoe, editor, \emph{Linguistic Evolution Through Language
   Acquisition}, pages 173--204. Cambridge University Press ({CUP}), 2002.
 \newblock \doi{10.1017/cbo9780511486524.006}.
+
+\bibitem[Feldman(2000)]{feldman:2000}
+Jacob Feldman.
+\newblock Minimization of boolean complexity in human concept learning.
+\newblock \emph{Nature}, 407\penalty0 (6804):\penalty0 630--633, 2000.
+
+\bibitem[Chater and Vit{\'{a}}nyi(2003)]{chater+vitanyi:2003}
+Nick Chater and Paul Vit{\'{a}}nyi.
+\newblock Simplicity: a unifying principle in cognitive science?
+\newblock \emph{Trends in Cognitive Sciences}, 7\penalty0 (1):\penalty0 19--22,
+  2003.
+\newblock \doi{10.1016/s1364-6613(02)00005-0}.
+
+\bibitem[Piantadosi et~al.(2012{\natexlab{a}})Piantadosi, Tenenbaum, and
+  Goodman]{piantadosi+etal:2012a}
+Steven~T. Piantadosi, Joshua~B. Tenenbaum, and Noah~D. Goodman.
+\newblock Bootstrapping in a language of thought: A formal model of numerical
+  concept learning.
+\newblock \emph{Cognition}, 123\penalty0 (2):\penalty0 199--217,
+  2012{\natexlab{a}}.
+
+\bibitem[Piantadosi et~al.(under review)Piantadosi, Tenenbaum, and
+  Goodman]{piantadosi+etal:underreview}
+Steven~T. Piantadosi, Joshua~B. Tenenbaum, and Noah~D. Goodman.
+\newblock Modeling the acquisition of quantifier semantics: a case study in
+  function word learnability, under review.
+
+\bibitem[Grice(1975)]{grice:1975}
+Paul Grice.
+\newblock Logic and conversation.
+\newblock In \emph{Studies in the Ways of Words}, chapter~2, pages 22--40.
+  Harvard University Press, Cambridge, MA, 1975.
+
+\bibitem[Piantadosi et~al.(2012{\natexlab{b}})Piantadosi, Tily, and
+  Gibson]{piantadosi+etal:2012}
+Steven~T. Piantadosi, Harry Tily, and Edward Gibson.
+\newblock The communicative function of ambiguity in language.
+\newblock \emph{Cognition}, 122\penalty0 (3):\penalty0 280--291,
+  2012{\natexlab{b}}.
+\newblock \doi{10.1016/j.cognition.2011.10.004}.
+
+\bibitem[Benz et~al.(2005{\natexlab{a}})Benz, J{\"a}ger, Van~Rooij, and
+  Van~Rooij]{benz+etal:2005a}
+Anton Benz, Gerhard J{\"a}ger, Robert Van~Rooij, and Robert Van~Rooij, editors.
+\newblock \emph{Game theory and pragmatics}.
+\newblock Springer, 2005{\natexlab{a}}.
+
+\bibitem[Franke(2009)]{franke:2009}
+Michael Franke.
+\newblock \emph{Signal to Act: Game Theoretic Pragmatics}.
+\newblock PhD thesis, University of Amsterdam, 2009.
+
+\bibitem[Luce(1959)]{luce:1959}
+Duncan~R. Luce.
+\newblock \emph{Individual choice behavior: a theoretical analysis}.
+\newblock Wiley, 1959.
+
+\bibitem[Sutton and Barto(1998)]{sutton+barto:1998}
+Richard~S. Sutton and Andrew~G. Barto.
+\newblock \emph{Introduction to Reinforcement Learning}.
+\newblock MIT Press, Cambridge, MA, USA, 1998.
+
+\bibitem[Nowak and Krakauer(1999)]{nowak+krakauer:1999}
+M.~A. Nowak and D.~C. Krakauer.
+\newblock The evolution of language.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 96\penalty0
+  (14):\penalty0 8028--8033, 1999.
+
+\bibitem[Nowak et~al.(2000)Nowak, Plotkin, and Jansen]{nowak+etal:2000}
+Martin~A. Nowak, Joshua~B. Plotkin, and Vincent A.~A. Jansen.
+\newblock The evolution of syntactic communication.
+\newblock \emph{Nature}, 404\penalty0 (6777):\penalty0 495--498, 2000.
+\newblock \doi{10.1038/35006635}.
+
+\bibitem[Nowak et~al.(2002)Nowak, Komarova, and Niyogi]{nowak+etal:2002}
+Martin~A. Nowak, Natalia~L. Komarova, and Partha Niyogi.
+\newblock Computational and evolutionary aspects of language.
+\newblock \emph{Nature}, 417\penalty0 (6889):\penalty0 611--617, jun 2002.
+\newblock \doi{10.1038/nature00771}.
+
+\bibitem[Benz et~al.(2005{\natexlab{b}})Benz, J{\"a}ger, Van~Rooij, and
+  Van~Rooij]{benz+etal:2005b}
+Anton Benz, Gerhard J{\"a}ger, Robert Van~Rooij, and Robert Van~Rooij, editors.
+\newblock \emph{An Introduction to Game Theory for Linguists}.
+\newblock Springer, 2005{\natexlab{b}}.
+
+\bibitem[Steels(2011)]{steels:2011}
+Luc Steels.
+\newblock Modeling the cultural evolution of language.
+\newblock \emph{Physics of Life Reviews}, 8\penalty0 (4):\penalty0 339--356,
+  2011.
+
+\bibitem[Huttegger and Zollman(2013)]{huttegger+zollman:2013}
+S.~M. Huttegger and K.~J.~S. Zollman.
+\newblock Methodology in biological game theory.
+\newblock \emph{The British Journal for the Philosophy of Science}, 64\penalty0
+  (3):\penalty0 637--658, 2013.
 
 \bibitem[Horn(1972)]{horn:1972}
 Laurence~R. Horn.
@@ -142,53 +218,5 @@ Johan {van der Auwera}.
 \newblock In \emph{The Expression of Negation}, pages 73--110. Walter de
   Gruyter {GmbH}, 2010.
 \newblock \doi{10.1515/9783110219302.73}.
-
-\bibitem[Feldman(2000)]{feldman:2000}
-Jacob Feldman.
-\newblock Minimization of boolean complexity in human concept learning.
-\newblock \emph{Nature}, 407\penalty0 (6804):\penalty0 630--633, 2000.
-
-\bibitem[Piantadosi et~al.(2012{\natexlab{b}})Piantadosi, Tenenbaum, and
-  Goodman]{piantadosi+etal:2012a}
-Steven~T. Piantadosi, Joshua~B. Tenenbaum, and Noah~D. Goodman.
-\newblock Bootstrapping in a language of thought: A formal model of numerical
-  concept learning.
-\newblock \emph{Cognition}, 123\penalty0 (2):\penalty0 199--217,
-  2012{\natexlab{b}}.
-
-\bibitem[Piantadosi et~al.(under review)Piantadosi, Tenenbaum, and
-  Goodman]{piantadosi+etal:underreview}
-Steven~T. Piantadosi, Joshua~B. Tenenbaum, and Noah~D. Goodman.
-\newblock Modeling the acquisition of quantifier semantics: a case study in
-  function word learnability, under review.
-
-\bibitem[Benz et~al.(2005)Benz, J{\"a}ger, Van~Rooij, and
-  Van~Rooij]{benz+etal:2005}
-Anton Benz, Gerhard J{\"a}ger, Robert Van~Rooij, and Robert Van~Rooij, editors.
-\newblock \emph{Game theory and pragmatics}.
-\newblock Springer, 2005.
-
-\bibitem[Franke(2009)]{franke:2009}
-Michael Franke.
-\newblock \emph{Signal to Act: Game Theoretic Pragmatics}.
-\newblock PhD thesis, University of Amsterdam, 2009.
-
-\bibitem[Steels(2011)]{steels:2011}
-Luc Steels.
-\newblock Modeling the cultural evolution of language.
-\newblock \emph{Physics of Life Reviews}, 8\penalty0 (4):\penalty0 339--356,
-  2011.
-
-\bibitem[Nowak and Krakauer(1999)]{nowak+krakauer:1999}
-M.~A. Nowak and D.~C. Krakauer.
-\newblock The evolution of language.
-\newblock \emph{Proceedings of the National Academy of Sciences}, 96\penalty0
-  (14):\penalty0 8028--8033, 1999.
-
-\bibitem[Huttegger and Zollman(2013)]{huttegger+zollman:2013}
-S.~M. Huttegger and K.~J.~S. Zollman.
-\newblock Methodology in biological game theory.
-\newblock \emph{The British Journal for the Philosophy of Science}, 64\penalty0
-  (3):\penalty0 637--658, 2013.
 
 \end{thebibliography}
