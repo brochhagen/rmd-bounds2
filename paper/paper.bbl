@@ -42,6 +42,12 @@ Leon Bergen, Roger Levy, and Noah~D Goodman.
 \newblock Pragmatic reasoning through semantic inference.
 \newblock \emph{Semantics and Pragmatics}, 2016.
 
+\bibitem[Steels(2011)]{steels:2011}
+Luc Steels.
+\newblock Modeling the cultural evolution of language.
+\newblock \emph{Physics of Life Reviews}, 8\penalty0 (4):\penalty0 339--356,
+  2011.
+
 \bibitem[Zipf(1949)]{zipf:1949}
 George Zipf.
 \newblock \emph{Human behavior and the principle of least effort}.
@@ -175,7 +181,7 @@ Martin~A. Nowak, Joshua~B. Plotkin, and Vincent A.~A. Jansen.
 \bibitem[Nowak et~al.(2002)Nowak, Komarova, and Niyogi]{nowak+etal:2002}
 Martin~A. Nowak, Natalia~L. Komarova, and Partha Niyogi.
 \newblock Computational and evolutionary aspects of language.
-\newblock \emph{Nature}, 417\penalty0 (6889):\penalty0 611--617, jun 2002.
+\newblock \emph{Nature}, 417\penalty0 (6889):\penalty0 611--617, 2002.
 \newblock \doi{10.1038/nature00771}.
 
 \bibitem[Benz et~al.(2005{\natexlab{b}})Benz, J{\"a}ger, Van~Rooij, and
@@ -184,17 +190,11 @@ Anton Benz, Gerhard J{\"a}ger, Robert Van~Rooij, and Robert Van~Rooij, editors.
 \newblock \emph{An Introduction to Game Theory for Linguists}.
 \newblock Springer, 2005{\natexlab{b}}.
 
-\bibitem[Steels(2011)]{steels:2011}
-Luc Steels.
-\newblock Modeling the cultural evolution of language.
-\newblock \emph{Physics of Life Reviews}, 8\penalty0 (4):\penalty0 339--356,
-  2011.
-
-\bibitem[Huttegger and Zollman(2013)]{huttegger+zollman:2013}
-S.~M. Huttegger and K.~J.~S. Zollman.
-\newblock Methodology in biological game theory.
-\newblock \emph{The British Journal for the Philosophy of Science}, 64\penalty0
-  (3):\penalty0 637--658, 2013.
+\bibitem[Kirby et~al.(2014)Kirby, Griffiths, and Smith]{kirby+etal:2014}
+Simon Kirby, Tom Griffiths, and Kenny Smith.
+\newblock Iterated learning and the evolution of language.
+\newblock \emph{Current Opinion in Neurobiology}, 28:\penalty0 108--114, 2014.
+\newblock \doi{10.1016/j.conb.2014.07.014}.
 
 \bibitem[Horn(1972)]{horn:1972}
 Laurence~R. Horn.

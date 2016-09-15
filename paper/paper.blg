@@ -5,37 +5,37 @@ The style file: unsrtnat.bst
 Database file #1: ./bounds-rmd.bib
 You've used 36 entries,
             2481 wiz_defined-function locations,
-            788 strings with 9555 characters,
-and the built_in function-call counts, 13570 in all, are:
-= -- 1229
-> -- 502
-< -- 34
-+ -- 214
-- -- 140
-* -- 952
-:= -- 2085
-add.period$ -- 122
+            788 strings with 9571 characters,
+and the built_in function-call counts, 13597 in all, are:
+= -- 1231
+> -- 508
+< -- 33
++ -- 216
+- -- 142
+* -- 955
+:= -- 2094
+add.period$ -- 123
 call.type$ -- 36
 change.case$ -- 62
 chr.to.int$ -- 34
 cite$ -- 36
 duplicate$ -- 753
-empty$ -- 1346
+empty$ -- 1345
 format.name$ -- 198
-if$ -- 2957
+if$ -- 2961
 int.to.chr$ -- 3
 int.to.str$ -- 37
 missing$ -- 43
-newline$ -- 197
+newline$ -- 198
 num.names$ -- 116
-pop$ -- 321
+pop$ -- 320
 preamble$ -- 1
 purify$ -- 36
 quote$ -- 0
-skip$ -- 445
+skip$ -- 444
 stack$ -- 0
 substring$ -- 694
-swap$ -- 128
+swap$ -- 127
 text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
@@ -43,4 +43,4 @@ type$ -- 222
 warning$ -- 0
 while$ -- 128
 width$ -- 0
-write$ -- 492
+write$ -- 494

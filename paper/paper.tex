@@ -58,7 +58,7 @@ In linguistic theorizing, it is common to draw a distinction between semantics a
 
 Much research at the semantics-pragmatics interface has been aimed at characterizing expressions in terms of either domain, or their interplay. As a consequence, their distinction has played an important role in the field's theoretical and experimental development. However, an issue that has received little attention is the justification of semantic structure in light of pragmatics. That is, the selection and pervasiveness of particular semantics under consideration of the regular informational enrichment provided by pragmatics. 
 
-Similar questions have lead to a recent surge of models that aim to analyze the development and selection of linguistic features (see \citealt{steels:2015} and \citealt{tamariz+kirby:2016} for recent overviews). Our starting point is given by the overarching argument that has crystallized across this literature: Natural languages need to be well-adapted to communicative needs within a linguistic community, but also need to be learnable to survive their faithful transmission across generations. More succinctly; natural languages are pressured for expressiveness as well as learnability.
+Similar questions have lead to a recent surge of models that aim to analyze the development and selection of linguistic features (see \citealt{steels:2015} and \citealt{tamariz+kirby:2016} for recent overviews). Our starting point is given by the overarching argument that has crystalized from accumulated mathematical, experimental and cross-linguistic evidence in this literature: Natural languages need to be well-adapted to communicative needs within a linguistic community, but also need to be learnable to survive their faithful transmission across generations. More succinctly; natural languages are pressured for expressiveness as well as learnability.  
 
 %While their efforts have largely concentrated on compositional and combinatorial systems, 
 We proceed by modeling these pressures using the replicator-mutator dynamics (see \citealt{hofbauer+sigmund:2003} for an overview). This allows us to inspect their dynamics by combining functional pressure on successful communication, effects of learning biases on (iterated) Bayesian learning \citep{griffiths+kalish:2007}, and  probabilistic models of language use in populations with distinct lexica \citep{frank+goodman:2012,franke+jaeger:2014, bergen+etal:2016}. 
@@ -120,10 +120,12 @@ On a population level, expressiveness, or communicative efficiency, has received
 
 The proportion of types in a given population is captured by a vector $x$, where $x_i$ is type $i$'s proportion in the population. The fitness of a type $i$, $f_i$, is given by its expected utility when interacting in this population. That is, its fitness is the sum of its weighted expected communicative success, $f_i = \sum_j x_j \text{EU}(t_i,t_j)$. The expected utility of $i$ and $j$ is obtained by considering the expected utility of speaker $i$ interacting with hearer $j$, and vice versa: $\text{EU}(t_i,t_j) = [U_S(t_i,t_j) + U_R(t_i,t_j)]/2$. $U_S(x,y)$ and $U_R(x,y)$ are respectively $\sum_s P(s)\sum_m S_n(m|s;L) \sum_{s'} R_o(s'|m;L) \delta(s,s')$ and $U_S(y,x)$ for $n$ and $o$ being the reasoning level of $x$ and $y$, and $\delta(s,s') = 1$ iff $s = s'$ and $0$ otherwise.\footnote{Note that the definition of $U_R(\cdot,\cdot)$ implies equal sender and receiver payoff in an interaction. This need not be so in the general case but suffices for our application.} Lastly, the average fitness of the population is captured by $\Phi$, $\Phi = \sum_i x_i f_i$. This term serves as a normalizing constant for the (discrete) replicator equation; $\dot{x}_i = \frac{x_i f_i}{\Phi}$ 
 
-Under its biological interpretation, the replicator equation captures the idea of fitness-relative selection whereby fitter types produce more offspring, leading to their propagation in subsequent generations. In analogy to biological replication, many aspects of natural language are subject to processees of change across varied time-spans. For example, the replicator equation can be understood as a learning across generations as e.g. in \citealt{nowak+etal:2002}, but also as a process of horizontal adaptation (see \citealt[\S3.3]{benz+etal:2005b} for discussion). In the following, we take the latter view and assume that interlocutors adapt their language's semantics and how it is used to that which works best within their population. In contrast to the effect of language acquisition from a generation to the next, this means that expressivity exherts its pressure on the current members of a linguistic community. For pressures of language learning from one generation to the next, we turn to iterated Bayesian learning as mutator dynamics.
+Under its biological interpretation, the replicator equation captures the idea of fitness-relative selection whereby fitter types produce more offspring, leading to their propagation in subsequent generations. In analogy to biological replication, many aspects of natural language are subject to processees of change across varied time-spans. For example, the replicator equation can be understood as a learning across generations as e.g. in \citealt{nowak+etal:2002}, but also as a process of horizontal adaptation (see \citealt[\S3.3]{benz+etal:2005b} for discussion). In the following, we take the latter view and assume that interlocutors adapt their language's semantics and how it is used to that which works best within their population. In contrast to the effect of language acquisition from a generation to the next, this means that expressivity exherts its pressure on the current members of a linguistic community. 
+
+Nowak \& et al. did not only consider replication, but also recognized the relevance of variation introduced by a language's transmition across generations, construed as mutation. As a consequence, the offspring of a type may end up adopting a different type than their parents. However, in this work mutation rates were construed as independent from a type. That is, the variation introduced by generational turnovers did not depend on a the relative learnability of a type based on learning data or learning biases. Therefore, to address the issue of selecting a particular type over (near) functional equivalents, we turn to a different strand of research in cultural evolution: {\em iterated learning}. 
 
 \subsection{Mutation \& learning}
-While past research using evolutionary game theory has mostly focused on communicative fitness driven change, the contribution of learning has similarly been argued to be one if not the central force guiding language change. In a nutshell, the iterated learning paradigm models language transmission as chains of parents and children \hl{citation IL. Look up which ones they use}. The parent produces linguistic data from which the child infers a language to adopt. In the next generation, previous children adopt the role of a teaching parent that will themselves produce data to be learnt by a new generation of na\"ive learners. The central idea is that this iterated learning process pressures languages towards greater learnability. In this way, linguistic complexity hindering may be reduced, and languages regularized, to overcome to transmission bottleneck.
+Iterated learning is a process in which the behavior of one individual serves as learning input for another, who's behavior subsequently serves as input for a new learner, and so on. In linguistic terms, this process can be construed as chains of parents and children, where the parent produces linguistic data from which the child infers a language. The latter then goes on to produce linguistic data for a new generation of na\"ive learners. A central result of this paradigm is that this process leads to simpler and more regular languages in virtue of the pressure towards greater learnability exherted (surveys of experimental data and models are given in \citealt{kirby+etal:2014} and \citealt{tamariz+kirby:2016}).
 
 \hl{Some more technical exposition of IL. Mainly based on G+K07}
 
@@ -139,54 +141,61 @@ where $F(t_j,d) \propto P(t_j|d)^l$ and $P(t_j|d) \propto P(t_j) P(d|t_j)$. Give
 
 Crucially, the posterior is parametrized by $l$, $l \geq 1$. When $l = 1$ learners sample from the posterior. As $l$ increases towards infinity, the learners tendency to posterior maximization increases. \hl{Some more discussion on posterior maximization}
 
-\paragraph{Learning prior.}
+\paragraph{Learning prior.} 
 
 
 
  
 
 \subsection{Summary}
+Following past research, we have argued for expressivity, learnability and simplicity as central pressures that apply on language change. The dynamics we propose model them as fitness-relative replication, mutation based on iterated Bayesian learning, and a prior that biases learners for compressed lexical meanings. Taken together the dynamics are described by the replicator-mutator dynamics \citep{hofbauer+sigmund:2003}: 
+
+\[ 
+\hat{x_i} = \sum_j Q_{ji} \frac{x_jf_j}{\Phi}
+\]
+
+The basic units that these pressures apply to are a combination of semantics, i.e., a lexicon, and its use. The expressivity of these types depends on their communicative efficiency within a population. Their learnability depends on the fidelity by which they can be infered by a new generation of learners based on production data. In particular, learners perform a joint inference on types of linguistic behavior and lexical meaning. This process is influenced by the learners' preference for simpler lexical representations, codified as a learning bias.
+
+\hl{Summarize novelties \& advantages
+1. Advantage of connection between two strands of research
+2. Simple and general mean field dynamics}
+
+%\hl{So far, we have focused on highlighting the strands of research and assumptions present in the model. Less has been said about its departure from past approaches, beyond the virtues we argued their synthesis gives rise to. Given the different foci of these investigations, most comparisons on a general level are misplaced. However, \citet{kirby+etal:2015} ...}
 
 
 
-\section{Discussion}
 
 
 
-\subparagraph{(II) Sequences and atomic observations.} Before, the set of all observations was $O =$\linebreak  $\{\tuple{\tuple{s_1,m_i},\tuple{s_2,m_j}} | m_i, m_j \in M\}$. A member of $O$ encodes that a teacher produced $m_i$ in state $s_1$ and $m_j$ in $s_2$, i.e., it encodes one witnessed message for each state. A datum $d$ was a sequence of length $k$ of members of $O$. Learners witnessed such data sequences. 
+%%%Differences to our earlier CogSci proceedings paper:
+%Sequences and atomic observations. Before, the set of all observations was $O =$\linebreak  $\{\tuple{\tuple{s_1,m_i},\tuple{s_2,m_j}} | m_i, m_j \in M\}$. A member of $O$ encodes that a teacher produced $m_i$ in state $s_1$ and $m_j$ in $s_2$, i.e., it encodes one witnessed message for each state.
 
-\subparagraph{(III) Observations as production.} Instead of taking the space of all possible sequences of length $k$ into consideration, we take sample from $O$ $k$-times according to the production probabilities of each type; $P(o = \tuple{s,m} | t_i) = P(s) P(m|s,t_i)$. $n$ such $k$-length sequences are sampled for each type. As a consequence, the data used for computing $Q_i$ is not the same as that used for $j$ $(i \neq j)$.
+%Observations as production. Instead of taking the space of all possible sequences of length $k$ into consideration, we take sample from $O$ $k$-times according to the production probabilities of each type; $P(o = \tuple{s,m} | t_i) = P(s) P(m|s,t_i)$. $n$ such $k$-length sequences are sampled for each type. As a consequence, the data used for computing $Q_i$ is not the same as that used for $j$ $(i \neq j)$.
 
-\subparagraph{(IV) Parametrized learning} 
-The proportion of players of type $i$, $x_i$, is initialized as an arbitrary distribution over $T$. $p^\star \in \Delta(T)$ is learning a prior over (player) types dependent only on the lexicon of the type. 
-\begin{itemize}
-    \item $Q_{ij} \propto \sum_d P(d|t_i) \; P(t_j|d)$, where $P(t_j|d) \propto [P(t_j) P(d|t_j)]^l$, $d$ is a sequence of observations of length $k$ of the form \tuple{\tuple{s_i,m_j}, ... \tuple{s_k, m_l}}, and $l \geq 1$ is a learning parameter.
-	\item For parental learning (standard RMD): $\dot x_i = \sum_j Q_{ji} \frac{x_j f_j}{\Phi}$
-\end{itemize}
-
-
-\paragraph{Symmetrized expected utility.} With $P \in \Delta(S)$ (uniform so far; $P = pr$):
-\begin{itemize}
-
-  \item $U(t_i,t_j) = [U_S(t_i,t_j) + U_R(t_i,t_j)] / 2$
-  \item $U_S(t_i,t_j) = \sum_s P(s) \; \sum_m P_S(m|s;t_i) \; \sum_{s'} P_R(s'|m,t_j) \; \delta(s,s')$, where $\delta(s,s')$ returns $1$ iff $s = s'$ and otherwise $0$
-  \item $U_R(t_i,t_j) = U_S(t_j,t_i)$
-\end{itemize}
-
+%No communal learniner; only parental
+%%%
 
 \section{Lack of semantic upper-bounds in lexical meaning}
+We set out to investigate the prevalence of lexical meanings that allow for regular pragmatic enrichments over other potential alternatives. A particularly well-studied type of conventional pragmatic enrichment are so-called {\em scalar implicatures} (cf. \citealt{horn:1972,gazdar:1979}). These inferences are licensed for groups of expressions ordered in terms of informativity, here understood as an entailment induced order.
 
-\hl{Note that this corresponds to the description of scalar implicatures given above: Reasoning about the alternatives at the speaker's disposition can pragmatically strengthen an expression's literal meaning by ruling out stronger alternatives not mentioned.}
+For instance, {\em some} is entailed by {\em all}; if it were true that `All students came to class', it would also be true that `Some students came to class'. However, while weaker expressions such as {\em some} are truth-conditionally compatible with stronger alternatives such as {\em all}, this is not necessarily what their use is taken to convey. Instead, the use of a less informative expression when a more informative one could have been used can license a defeasible inference that stronger alternatives do not hold. That is, a hearer who assumes the speaker to be able and willing to provide all relevant information can infer that, since the speaker did not use a stronger alternative ({\em all}), this alternative must not hold. In this way, `Some students came to class' is strengthened as conveying `Some but not all students came to class'. Analogously, a speaker can rely on her interlocutor to draw this inference without having to express this upper-bound overtly, e.g. by stating {\em some but not all}. Put differently, mutual reasoning about rational language use supplies a bound that rules out stronger alternatives pragmatically.
 
-\hl{A particularly well-studied type of conventional pragmatic enrichment are so-called {\em scalar implicatures} (cf. \citealt{horn:1972,gazdar:1979}). These inferences are licensed for groups of expressions ordered in terms of informativity, here understood as an entailment induced order. For instance, {\em some} is entailed by {\em all}; if it were true that `All students came to class', it would also be true that `Some students came to class'. However, while weaker expressions such as {\em some} are truth-conditionally compatible with stronger alternatives such as {\em all}, this is not necessarily what their use is taken to convey. Instead, the use of a less informative expression when a more informative one could have been used can license the inference that the stronger alternative does not hold. That is, a hearer who assumes the speaker to be able and willing to provide all relevant information can infer that, since the speaker did not use a stronger alternative ({\em all}), this alternative must not hold. In this way, `Some students came to class' is strengthened as conveying `Some but not all students came to class'. Analogously, a speaker can rely on her interlocutor to draw this inference without having to express the bound overtly, e.g. by stating {\em some but not all}. In summary, mutual reasoning about rational language use supplies an upper-bound that rules out stronger alternatives pragmatically.}
+Note that this corresponds to our previous description of the pragmatic use of lexicon $L_a$, repeated below for convenience. A pragmatic hearer who reasons about a speaker's use of message $m_1$ will associate it more strongly with $s_1$ than with $s_2$ given that the latter is unambiguously associated with the latter state. The strength of this association being dependent on their degree of rationality $\lambda$ and their prior over states. Conversely, a pragmatic speaker will reason about her interlocutors interpretation and use the messages accordingly. 
 
-\hl{We can now rephrase our initial question in terms of scalar implicatures: Why is the lack of lexical upper-bounds in weak scalar alternatives regularly selected for over the alternative of lexicalizing it? This question is particularly striking considering the number of classes of expressions that license such inferences across languages (\citealt{horn:1972}, \citealt[252-267]{horn:1984}, \citealt{traugott:2004,vdAuwera:2010}).}
+\begin{centering}
+$L_a$ = \bordermatrix{~ & m_1 & m_2 \cr 
+                  s_1 & 1 & 0 \cr
+                  s_2 & 1 & 1 \cr} \hspace{2cm} $L_b$ = \bordermatrix{~ & m_1 & m_2 \cr 
+                  s_1 & 1 & 0 \cr
+                  s_2 & 0 & 1 \cr}\\[0.5cm]
+\end{centering}
 
-\hl{For instance, truth-conditionally, {\em Bill read five books} does not set an upper-bound to the amount of books that Bill read; he may have read six, seven, or more books. However, the (defeasible) inference that {\em Bill read no more than five books} may be drawn on pragmatic grounds. After all, if Bill had read, for example, six books, and had the speaker known this, she would have said so. In this manner, what is conveyed (pragmatically) can go beyond what is (literally) said. }
+We can now rephrase our initial question in terms of scalar implicatures: Why is the lack of lexical upper-bounds in weak scalar alternatives, as $m_1$ in $L_a$, regularly selected for over the alternative of lexicalizing it as in $L_b$? More poignantly, would it not serve language users better if weak(er) expressions such as {\em warm}, {\em or}, {\em some} or {\em big} were truth-conditionally incompatible with stronger alternatives such as, respectively, {\em hot}, {\em and}, {\em all} and {\em huge}?  This question is particularly striking considering the number of classes of expressions that license such inferences across languages (\citealt{horn:1972}, \citealt[252-267]{horn:1984}, \citealt{traugott:2004,vdAuwera:2010}). In what follows we investigate the hypothesis that this preference is driven by the advantage in compression that lexical meanings lacking an upper-bound have over those that explicitly codify it. 
+
+\hl{Other alternative explanations}
 
 
-
-\hl{Prima facie, it is puzzling that {\em Bill read five books} does not semantically rule out its more informative or ``stronger'' alternatives. More poignantly, would it not serve language users better if weak(er) expressions such as {\em warm}, {\em or}, {\em some} or {\em big} were truth-conditionally incompatible with stronger alternatives such as, respectively, {\em hot}, {\em and}, {\em all} and {\em huge}? After all, analogously to the example sketched above, this is what a pragmatically enriched interpretation yields; an upper-bound that rules out these alternatives through a so-called scalar inference \citep{horn:1972,gazdar:1979}. The present investigation focuses on the lack of lexicalization of such upper-bounds in natural languages. That is, we seek to provide an explanation for the selection of the particular semantics of scalar expressions, which in turn hinges on the semantics-pragmatics distinction for what is ultimately conveyed to interlocutors. However, once a distinction between semantics and pragmatics is drawn, similar questions can be posed for other types of pragmatic inferences, such as ignorance and manner inferences.}
+\subsection{Application}
 
 
 
