@@ -16,7 +16,7 @@
 \usepackage{nicefrac}
 %\usepackage{stmaryrd}
 %\usepackage{multicol}
-%\usepackage{graphicx}
+\usepackage{graphicx}
 \usepackage{color}
 %\newcommand{\mvalueof}[1]{\llbracket#1\rrbracket}
 \newcommand{\citeposs}[2][]{\citeauthor{#2}'s (\citeyear[#1]{#2})}
@@ -47,7 +47,7 @@
 \begin{document}
 \maketitle
 
-\begin{abstract} Certain semantic structures enable for pragmatic enrichments in a notably productive fashion. This raises the challenge to justify their regular selection over alternatives that codify semantically what is conveyed pragmatically. This issue is particularly puzzling under a purely functional perspective. To address this challenge, we propose a general model for the analysis of linguistic pressures that integrates iterated Bayesian learning in the replicator-mutator dynamics. This model allows for population-level analyses of the effects of such pressures on probabilistic language users with varied degrees of pragmatic sophistication and distinct languages. We showcase the model's predictions in a case study on the (lack of) lexicalization of scalar implicatures. The results suggest simpler semantic representations to be selected for when languages are pressured towards learnability, provided that pragmatic reasoning can compensate for the disadvantage in expressivity that users of such languages otherwise incur.
+\begin{abstract} Many semantic structures enable for pragmatic enrichments in a notably productive fashion. This raises the challenge to justify their regular selection over alternatives that codify semantically what is conveyed pragmatically. This issue is particularly puzzling under a purely functional perspective. To address this challenge, we propose a general model for the analysis of linguistic pressures that integrates iterated Bayesian learning in the replicator-mutator dynamics. This model allows for population-level analyses of the effects of such pressures on probabilistic language users with varied degrees of pragmatic sophistication and distinct languages. We showcase the model's predictions in a case study on the (lack of) lexicalization of scalar implicatures. The results suggest simpler semantic representations to be selected for when languages are pressured towards learnability, provided that pragmatic reasoning can compensate for the disadvantage in expressivity that users of such languages otherwise incur.
 
 
 \section{The semantics-pragmatics divide}\label{sec:introduction}
@@ -124,31 +124,28 @@ Under its biological interpretation, the replicator equation captures the idea o
 
 Nowak \& et al. did not only consider replication, but also recognized the relevance of variation introduced by a language's transmition across generations, construed as mutation. As a consequence, the offspring of a type may end up adopting a different type than their parents. However, in this work mutation rates were construed as independent from a type. That is, the variation introduced by generational turnovers did not depend on a the relative learnability of a type based on learning data or learning biases. Therefore, to address the issue of selecting a particular type over (near) functional equivalents, we turn to a different strand of research in cultural evolution: {\em iterated learning}. 
 
+
 \subsection{Mutation \& learning}
-Iterated learning is a process in which the behavior of one individual serves as learning input for another, who's behavior subsequently serves as input for a new learner, and so on. In linguistic terms, this process can be construed as chains of parents and children, where the parent produces linguistic data from which the child infers a language. The latter then goes on to produce linguistic data for a new generation of na\"ive learners. A central result of this paradigm is that this process leads to simpler and more regular languages in virtue of the pressure towards greater learnability exherted (surveys of experimental data and models are given in \citealt{kirby+etal:2014} and \citealt{tamariz+kirby:2016}).
+Iterated learning is a process in which the behavior of one individual serves as learning input for another, who's behavior subsequently serves as input for a new learner, and so on. In linguistic terms, this process can be construed by chains of parents and children, where the parent produces linguistic data from which the child infers a language. The latter then goes on to produce linguistic data for a new generation of na\"ive learners. Following \citet{griffiths+kalish:2007} we model learning as a process of Bayesian inference in which learners combine the likelihood of a type producing the learning data with prior inductive biases. They then select a type from the resulting posterior distribution according to their learning strategy. 
 
-\hl{Some more technical exposition of IL. Mainly based on G+K07}
+A central result of iterated learning is that this it leads to simpler and more regular languages due to the pressure towards greater learnability it exherts (surveys of experimental data and models are given in \citealt{kirby+etal:2014} and \citealt{tamariz+kirby:2016}). Importantly, experimental and mathematical results suggest the results of this process to reflect the learners' learning biases, codified as a prior $P \in \Delta(\mathcal{T})$. This bias can be thought of as the amount of data a learner would require in order to adopt a language or, in our case, a combination of a lexicon and a signaling behavior (cf. \citealt[450]{griffiths+kalish:2007}). 
 
-In our present setup, the learners' task is to perform a joint inference over lexica and signaling behavior. As with the sole replicator dynamics, the mutator dynamics are deterministic. They are codified in a transition matrix $Q$, where $Q_{ij}$ indicates the probability of the children of a parent of type $i$ adopting type $j$. This, in turn, is proportional to the probability of $i$ producing the learning data and that of $j$ given the data. 
+However, the extent of the influence of the prior on the dynamics was shown to depend on assumptions about the strategy employed by learners. While simulation results suggested that weak biases could be magnified by exposing learners to only small data samples \citep{brighton:2002}, the mathematical characterization provided by \citet{griffiths+kalish:2007} showed that, instead, iterated learning converged to the prior. That is, the distribution over languages in a population or, from an individual's perspective, the likelihood of learning a language corresponded to the learners' prior distribution -- irrespective of the amount of input given to learners. The divergence between these predictions crucially depends on the assumed learning strategy. On the one extreme, Griffith \& Kalish's prediction holds for learners that sample from the posterior, on the other, more deterministic strategies such as the selection of the type with the highest posterior probability, so-called {\it maximum a posterior estimation} (MAP), increase the prior's influence.
+
+
+In the following, we parametrize the posterior, $P(t_i|d)^l$, to obtain a range of learning strategies that live in the range between posterior sampling and MAP, $l \geq 1$. When $l = 1$ learners sample from the posterior. As $l$ increases towards infinity, the learners tendency to posterior maximization increases. 
+
+More generally, we combine the replicator dynamics with iterated learning by codifying the latter as a transition matrix $Q$, where $Q_{ij}$ indicates the probability of the children of a parent of type $i$ adopting type $j$. This, in turn, is proportional to the probability of $i$ producing the learning data and that of $j$ given the data. That is, the learner's task is to perform a joint inference over lexica and signaling behavior.
 
 The elements of the set of learning data $D$ are sequences of length $k$ of state-message pairings. That is, a sequence of observations of language use. Put differently, a datum $d \in D$ contains $k$ members of the set $\{\tuple{s_i,m_j} | s_i \in S, m_j \in M\}$ and $D$ is the set of all such sequences. Having fixed $D$,
 \[
  Q_{ij} \propto \sum_{d \in D} P(d|t_i) F(t_j,d),
 \]
-where $F(t_j,d) \propto P(t_j|d)^l$ and $P(t_j|d) \propto P(t_j) P(d|t_j)$. Given a type $i$, $P(d|t_i)$ can be straightforwardly computed based on $t_i$'s production behavior. However, the above involves two crucial aspects that require a more detailed discussion: the posterior parameter $l$ and the learning prior $P \in \Delta(\mathcal{T})$. 
-
-\paragraph{Posterior parametrization.}
-
-Crucially, the posterior is parametrized by $l$, $l \geq 1$. When $l = 1$ learners sample from the posterior. As $l$ increases towards infinity, the learners tendency to posterior maximization increases. \hl{Some more discussion on posterior maximization}
-
-\paragraph{Learning prior.} 
-
-
-
+where $F(t_j,d) \propto P(t_j|d)^l$ and $P(t_j|d) \propto P(t_j) P(d|t_j)$. Given a type $i$, $P(d|t_i)$ can be straightforwardly computed based on $t_i$'s production behavior. 
  
 
 \subsection{Summary}
-Following past research, we have argued for expressivity, learnability and simplicity as central pressures that apply on language change. The dynamics we propose model them as fitness-relative replication, mutation based on iterated Bayesian learning, and a prior that biases learners for compressed lexical meanings. Taken together the dynamics are described by the replicator-mutator dynamics \citep{hofbauer+sigmund:2003}: 
+So far, we have argued for expressivity, learnability and simplicity as central pressures that apply on the cultural evolution of language. The dynamics we propose model them as fitness-relative replication, mutation based on iterated Bayesian learning, and a prior that biases learners for compressed lexical meanings, respectively. Taken together the dynamics are described by the replicator-mutator dynamics \citep{hofbauer+sigmund:2003}: 
 
 \[ 
 \hat{x_i} = \sum_j Q_{ji} \frac{x_jf_j}{\Phi}
@@ -159,6 +156,9 @@ The basic units that these pressures apply to are a combination of semantics, i.
 \hl{Summarize novelties \& advantages
 1. Advantage of connection between two strands of research
 2. Simple and general mean field dynamics}
+
+\hl{Possibly put reference to Kalish in EVOLANG7, Spain, on selection + iterated learning, and our CogSci}
+
 
 %\hl{So far, we have focused on highlighting the strands of research and assumptions present in the model. Less has been said about its departure from past approaches, beyond the virtues we argued their synthesis gives rise to. Given the different foci of these investigations, most comparisons on a general level are misplaced. However, \citet{kirby+etal:2015} ...}
 
@@ -190,9 +190,56 @@ $L_a$ = \bordermatrix{~ & m_1 & m_2 \cr
                   s_2 & 0 & 1 \cr}\\[0.5cm]
 \end{centering}
 
-We can now rephrase our initial question in terms of scalar implicatures: Why is the lack of lexical upper-bounds in weak scalar alternatives, as $m_1$ in $L_a$, regularly selected for over the alternative of lexicalizing it as in $L_b$? More poignantly, would it not serve language users better if weak(er) expressions such as {\em warm}, {\em or}, {\em some} or {\em big} were truth-conditionally incompatible with stronger alternatives such as, respectively, {\em hot}, {\em and}, {\em all} and {\em huge}?  This question is particularly striking considering the number of classes of expressions that license such inferences across languages (\citealt{horn:1972}, \citealt[252-267]{horn:1984}, \citealt{traugott:2004,vdAuwera:2010}). In what follows we investigate the hypothesis that this preference is driven by the advantage in compression that lexical meanings lacking an upper-bound have over those that explicitly codify it. 
+We can now rephrase our initial question in terms of scalar implicatures: Why is the lack of lexical upper-bounds in weak scalar alternatives, as $m_1$ in $L_a$, regularly selected for over the alternative of lexicalizing it as in $L_b$? More poignantly, would it not serve language users better if weak(er) expressions such as {\em warm}, {\em or}, {\em some} or {\em big} were truth-conditionally incompatible with stronger alternatives such as, respectively, {\em hot}, {\em and}, {\em all} and {\em huge}?  This question is particularly striking considering the number of classes of expressions that license such inferences across languages (\citealt{horn:1972}, \citealt[252-267]{horn:1984}, \citealt{traugott:2004,vdAuwera:2010}). 
 
-\hl{Other alternative explanations}
+\paragraph{Other hyp}
+\hl{The first is that pragmatic reasoning offers a general mechanism to strengthen the meaning of a wide range of expressions when the conditions outlined above hold.   Consequently,  cases where cooperativity or  knowledge  are  not  likely  to  be  given  are  non-committal to whether stronger alternatives hold.  If for all the speaker knows ‘some students came’ but she does not know whether ‘all came’, then the compatibility of some with (possibly) all
+succinctly conveys the speaker’s uncertainty about the latter.}
+
+\hl{Given that scalar expressions occur in contexts in which their
+upper-bounded reading is absent, one could argue for a func-
+tional advantage of a lack of semantic upper-bounds:  If ex-
+pressing such a state of affairs is relevant and contextual cues
+provide enough information for a hearer to discern when a
+bound is conveyed pragmatically, then doing so is preferred
+over enforcing the bound overtly through a longer (more com-
+plex) expression, e.g. by stating ‘some but not all’ explicitly.
+That is, all else being equal, speakers prefer to communicate
+as economically as possible, and pragmatic reasoning enables
+them to do so.  Additionally, this can be contrasted with the
+hypothetical alternative of lexicalizing two expressions – one
+with and one lacking an upper-bound.  Four conditions may
+pressure language to English-like semantics over this alter-
+native: (i) contextual cues are very reliable, morphosyntactic
+disambiguation is either (ii) not frequently necessary or (iii)
+not  very  costly,  or  (iv)  having  larger  lexica  is  more  costly
+than morphosyntactic disambiguation.   In a nutshell (i) and
+(ii) place a heavy burden on the ability to retrieve contextual
+cues to a degree that is unlikely to undercut the benefit of safe
+communication with more expressions.  As for (iii) and (iv),
+these seem mostly like technical solutions without a proper
+empirical basis.}
+
+
+
+\paragraph{Our hyp}
+In what follows we investigate the hypothesis that this preference is driven by the advantage in compression that lexical meanings lacking an upper-bound have over those that explicitly codify it.
+
+At present, the contrast in compressability between lexical meanings, however, is not represented as lexica codify the truth-conditions of expressions at a lower level of granularity. In principle this difference could be made precise with an adequate representational language, e.g., through measures over representational complexity such as minimal description length. 
+
+There is a growing effort to develop such
+empirically  testable  representational  languages.   For  instance,  the
+so-called
+language of thought
+has been put to test in various rational
+probabilistic models that show encouraging results (see e.g. Katz et
+al. 2008; Piantadosi et al. under review, 2012 and references therein).
+We think that our assumption is well-warranted as a working hypoth-
+esis and decide against such an enrichment given that the introduc-
+tion of a larger framework would also require further assumptions
+and justifications.
+
+
 
 
 \subsection{Application}
@@ -237,7 +284,24 @@ As in the CogSci paper, $L_4$ (semantic upper-bound for $m_2$) and $L_5$ (no sem
 \end{enumerate}
 
 
+\subsection{Analysis}
+\hl{Possibly put only fitness and only learning in a single plot with shared y axis}
 
+%\begin{figure}
+%\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{../presentations/07fitness}
+%\end{figure}
+%
+%\begin{figure}
+%\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{../presentations/07learning}
+%\end{figure}
+
+\begin{figure}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{../presentations/03cost-with-l1}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{../presentations/01heatmap}
+\end{figure}
 
 \section{Discussion}
 
