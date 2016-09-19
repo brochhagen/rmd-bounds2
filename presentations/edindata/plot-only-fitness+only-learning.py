@@ -75,12 +75,14 @@ d4 = t_finalB.loc[:,('t9_final','t10_final', 't11_final')]
 
 fig = plt.figure()
 
-ax1 = fig.add_subplot(1,2,1, aspect = "equal")
-ax2 = fig.add_subplot(1,2,2, aspect = "equal", sharey = ax1)  #Share y-axes with subplot 1
+#ax1 = fig.add_subplot(1,2,1, aspect = "equal")
+ax1 = fig.add_subplot(1,2,1, xlabel=r'Rationality parameter $\lambda$', ylabel='Proportion in population')
+
+ax2 = fig.add_subplot(1,2,2, sharey = ax1, xlabel='Prior parameter c')  #Share y-axes with subplot 1
 
 #Set y-ticks of subplot 2 invisible
 plt.setp(ax2.get_yticklabels(), visible=False)
-
+plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=1.0)
 #Plot data
 im1 = ax1.plot(d2)
 im2 = ax2.plot(d4)

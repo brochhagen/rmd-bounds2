@@ -1,4 +1,4 @@
-\begin{thebibliography}{37}
+\begin{thebibliography}{38}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -201,6 +201,13 @@ Henry Brighton.
 \newblock Compositional syntax from cultural transmission.
 \newblock \emph{Artificial Life}, 8\penalty0 (1):\penalty0 25--54, 2002.
 \newblock \doi{10.1162/106454602753694756}.
+
+\bibitem[Kirby et~al.(2007)Kirby, Dowman, and Griffiths]{kirby+etal:2007}
+S.~Kirby, M.~Dowman, and T.~L. Griffiths.
+\newblock Innateness and culture in the evolution of language.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 104\penalty0
+  (12):\penalty0 5241--5245, 2007.
+\newblock \doi{10.1073/pnas.0608222104}.
 
 \bibitem[Horn(1972)]{horn:1972}
 Laurence~R. Horn.
