@@ -58,7 +58,7 @@ In linguistic theorizing, it is common to draw a distinction between semantics a
 
 Much research at the semantics-pragmatics interface has been aimed at characterizing expressions in terms of either domain, or their interplay. However, an issue that has received little attention is the justification of semantic structure in light of pragmatics. The present investigation seeks to fill this gap by analyzing the effects linguistic pressures have on the selection and pervasiveness of particular lexical meanings under consideration of pragmatic enrichments.
 
-In recent years, similar questions about the emergence and change of linguistic features have lead to a surge in models to address them (see \citealt{steels:2015} and \citealt{tamariz+kirby:2016} for recent overviews). Our starting point is given by the overarching argument that has crystalized from accumulated mathematical, experimental and cross-linguistic evidence in this literature: Natural languages need to be well-adapted to communicative needs within a linguistic community, but also need to be learnable to survive their faithful transmission across generations. More succinctly; natural languages are pressured for expressiveness as well as learnability.   
+In recent years, similar questions about the emergence and change of linguistic features have lead to a surge in models to address them (see \citealt{steels:2015} and \citealt{tamariz+kirby:2016} for recent overviews). Our starting point is given by the overarching argument that has crystalized from accumulated mathematical, experimental and cross-linguistic evidence in this literature: Natural languages need to be well-adapted to communicative needs within a linguistic community, but also need to be learnable to survive their faithful transmission across generations. More succinctly; natural languages are pressured for expressivity as well as learnability.   
 
 We build on these insights by modeling these pressures using the replicator-mutator dynamics (see \citealt{hofbauer+sigmund:2003} for an overview). This allows for the inspection of their interaction by combining functional pressure on successful communication with effects of learning biases on (iterated) Bayesian learning \citep{griffiths+kalish:2007}. The semantics-pragmatics distinction and its effect on production and comprehension is made precise by considering probabilistic models of rational language use in populations with distinct lexica \citep{frank+goodman:2012,franke+jaeger:2014, bergen+etal:2016}. 
 
@@ -82,7 +82,6 @@ The remainder of this section introduces the individual components of the model 
 
 
 
-%The observation that monomorphemic expression that lexically rule out stronger alternatives (e.g. {not all} as hypothetical `nall') are unattested across languages has received substantial argumentative support (most prominently in \citealt[252-267]{horn:1984} but also e.g. in \citealt{horn:1972,traugott:2004,vdAuwera:2010}). To the best of our knowledge, this claim stands unchallenged.
 
 \subsection{Languages and linguistic behavior}
 Lexica codify the truth-conditions of a language's expressions, i.e., its semantics. A convenient way to represent such lexica is by $(|S|,|M|)$-Boolean matrices, where $S$ is a set of states of affairs, or meanings, to convey and $M$ a set of messages of the language \citep{franke+jaeger:2014}. For instance, the following two lexica fragments determine the truth-conditions of two messages, $m_1$ and $m_2$, for two states, $s_1$ and $s_2$:
@@ -98,7 +97,7 @@ $L_a$ = \bordermatrix{~ & m_1 & m_2 \cr
 
 In words, according to lexicon $L_a$, $m_1$ is true of state $s_1$ as well as of $s_2$. In contrast, message $m_1$ is only true of $s_1$ in $L_b$. Otherwise, the two languages are truth-conditionally equivalent. 
 
-To make the distinction betweeen semantics and pragmatics precise, we distinguish between two kinds of linguistic behavior. {\em Literal interlocutors} produce and interpret messages literally. That is, their linguistic choices are guided by their lexica only. In contrast, {\em pragmatic interlocutors} engage in mutual reasoning to inform their choices. For instance, a rational speaker of $L_a$ who reasons about her addressee should use $m_1$ to signal state $s_1$ given that $m_2$ is already unambiguously associated with state $s_2$. Analogously, should rational hearers expect their interlocutors to reason along these lines, they will interpret ambiguous $m_1$ accordingly. Note in particular that according to this strenghtening of $m_1$, $L_a$ is indistinguishable from $L_b$ in terms of expressiveness if its users are pragmatic reasoners.
+To make the distinction betweeen semantics and pragmatics precise, we distinguish between two kinds of linguistic behavior. {\em Literal interlocutors} produce and interpret messages literally. That is, their linguistic choices are guided by their lexica only. In contrast, {\em pragmatic interlocutors} engage in mutual reasoning to inform their choices. For instance, a rational speaker of $L_a$ who reasons about her addressee should use $m_1$ to signal state $s_1$ given that $m_2$ is already unambiguously associated with state $s_2$. Analogously, should rational hearers expect their interlocutors to reason along these lines, they will interpret ambiguous $m_1$ accordingly. Note in particular that according to this strenghtening of $m_1$, $L_a$ is indistinguishable from $L_b$ in terms of expressivity if its users are pragmatic reasoners.
 
 Following models of rational language use such as Rational Speech Act models \citep{frank+goodman:2012} and their game-theoretic counterparts \citep{benz+etal:2005a,franke:2009,franke+jaeger:2014}, this kind of signaling behavior is captured by a hierarchy over reasoning types. The hierarchy's bottom, level $0$, corresponds to literal language use. Pragmatic language users of level $n + 1$ behave rationally according to (expected) level $n$ behavior of their interlocutors. The behavior of literal and pragmatic hearers of a language $L$ is given by their respective selection functions in (\ref{h:level0}) and (\ref{h:leveln}). Mutatis mutandis for the speaker functions in (\ref{s:level0}) and (\ref{s:leveln}).
 
@@ -116,7 +115,7 @@ For the most part, pragmatic behavior mirrors its literal counterpart. As descri
 The combination of a lexicon with its use, i.e., a particular level of linguistic sophistication, yields a type $t$. Types are the basic units on which our population dynamics operate. 
 
 \subsection{Replication \& expressivity}
-Communicative efficiency, or expressiveness, has received particular attention from investigations using evolutionary game theory \citep{nowak+krakauer:1999,nowak+etal:2000, nowak+etal:2002}. Under this view, a type's success in communication confers it a higher fitness relative to less successful ones. As a consequence they replicate more than other types, increasing their proportion in the population. This association of a type's communicative success within a population with changes in the types present in it creates a feedback loop that pressures the population towards greater expressivity. The replicator equation gives us the means to make these dynamics precise.
+Communicative efficiency, or expressivity, has received particular attention from investigations using evolutionary game theory \citep{nowak+krakauer:1999,nowak+etal:2000, nowak+etal:2002}. Under this view, a type's success in communication confers it a higher fitness relative to less successful ones. As a consequence they replicate more than other types, increasing their proportion in the population. This association of a type's communicative success within a population with changes in the types present in it creates a feedback loop that pressures the population towards greater expressivity. The replicator equation gives us the means to make these dynamics precise.
 
 The proportion of types in a given population is captured by a vector $x$, where $x_i$ is type $i$'s proportion in the population. The fitness of a type $i$, $f_i$, is given by its expected utility in this population, $f_i = \sum_j x_j \text{EU}(t_i,t_j)$. That is, its fitness is the sum of its expected communicative success with other types weighted by the latter type's population share. The expected utility of $i$ and $j$ is obtained by considering the expected utility of speaker $i$ interacting with hearer $j$, and vice versa: $\text{EU}(t_i,t_j) = [U_S(t_i,t_j) + U_R(t_i,t_j)]/2$. $U_S(x,y)$ and $U_R(x,y)$ are respectively $\sum_s P(s)\sum_m S_n(m|s;L) \sum_{s'} R_o(s'|m;L) \delta(s,s')$ and $U_S(y,x)$ for $n$ and $o$ being the reasoning level of $x$ and $y$, and $\delta(s,s') = 1$ iff $s = s'$ and $0$ otherwise.\footnote{Note that the definition of $U_R(\cdot,\cdot)$ implies equal sender and receiver payoff in an interaction. This need not be so in the general case but suffices for our application.} This quantity is symmetric, reflecting the probability of two types' mutual understanding. Lastly, the average fitness of the population is captured by $\Phi$, $\Phi = \sum_i x_i f_i$. This term serves as a normalizing constant for the (discrete) replicator equation; $\dot{x}_i = \frac{x_i f_i}{\Phi}$ 
 
@@ -140,20 +139,15 @@ where $F(t_j,d) \propto P(t_j|d)^l$ and $P(t_j|d) \propto P(t_j) P(d|t_j)$. Give
  
 
 \subsection{Summary}
-So far, we have argued for expressivity, learnability and simplicity as central pressures that apply on the cultural evolution of language. These are modelled as fitness-relative replication, mutation based on iterated Bayesian learning, and a prior that biases learners for compressed lexical meanings, respectively. Taken together the dynamics are described by the replicator-mutator dynamics \citep{hofbauer+sigmund:2003}: 
+We argued for expressivity, learnability and simplicity as important pressures that apply on the cultural evolution of language. They are respectively modelled as communicative efficiency-relative replication, iterated Bayesian learning, and a prior that biases learners for compressed lexical meanings. Taken together these evolutionary dynamics are described by the replicator-mutator dynamics \citep{hofbauer+sigmund:2003}: 
 
 \[ 
 \hat{x_i} = \sum_j Q_{ji} \frac{x_jf_j}{\Phi}
 \]
 
-The basic units that these pressures apply to are a combination of semantics, i.e., a lexicon, and its use. Their expressivity depends on their communicative efficiency within a population, whereas their learnability depends on the fidelity by which they can be infered by a new generation of learners. Importantly, the latter is influenced by the learners' preference for simpler lexical representations, codified as a learning bias.
+The basic units that the dynamics operate on are a combination of lexica lexicon and their use; a type. A type's expressivity depends on its communicative efficiency within a population while its learnability depends on the fidelity by which it is infered by new generations of na\"ive learners. 
 
-\hl{Summarize novelties \& advantages
-1. Advantage of connection between two strands of research
-2. Simple and general mean field dynamics}
-
-\hl{Possibly put reference to Kalish in EVOLANG7, Spain, on selection + iterated learning, and our CogSci}
-
+In sum, the innovation of this model lies in its combination of functional pressure on successful communication, effects of learning biases on (iterated) Bayesian language learning \citealt{griffiths+kalish:2007}, and probabilistic models of language use in populations with distinct lexica \citep{frank+goodman:2012,franke+jaeger:2014,bergen+etal:2016}. In particular, this synthesis enables for the investigation of the effects of communicative pressures on the semantics-pragmatics interface. In doing so, it links the previously disconnected areas of rational probabilistic language use and cultural evoltion.
 
 %\hl{So far, we have focused on highlighting the strands of research and assumptions present in the model. Less has been said about its departure from past approaches, beyond the virtues we argued their synthesis gives rise to. Given the different foci of these investigations, most comparisons on a general level are misplaced. However, \citet{kirby+etal:2015} ...}
 
@@ -170,7 +164,9 @@ The basic units that these pressures apply to are a combination of semantics, i.
 %No communal learniner; only parental
 %%%
 
-\section{Lack of semantic upper-bounds in lexical meaning}
+\section{Lack of lexicalization of pragmatic inferences}
+
+%
 With this model, we set out to investigate the prevalence of lexical meanings that allow for regular pragmatic enrichments over other alternatives. A particularly well-studied type of conventional pragmatic enrichment are so-called {\em scalar implicatures}. These inferences are licensed for groups of expressions ordered in terms of informativity, here understood as an entailment induced order. For instance, {\em some} is entailed by {\em all}; if it were true that `All students came to class', it would also be true that `Some students came to class'. However, while weaker expressions such as {\em some} are truth-conditionally compatible with stronger alternatives such as {\em all}, this is not necessarily what their use is taken to convey. Instead, the use of a less informative expression when a more informative one could have been used can license a defeasible inference that stronger alternatives do not hold (cf. \citealt{horn:1972,gazdar:1979}). That is, a hearer who assumes the speaker to be able and willing to provide all relevant information can infer that, since the speaker did not use a stronger alternative, e.g. {\em all}, this alternative must not hold. In this way, `Some students came to class' is strengthened to convey `Some but not all students came to class'. Analogously, a speaker can rely on her interlocutor to draw this inference without having to express this upper-bound overtly, e.g. by stating {\em some but not all}. In other words, mutual reasoning about rational language use supplies a bound that rules out stronger alternatives pragmatically.
 
 This corresponds to our previous description of the pragmatic use of lexicon $L_a$, repeated below for convenience. A pragmatic hearer who reasons about a speaker's use of message $m_1$ will associate it more strongly with $s_1$ than with $s_2$ given that the latter is unambiguously associated with $s_2$. The strength of this association dependens on the individuals' degree of rationality $\lambda$ and their prior over states. Conversely, a pragmatic speaker will reason about her interlocutor's interpretation and use the messages accordingly. 
@@ -185,53 +181,17 @@ $L_a$ = \bordermatrix{~ & m_1 & m_2 \cr
 
 Our initial question can now be rephrased in terms of scalar implicatures by asking for justifiations for the lack of lexical upper-bounds in weak scalar alternatives. That is, why semantics such as those of message $m_1$ in $L_a$ are regularly selected for over the alternative of lexicalizing it as in $L_b$. More poignantly, would it not serve language users better if weak(er) expressions such as {\em warm}, {\em or}, {\em some} or {\em big} were truth-conditionally incompatible with stronger alternatives such as, respectively, {\em hot}, {\em and}, {\em all} and {\em huge}?  This question is particularly striking considering the number of expressions that license such inferences across languages (\citealt{horn:1972}, \citealt[252-267]{horn:1984}, \citealt{traugott:2004,vdAuwera:2010}). 
 
-\paragraph{Other hyp}
-\hl{The first is that pragmatic reasoning offers a general mechanism to strengthen the meaning of a wide range of expressions when the conditions outlined above hold.   Consequently,  cases where cooperativity or  knowledge  are  not  likely  to  be  given  are  non-committal to whether stronger alternatives hold.  If for all the speaker knows ‘some students came’ but she does not know whether ‘all came’, then the compatibility of some with (possibly) all
-succinctly conveys the speaker’s uncertainty about the latter.}
+We see two main explanations for the lack of upper-bounds in the lexical meaning of weak scalar expressions. The first is that their truth-conditional compatibility with stronger expressions lends them a broader range of application. When the speaker is unwilling or unable to assert a stronger alternative, e.g. because she lacks knowledge, weaker alternatives can still be used. That is, cases where cooperativity or knowlege are not likely to be given are non-commital to whether stronger alternatives hold. For instance, if for all the speaker knows `Some students came' but she doesn't know whether `All came', then the use of {\em some} succintly conveys her uncertainty about the latter. Thus, given that scalar expressions occur in contexts in which their upper-bounded reading is absent, one could argue for a functional advantage of a lack of semantic upper-bounds: should contextual cues provide enough information to the hearer to identify whether a bound is intended to be conveyed pragmatically, then these means are preferred over expressing it overtly through a longer expression, e.g. by saying `some but not all' explicitly. Furthermore, not lexicalizing an upper-bound would also be prefered over the hypothetical alternative of lexicalizing two expressions -- one with and one lacking an upper-bound.\footnote{The observation that such monomorphemic expression that lexically rule out stronger alternatives are unattested across languages has received substantial argumentative support (most prominently in \citealt[252-267]{horn:1984} but also e.g. in \citealt{horn:1972,traugott:2004,vdAuwera:2010}). To the best of our knowledge, this claim stands unchallenged.} 
 
-\hl{Given that scalar expressions occur in contexts in which their
-upper-bounded reading is absent, one could argue for a func-
-tional advantage of a lack of semantic upper-bounds:  If ex-
-pressing such a state of affairs is relevant and contextual cues
-provide enough information for a hearer to discern when a
-bound is conveyed pragmatically, then doing so is preferred
-over enforcing the bound overtly through a longer (more com-
-plex) expression, e.g. by stating ‘some but not all’ explicitly.
-That is, all else being equal, speakers prefer to communicate
-as economically as possible, and pragmatic reasoning enables
-them to do so.  Additionally, this can be contrasted with the
-hypothetical alternative of lexicalizing two expressions – one
-with and one lacking an upper-bound.  Four conditions may
-pressure language to English-like semantics over this alter-
-native: (i) contextual cues are very reliable, morphosyntactic
-disambiguation is either (ii) not frequently necessary or (iii)
-not  very  costly,  or  (iv)  having  larger  lexica  is  more  costly
-than morphosyntactic disambiguation.   In a nutshell (i) and
-(ii) place a heavy burden on the ability to retrieve contextual
-cues to a degree that is unlikely to undercut the benefit of safe
-communication with more expressions.  As for (iii) and (iv),
-these seem mostly like technical solutions without a proper
-empirical basis.}
+In a nutshell, this argument posits that scalar implicatures fail to lexicalize because, all else being equal, speakers prefer to communicate as economically as possible and pragmatic reasoning enables them to do so. However, this explanation relies on cues being strongly reliable or morphosyntactic disambiguition being seldom necessary. These assumptions put a heavy burden on the ability to retrieve contextual cues to a degree that seems unlikely to undercut the benefit of safe communication. Two related conditions that might pressure language to English-like semantics are that either morphosyntactic disambiguation is not very costly on its own, or at least less costly than having larger lexica (in this case two for each scalar expression). However, these strike us as technical solutions without a proper empirical basis. 
 
+\hl{See notes on Desktop and finish up saying something about probably being a factor, but we see }
 
 
 \paragraph{Our hyp}
 In what follows we investigate the hypothesis that this preference is driven by the advantage in compression that lexical meanings lacking an upper-bound have over those that explicitly codify it.
 
-At present, the contrast in compressability between lexical meanings, however, is not represented as lexica codify the truth-conditions of expressions at a lower level of granularity. In principle this difference could be made precise with an adequate representational language, e.g., through measures over representational complexity such as minimal description length. 
-
-There is a growing effort to develop such
-empirically  testable  representational  languages.   For  instance,  the
-so-called
-language of thought
-has been put to test in various rational
-probabilistic models that show encouraging results (see e.g. Katz et
-al. 2008; Piantadosi et al. under review, 2012 and references therein).
-We think that our assumption is well-warranted as a working hypoth-
-esis and decide against such an enrichment given that the introduc-
-tion of a larger framework would also require further assumptions
-and justifications.
-
+At present, the contrast in compressability between lexical meanings, however, is not represented as lexica codify the truth-conditions of expressions at a lower level of granularity. \hl{In principle this difference could be made precise with an adequate representational language, e.g., through measures over representational complexity such as minimal description length.  There is a growing effort to develop such empirically  testable  representational  languages. For  instance, the so-called language of thought has been put to test in various rational probabilistic models that show encouraging results (see e.g. Katz et al. 2008; Piantadosi et al. under review, 2012 and references therein). We think that our assumption is well-warranted as a working hypothesis and decide against such an enrichment given that the introduction of a larger framework would also require further assumptions and justifications.}
 
 
 
