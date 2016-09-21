@@ -1,4 +1,4 @@
-\begin{thebibliography}{38}
+\begin{thebibliography}{39}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -231,5 +231,13 @@ Johan {van der Auwera}.
 \newblock In \emph{The Expression of Negation}, pages 73--110. Walter de
   Gruyter {GmbH}, 2010.
 \newblock \doi{10.1515/9783110219302.73}.
+
+\bibitem[Katz et~al.(2008)Katz, Goodman, Kersting, Kemp, and
+  Tenenbaum]{katz+etal:2008}
+Yarden Katz, Noah~D Goodman, Kristian Kersting, Charles Kemp, and Joshua~B
+  Tenenbaum.
+\newblock Modeling semantic cognition as logical dimensionality reduction.
+\newblock In \emph{Proceedings of Thirtieth Annual Meeting of the Cognitive
+  Science Society}, 2008.
 
 \end{thebibliography}
