@@ -97,7 +97,7 @@ $L_a$ = \bordermatrix{~ & m_1 & m_2 \cr
 
 In words, according to lexicon $L_a$, $m_1$ is true of state $s_1$ as well as of $s_2$. In contrast, message $m_1$ is only true of $s_1$ in $L_b$. Otherwise, the two languages are truth-conditionally equivalent. 
 
-To make the distinction betweeen semantics and pragmatics precise, we distinguish between two kinds of linguistic behavior. {\em Literal interlocutors} produce and interpret messages literally. That is, their linguistic choices are guided by their lexica only. In contrast, {\em pragmatic interlocutors} engage in mutual reasoning to inform their choices. For instance, a rational speaker of $L_a$ who reasons about her addressee should use $m_1$ to signal state $s_1$ given that $m_2$ is already unambiguously associated with state $s_2$. Analogously, should rational hearers expect their interlocutors to reason along these lines, they will interpret ambiguous $m_1$ accordingly. Note in particular that according to this strenghtening of $m_1$, $L_a$ is indistinguishable from $L_b$ in terms of expressivity if its users are pragmatic reasoners.
+To make the distinction betweeen semantics and pragmatics precise, we distinguish between two kinds of linguistic behavior. {\em Literal interlocutors} produce and interpret messages literally. That is, their linguistic choices are guided by their lexica only. In contrast, {\em pragmatic interlocutors} engage in mutual reasoning to inform their choices. For instance, a rational speaker of $L_a$ who reasons about her addressee should use $m_1$ to signal state $s_1$ given that $s_2$ can unambiguously be conveyed with $m_2$. Analogously, should rational hearers expect their interlocutors to reason along these lines, they will interpret ambiguous $m_1$ accordingly. Note in particular that according to this strenghtening of $m_1$, $L_a$ is indistinguishable from $L_b$ in terms of expressivity if its users are pragmatic reasoners.
 
 Following models of rational language use such as Rational Speech Act models \citep{frank+goodman:2012} and their game-theoretic counterparts \citep{benz+etal:2005a,franke:2009,franke+jaeger:2014}, this kind of signaling behavior is captured by a hierarchy over reasoning types. The hierarchy's bottom, level $0$, corresponds to literal language use. Pragmatic language users of level $n + 1$ behave rationally according to (expected) level $n$ behavior of their interlocutors. The behavior of literal and pragmatic hearers of a language $L$ is given by their respective selection functions in (\ref{h:level0}) and (\ref{h:leveln}). Mutatis mutandis for the speaker functions in (\ref{s:level0}) and (\ref{s:leveln}).
 
@@ -193,8 +193,10 @@ Instead, in what follows we investigate the hypothesis that the lack of lexicali
 
 In sum, while we do not want to argue that functionalist pressure may not play a role, we do see a clear benefit in exploring whether matters of learnability would not give us additional leverage.
 
-\subsection{Preliminaries}
-The dynamics are initialized with an arbitrary distribution over types. We consider populations with two signaling behaviors, literal or Gricean (level $0$ and $1$ reasoners), each equipped with one of $6$ lexicons. This yields a total of $12$ distinct types $t \in T$. As in our examples above, $|M| = |S| = 2$, i.e., lexica are $(2,2)$-matrices. These are listed in Table \ref{tab:lexica}. 
+\subsection{Setup}
+ We consider populations with two signaling behaviors, either literal or pragmatic. As mentioned earlier, the former correspond to level $0$ reasoners who only take their lexica into consideration. In the following, pragmatic types correspond to level $1$ reasoners since higher level reasoning is not required to derive scalar implicatures from the lexica fragments we consider here. The prior over states is assumed to be uniform for all behaviors.    
+
+The lexica are listed in Table \ref{tab:lexica}. As in our previous examples, they are $(2,2)$-Boolean matrices, i.e., $|M| = |S| = 2$. Lexica $L_1$ to $L_3$ are not optimal for communication because they assign the same meaning to all their messages. They were included to showcase the selection process for a larger hypothesis space. $L_4$ and $L_5$ are our target lexica, codifying upper-bounded semantics for message $m_1$ (the first column in a lexicon) and a lack thereof, respectively. Lastly, $L_6$ is similar to $L_5$ in that two messages are true of the same state but differs from it in assigning upper-bounded semantics to $m_1$. Combining a signaling behavior with one of these $6$ lexica yields a total of $12$ distinct types.\footnote{While there is a total of $16$ possible $(2,2)$-matrices, a number of them are identical both in terms of expressivity and the learning bias against lexical upper-bounds. The competition between such types is determined by their  proportions in the initial population but this fact can be obscured when averaging across simulations. We therefore focus only on the subset that exhibits the properties we set out to explain.}
 
 \begin{table}[t]
 \centering 
@@ -203,65 +205,111 @@ $L_1$ = $\begin{pmatrix} 0 & 0 \\ 1 & 1 \end{pmatrix}$ &
 $L_2$ = $\begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$ & 
 $L_3$ = $\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}$\\[0.5cm]
 
-$L_4$ = $\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$ &
-$L_5$ = $\begin{pmatrix} 0 & 1 \\ 1 & 1 \end{pmatrix}$ &
-$L_6$ = $\begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}$
+$L_4$ = $\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ &
+$L_5$ = $\begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix}$ &
+$L_6$ = $\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$
 \end{tabular}
-\caption{{\footnotesize Set of considered lexica.}}
+\caption{Space of possible lexicon fragments considered.}
 \label{tab:lexica}
 \end{table}
 
-Target lexica....
+We focus our analysis on the contrast between literal and pragmatic types using lexica $L_4$ and $L_5$. Note in particular  that a type that has conventionalized upper and lower bounds to realize a (quasi-)partition of the relevant semantic space, such as $L_4$, will produce speaker behavior that is {\em almost} indistinguishable from that of a language with only the respective upper bounds, but with Gricean speakers, such as $L_5$. Almost, because there may be slight differences between the probability with which speakers would (erroneously) use a semantically false description and the probability with which speakers would (erroneously) use a pragmatically suboptimal description. This further contrasts with literal $L_5$, a type lacks means to convey an upper-bound with $m_1$. Due to the possible marginal difference in signaling behavior between pragmatic $L_4$ and $L_5$, the selection of one type over the other is expected to mainly depend on the learning bias. Things are less clear for literal $L_5$ contrasted with literal/pragmatic $L_4$. The former has a learning advantage but is expected to fare worse in terms of communicative fitness in virtue of ambiguous $m_1$.
 
-A language that has conventionalized upper and lower bounds to realize a (quasi-)partition of the relevant semantic space will produce speaker behavior that is /almost/ indistinguishable from that of a language with only the respective upper bounds, but with Gricean speakers. Almost, because there may be slight differences between the probability with which speakers would (erroneously) use a semantically false description and the probability with which speakers would (erroneously) use a pragmatically suboptimal description. 
-\hl{explain why only these and not others}
+As implicit in the discussion above, one may think of $s_1$ as a ``some but not all''-state and $s_2$ for an ``all''-state. The literal meaning of weak scalar expressions such as {\em some} then corresponds to a message true of both $s_1$ and $s_2$ in these fragments.  Following our assumption for a preference for simple lexical representations, the prior biases learners against lexica in which a message holds true only of the former and not the latter. All other semantics are a priori equally probable. This prior is given by $P(t_i) \propto n - c \cdot r$, where $n$ is the total number of states and $r$ is the number of messages only true of $s_1$ in $t_i$'s lexicon, $c \in [0,1]$. In sum, an increase in $c$ brings about a stronger learning bias against languages that lexicalize upper-bounds, i.e., $L_2, L_4$ and $L_6$.
+
+
+\subsection{Analysis}
+The dynamics are initialized with an arbitrary distribution over types, constituting the population's first generation. If not stated otherwise, the results for a given parameter setting were obtained from $1000$ independent runs. Each run consisted of $20$ generations. This corresponds to a developmental plateau after which no noteworthy change was registered. The model's parameters are summarized in Table \ref{tab:summary}.
 
 \begin{table}
 \centering
 \begin{tabular}{l|l|l}
     \multicolumn{1}{c}{parameter} & \multicolumn{1}{c}{explanation} & \multicolumn{1}{c}{locus}\\ \hline
     $\lambda \geq 1$ & rationality parameter & $S_{n+1}(m|s;L) \propto \text{exp}(\lambda \; H_{n}(s|m;L)^\alpha)$\\
-    $\alpha \in (0,1)$ & semantics-pragmatics tension & $S_{n+1}(m|s;L) \propto \text{exp}(\lambda \; H_{n}(s|m;L)^\alpha)$\\ 
+    $\alpha \in [0,1)$ & semantics-pragmatics tension & $S_{n+1}(m|s;L) \propto \text{exp}(\lambda \; H_{n}(s|m;L)^\alpha)$\\ 
     $|D|$ & learning data produced per parent type & $P(d|t_j)P(t_i|d)$\\
     $k = |d|$ & number of observations per datum& $P(d|t_j)P(t_i|d)$\\
     $l \geq 1$ & posterior parameter from sampling to MAP & $P(t_i|d) \propto [P(t_i)P(d|t_i)]^l$\\
-    $c \in (0,1]$ & learning bias for upper-bound lack &  $P(t_i)$
+    $c \in [0,1]$ & learning bias for lack of upper-bounds &  $P(t_i)$
 \end{tabular}
+\caption{Summary of model parameters.} 
+\label{tab:summary}
 \end{table}
 
+\hl{MENTION SAMPLING FROM PRODUCTION}
 
-\paragraph{Procedural description.} At the game's onset we compute $Q$ once based on the sets  of sequences $D$ (one for each parent type). Replicator dynamics are computed based on the fitness of each type in the current population as usual. $Q$ is computed anew for each independent run (of $g$ generations) given that it depends on $D$, which is sampled from production probabilities.
+According to our hypothesis, functional pressure on successful communication combined with learning pressures in the form of a bias against upper-bounds may lead to the selection of $L_5$-like semantics. However, it is instructive to first inspect the effect of these pressures in isolation. We will focus three pragmatic types.\footnote{Pragmatic reasoning allows hearers and speakers to refine their (possibly erroneous) interpretations, rendering it advantageous even for those types that codify an upper-bound lexically.} Users of $L_3$, representing a type that is lacking in expressivity but is a prior preferred for its lack of upper-bounds. Users of $L_4$, a type that is functionally advantageous but biased against. And users of $L_5$, combining the virtues of the latter two.  
 
-\subsection{Model parameters \& procedure} 
-\begin{enumerate}
-  \item Sequence length $k$
-  \item Pragmatic production parameter $\alpha$
-  \item Rationality parameter $\lambda$
-  \item Learning prior over types (lexica); cost parameter $c$. $p^\star(t_i) \propto n - c \cdot r$ where $n$ is the total number of states and $r$ that of upper-bounded messages only true of $s_1$ in $t_i$'s lexicon (if only $s_1$ is true of a message, then this message encodes an upper-bound). Then the score for $L_1$, $L_3$, $L_5$ is $2$, that of $L_4$ and $L_6$ is $2-c$, and that of $L_2$ is $2-2c$; Normalization over lexica scores yields the prior over lexica (which is equal to the prior over types).   
-  \item Prior over meanings ($pr$). We assume that $pr(s) = \frac{1}{|S|}$ for all $s$.
-  \item True state distribution ($P$). We currently assume that $P = \frac{1}{|S|}$ but it may be interesting to vary this
-  \item Learning parameter $l \geq 1$ with $1$ corresponding to probability matching, and MAP as $l$ approaches infinity
-  \item $n$ is the sample of sequences of observations of length $k$ sampled from the production probabilities of each type
-  \item Number of generations $g$
-\end{enumerate}
+\paragraph{Expressivity only.} Recall that the outcome of the replicator dynamics are influenced by $\lambda$ and $\alpha$ as they have a bearing on a type's fitness. Low $\alpha$ disadvantages types that rely on pragmatic reasoning for more deterministic signaling behavior to the gain of those that codify this information semantically. The rationality parameter $\lambda$ has a similar effect for different reasons. Less utility maximizing behavior decreases the association of an ambiguous message with a single state, even when other states are uniquely associated with a different one. That is, $\lambda$ regulates the strength by which users of $L_5$ associate non-upper-bounded $m_1$ exclusively with the ``some''-state $s_1$ over the ``all''-state $s_2$. 
 
+The effect of the rationality parameter using only the replicator dynamics is shown in the left-hand side of Figure \ref{fig:either-R-or-M}. As expected, the less expressive type using $L_3$ fares worse and shows little variation across $\lambda$-values. Crucially, values of $\lambda \leq 10$ lead to an increase in $L_4$ and a decrease in $L_5$. As the rationality parameter increases, the functional difference between $L_4$ and $L_5$ is levelled. Overall, the final populations that result only from a pressure towards expressively approximate an even share of pragmatic $L_4, L_5$ and $L_6$ types. The latter follows the same trajectory as $L_4$ in Figure \ref{fig:either-R-or-M}.  
 
-\subsection{Analysis}
 \begin{figure}
 \centering
 \includegraphics[scale=.5]{./only-R-or-M}
+\caption{Mean proportions of target types after $20$ generations in $1000$ populations with only replication (left; $\alpha = 1$) and only mutation (right; $\lambda = 20, k = 5$).}
+\label{fig:either-R-or-M}
 \end{figure}
+
+\paragraph{Learnability only.} To get an impression of the effect of iterated learning without a pressure towards expressivity, we first consider (relatively) deterministic parental data production ($\lambda = 20, \alpha = 1$). In this way small data sequences suffice for learners to differentiate types that produce strongly diverging expressions. In line with \citeposs{griffiths+kalish:2007} analysis, under these conditions the resulting populations converge to the learner's prior distribution when sampling from the posterior ($l = 1$). This is shown in the right-hand side of Figure \ref{fig:either-R-or-M}, which directly reflects the prior distribution for each value of $c$.
+
+Inspecting the effects of these dynamics separately not only gives some intuitions about the parameters' influence, but also highlights some further-reaching issues in our setup. First and foremost, neither dynamic comes close to converging to a monomorphic population under most parameter configurations. For instance, while types using $L_4$ can come to populate a large proportion of the final population, a very low degree of rationality needs to be assumed. 
+
+\hl{How about IL with higher L? Take a look at the prior please!}
+
+\begin{itemize}
+  \item Discuss RMD;
+  \item Discuss prior and posterior;
+\end{itemize}
+
 \begin{figure}
 \centering
 \includegraphics[scale=.5]{../presentations/03cost-with-l1}
 \end{figure}
+
 
 \begin{figure}
 \centering
 \includegraphics[scale=.5]{../presentations/01heatmap}
 \end{figure}
 
+\paragraph{Results.} We report the mean results obtained from $1000$ independent simulations for each set of parameters. Figure \ref{fig:c-85} illustrates the development of the target types over $20$ generations with $c = 0.85$, i.e., a strong bias against semantic complexity. Figure \ref{fig:cost} shows the effect of the learning bias after $20$ generations for $c \in [0,1]$. More detailed results for all types across a sample of $c$-values are presented in Table \ref{tab:numeric-results}.
+
+\begin{table}
+\centering 
+\begin{tabular}{l c c c c c c c c c c c c c}
+~ & \multicolumn{5}{c}{$l = 1$} & ~ & \multicolumn{5}{c}{$l = 10$}\\ \hline \hline
+c  & 0 & .01 & .05 & .1 & .8 & empty & 0 & .01 & .05 & .1 & .8\\ \hline \hline
+lit. $L_1$& ~ & ~ & ~ & ~  & ~& ~ & ~& ~ & ~ & ~ & ~\\ 
+lit. $L_2$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~\\
+lit. $L_3$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~\\
+lit. $L_4$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~\\
+lit. $L_5$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~\\
+lit. $L_6$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~\\ \hline
+prg. $L_1$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~ \\
+prg. $L_2$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~ \\
+prg. $L_3$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~ \\ 
+prg. $L_4$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~ \\
+prg. $L_5$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~ \\
+prg. $L_6$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~   
+
+
+\end{tabular}
+\caption{Mean proportion of types in $1000$ populations after $20$ generations across different bias values $c$ ($\alpha = 1, \lambda = 50, k = 20$).}
+
+\label{tab:numeric-results}
+\end{table}
+
+In sum, the results show that in the present setup a weak bias is sufficient to lead to a selection of $L_5$ over $L_4$. This effect increases with the bias' strength provided $L_5$ users are pragmatic. That is, such a learning bias may prevent the lexicalization of pragmatic inferences and explain the prevalence of $L_5$-like semantics. However, note that literal $L_5$ is underrepresented across all values of $c$. This highlights that, while the bias plays a major role for the contrast between $L_4$ and $L_5$, in itself it does not enable types that fail to convey an upper-bound to establish themselves in the population. This suggests pragmatic reasoning to be paramount to the selection of $L_5$-like semantics. That is, neither the learning bias nor functional pressure alone but their combination lead to the systematic lack of semantic upper-bounds in scalar expressions.
+
+
+
+
+
 \subsection{Discussion}
+changes in sequence length influence the population in a predictable way: smaller values lead to more heterogeneous populations whereas larger ones lead to more pronounced differences. This is expected insofar as the likelihood that a sequence of length $1$ was produced by any type is relatively uniform (modulo prior) whereas the likelihood of types with lexica $L_1$ - $L_3$ to produce, for instance, a sequence of $10$ observations consistently with the same state-message combination is less likely than for pragmatic players using $L_4$ - $L_6$ or literal $L_4$. Thus, while noteworthy, sequence length has no direct bearing on the main contrast of interest. Similar considerations hold for $\alpha$ and $\lambda$ -- set to $1$ and $50$ in the following. Overall, lower rationality in $\lambda$ or more pragmatic violations in $\alpha$ lead to a higher selection of lexica with semantic upper-bounds. The fitness of pragmatic behavior increases with higher $\lambda$-/$\alpha$-values. In other words, these parameters level the functional contrast between $L_4$ and $L_5$. 
+ 
+
 
 - There is experimental evidence that scalar implicature calculation costs effort and takes additional processing time (Schaeken, Snedeker, ...).
 
