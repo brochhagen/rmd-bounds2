@@ -124,7 +124,7 @@ Under its biological interpretation, the replicator equation captures the idea o
 Nowak et al. did not only consider replication, but also recognized the important role of the variation that is introduced by a language's transmition across generations, construed as mutation. Due to this process, the offspring of a type may end up adopting a different type than that of its parent. Crucially, in this work mutation rates were modelled as begin independent from a type. This means that the variation introduced by generational turnovers did not depend on factors such as the relative learnability of a type. To address the issue of selecting a particular type over (near) functional equivalents, we turn to a different strand of research in cultural evolution: {\em iterated learning}. 
 
 
-\subsection{Mutation \& learning}
+\subsection{Mutation \& learning}\label{sec:mutation}
 Iterated learning is a process in which the behavior of one individual serves as learning input for another, who's behavior subsequently serves as input for a new learner, and so on. For linguistic purposes this process can be thought of as chains of parents and children, where the parent produces linguistic data from which the child infers a language. The latter, now a parent, goes on to produce linguistic data for a new generation of na\"ive learners. Following \citet{griffiths+kalish:2007} we model learning as a process of Bayesian inference in which learners combine the likelihood of a type producing the learning data with prior inductive biases. They then select a type to adopt from the resulting posterior distribution.
 
 Due to the pressure towards learnability it exherts, iterated learning generally leads to simpler and more regular languages (surveys of empirical data and models are given in \citealt{kirby+etal:2014} and \citealt{tamariz+kirby:2016}). Importantly, experimental and mathematical results suggest the results of this process to reflect learners' learning biases, codified in the following as a prior $P \in \Delta(\mathcal{T})$. A way to think about this bias is as the amount of data a learner would require in order to adopt a language -- or, in our case, a combination of a lexicon and a signaling behavior (cf. \citealt[450]{griffiths+kalish:2007}). Crucially, the extent of the prior's influence has been shown to strongly depend on the learning strategy assumed to underly the inference process. While simulation results suggested that weak biases could be magnified by exposing learners to only small data samples \citep{brighton:2002}, the mathematical characterization provided by \citet{griffiths+kalish:2007} showed that, instead, iterated learning converged to the prior. That is, the distribution over languages in a population or, from an individual's perspective, the likelihood of learning a language corresponds to the learners' prior distribution, irrespective of the amount of input given to learners. This divergence in predictions can be traced back to differences in the selection of hypotheses from the posterior. On the one extreme, Griffith \& Kalish's convergence to the prior holds for learners that sample from the posterior. On the other, more deterministic strategies such as the selection of the type with the highest posterior probability, so-called {\it maximum a posterior estimation} (MAP), increase the prior's influence \citep{griffiths+kalish:2007,kirby+etal:2007}. In the following, we parametrize the posterior, $P(t_i|d)^l$, to obtain a range of learning strategies that live in the range between posterior sampling and MAP, $l \geq 1$. When $l = 1$ learners sample from the posterior. As $l$ increases towards infinity, the learners' tendency maximize the posterior increases. 
@@ -219,7 +219,7 @@ As implicit in the discussion above, one may think of $s_1$ as a ``some but not 
 
 
 \subsection{Analysis}
-The dynamics are initialized with an arbitrary distribution over types, constituting the population's first generation. If not stated otherwise, the results for a given parameter setting were obtained from $1000$ independent runs. Each run consisted of $20$ generations. This corresponds to a developmental plateau after which no noteworthy change was registered. The model's parameters are summarized in Table \ref{tab:summary}.
+The dynamics are initialized with an arbitrary distribution over types, constituting the population's first generation. If not stated otherwise, the results for a given parameter setting were obtained from $1000$ independent runs. Each run consisted of $20$ generations. This corresponds to a developmental plateau after which no noteworthy change was registered. As specified in \ref{sec:mutation}, the learning transition matrix $Q$ can be obtained by considering all possible state-message sequences of length $k$. Given that this is intractable for large $k$, matrices with $k > 5$ were approximated by using Monte Carlo with $10$ sequences sampled from each type's production probabilities and a type's children being exposed only to this subset. The model's parameters are summarized in Table \ref{tab:summary}.
 
 \begin{table}
 \centering
@@ -236,9 +236,7 @@ The dynamics are initialized with an arbitrary distribution over types, constitu
 \label{tab:summary}
 \end{table}
 
-\hl{MENTION SAMPLING FROM PRODUCTION}
-
-According to our hypothesis, functional pressure on successful communication combined with learning pressures in the form of a bias against upper-bounds may lead to the selection of $L_5$-like semantics. However, it is instructive to first inspect the effect of these pressures in isolation. We will focus three pragmatic types.\footnote{Pragmatic reasoning allows hearers and speakers to refine their (possibly erroneous) interpretations, rendering it advantageous even for those types that codify an upper-bound lexically.} Users of $L_3$, representing a type that is lacking in expressivity but is a prior preferred for its lack of upper-bounds. Users of $L_4$, a type that is functionally advantageous but biased against. And users of $L_5$, combining the virtues of the latter two.  
+According to our hypothesis, functional pressure on successful communication combined with learning pressures in the form of a bias against upper-bounds may lead to the selection of $L_5$-like semantics. However, it is instructive to first inspect the effect of these pressures in isolation. For this purpose, we focus on three pragmatic types.\footnote{Pragmatic reasoning allows language users to refine their (possibly erroneous) choices. Therefore, it is advantageous even for those types that codify an upper-bound lexically.} Users of $L_3$, representing a type that is lacking in expressivity but is a prior preferred for its lack of upper-bounds. Users of $L_4$, a type that is functionally advantageous but biased against. And users of $L_5$, combining the virtues of the latter two.  
 
 \paragraph{Expressivity only.} Recall that the outcome of the replicator dynamics are influenced by $\lambda$ and $\alpha$ as they have a bearing on a type's fitness. Low $\alpha$ disadvantages types that rely on pragmatic reasoning for more deterministic signaling behavior to the gain of those that codify this information semantically. The rationality parameter $\lambda$ has a similar effect for different reasons. Less utility maximizing behavior decreases the association of an ambiguous message with a single state, even when other states are uniquely associated with a different one. That is, $\lambda$ regulates the strength by which users of $L_5$ associate non-upper-bounded $m_1$ exclusively with the ``some''-state $s_1$ over the ``all''-state $s_2$. 
 
@@ -247,62 +245,57 @@ The effect of the rationality parameter using only the replicator dynamics is sh
 \begin{figure}
 \centering
 \includegraphics[scale=.5]{./only-R-or-M}
-\caption{Mean proportions of target types after $20$ generations in $1000$ populations with only replication (left; $\alpha = 1$) and only mutation (right; $\lambda = 20, k = 5$).}
+\caption{Mean proportions of target types after $20$ generations in $1000$ populations with only replication (A; $\alpha = 1$) and only mutation (B; $\alpha =1, \lambda = 30, k = 5$).}
 \label{fig:either-R-or-M}
 \end{figure}
 
-\paragraph{Learnability only.} To get an impression of the effect of iterated learning without a pressure towards expressivity, we first consider (relatively) deterministic parental data production ($\lambda = 20, \alpha = 1$). In this way small data sequences suffice for learners to differentiate types that produce strongly diverging expressions. In line with \citeposs{griffiths+kalish:2007} analysis, under these conditions the resulting populations converge to the learner's prior distribution when sampling from the posterior ($l = 1$). This is shown in the right-hand side of Figure \ref{fig:either-R-or-M}, which directly reflects the prior distribution for each value of $c$.
+\paragraph{Learnability only.} To get an impression of the effect of iterated learning without a pressure towards expressivity, we first consider (relatively) deterministic parental data production ($\lambda = 20, \alpha = 1$). In this way small data sequences suffice for learners to differentiate types that produce strongly diverging expressions. In line with \citeposs{griffiths+kalish:2007} analysis, under these conditions the resulting populations converge to the learner's prior distribution when sampling from the posterior. This is shown in the right-hand side of Figure \ref{fig:either-R-or-M}, which directly reflects the prior distribution for each value of $c$.
 
-Inspecting the effects of these dynamics separately not only gives some intuitions about the parameters' influence, but also highlights some further-reaching issues in our setup. First and foremost, neither dynamic comes close to converging to a monomorphic population under most parameter configurations. For instance, while types using $L_4$ can come to populate a large proportion of the final population, a very low degree of rationality needs to be assumed. 
+Inspecting the effects of these dynamics separately not only gives some intuitions about the parameters' influence, but also highlights some of their broader implications. First and foremost, neither dynamic comes close to converging to a monomorphic population under most parameter configurations. For instance, types using $L_4$ can come to occupy a large proportion of the final population. However, this holds only for a restricted range of low degrees of rationality. Apart from polymorphy, both dynamics make some undesirable predictions. A pressure only towards expressivity leads to the selection of types using $L_4$ to $L_6$ and to the ejection of $L_1$ to $L_3$. However, it can not explain the regular selection of $L_5$-like semantics over either of these functionally similar alternatives. In contrast, a pressure only towards learnability has a modest but clear effect in differentiating $L_5$ from these alternatives but fails to rule out functionally suboptimal types such as tautological $L_3$. This showcases that, while the bias plays a major role for the contrast between $L_4$ and $L_5$, on its own it does not enable types that fail to convey an upper-bound to establish themselves in the population. In sum, neither dynamic on its own is a suitable candidate to provide a justification for the predicted prevalence of $L_5$-like semantics. 
 
-\hl{How about IL with higher L? Take a look at the prior please!}
-
-\begin{itemize}
-  \item Discuss RMD;
-  \item Discuss prior and posterior;
-\end{itemize}
+\paragraph{Expressivity and learnability.} Figure \ref{fig:cost} illustrates the effect of the learning bias after $20$ generations across values of $c$ with $l = 1$ (A) and $l =3$ (B). More detailed results for all types across a sample of $c$-values are presented in Table \ref{tab:numeric-results}. Overall, these results suggest that in the present setup a weak bias is sufficient to lead to a selection of $L_5$ over $L_4$. As in the simulations that only considered learnability, this effect increases with the bias' strength provided $L_5$ users are pragmatic. Importantly, the addition of a pressure towards expressivity magnifies this effect by dampening the proliferation of functionally suboptimal types advantaged by the learning bias. As stressed above, this suggests that neither the learning bias nor functional pressure alone but their combination lead to the systematic lack of semantic upper-bounds in scalar expressions.
 
 \begin{figure}
 \centering
-\includegraphics[scale=.5]{../presentations/03cost-with-l1}
+\includegraphics[scale=.5]{./fig2-rmd}
+\label{fig:cost}
+\caption{Mean proportions of target types after $20$ generations in $1000$ populations across bias values $c \in [0,1]$ with $l =1$ in A and $l = 3$ in B ($\alpha =1, \lambda = 20, k = 5$).}
 \end{figure}
+
+
+\begin{table}
+\centering 
+\begin{tabular}{l | c c c c c| c c c c c c c c}
+\multicolumn{1}{c}{~} & \multicolumn{5}{c}{$l = 1$} & ~ & \multicolumn{5}{c}{$l = 10$}\\ \hline \hline
+c  & 0 & .01 & .05 & .1 & .8 & ~ & 0 & .01 & .05 & .1 & .8\\ \hline \hline
+lit. $L_1$& .03 & .03 & .03 & .03  & .04 & ~ & $\epsilon$ & $\epsilon$ & $\epsilon$ & $\epsilon$ & $\epsilon$\\ 
+lit. $L_2$ & .03 & .03 & .03 & .03 & .01 & ~ & $\epsilon$& $\epsilon$ & $\epsilon$ & $\epsilon$ & $\epsilon$\\
+lit. $L_3$ & .03 & .03 & .03 & .03 & .04 & ~ & $\epsilon$& $\epsilon$ & $\epsilon$ & $\epsilon$ & $\epsilon$\\
+lit. $L_4$ & .07 & .07 & .07 & .07 & .06 & ~ & $\epsilon$& $\epsilon$ & $\epsilon$ & $\epsilon$ & $\epsilon$\\
+lit. $L_5$ & .04 & .04 & .05 & .05 & .06& ~ & $\epsilon$& $\epsilon$ & $\epsilon$ & $\epsilon$ & $\epsilon$\\
+lit. $L_6$ & .04 & .04 & .04 & .04 & .04& ~ & $\epsilon$& $\epsilon$ & $\epsilon$ & $\epsilon$ & $\epsilon$\\ \hline
+prg. $L_1$ & .03 & .03 & .03 & .03 & .04& ~ & $\epsilon$& $\epsilon$ & $\epsilon$ & $\epsilon$ & $\epsilon$ \\
+prg. $L_2$ & .03 & .03 & .03 & .03 & .01& ~ & $\epsilon$& $\epsilon$ & $\epsilon$ & $\epsilon$ & $\epsilon$ \\
+prg. $L_3$ & .03 & .03 & .03 & .03 & .04& ~ & $\epsilon$& $\epsilon$ & $\epsilon$ & $\epsilon$ & $\epsilon$ \\ 
+prg. $L_4$ & .22 & .22 & .22 & .22 & .18& ~ & .33& .33 & .32 & .31 & .15 \\
+prg. $L_5$ & .22 & .22 & .22 & .23 & .3& ~ & .33& .33 & .35 & .37 & .7 \\
+prg. $L_6$ & .22 & .22 & .22 & .22 & .18& ~ & .33& .33 & .32 & .31 & .15   
+\end{tabular}
+\caption{Mean proportions of types in $1000$ populations after $20$ generations across bias values $c \in [0,1]$ with $l =1$ and $l = 3$ ($\alpha = 1, \lambda = 30, k = 5$), $\epsilon < 0.005$}
+\label{tab:numeric-results}
+\end{table}
+
+This data suggests that the proportion of scalar implicature users that is predicted primarily hinges on three aspects of the model. First, the degree to which linguistic behavior is deterministic, controlled by $\lambda$ and $\alpha$, plays a role both for expressivity as well as for producing data that allows learners to discriminate this type from others. Second, the learning bias $c$, leads learners to discriminate and prefer $L_5$ over $L_4$ and $L_5$. Lastly, the posterior parameter $l$ magnifies the effects of the learning bias in tandem with replication. This interaction is shown in \ref{fig:prior-posterior}. In the present setup posterior sampling can lead to the incumbency of pragmatic $L_5$, but not even a strong favorable learning bias manages to completely drive out competing types (cf. \ref{fig:cost}.A). However, as posterior maximization increases, the range of bias values within which this type takes over the population increases drastically. 
+
+\hl{More  discussion about parameter interaction} 
 
 
 \begin{figure}
 \centering
 \includegraphics[scale=.5]{../presentations/01heatmap}
+\caption{Mean proportion of pragmatic $L_5$ in $1000$ populations after $20$ generations ($\alpha = 1, \lambda = 30, k = 5$)}
+\label{fig:prior-posterior}
 \end{figure}
-
-\paragraph{Results.} We report the mean results obtained from $1000$ independent simulations for each set of parameters. Figure \ref{fig:c-85} illustrates the development of the target types over $20$ generations with $c = 0.85$, i.e., a strong bias against semantic complexity. Figure \ref{fig:cost} shows the effect of the learning bias after $20$ generations for $c \in [0,1]$. More detailed results for all types across a sample of $c$-values are presented in Table \ref{tab:numeric-results}.
-
-\begin{table}
-\centering 
-\begin{tabular}{l c c c c c c c c c c c c c}
-~ & \multicolumn{5}{c}{$l = 1$} & ~ & \multicolumn{5}{c}{$l = 10$}\\ \hline \hline
-c  & 0 & .01 & .05 & .1 & .8 & empty & 0 & .01 & .05 & .1 & .8\\ \hline \hline
-lit. $L_1$& ~ & ~ & ~ & ~  & ~& ~ & ~& ~ & ~ & ~ & ~\\ 
-lit. $L_2$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~\\
-lit. $L_3$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~\\
-lit. $L_4$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~\\
-lit. $L_5$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~\\
-lit. $L_6$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~\\ \hline
-prg. $L_1$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~ \\
-prg. $L_2$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~ \\
-prg. $L_3$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~ \\ 
-prg. $L_4$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~ \\
-prg. $L_5$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~ \\
-prg. $L_6$ & ~ & ~ & ~ & ~ & ~& ~ & ~& ~ & ~ & ~ & ~   
-
-
-\end{tabular}
-\caption{Mean proportion of types in $1000$ populations after $20$ generations across different bias values $c$ ($\alpha = 1, \lambda = 50, k = 20$).}
-
-\label{tab:numeric-results}
-\end{table}
-
-In sum, the results show that in the present setup a weak bias is sufficient to lead to a selection of $L_5$ over $L_4$. This effect increases with the bias' strength provided $L_5$ users are pragmatic. That is, such a learning bias may prevent the lexicalization of pragmatic inferences and explain the prevalence of $L_5$-like semantics. However, note that literal $L_5$ is underrepresented across all values of $c$. This highlights that, while the bias plays a major role for the contrast between $L_4$ and $L_5$, in itself it does not enable types that fail to convey an upper-bound to establish themselves in the population. This suggests pragmatic reasoning to be paramount to the selection of $L_5$-like semantics. That is, neither the learning bias nor functional pressure alone but their combination lead to the systematic lack of semantic upper-bounds in scalar expressions.
-
-
 
 
 
