@@ -1,4 +1,4 @@
-\begin{thebibliography}{39}
+\begin{thebibliography}{41}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -239,5 +239,18 @@ Yarden Katz, Noah~D Goodman, Kristian Kersting, Charles Kemp, and Joshua~B
 \newblock Modeling semantic cognition as logical dimensionality reduction.
 \newblock In \emph{Proceedings of Thirtieth Annual Meeting of the Cognitive
   Science Society}, 2008.
+
+\bibitem[Neys and Schaeken(2007)]{deNeys+schaeken:2007}
+Wim~De Neys and Walter Schaeken.
+\newblock When people are more logical under cognitive load.
+\newblock \emph{Experimental Psychology}, 54\penalty0 (2):\penalty0 128--133,
+  2007.
+
+\bibitem[Huang and Snedeker(2009)]{huang+snedeker:2009}
+Yi~Ting Huang and Jesse Snedeker.
+\newblock Online interpretation of scalar quantifiers: Insight into the
+  semantics{\textendash}pragmatics interface.
+\newblock \emph{Cognitive Psychology}, 58\penalty0 (3):\penalty0 376--415,
+  2009.
 
 \end{thebibliography}
