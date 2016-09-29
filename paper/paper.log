@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.3)  28 SEP 2016 12:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.3)  29 SEP 2016 13:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -330,27 +330,27 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 112.
  [4]
 [5] [6] [7] [8]
-Overfull \hbox (10.44807pt too wide) in paragraph at lines 220--229
+Overfull \hbox (10.44807pt too wide) in paragraph at lines 217--226
  [][] 
  []
 
 <./only-R-or-M.png, id=46, 578.16pt x 397.485pt>
 File: ./only-R-or-M.png Graphic file (type png)
  <use ./only-R-or-M.png>
-Package pdftex.def Info: ./only-R-or-M.png used on input line 241.
+Package pdftex.def Info: ./only-R-or-M.png used on input line 238.
 (pdftex.def)             Requested size: 289.07928pt x 198.742pt.
 
 [9] <./fig2-rmd.png, id=52, 578.16pt x 397.485pt>
 File: ./fig2-rmd.png Graphic file (type png)
  <use ./fig2-rmd.png>
-Package pdftex.def Info: ./fig2-rmd.png used on input line 254.
+Package pdftex.def Info: ./fig2-rmd.png used on input line 251.
 (pdftex.def)             Requested size: 289.07928pt x 198.742pt.
  [10 <./only-R-or-M.png>] [11 <./fig2-rmd.png>]
 <../presentations/01heatmap.png, id=61, 578.16pt x 397.485pt>
 File: ../presentations/01heatmap.png Graphic file (type png)
 
 <use ../presentations/01heatmap.png>
-Package pdftex.def Info: ../presentations/01heatmap.png used on input line 289.
+Package pdftex.def Info: ../presentations/01heatmap.png used on input line 286.
 
 (pdftex.def)             Requested size: 289.07928pt x 198.742pt.
  [12 <../presentations/01heatmap.png>]
@@ -361,11 +361,7 @@ Missing character: There is no ¤ in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
- [15] [16]) [17] (./paper.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+ [15] [16]) [17] (./paper.aux) ) 
 Here is how much of TeX's memory you used:
  3586 strings out of 493089
  49423 string characters out of 6134843
@@ -373,27 +369,27 @@ Here is how much of TeX's memory you used:
  6991 multiletter control sequences out of 15000+600000
  13445 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,16n,26p,2084b,301s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/
-local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/lo
-cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2015/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on paper.pdf (17 pages, 393857 bytes).
+ 38i,16n,26p,2084b,303s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
+.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on paper.pdf (17 pages, 393399 bytes).
 PDF statistics:
  142 PDF objects out of 1000 (max. 8388607)
  97 compressed objects within 1 object stream
