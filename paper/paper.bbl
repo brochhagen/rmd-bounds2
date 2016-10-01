@@ -1,4 +1,4 @@
-\begin{thebibliography}{41}
+\begin{thebibliography}{42}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -252,5 +252,12 @@ Yi~Ting Huang and Jesse Snedeker.
   semantics{\textendash}pragmatics interface.
 \newblock \emph{Cognitive Psychology}, 58\penalty0 (3):\penalty0 376--415,
   2009.
+
+\bibitem[Bergen et~al.(2012)Bergen, Goodman, and Levy]{bergen+etal:2012}
+Leon Bergen, Noah~D Goodman, and Roger Levy.
+\newblock That's what she (could have) said: How alternative utterances affect
+  language use.
+\newblock In \emph{Proceedings of Thirty-Fourth Annual Meeting of the Cognitive
+  Science Society}, 2012.
 
 \end{thebibliography}
