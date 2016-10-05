@@ -1,46 +1,46 @@
 This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: paper.aux
-The style file: unsrtnat.bst
+The style file: plainnat.bst
 Database file #1: ./bounds-rmd.bib
-You've used 42 entries,
-            2481 wiz_defined-function locations,
-            826 strings with 10765 characters,
-and the built_in function-call counts, 15922 in all, are:
-= -- 1429
-> -- 620
+You've used 41 entries,
+            2773 wiz_defined-function locations,
+            866 strings with 11159 characters,
+and the built_in function-call counts, 18179 in all, are:
+= -- 1673
+> -- 835
 < -- 36
-+ -- 260
-- -- 174
-* -- 1139
-:= -- 2458
-add.period$ -- 143
-call.type$ -- 42
-change.case$ -- 74
++ -- 289
+- -- 247
+* -- 1387
+:= -- 2762
+add.period$ -- 140
+call.type$ -- 41
+change.case$ -- 195
 chr.to.int$ -- 40
-cite$ -- 42
-duplicate$ -- 873
-empty$ -- 1573
-format.name$ -- 240
-if$ -- 3456
-int.to.chr$ -- 3
-int.to.str$ -- 43
-missing$ -- 49
-newline$ -- 230
-num.names$ -- 134
-pop$ -- 372
+cite$ -- 82
+duplicate$ -- 905
+empty$ -- 1634
+format.name$ -- 312
+if$ -- 3863
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 48
+newline$ -- 225
+num.names$ -- 171
+pop$ -- 416
 preamble$ -- 1
-purify$ -- 42
+purify$ -- 163
 quote$ -- 0
-skip$ -- 509
+skip$ -- 649
 stack$ -- 0
-substring$ -- 806
-swap$ -- 141
+substring$ -- 804
+swap$ -- 96
 text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 264
+type$ -- 406
 warning$ -- 0
-while$ -- 148
+while$ -- 187
 width$ -- 0
-write$ -- 574
+write$ -- 562
