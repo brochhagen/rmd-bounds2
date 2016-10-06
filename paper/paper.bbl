@@ -1,4 +1,4 @@
-\begin{thebibliography}{41}
+\begin{thebibliography}{44}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -35,6 +35,13 @@ Nick Chater and Paul Vit{\'{a}}nyi.
 \newblock \emph{Trends in Cognitive Sciences}, 7\penalty0 (1):\penalty0 19--22,
   2003.
 \newblock \doi{10.1016/s1364-6613(02)00005-0}.
+
+\bibitem[Fay and Ellison(2013)]{fay+etal:2013}
+Nicolas Fay and T.~Mark Ellison.
+\newblock The cultural evolution of human communication systems in different
+  sized populations: Usability trumps learnability.
+\newblock \emph{{PLoS} {ONE}}, 8\penalty0 (8), 2013.
+\newblock \doi{10.1371/journal.pone.0071781}.
 
 \bibitem[Feldman(2000)]{feldman:2000}
 Jacob Feldman.
@@ -132,6 +139,14 @@ S.~Kirby, M.~Dowman, and T.~L. Griffiths.
   (12):\penalty0 5241--5245, 2007.
 \newblock \doi{10.1073/pnas.0608222104}.
 
+\bibitem[Kirby et~al.(2008)Kirby, Cornish, and Smith]{kirby+etal:2008}
+S.~Kirby, H.~Cornish, and K.~Smith.
+\newblock Cumulative cultural evolution in the laboratory: An experimental
+  approach to the origins of structure in human language.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 105\penalty0
+  (31):\penalty0 10681--10686, 2008.
+\newblock \doi{10.1073/pnas.0707835105}.
+
 \bibitem[Kirby(2002)]{kirby:2002}
 Simon Kirby.
 \newblock Learning, bottlenecks and the evolution of recursive syntax.
@@ -214,6 +229,13 @@ Steven~T. Piantadosi, Harry Tily, and Edward Gibson.
 Steven~T. Piantadosi, Joshua~B. Tenenbaum, and Noah~D. Goodman.
 \newblock Modeling the acquisition of quantifier semantics: a case study in
   function word learnability, under review.
+
+\bibitem[Silvey et~al.(2014)Silvey, Kirby, and Smith]{silvey+etal:2014}
+Catriona Silvey, Simon Kirby, and Kenny Smith.
+\newblock Word meanings evolve to selectively preserve distinctions on salient
+  dimensions.
+\newblock \emph{Cognitive Science}, 39\penalty0 (1):\penalty0 212--226, 2014.
+\newblock \doi{10.1111/cogs.12150}.
 
 \bibitem[Steels(2011)]{steels:2011}
 Luc Steels.
