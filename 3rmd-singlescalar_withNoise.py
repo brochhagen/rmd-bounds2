@@ -18,11 +18,13 @@ import csv
 #####
 l1,l2,l3,l4,l5,l6 = np.array( [[0.,0.],[1.,1.]] ), np.array( [[1.,1.],[0.,0.]] ), np.array( [[1.,1.],[1.,1.]] ), np.array( [[0.,1.],[1.,0.]] ), np.array( [[0.,1.],[1.,1.]] ), np.array( [[1.,1.],[1.,0.]] )
 
-alpha = 1 # rate to control difference between semantic and pragmatic violations
-cost = 0.1 # cost for LOT-concept with upper bound
-lam = 30 # soft-max parameter
+alpha = 10 # rate to control difference between semantic and pragmatic violations
+cost = 0 # cost for LOT-concept with upper bound
+lam = 20 # soft-max parameter
 k = 3  # length of observation sequences
-sample_amount = 15 #amount of k-length samples for each production type
+sample_amount = 50 #amount of k-length samples for each production type
+deltaE = 0.3 # probability of perceiving S-all, when true state is S-sbna
+deltaA = 0.1 # probability of perceiving S-sbna, when true state is S-all
 
 gens = 20 #number of generations per simulation run
 runs = 50 #number of independent simulation runs
@@ -30,19 +32,8 @@ runs = 50 #number of independent simulation runs
 states = 2 #number of states
 messages = 2 #number of messages
 
-learning_parameter = 1 #prob-matching = 1, increments approach MAP
+learning_parameter = 10 #prob-matching = 1, increments approach MAP
 state_freq = np.ones(states) / float(states) #frequency of states s_1,...,s_n 
-
-
-f = csv.writer(open('./results/singlescalar-a%d-c%.2f-l%d-k%d-samples%d-learn%.2f-g%d-r%d.csv' %(alpha,cost,lam,k,sample_amount, learning_parameter, gens,runs),'wb')) #file to store mean results
-
-f.writerow(["run_ID", "t1_initial", "t2_initial","t3_initial","t4_initial","t5_initial","t6_initial","t7_initial","t8_initial","t9_initial","t10_initial","t11_initial","t12_initial","alpha", "prior_cost_c", "lambda", "k", "sample_amount", "learning_parameter", "generations", "t1_final", "t2_final","t3_final","t4_final","t5_final","t6_final","t7_final","t8_final","t9_final","t10_final","t11_final","t12_final"])
-
-f_q = csv.writer(open('./results/singlescalar-q-matrix-a%d-c%f-l%d-k%d-samples%d-learn%.2f.csv' %(alpha,cost,lam,k,sample_amount,learning_parameter),'wb')) #file to store Q-matrix
-
-f_q.writerow(["alpha", "prior_cost_c", "lambda", "k", "sample_amount", "learning_parameter","parent","t1_mut", "t2_mut", "t3_mut", "t4_mut", "t5_mut", "t6_mut", "t7_mut", "t8_mut", "t9_mut", "t10_mut", "t11_mut", "t12_mut"])
-######
-
 
 
 print '#Starting, ', datetime.datetime.now()
@@ -54,6 +45,31 @@ typeList = [t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12]
 
 print '#Computing likelihood, ', datetime.datetime.now()
 likelihoods = np.array([t.sender_matrix for t in typeList])
+
+def normalize(m):
+    return m / m.sum(axis=1)[:, np.newaxis]
+
+## state confusability
+state_confusion_matrix = np.array([[1-deltaE, deltaE],
+                                   [deltaA, 1-deltaA]])
+lh_perturbed = likelihoods
+PosteriorState = normalize(np.array([[state_freq[sActual] * state_confusion_matrix[sActual, sPerceived] for sActual in xrange(states)] \
+ for sPerceived in xrange(states)])) # probability of actual state given a perceived state
+DoublePerception = np.array([[np.sum([ state_confusion_matrix[sActual, sTeacher] * PosteriorState[sLearner,sActual] \
+ for sActual in xrange(states)]) for sTeacher in xrange(states) ] for sLearner in xrange(states)])# probability of teacher observing column, given that learner observes row
+
+print PosteriorState
+print DoublePerception
+
+for t in xrange(len(likelihoods)):
+   for sLearner in xrange(len(likelihoods[t])):
+       for m in xrange(len(likelihoods[t][sLearner])):
+           lh_perturbed[t,sLearner,m] = np.sum([ DoublePerception[sLearner,sTeacher] * likelihoods[t,sTeacher,m] for sTeacher in xrange(len(likelihoods[t]))])
+
+print lh_perturbed
+
+np.array([np.dot(state_confusion_matrix, t.sender_matrix) for t in typeList])
+
 
 lexica_prior = np.array([2.0, 2.0- 2.0* cost, 2.0, 2.0 - cost , 2.0 , 2.0-cost, 2.0, 2.0- 2.0* cost, 2.0, 2.0 - cost , 2.0 , 2.0-cost])
 lexica_prior = lexica_prior / sum(lexica_prior)
@@ -90,12 +106,22 @@ def get_obs(k):
     return obs
 
 
-def get_likelihood(obs):
+def get_likelihood(obs, kind = "plain"):
+    # allow three kinds of likelihood:
+    ## 1. "plain" -> probability that speaker generates m when observing s
+    ## 2. "production" -> probability that speaker generates m when true state is s
+    ## 3. "observation" -> probability that speaker produces m when listener observes s
     out = np.zeros([len(likelihoods), len(obs)]) # matrix to store results in
-    for lhi in range(len(likelihoods)):
-        for o in range(len(obs)):
-            out[lhi,o] = likelihoods[lhi,0,0]**obs[o][0] * (likelihoods[lhi,0,1])**(obs[o][1]) *\
-                         likelihoods[lhi,1,0]**obs[o][2] * (likelihoods[lhi,1,1])**(obs[o][3]) # first line is some, second is all
+    if kind == "plain":
+        for lhi in range(len(likelihoods)):
+            for o in range(len(obs)):
+                out[lhi,o] = likelihoods[lhi,0,0]**obs[o][0] * (likelihoods[lhi,0,1])**(obs[o][1]) *\
+                             likelihoods[lhi,1,0]**obs[o][2] * (likelihoods[lhi,1,1])**(obs[o][3]) # first line is some, second is all
+    if kind == "perturbed":
+        for lhi in range(len(likelihoods)):
+            for o in range(len(obs)):
+                out[lhi,o] = lh_perturbed[lhi,0,0]**obs[o][0] * (lh_perturbed[lhi,0,1])**(obs[o][1]) *\
+                             lh_perturbed[lhi,1,0]**obs[o][2] * (lh_perturbed[lhi,1,1])**(obs[o][3]) # first line is some, second is all
     return out
 
 
@@ -105,11 +131,12 @@ def get_mutation_matrix(k):
 
     for parent_type in xrange(len(likelihoods)):
         type_obs = obs[parent_type] #Parent production data
-        lhs = get_likelihood(type_obs) #P(parent data|t_i) for all types
+        lhs_perturbed = get_likelihood(type_obs, kind = "perturbed") #P(learner observes data|t_i) for all types;
+        lhs = get_likelihood(type_obs, kind = "plain") #P(parent data|t_i) for all types; without all noise
         post = normalize(lexica_prior * np.transpose(lhs)) #P(t_j|parent data) for all types; P(d|t_j)P(t_j)
         parametrized_post = normalize(post**learning_parameter)
 
-        out[parent_type] = np.dot(np.transpose(lhs[parent_type]),parametrized_post)
+        out[parent_type] = np.dot(np.transpose(lhs_perturbed[parent_type]),parametrized_post)
 
     return normalize(out)
 
@@ -129,35 +156,19 @@ print '#Computing Q, ', datetime.datetime.now()
 
 q = get_mutation_matrix(k)
 
-for i in q:
-    para = np.array([str(alpha), str(cost), str(lam), str(k), str(sample_amount), str(learning_parameter)])
-    j = np.append(para,i)
-    f_q.writerow(j)
+### single run
 
+p = np.random.dirichlet(np.ones(len(typeList))) # unbiased random starting state
+p_initial = np.array([1,1,1,1,1,1,1,1,1,1,1,1.0]) / 12
+p_initial = p
 
-###Multiple runs
-print '#Beginning multiple runs, ', datetime.datetime.now()
-
-p_sum = np.zeros(len(typeList)) #vector to store results from a run
-
-for i in xrange(runs):
-    p = np.random.dirichlet(np.ones(len(typeList))) # unbiased random starting state
-    p_initial = p
-
-    for r in range(gens):
-        pPrime = p * [np.sum(u[t,] * p)  for t in range(len(typeList))]
-        pPrime = pPrime / np.sum(pPrime)
-        p = np.dot(pPrime, q)
-        f.writerow([str(i),str(p_initial[0]), str(p_initial[1]), str(p_initial[2]), str(p_initial[3]), str(p_initial[4]), str(p_initial[5]), str(p_initial[6]), str(p_initial[7]), str(p_initial[8]), str(p_initial[9]), str(p_initial[10]), str(p_initial[11]), str(alpha), str(cost), str(lam), str(k), str(sample_amount), str(learning_parameter), str(gens), str(p[0]), str(p[1]),str(p[2]),str(p[3]),str(p[4]),str(p[5]),str(p[6]),str(p[7]),str(p[8]),str(p[9]),str(p[10]),str(p[11])])
-    
-    p_sum += p
-
-p_mean = p_sum / runs
-
-
+for r in range(gens):
+    pPrime = p * [np.sum(u[t,] * p)  for t in range(len(typeList))]
+    pPrime = pPrime / np.sum(pPrime)
+    p = np.dot(pPrime, q)
 
 
 print '###Overview of results###', datetime.datetime.now()
-print 'Parameters: alpha = %d, c = %.2f, lambda = %d, k = %d, samples per type = %d, learning parameter = %.2f, generations = %d, runs = %d' % (alpha, cost, lam, k, sample_amount, learning_parameter, gens, runs)
-print 'Mean by type:'
-print p_mean
+print 'Parameters: alpha = %d, c = %.2f, lambda = %d, k = %d, samples per type = %d, learning parameter = %.2f, gen = %d' % (alpha, cost, lam, k, sample_amount, learning_parameter, gens)
+print 'end state:' 
+print p
