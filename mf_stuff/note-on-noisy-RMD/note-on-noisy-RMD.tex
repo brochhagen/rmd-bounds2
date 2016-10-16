@@ -13,7 +13,6 @@
 
 Our present model computes the mutation probability that a teacher type $t_i$ has
 offspring of type $t_j$ as:
-
 \begin{align*}
   Q_{ij}  \propto \sum_{d \in D} P(d|t_i) F(t_j,d) \,, \ \  \text{where} \ \
 F(t_j,d)  \propto P(t_j|d)^l \ \  \text{and} \ \ P(t_j|d) \propto P(t_j) P(d|t_j)
@@ -70,8 +69,115 @@ perception and the environment. We then have a case study that puts everything i
 demonstrates the latter claim. That's the story line that we could adopt if we like the
 following model extension and whatever comes with it.
 
+\subsection*{RMD with noisy perception}
 
+This model is implemented in file \texttt{3rmd-singlescalar\_withNoise.py} in the new repository
+\texttt{rmd-bounds2}. 
 
+We have two states: $s_\exists$ (some but not all) and $s_\forall$ (all). Let's assume that the
+probabilities for observing the state in the column when the actual state is the state in the
+row are given by this table:
+\begin{center}
+  \begin{tabular}{ccc}
+    & $s_\exists$ & $s_\forall$ \\ \midrule 
+    $s_\exists$ & $1-\epsilon$ & $\epsilon$ \\
+    $s_\forall$ & $\delta$ & $1-\delta$
+  \end{tabular}
+\end{center}
+So, $\epsilon$ is the error probability when the true state is $s_\exists$ and $\delta$ is the
+error probability when the true state is $s_\forall$. How does this affect our model of
+Bayesian learning?
+
+Let's denote the probability that the teacher (learner) observes state $s_t$ ($s_l$) when the
+actual state is $s_a$ as $P_N(s_t \mid s_a)$ ($P_N(s_l \mid s_a)$ ). This is given by the table
+above. We can then derive the following probabilities. Firstly, the probability that $s_a$ is
+the actual state when the learner observes $s_l$ is just Bayes rule, combining prior of $s_a$
+with the noise from above:
+\begin{align*}
+  P_N(s_a \mid s_l) \propto P(s_a) \ P_N(s_l \mid s_a)\,.
+\end{align*}
+Secondly, the probability that the teacher observes $s_t$ when the learner observes $s_l$ is:
+\begin{align*}
+  P_N(s_t \mid s_l) = \sum_{s_a} P(s_a \mid s_l) \ P_N(s_t \mid s_a)\,.
+\end{align*}
+Finally, this gives us the probability that a teacher of type $t$ produces a datum that is
+perceived by the listener as $d = \tuple{s_l, m}$:
+\begin{align*}
+  P_N(\tuple{s_l, m} \mid t) = \sum_{s_t} P_N(s_t \mid s_l) \ P(m \mid s_t, t)\,.
+\end{align*}
+Generalize this to a sequence of perceived data $d_l$ and write $P_N(d_l \mid t)$. We then
+define the noise-perturbed mutation matrix as:
+\begin{align*}
+  Q_{ij}  \propto \sum_{d_l \in D} P(d_l \mid t_i) F(t_j,d_l) \,, \ \  \text{where $F(t_j,d)$
+    as before.}
+\end{align*}
+In words, it may be the case that learner and/or teacher do not perceive the actual state as
+what it is. They are not aware of this, and produce/learn as if what they observed was the
+actual state. In particular, the learner does not reason about noise when he tries to infer the
+speaker's type. He takes what he observes a state to be as the actual state that the teacher
+has seen as well and computes which type would have most likely generated the message to this
+state. This can lead to biases of inferring the ``wrong'' teacher type, if the noise makes some
+types err in a way that resembles the noiseless behavior of other types. I.e., this could, in
+principle, induce transmission biases that look as is there was a cognitive bias in favor of a
+particular type, simply because that type better explains the noise.
+
+On top of changing the mutation matrix in this way, we also need to adapt the calculation of
+expected utilities, taking into consideration that states are perceived noisily. So, where
+before we had:
+\begin{align*}
+  U_S(t_i,t_j) = \sum_s P(s)\sum_m S_n(m|s;L) \sum_{s'} R_o(s'|m;L) \delta(s,s')\,,
+\end{align*}
+we now have:
+\begin{align*}
+  U_S(t_i,t_j) = \sum_{s_a}  P(s_a) \sum_{s_t} P_N(s_t \mid s_a) \sum_m S_n(m|s_t;L) \sum_{s'} R_o(s'|m;L) \delta(s,s')\,.
+\end{align*}
+
+\subsection*{Results}
+
+In a nutshel: this works for some parameter settings but not for others. I have not fully
+explored the whole space. I would be content with a paper that says: there are parameter values
+that produce behavior as if there are cognitive biases without cognitive biases. I believe that
+this would be an additional and very interesting contribution, even if there are noise
+structures that have other effects.
+
+One parameter setting that gives us the desired result (most prevalent type is $t_{11}$) is:
+\begin{verbatim}
+alpha = 5 # rate to control difference between semantic and pragmatic violations
+cost = 0 # cost for LOT-concept with upper bound
+lam = 20 # soft-max parameter
+k = 3  # length of observation sequences
+sample_amount = 50 #amount of k-length samples for each production type
+epsilon = 0.3 # probability of perceiving S-all, when true state is S-sbna
+delta = 0.1 # probability of perceiving S-sbna, when true state is S-all
+gens = 20 #number of generations per simulation run
+runs = 50 #number of independent simulation runs
+states = 2 #number of states
+messages = 2 #number of messages
+learning_parameter = 10 #prob-matching = 1, increments approach MAP
+\end{verbatim}
+One sample result is these parameter values is:
+\begin{verbatim}
+[ 0.01 ,  0.01 ,  0.01 ,  0.012,  0.028,  0.024,  0.01 ,  0.01 ,
+        0.01 ,  0.301,  0.471,  0.102]
+\end{verbatim}
+Importantly, we don't need costs ($c = 0$)! Unfortunately, we do
+need to tinker with $\alpha$ (for defensible, techical reasons) and we need to assume that
+$\epsilon > \delta$, otherwise either $t_{10}$ or even $t_{12}$ may dominate. 
+
+That means that if we wanted to also argue that this is a plausible explanation for
+lower-bounds semantics, we'd need to argue why it is natural that $\epsilon > \delta$. Maybe
+such a story can be given, but I presently do not see why/how any such story is obviously
+better than any other story I could come up with for any other relation of $\epsilon$ and
+$\delta$. 
+
+One reasoning for $\epsilon > \delta$ could be this. When the true state is $s_a$, we would
+actually need negative evidence that some item/person/whatever does not have a
+property. Negative evidence of this kind might be relatively infrequent, especially if
+untrue. On the other hand, perceiving $s_a$ when the true state is $s_e$ could be more
+frequent, because it would, for example, require wrong information about the domain size. It
+could also be a cause of overemphasizing: speakers tend to exaggerate and want to claim
+\emph{all}, when in fact that is not true \citep[e.g.][for a model that has the speakers'
+tendency to overemphasize as a motor of language change]{Schaden2012:Modelling-the-A}.
 
 \printbibliography[heading=bibintoc]
 
