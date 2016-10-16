@@ -1,0 +1,78 @@
+\documentclass[fleqn,reqno,10pt]{article}
+
+\usepackage{myarticlestyledefault}
+
+\title{Note on a noisy variant of the RMD}
+\author{Michael Franke}
+\date{}
+
+\begin{document}
+\maketitle
+
+\subsection*{Motivation}
+
+Our present model computes the mutation probability that a teacher type $t_i$ has
+offspring of type $t_j$ as:
+
+\begin{align*}
+  Q_{ij}  \propto \sum_{d \in D} P(d|t_i) F(t_j,d) \,, \ \  \text{where} \ \
+F(t_j,d)  \propto P(t_j|d)^l \ \  \text{and} \ \ P(t_j|d) \propto P(t_j) P(d|t_j)
+\end{align*}
+
+\noindent What makes for the evolution of a natural lower-bound-only semantics for \emph{some}
+is the \textbf{cognitive bias} encoded in the prior $P({t_j})$. While it is not unnatural or
+indefensible to assume such a cognitive bias, we also do not have a strong argument in support
+of it. We also do not want to argue that \emph{this} is the right explanation, do we? Our main
+achievement is rather a perspicuous alignment of conceptual bits and pieces into a working
+formal model. The main ingredients of this model are (i) a combination of learning biases and
+selective pressure towards efficient communication, and (ii) the distinction between semantic
+meaning and pragmatic use, both of which are shaped and honed by evolution at once. This is
+great, but maybe we might want to have more.
+
+Let's focus on (i) for a moment. In a recent paper, Pedro Correia and I have explored an
+evolutionary dynamic that ensues from ``noise-perturbed imitation''
+\citep{FrankeCorreia2016:Vagueness-and-I}. The idea is that agents update their strategies by
+occasionally imitating choices with a probability proportional to how good these observed
+choices are. Crucially, however, agents may not always perceive a state correctly. We applied
+this to vagueness, where this is most natural: some actual state $s_a$ has a chance
+$P_N(s_p \mid s_a)$ of being observed as $s_p$, e.g., maybe
+$P_N(s_p \mid s_a) = \text{Gaussian}(s_p, \mu = s_a, \sigma = \text{something})$ is a normal
+distribution around the actual state. What we showed in this paper is that noisy perception of
+states not only leads to vagueness in signal meaning, but also speeds up the evolutionary
+process by unifying and regularizing agents' strategies. We interpreted this as a sort of
+emergent ``\emph{as-if} generalization'': at the population level it seems as if agents would
+extrapolate and generalize what they have learned about one state to nearby similar states. But
+this is not, of course, what actually happens. The mere presence of systematic noise in the
+transmission of strategies can introduce regularization that looks as if the agents have a
+learning bias. But, most importantly, this disturbance of transmission fidelity is due to
+perceptual noise and properties of the environment, not learning biases. In other words,
+learning biases are clearly not the only transmission biases that can shape evolution alongside
+functional pressure. Environmental and perceptual noise can play a role too. This also
+  ties in with a bunch of work on work that tries to explain some features of language as being
+  optimal adaptations to a ``noisy-channel'' model (work by Ted Gibson, Steve Piantadosi
+  etc.). However, in this work the noise is rather in the signal $m$ not the state perception
+  $t$. In general, then, I believe that there is a certain lacuna here: paying attention to
+  the effects of systematic distortions of state perceptions on the cultural evolution of
+  language. 
+
+So, I asked myself whether noisy perception of states could also be included into our model and
+whether this could have a similar effect to a cognitive bias in favor of lower-bound-only
+semantics, without actually making use of such a cognitive bias. The answers in short are:
+``yes, yes''. However, perhaps unsurprisingly, not all conceivable kinds of perception error
+lead to this outcome. So, if we wanted to defend that such-and-such a model is the right
+explanation we'd be hard pressed to defend a particular noise structure. I don't think that we
+can do this. The main message, in my view, should rather be: look we have two possible
+lines of explanation for lower-bound semantics, one with cognitive biases, the other with
+perceptual errors. Our main contribution is showing how two things can interact in cultural
+evolution, namely (i) transmission biases and (ii) functional pressure, and that, crucially,
+transmission biases need not only be cognitive/learning biases but can also ensue from
+perception and the environment. We then have a case study that puts everything into place and
+demonstrates the latter claim. That's the story line that we could adopt if we like the
+following model extension and whatever comes with it.
+
+
+
+
+\printbibliography[heading=bibintoc]
+
+\end{document}
