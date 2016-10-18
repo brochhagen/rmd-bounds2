@@ -21,7 +21,7 @@ l1,l2,l3,l4,l5,l6 = np.array( [[0.,0.],[1.,1.]] ), np.array( [[1.,1.],[0.,0.]] )
 alpha = 5 # rate to control difference between semantic and pragmatic violations
 cost = 0 # cost for LOT-concept with upper bound
 lam = 20 # soft-max parameter
-k = 3  # length of observation sequences
+k = 30  # length of observation sequences
 sample_amount = 50 #amount of k-length samples for each production type
 epsilon  = 0.3 # probability of perceiving S-all, when true state is S-sbna
 delta = 0.1 # probability of perceiving S-sbna, when true state is S-all
@@ -55,18 +55,16 @@ state_confusion_matrix = np.array([[1-epsilon , epsilon ],
 lh_perturbed = likelihoods
 PosteriorState = normalize(np.array([[state_freq[sActual] * state_confusion_matrix[sActual, sPerceived] for sActual in xrange(states)] \
  for sPerceived in xrange(states)])) # probability of actual state given a perceived state
-DoublePerception = np.array([[np.sum([ state_confusion_matrix[sActual, sTeacher] * PosteriorState[sLearner,sActual] \
- for sActual in xrange(states)]) for sTeacher in xrange(states) ] for sLearner in xrange(states)])# probability of teacher observing column, given that learner observes row
 for t in xrange(len(likelihoods)):
    for sLearner in xrange(len(likelihoods[t])):
        for m in xrange(len(likelihoods[t][sLearner])):
-           lh_perturbed[t,sLearner,m] = np.sum([ DoublePerception[sLearner,sTeacher] * likelihoods[t,sTeacher,m]\
+           lh_perturbed[t,sLearner,m] = np.sum([ PosteriorState[sLearner,sTeacher] * likelihoods[t,sTeacher,m]\
             for sTeacher in xrange(len(likelihoods[t]))])
-
 print lh_perturbed
 
 
-lexica_prior = np.array([2.0, 2.0- 2.0* cost, 2.0, 2.0 - cost , 2.0 , 2.0-cost, 2.0, 2.0- 2.0* cost, 2.0, 2.0 - cost , 2.0 , 2.0-cost])
+lexica_prior = np.array([2.0, 2.0- 2.0* cost, 2.0, 2.0 - cost , 2.0 ,\
+    2.0-cost, 2.0, 2.0- 2.0* cost, 2.0, 2.0 - cost , 2.0 , 2.0-cost])
 lexica_prior = lexica_prior / sum(lexica_prior)
 
 
@@ -140,8 +138,8 @@ def get_utils():
     for i in range(len(typeList)):
         for j in range(len(typeList)):
             ## this is only correct for "flat state priors"!
-            out[i,j] = (np.sum(np.dot(state_confusion_matrix, typeList[i].sender_matrix) * np.transpose(typeList[j].receiver_matrix)) + \
-                     np.sum( np.dot(state_confusion_matrix, typeList[j].sender_matrix) * np.transpose(typeList[i].receiver_matrix))) / 4
+            out[i,j] = (np.sum(typeList[i].sender_matrix * np.transpose(typeList[j].receiver_matrix)) + \
+                     np.sum(typeList[j].sender_matrix * np.transpose(typeList[i].receiver_matrix))) / 4
     return out
 
 
@@ -167,6 +165,6 @@ for r in range(gens):
 
 
 print '###Overview of results###', datetime.datetime.now()
-print 'Parameters: alpha = %d, c = %.2f, lambda = %d, k = %d, samples per type = %d, learning parameter = %.2f, gen = %d' % (alpha, cost, lam, k, sample_amount, learning_parameter, gens)
+print 'Parameters: alpha = %.2f, c = %.2f, lambda = %d, k = %d, samples per type = %d, learning parameter = %.2f, gen = %d' % (alpha, cost, lam, k, sample_amount, learning_parameter, gens)
 print 'end state:' 
 print p
