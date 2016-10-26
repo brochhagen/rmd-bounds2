@@ -67,6 +67,7 @@ for t in xrange(len(likelihoods)):
            lh_perturbed[t,sLearner,m] = np.sum([ DoublePerception[sLearner,sTeacher] * likelihoods[t,sTeacher,m]\
             for sTeacher in xrange(len(likelihoods[t]))])
 
+<<<<<<< HEAD
 ##perturbed production
 #production_perturbed = np.array([t.sender_matrix for t in typeList]) #list of matrices to save noisy production likelihoods
 #for t in xrange(len(likelihoods)):
@@ -74,7 +75,9 @@ for t in xrange(len(likelihoods)):
 #        for mSender in xrange(len(likelihoods[t][sActual])):
 #            production_perturbed[t,sActual,mSender] = np.sum([likelihoods[t,sPerceived,mSender] * state_confusion_matrix[sActual,sPerceived] for sPerceived in xrange(states)])
 #
+=======
 print lh_perturbed
+>>>>>>> 2994bd1848db560ff3e65b454bdb4e863be1ddb7
 
 
 lexica_prior = np.array([2.0, 2.0- 2.0* cost, 2.0, 2.0 - cost , 2.0 , 2.0-cost, 2.0, 2.0- 2.0* cost, 2.0, 2.0 - cost , 2.0 , 2.0-cost])
@@ -129,6 +132,7 @@ def get_likelihood(obs, kind = "plain"):
 
 def get_mutation_matrix(k,states,messages,likelihoods,state_freq,sample_amount,lexica_prior,learning_parameter,lh_perturbed):
     obs = get_obs(k,states,messages,lh_perturbed,state_freq,sample_amount) #get noisy production data from all types
+    print obs[10]
     out = np.zeros([len(likelihoods),len(likelihoods)]) #matrix to store Q
 
     for parent_type in xrange(len(likelihoods)):
@@ -153,17 +157,19 @@ def get_utils():
 
 print '#Computing utilities, ', datetime.datetime.now()
 u = get_utils()
+<<<<<<< HEAD
+
+print '#Computing Q, ', datetime.datetime.now()
+
+q = get_mutation_matrix(k,states,messages,likelihoods,state_freq,sample_amount,lexica_prior,learning_parameter,lh_perturbed)
+=======
 print [np.sum(u[i,:]) for i in xrange(u.shape[1])]
 
 print '#Computing Q, ', datetime.datetime.now()
 
-q = get_mutation_matrix(k,states,messages,likelihoods,state_freq,sample_amount,lexica_prior,learning_parameter,lh_perturbed)
+q = get_mutation_matrix(k,states,messages,likelihoods,state_freq,sample_amount,lexica_prior,learning_parameter)
 print [np.sum(q[:,i]) for i in xrange(q.shape[1])]
-
-print '#Computing Q, ', datetime.datetime.now()
-
-q = get_mutation_matrix(k,states,messages,likelihoods,state_freq,sample_amount,lexica_prior,learning_parameter,lh_perturbed)
-print [np.sum(q[:,i]) for i in xrange(q.shape[1])]
+>>>>>>> 2994bd1848db560ff3e65b454bdb4e863be1ddb7
 
 ### single run
 
