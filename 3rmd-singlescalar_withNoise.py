@@ -25,14 +25,13 @@ k = 3  # length of observation sequences
 sample_amount = 50 #amount of k-length samples for each production type
 epsilon  = 0.3 # probability of perceiving S-all, when true state is S-sbna
 delta = 0.1 # probability of perceiving S-sbna, when true state is S-all
+learning_parameter = 10 #prob-matching = 1, increments approach MAP
 
-gens = 1000 #number of generations per simulation run
+gens = 50 #number of generations per simulation run
 runs = 50 #number of independent simulation runs
 
 states = 2 #number of states
 messages = 2 #number of messages
-
-learning_parameter = 10 #prob-matching = 1, increments approach MAP
 state_freq = np.ones(states) / float(states) #frequency of states s_1,...,s_n 
 
 
@@ -67,6 +66,15 @@ for t in xrange(len(likelihoods)):
        for m in xrange(len(likelihoods[t][sLearner])):
            lh_perturbed[t,sLearner,m] = np.sum([ DoublePerception[sLearner,sTeacher] * likelihoods[t,sTeacher,m] for sTeacher in xrange(len(likelihoods[t]))])
 
+##perturbed production
+#production_perturbed = np.array([t.sender_matrix for t in typeList]) #list of matrices to save noisy production likelihoods
+#for t in xrange(len(likelihoods)):
+#    for sActual in xrange(states):
+#        for mSender in xrange(len(likelihoods[t][sActual])):
+#            production_perturbed[t,sActual,mSender] = np.sum([likelihoods[t,sPerceived,mSender] * state_confusion_matrix[sActual,sPerceived] for sPerceived in xrange(states)])
+#
+
+
 lexica_prior = np.array([2.0, 2.0- 2.0* cost, 2.0, 2.0 - cost , 2.0 , 2.0-cost, 2.0, 2.0- 2.0* cost, 2.0, 2.0 - cost , 2.0 , 2.0-cost])
 lexica_prior = lexica_prior / sum(lexica_prior)
 
@@ -85,7 +93,7 @@ def get_obs(k,states,messages,lhs,state_freq,sample_amount):
     atomic_observations = list(product(s,m))
    
     obs = [] #store all produced k-length (s,m) sequences 
-    for t in xrange(len(likelihoods)):
+    for t in xrange(len(lhs)):
         produced_obs = [] #store k-length (s,m) sequences of a type
         production_vector = lhs[t].flatten()
         doubled_state_freq = np.column_stack((state_freq,state_freq)).flatten() # P(s)
@@ -118,7 +126,8 @@ def get_likelihood(obs, kind = "plain"):
 
 
 def get_mutation_matrix(k,states,messages,likelihoods,state_freq,sample_amount,lexica_prior,learning_parameter,lh_perturbed):
-    obs = get_obs(k,states,messages,lh_perturbed,state_freq,sample_amount) #get production data from all types
+    obs = get_obs(k,states,messages,lh_perturbed,state_freq,sample_amount) #get noisy production data from all types
+    print obs[10]
     out = np.zeros([len(likelihoods),len(likelihoods)]) #matrix to store Q
 
     for parent_type in xrange(len(likelihoods)):
@@ -129,7 +138,6 @@ def get_mutation_matrix(k,states,messages,likelihoods,state_freq,sample_amount,l
         parametrized_post = normalize(post**learning_parameter)
 
         out[parent_type] = np.dot(np.transpose(lhs_perturbed[parent_type]),parametrized_post)
-        print out[parent_type,parent_type]
 
     return normalize(out)
 
@@ -144,7 +152,6 @@ def get_utils():
 
 print '#Computing utilities, ', datetime.datetime.now()
 u = get_utils()
-print u
 
 print '#Computing Q, ', datetime.datetime.now()
 

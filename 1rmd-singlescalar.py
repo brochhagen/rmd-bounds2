@@ -57,7 +57,7 @@ likelihoods = np.array([t.sender_matrix for t in typeList])
 
 lexica_prior = np.array([2.0, 2.0- 2.0* cost, 2.0, 2.0 - cost , 2.0 , 2.0-cost, 2.0, 2.0- 2.0* cost, 2.0, 2.0 - cost , 2.0 , 2.0-cost])
 lexica_prior = lexica_prior / sum(lexica_prior)
-
+sys.exit()
 
 def normalize(m):
     return m / m.sum(axis=1)[:, np.newaxis]

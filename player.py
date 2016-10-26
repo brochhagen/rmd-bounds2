@@ -1,5 +1,4 @@
 import numpy as np
-from math import exp
 
 def normalize(m):
     m = m / m.sum(axis=1)[:, np.newaxis]
@@ -18,7 +17,7 @@ class LiteralPlayer:
         m = np.zeros(np.shape(l))
         for i in range(np.shape(l)[0]):
             for j in range(np.shape(l)[1]):
-                m[i,j] = exp(l[i,j]**self.alpha)
+                m[i,j] = np.exp(l[i,j]**self.alpha)
         return normalize(m)
 
     def receiver_selection_matrix(self):
