@@ -26,7 +26,7 @@ sample_amount = 50 #amount of k-length samples for each production type
 epsilon  = 0.3 # probability of perceiving S-all, when true state is S-sbna
 delta = 0.1 # probability of perceiving S-sbna, when true state is S-all
 
-gens = 20 #number of generations per simulation run
+gens = 1000 #number of generations per simulation run
 runs = 50 #number of independent simulation runs
 
 states = 2 #number of states
@@ -46,33 +46,29 @@ typeList = [t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12]
 print '#Computing likelihood, ', datetime.datetime.now()
 likelihoods = np.array([t.sender_matrix for t in typeList])
 
+
 def normalize(m):
     return m / m.sum(axis=1)[:, np.newaxis]
 
 ## state confusability
 state_confusion_matrix = np.array([[1-epsilon , epsilon ],
                                    [delta, 1-delta]])
-lh_perturbed = likelihoods
+
+lh_perturbed = np.array([t.sender_matrix for t in typeList])
+
 PosteriorState = normalize(np.array([[state_freq[sActual] * state_confusion_matrix[sActual, sPerceived] for sActual in xrange(states)] \
  for sPerceived in xrange(states)])) # probability of actual state given a perceived state
+
 DoublePerception = np.array([[np.sum([ state_confusion_matrix[sActual, sTeacher] * PosteriorState[sLearner,sActual] \
  for sActual in xrange(states)]) for sTeacher in xrange(states) ] for sLearner in xrange(states)])# probability of teacher observing column, given that learner observes row
+
 for t in xrange(len(likelihoods)):
    for sLearner in xrange(len(likelihoods[t])):
        for m in xrange(len(likelihoods[t][sLearner])):
            lh_perturbed[t,sLearner,m] = np.sum([ DoublePerception[sLearner,sTeacher] * likelihoods[t,sTeacher,m] for sTeacher in xrange(len(likelihoods[t]))])
 
-print lh_perturbed
-
-np.array([np.dot(state_confusion_matrix, t.sender_matrix) for t in typeList])
-
-
 lexica_prior = np.array([2.0, 2.0- 2.0* cost, 2.0, 2.0 - cost , 2.0 , 2.0-cost, 2.0, 2.0- 2.0* cost, 2.0, 2.0 - cost , 2.0 , 2.0-cost])
 lexica_prior = lexica_prior / sum(lexica_prior)
-
-
-def normalize(m):
-    return m / m.sum(axis=1)[:, np.newaxis]
 
 def summarize_counts(lst,states,messages):
     """summarize counts for tuples of k-states and k-messages""" 
@@ -82,16 +78,16 @@ def summarize_counts(lst,states,messages):
         counter[s+m] += 1
     return counter
 
-def get_obs(k,states,messages,likelihoods,state_freq,sample_amount):
+def get_obs(k,states,messages,lhs,state_freq,sample_amount):
     """Returns summarized counts of k-length <s_i,m_j> production observations as [#(<s_0,m_0>), #(<s_0,m_1), #(<s_1,m_0>, #(s_1,m_1)], ...]] = k"""
     s = list(xrange(states))
     m = list(xrange(messages))
     atomic_observations = list(product(s,m))
    
     obs = [] #store all produced k-length (s,m) sequences 
-    for t in xrange(12):
+    for t in xrange(len(likelihoods)):
         produced_obs = [] #store k-length (s,m) sequences of a type
-        production_vector = likelihoods[t].flatten()
+        production_vector = lhs[t].flatten()
         doubled_state_freq = np.column_stack((state_freq,state_freq)).flatten() # P(s)
         sample_vector = production_vector * doubled_state_freq #P(s) * P(m|s,t_i)
         for i in xrange(sample_amount):
@@ -121,8 +117,8 @@ def get_likelihood(obs, kind = "plain"):
     return out
 
 
-def get_mutation_matrix(k,states,messages,likelihoods,state_freq,sample_amount,lexica_prior,learning_parameter):
-    obs = get_obs(k,states,messages,likelihoods,state_freq,sample_amount) #get production data from all types
+def get_mutation_matrix(k,states,messages,likelihoods,state_freq,sample_amount,lexica_prior,learning_parameter,lh_perturbed):
+    obs = get_obs(k,states,messages,lh_perturbed,state_freq,sample_amount) #get production data from all types
     out = np.zeros([len(likelihoods),len(likelihoods)]) #matrix to store Q
 
     for parent_type in xrange(len(likelihoods)):
@@ -133,6 +129,7 @@ def get_mutation_matrix(k,states,messages,likelihoods,state_freq,sample_amount,l
         parametrized_post = normalize(post**learning_parameter)
 
         out[parent_type] = np.dot(np.transpose(lhs_perturbed[parent_type]),parametrized_post)
+        print out[parent_type,parent_type]
 
     return normalize(out)
 
@@ -145,14 +142,13 @@ def get_utils():
                      np.sum( np.dot(state_confusion_matrix, typeList[j].sender_matrix) * np.transpose(typeList[i].receiver_matrix))) / 4
     return out
 
-
 print '#Computing utilities, ', datetime.datetime.now()
 u = get_utils()
 print u
 
 print '#Computing Q, ', datetime.datetime.now()
 
-q = get_mutation_matrix(k,states,messages,likelihoods,state_freq,sample_amount,lexica_prior,learning_parameter)
+q = get_mutation_matrix(k,states,messages,likelihoods,state_freq,sample_amount,lexica_prior,learning_parameter,lh_perturbed)
 
 ### single run
 
