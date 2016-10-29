@@ -158,12 +158,12 @@ print [np.sum(u[i,:]) for i in xrange(u.shape[1])]
 print '#Computing Q, ', datetime.datetime.now()
 
 q = get_mutation_matrix(k,states,messages,likelihoods,state_freq,sample_amount,lexica_prior,learning_parameter,lh_perturbed)
-print [np.sum(q[:,i]) for i in xrange(q.shape[1])]
+print [q[i,i] for i in xrange(q.shape[1])]
 
 print '#Computing Q, ', datetime.datetime.now()
 
 q = get_mutation_matrix(k,states,messages,likelihoods,state_freq,sample_amount,lexica_prior,learning_parameter,lh_perturbed)
-print [np.sum(q[:,i]) for i in xrange(q.shape[1])]
+print [q[i,i] for i in xrange(q.shape[1])]
 
 ### single run
 
