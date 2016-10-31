@@ -18,13 +18,13 @@ import csv
 #####
 l1,l2,l3,l4,l5,l6 = np.array( [[0.,0.],[1.,1.]] ), np.array( [[1.,1.],[0.,0.]] ), np.array( [[1.,1.],[1.,1.]] ), np.array( [[0.,1.],[1.,0.]] ), np.array( [[0.,1.],[1.,1.]] ), np.array( [[1.,1.],[1.,0.]] )
 
-alpha = 5 # rate to control difference between semantic and pragmatic violations
+alpha = 10 # rate to control difference between semantic and pragmatic violations
 cost = 0 # cost for LOT-concept with upper bound
 lam = 20 # soft-max parameter
 k = 3  # length of observation sequences
 sample_amount = 50 #amount of k-length samples for each production type
-epsilon  = 0.3 # probability of perceiving S-all, when true state is S-sbna
-delta = 0.1 # probability of perceiving S-sbna, when true state is S-all
+epsilon  = 0.1 # probability of perceiving S-all, when true state is S-sbna
+delta = 0.5 # probability of perceiving S-sbna, when true state is S-all
 learning_parameter = 10 #prob-matching = 1, increments approach MAP
 
 gens = 50 #number of generations per simulation run
@@ -168,7 +168,7 @@ print [q[i,i] for i in xrange(q.shape[1])]
 ### single run
 
 p = np.random.dirichlet(np.ones(len(typeList))) # unbiased random starting state
-p = np.array([1,1,1,1,1,1,1,1,1,1,1,1.0]) / 12
+#p = np.array([1,1,1,1,1,1,1,1,1,1,1,1.0]) / 12
 #p_initial = p
 
 for r in range(gens):
@@ -181,3 +181,11 @@ print '###Overview of results###', datetime.datetime.now()
 print 'Parameters: alpha = %d, c = %.2f, lambda = %d, k = %d, samples per type = %d, learning parameter = %.2f, gen = %d' % (alpha, cost, lam, k, sample_amount, learning_parameter, gens)
 print 'end state:' 
 print p
+
+#print 'Q'
+#print q[10,10], q[9,10], q[11,10], q[4,10]
+#print q[9,9], q[11,11], q[4,4]
+#print u[10,10], u[9,9], u[11,11], u[4,4]
+
+#print 'U'
+#for i in u: print np.sum(i)
