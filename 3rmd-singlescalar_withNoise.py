@@ -23,8 +23,8 @@ cost = 0 # cost for LOT-concept with upper bound
 lam = 20 # soft-max parameter
 k = 3  # length of observation sequences
 sample_amount = 50 #amount of k-length samples for each production type
-epsilon  = 0.1 # probability of perceiving S-all, when true state is S-sbna
-delta = 0.5 # probability of perceiving S-sbna, when true state is S-all
+epsilon  = 0.6 # probability of perceiving S-all, when true state is S-sbna
+delta = 0.1 # probability of perceiving S-sbna, when true state is S-all
 learning_parameter = 10 #prob-matching = 1, increments approach MAP
 
 gens = 50 #number of generations per simulation run

@@ -17,7 +17,7 @@ class LiteralPlayer:
         m = np.zeros(np.shape(l))
         for i in range(np.shape(l)[0]):
             for j in range(np.shape(l)[1]):
-                m[i,j] = np.exp(l[i,j]**self.alpha)
+                m[i,j] = np.exp(np.power(l[i,j],self.alpha))
         return normalize(m)
 
     def receiver_selection_matrix(self):
