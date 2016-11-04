@@ -1,4 +1,4 @@
-\begin{thebibliography}{44}
+\begin{thebibliography}{47}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -57,6 +57,18 @@ M.~C. Frank and N.~D. Goodman.
 Michael Franke.
 \newblock \emph{Signal to Act: Game Theoretic Pragmatics}.
 \newblock PhD thesis, University of Amsterdam, 2009.
+
+\bibitem[Franke and Correia(to appear)]{franke+correia:toappear}
+Michael Franke and Jose~Pedro Correia.
+\newblock Vagueness and imprecise imitation in signalling games.
+\newblock \emph{British Journal for the Philosophy of Science}, to appear.
+
+\bibitem[Franke and Degen(2016)]{franke+degen:2016}
+Michael Franke and Judith Degen.
+\newblock Reasoning in reference games: Individual- vs. population-level
+  probabilistic modeling.
+\newblock \emph{{PLOS} {ONE}}, 11\penalty0 (5):\penalty0 e0154854, 2016.
+\newblock \doi{10.1371/journal.pone.0154854}.
 
 \bibitem[Franke and J{\"a}ger(2014)]{franke+jaeger:2014}
 Michael Franke and Gerhard J{\"a}ger.
@@ -270,6 +282,13 @@ Johan {van der Auwera}.
 \newblock In \emph{The Expression of Negation}, pages 73--110. Walter de
   Gruyter {GmbH}, 2010.
 \newblock \doi{10.1515/9783110219302.73}.
+
+\bibitem[Verhoef et~al.(2014)Verhoef, Kirby, and de~Boer]{verhoef+etal:2014}
+Tessa Verhoef, Simon Kirby, and Bart de~Boer.
+\newblock Emergence of combinatorial structure and economy through iterated
+  learning with continuous acoustic signals.
+\newblock \emph{Journal of Phonetics}, 43:\penalty0 57--68, 2014.
+\newblock \doi{10.1016/j.wocn.2014.02.005}.
 
 \bibitem[Zipf(1949)]{zipf:1949}
 George Zipf.
