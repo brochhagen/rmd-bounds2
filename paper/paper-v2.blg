@@ -3,44 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: paper-v2.aux
 The style file: plainnat.bst
 Database file #1: ./bounds-rmd.bib
-You've used 47 entries,
+You've used 48 entries,
             2773 wiz_defined-function locations,
-            907 strings with 12402 characters,
-and the built_in function-call counts, 20967 in all, are:
-= -- 1934
-> -- 988
-< -- 39
-+ -- 340
-- -- 292
-* -- 1627
-:= -- 3195
-add.period$ -- 163
-call.type$ -- 47
-change.case$ -- 228
-chr.to.int$ -- 46
-cite$ -- 94
-duplicate$ -- 1026
-empty$ -- 1860
-format.name$ -- 369
-if$ -- 4443
+            912 strings with 12543 characters,
+and the built_in function-call counts, 21273 in all, are:
+= -- 1959
+> -- 998
+< -- 40
++ -- 344
+- -- 295
+* -- 1644
+:= -- 3246
+add.period$ -- 167
+call.type$ -- 48
+change.case$ -- 231
+chr.to.int$ -- 47
+cite$ -- 96
+duplicate$ -- 1046
+empty$ -- 1892
+format.name$ -- 373
+if$ -- 4507
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 54
-newline$ -- 260
-num.names$ -- 195
-pop$ -- 467
+missing$ -- 56
+newline$ -- 266
+num.names$ -- 199
+pop$ -- 478
 preamble$ -- 1
-purify$ -- 190
+purify$ -- 193
 quote$ -- 0
-skip$ -- 743
+skip$ -- 755
 stack$ -- 0
-substring$ -- 921
-swap$ -- 102
+substring$ -- 923
+swap$ -- 103
 text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 472
+type$ -- 478
 warning$ -- 0
-while$ -- 212
+while$ -- 215
 width$ -- 0
-write$ -- 649
+write$ -- 663
