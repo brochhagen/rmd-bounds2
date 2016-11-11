@@ -28,6 +28,9 @@
 %\newcommand{\argmin}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{min}}\;}
 %\newcommand{\sbna}{\exists\lnot\forall}
 
+\definecolor{Red}{RGB}{178,34,34}
+\newcommand{\mf}[1]{\textcolor{Red}{[mf: #1]}} 
+
 %--------------------
 %
 %\usepackage{setspace}
@@ -49,13 +52,103 @@
 \maketitle
 
 \begin{abstract}
-According to standard linguistic theory, the conventional meaning of expressions is systematically modified by general pragmatic rules governing their use. This implies that models of the cultural evolution of meaning should likewise take into consideration that observable language use is a complex interaction of semantic representations and pragmatic rules. To this end, we present a game theoretic model of the cultural evolution of language where communicative pressures work on abstract semantic representations and pragmatic usage rules. Our model traces two evolutionary forces and their interaction: (i) fitness-based pressure towards communicative efficiency and (ii) systematic transmission perturbations when linguistic knowledge is transferred from one agent to another. The latter can arise from general cognitive or learning biases, but also from other sources of systematic noise, e.g., as a result of errors in perception. We illustrate the model based on a case study showing that cognitive biases that favor simple semantic representations can prevent the lexicalization of pragmatic inferences. We also show that, technically speaking, it is possible that environmental factors, such as perceptual errors during acquisition, can produce evolutionary outcomes that look as if such cognitive biases are present even if they are not. 
+  According to standard linguistic theory, the meaning of an utterance is the product of a
+  conventional semantic meaning of the used expression and general pragmatic reasoning applied
+  to the context of utterance. This implies that models of the cultural evolution of meaning
+  should likewise take into consideration that observable language use is a complex interaction
+  of semantic representations and pragmatic use. To this end, we present a game theoretic model
+  of the cultural evolution of language where communicative pressures work on abstract semantic
+  representations and pragmatic patterns of use. Our model traces two evolutionary forces and
+  their interaction: (i) fitness-based pressure towards communicative efficiency and (ii)
+  systematic transmission perturbations when linguistic knowledge is transferred from one agent
+  to another. The latter can arise from general cognitive or learning biases, but also from
+  other sources of systematic noise, e.g., as a result of errors in perception. We illustrate
+  the model based on a case study showing that cognitive biases that favor simple semantic
+  representations can prevent the lexicalization of pragmatic inferences. We also show that,
+  technically speaking, it is possible that environmental factors, such as perceptual errors
+  during acquisition, can produce evolutionary outcomes that look as if such cognitive biases
+  are present even if they are not.
 \end{abstract}
 
 \section{Introduction}\label{sec:introduction}
-What is conveyed usually goes beyond what is said. A request for a blanket can be politely veiled by uttering ``I'm cold'', the temporal succession of events can be conveyed by the order in which conjuncts appear as in ``I traveled to Paris and got married'', or an invitation be declined by saying ``I have to work''. An influential explanation of the relation between the literal meaning of expressions and what they are intended and interpreted to convey due to \citet{grice:1975} views the latter as a product of a process of mutual reasoning about rational language use. For instance, under the assumption that the speaker is cooperative and relevant, ``I have to work'' may be interpreted as providing a reason why the speaker will not be able to accept the invitation, going beyond its literal meaning. Crucially, many classes of lexical meanings allow for pragmatic enrichments in a notably systematic fashion. 
+What is conveyed usually goes beyond what is said. A request for a blanket can be politely
+veiled by uttering ``I'm cold.'' The temporal succession of events can be communicated by the
+order in which conjuncts appear as in ``I traveled to Paris and got married.'' An invitation
+can be declined by saying ``I have to work.'' An influential explanation of the relation
+between the literal meaning of expressions and what they are intended and interpreted to convey
+is due to \citet{grice:1975}. It characterizes pragmatic use and interpretation as a process of
+mutual reasoning about rational language use. For instance, under the assumption that the
+speaker is cooperative and relevant, ``I have to work'' may be interpreted as providing a
+reason why the speaker will not be able to accept the invitation, going beyond its literal
+meaning. Some of these enrichments are rather \emph{ad hoc}. Others show a striking
+regularities, such as the use of questions for polite requests, or certain enrichments of
+lexical meanings such as \emph{and} to mean \emph{and then}.
 
-Productive pragmatic inferences, such as scalar and manner implicatures, have been at the focus of many studies on the semantics-pragmatics interface. However, an issue that has received little attention is the justification of semantic structure in light of the systematic enrichments offered by pragmatics. Similarly, differnt models of the cultural evolution of language have been put forward in order to analyze properties such as compositionality and combinatoriality (e.g. \citealt{kirby+etal:2015,verhoef+etal:2014}), but the selection of meaning in light of pragmatics remains uncharted territory. The present investigation seeks to fill these gaps by analyzing the effects linguistic pressures have on the selection and pervasiveness of particular lexical meanings under consideration of their pragmatic modification. Accordingly, our primary goal is to uncover how transmission perturbations and functional pressure interact in the cultural evolution of meaning. Additionally, we show how systematic disturbances in the fidelity by which linguistic knowledge is transmitted that stem from environmental factors can lead to outcomes akin to those predicted under the assumption of inductive learning biases. That is, that the regularization standardly predicted to follow from learning biases can also emerge as a byproduct of noise.
+A particularly productive and well studied class of pragmatic enrichments are scalar
+implicatures
+\citep{horn:1984,Hirschberg1985:A-Theory-of-Sca,LevinsonPragmatics1983,Geurts2010:Quantity-Implic}. Usually,
+an utterance of a sentence like ``I own some of Johnny Cash's albums'' will be taken to mean
+that the speaker does not own all of them. This is because, if the speaker had them all, he
+could have used the stronger word \emph{all} instead of \emph{some} in his utterance and
+thereby would have made a more informative statement. Scalar implicatures, especially the
+inference from \emph{some} to \emph{some but not all}, have been studied extensively, both
+theoretically
+\citep[e.g.][]{Sauerland2004:Scalar-Implicat,ChierchiaFox2008:The-Grammatical,Rooyvan-RooijJagerde-Jager2012:Explaining-Quan}
+as well as experimentally
+\citep[e.g.][]{BottNoveck2004:Some-Utterances,huang+snedeker:2009,GrodnerKlein2010:Some-and-Possib,GoodmanStuhlmuller2013:Knowledge-and-I,DegenTanenhaus2012:Processing-Scal}. While
+there is much dispute in this domain and many interesting details, a position endorsed by a
+clear majority is that a word like \emph{some} is underspecified to mean \emph{some and maybe
+  all} and that the enrichment to \emph{some but not all} is part of some regular enrichment
+process with roots in pragmatics.
+
+If this majority view of underspecified lexical meaning and pragmatic enrichment routines is
+correct, the question arises how such a system could have emerged in language evolution. Models
+of meaning evolution abound. There are simulation-based models studying the evolution of
+meaning in populations of communicating agents
+\citep{Hurford1989:Biological-Evol,Steels1995:A-Self-Organizi,LenaertsJansen2005:The-Evolutionar,SteelsBelpaeme2005:Coordinating-Pe,BaronchelliPuglisi2008:Cultural-route-,steels:2011,SpikeStadler2016:Minimal-Require}
+and there are mathematical models meaning evolution, mostly rooted in game theory
+\citep{lewis:1969,Warneryd1993:Cheap-Talk-Coor,BlumeKim1993:Evolutionary-St,nowak+krakauer:1999,Huttegger2007:Evolution-and-t,Skyrms2010:Signals}. Much
+work has focused on explaining basic properties such as compositionality and combinatoriality
+\citep[e.g.][]{Batali1998:Computational-S,nowak+krakauer:1999,nowak+etal:2000,KirbyHurford2002:The-Emergence-o,kirby:2002,SmithKirby2003:Iterated-Learni,Gong2007:Language-Evolut,kirby+etal:2015,verhoef+etal:2014,Franke2015:Proto-Syntax}. But
+little attention has been paid to the interaction between conventional meaning and pragmatic
+use. 
+
+To fill this gap, we here spell out a model of the co-evolution of conventional meaning and
+pragmatic reasoning types. In other words, the object of evolutionary selection are pairs of
+lexical meanings and general types of pragmatic behavior. Our model combines state-of-the-art
+probabilistic cognitive models of pragmatic language use
+\citep{frank+goodman:2012,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}
+with a general and established model of language evolution
+\citep{Hofbauer1985:The-Selection-M,nowak+etal:2000,NowakKomarova2001:Evolution-of-Un,Nowak2006:Evolutionary-Dy}. The
+latter allows us to study the interaction between (i) evolutionary pressure towards
+communicative efficiency and (ii) possible infidelity in the transmission of linguistic
+knowledge, such as from inductive learning biases or systematic perceptual errors. This model
+contains the most versatile dynamic from evolutionary game theory, the replicator dynamic
+\citep{TaylorJonker1978:Evolutionary-St}, and a well-understood model of iterated Bayesian
+learning \citep{griffiths+kalish:2007} as two special cases. The latter is particularly
+important because in language learning agents need to infer unobservable conventional meanings
+and pragmatic reasoning types from observable language use of their parent
+generation. Section~\ref{sec:model} introduces this model.
+
+Section~\ref{sec:si-case-study} applies this model to a case study on scalar implicatures. We
+demonstrate a setting in which the majority view of underspecified lexical meanings and
+pragmatic enrichments emerges, but only if selection and transmission infidelity are
+combined. In particular, we show that inductive learning biases of Bayesian learners that favor
+simpler lexical meanings can lead to the desired outcome. Additionally, we show how systematic
+disturbances from environmental factors can lead to outcomes akin to those predicted under the
+assumption of inductive learning biases. That is, that the regularization standardly predicted
+to follow from learning biases can also emerge as a byproduct of noise.
+
+% We see the main contribution of this work as conceptual and technical, not as a definite answer
+% to the question why scalar implicatures emerged. The work here rather demonstrates how current
+% probabilistic cognitive modeling of language use and evolutionary modeling can be fruitfully
+% combined to study the co-evolution of semantics and pragmatics side-by-side.
+
+\mf{on cultural evolution: \citet{Pagel2009:Human-Language-}}
+
+\section{Model}
+\label{sec:model}
+
 
 
 \subsection{Communicative pressures at the semantics-pragmatics interface}
