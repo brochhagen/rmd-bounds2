@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  11 NOV 2016 17:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.10.12)  12 NOV 2016 10:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -332,53 +332,61 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [1
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 164.
 
+Package natbib Warning: Citation `ThompsonKirby2016:Culture-Shapes-' on page 3 
+undefined on input line 171.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
+[3]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 255.
+
+ (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 164.
- [3] [4] [5]
-[6] [7] [8] [9] <./only-R-or-M.png, id=49, 578.16pt x 397.485pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 255.
+ [4] [5]
+[6] [7] [8] [9] [10] <./only-R-or-M.png, id=52, 578.16pt x 397.485pt>
 File: ./only-R-or-M.png Graphic file (type png)
 
 <use ./only-R-or-M.png>
-Package pdftex.def Info: ./only-R-or-M.png used on input line 301.
+Package pdftex.def Info: ./only-R-or-M.png used on input line 392.
 (pdftex.def)             Requested size: 289.07928pt x 198.742pt.
- <./fig2-rmd.png, id=51, 578.16pt x 397.485pt>
+ <./fig2-rmd.png, id=54, 578.16pt x 397.485pt>
 File: ./fig2-rmd.png Graphic file (type png)
 
 <use ./fig2-rmd.png>
-Package pdftex.def Info: ./fig2-rmd.png used on input line 312.
+Package pdftex.def Info: ./fig2-rmd.png used on input line 403.
 (pdftex.def)             Requested size: 289.07928pt x 198.742pt.
- [10 <./only-R-or-M.png>]
-<../presentations/01heatmap.png, id=56, 578.16pt x 397.485pt>
+ [11 <./only-R-or-M.png>]
+<../presentations/01heatmap.png, id=59, 578.16pt x 397.485pt>
 File: ../presentations/01heatmap.png Graphic file (type png)
 
 <use ../presentations/01heatmap.png>
-Package pdftex.def Info: ../presentations/01heatmap.png used on input line 349.
+Package pdftex.def Info: ../presentations/01heatmap.png used on input line 440.
 
 (pdftex.def)             Requested size: 289.07928pt x 198.742pt.
- [11 <./fig2-rmd.png>] [12] [13 <../presentations/01heatmap.png>]
-Overfull \hbox (23.17776pt too wide) in paragraph at lines 396--412
+ [12 <./fig2-rmd.png>] [13 <../presentations/01heatmap.png>] [14]
+Overfull \hbox (23.17776pt too wide) in paragraph at lines 487--503
  [][] 
  []
 
-[14] [15] (./paper-v2.bbl [16] [17] [18] [19] [20]) [21] [22] (./paper-v2.aux)
+[15] [16] [17] (./paper-v2.bbl [18] [19] [20] [21]) [22]
+
+Package natbib Warning: There were undefined citations.
+
+[23] (./paper-v2.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 3774 strings out of 493117
- 54556 string characters out of 6135433
- 133159 words of memory out of 5000000
- 7153 multiletter control sequences out of 15000+600000
+ 3778 strings out of 493117
+ 54648 string characters out of 6135432
+ 134176 words of memory out of 5000000
+ 7157 multiletter control sequences out of 15000+600000
  13445 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,16n,24p,2940b,360s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,16n,24p,2940b,356s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
@@ -398,10 +406,10 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2014/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2014/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on paper-v2.pdf (22 pages, 409176 bytes).
+Output written on paper-v2.pdf (23 pages, 415161 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
+ 162 PDF objects out of 1000 (max. 8388607)
+ 110 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -5,42 +5,42 @@ The style file: plainnat.bst
 Database file #1: ./bounds-rmd.bib
 You've used 81 entries,
             2773 wiz_defined-function locations,
-            1131 strings with 18707 characters,
-and the built_in function-call counts, 35469 in all, are:
-= -- 3289
-> -- 1644
-< -- 67
-+ -- 568
-- -- 486
-* -- 2728
-:= -- 5448
-add.period$ -- 285
+            1137 strings with 18884 characters,
+and the built_in function-call counts, 35715 in all, are:
+= -- 3318
+> -- 1664
+< -- 66
++ -- 574
+- -- 492
+* -- 2765
+:= -- 5482
+add.period$ -- 286
 call.type$ -- 81
-change.case$ -- 384
+change.case$ -- 387
 chr.to.int$ -- 80
 cite$ -- 162
-duplicate$ -- 1740
-empty$ -- 3149
-format.name$ -- 615
-if$ -- 7490
+duplicate$ -- 1741
+empty$ -- 3160
+format.name$ -- 621
+if$ -- 7540
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 94
-newline$ -- 448
+missing$ -- 93
+newline$ -- 449
 num.names$ -- 337
-pop$ -- 775
+pop$ -- 772
 preamble$ -- 2
-purify$ -- 320
+purify$ -- 322
 quote$ -- 0
-skip$ -- 1246
+skip$ -- 1249
 stack$ -- 0
-substring$ -- 1562
+substring$ -- 1593
 swap$ -- 156
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 811
+type$ -- 816
 warning$ -- 0
-while$ -- 365
+while$ -- 367
 width$ -- 0
-write$ -- 1125
+write$ -- 1128
