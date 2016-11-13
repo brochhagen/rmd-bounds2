@@ -1,5 +1,5 @@
 \newcommand{\SortNoop}[1]{}
-\begin{thebibliography}{81}
+\begin{thebibliography}{86}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -27,6 +27,13 @@ John Batali.
   editors, \emph{Evolution of Language: {S}ocial and Cognitive Bases}.
   Cambridge University Press, Cambridge, UK, 1998.
 
+\bibitem[Beggs(2005)]{Beggs2005:On-the-Converge}
+A.W. Beggs.
+\newblock On the convergence of reinforcement learning.
+\newblock \emph{Journal of Economic Theory}, 122\penalty0 (1):\penalty0 1--36,
+  2005.
+\newblock \doi{10.1016/j.jet.2004.03.008}.
+
 \bibitem[Benz et~al.(2005)Benz, J{\"a}ger, Van~Rooij, and
   Van~Rooij]{benz+etal:2005b}
 Anton Benz, Gerhard J{\"a}ger, Robert Van~Rooij, and Robert Van~Rooij, editors.
@@ -51,6 +58,13 @@ Andreas Blume, Yong-Gwan Kim, and Joel Sobel.
 \newblock \emph{Games and Economic Behavior}, 5\penalty0 (5):\penalty0
   547--575, 1993.
 \newblock \doi{doi:10.1006/game.1993.1031}.
+
+\bibitem[B\"{o}rgers and Sarin(1997)]{BorgersSarin997:Learning-Throug}
+Tilman B\"{o}rgers and Rajiv Sarin.
+\newblock Learning through reinforcement and replicator dynamics.
+\newblock \emph{Journal of Economic Theory}, 77\penalty0 (1):\penalty0 1--14,
+  1997.
+\newblock \doi{10.1006/jeth.1997.2319}.
 
 \bibitem[Bott and Noveck(2004)]{BottNoveck2004:Some-Utterances}
 Lewis Bott and Ira~A. Noveck.
@@ -195,6 +209,13 @@ Daniel~J. Grodner, Natalie~M. Klein, Kathleen~M. Carbary, and Michael~K.
 \newblock ``some,'' and possibly all, scalar inferences are not delayed:
   {E}vidence for immediate pragmatic enrichment.
 \newblock \emph{Cognition}, 166:\penalty0 42--55, 2010.
+
+\bibitem[Helbing(1996)]{Helbing1996:A-Stochastic-Be}
+Dirk Helbing.
+\newblock A stochastic behavioral model and a `microscopic' foundation of
+  evolutionary game theory.
+\newblock \emph{Theory and Decision}, 40\penalty0 (2):\penalty0 149--179, 1996.
+\newblock \doi{10.1007/BF00133171}.
 
 \bibitem[Hirschberg(1985)]{Hirschberg1985:A-Theory-of-Sca}
 Julia Hirschberg.
@@ -417,11 +438,23 @@ Robert {\SortNoop{Rooy}}van~Rooij and Tikitu {\SortNoop{Jager}}de~Jager.
   (4):\penalty0 461--477, 2012.
 \newblock \doi{10.1007/s10849-012-9163-3}.
 
+\bibitem[Sandholm(2010)]{Sandholm2010:Population-Game}
+William~H. Sandholm.
+\newblock \emph{Population Games and Evolutionary Dynamics}.
+\newblock MIT Press, Cambridge, MA, 2010.
+
 \bibitem[Sauerland(2004)]{Sauerland2004:Scalar-Implicat}
 Uli Sauerland.
 \newblock Scalar implicatures in complex sentences.
 \newblock \emph{Linguistics and Philosophy}, 27:\penalty0 367--391, 2004.
 \newblock \doi{10.1023/B:LING.0000023378.71748.db}.
+
+\bibitem[Schlag(1998)]{Schlag1998:Why-Imitate-and}
+Karl~H. Schlag.
+\newblock Why imitate, and if so, how?
+\newblock \emph{Journal of Economic Theory}, 78\penalty0 (1):\penalty0
+  130--156, 1998.
+\newblock \doi{doi:10.1006/jeth.1997.2347}.
 
 \bibitem[Silvey et~al.(2014)Silvey, Kirby, and Smith]{silvey+etal:2014}
 Catriona Silvey, Simon Kirby, and Kenny Smith.
