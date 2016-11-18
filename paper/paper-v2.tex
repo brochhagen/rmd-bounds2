@@ -29,7 +29,30 @@
 %\newcommand{\sbna}{\exists\lnot\forall}
 
 \definecolor{Red}{RGB}{178,34,34}
-\newcommand{\mf}[1]{\textcolor{Red}{[mf: #1]}} 
+\newcommand{\mf}[1]{\textcolor{Red}{[MF: #1]}} 
+\usepackage{blkarray}
+\usepackage{xspace}
+
+%%% MF's commands
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\card}[1]{\left \lvert \, #1 \, \right\rvert}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\States}{\ensuremath{S}\xspace}		% Set of States
+\newcommand{\state}{\ensuremath{s}\xspace}		% single states
+\newcommand{\mystate}[1]{\ensuremath{\state_{\text{#1}}}\xspace} %meaningful states
+\newcommand{\Messgs}{\ensuremath{M}\xspace}		% Set of Messages
+\newcommand{\messg}{\ensuremath{m}\xspace}		% single messages
+\newcommand{\mymessg}[1]{\ensuremath{\messg_{\text{#1}}}\xspace} %meaningful messages
+\newcommand{\ssome}{\mystate{\ensuremath{\exists\neg\forall}}}
+\newcommand{\sall}{\mystate{\ensuremath{\forall}}}
+\newcommand{\msome}{\mymessg{some}}
+\newcommand{\mall}{\mymessg{all}}
+\newcommand{\asome}{\myact{\ensuremath{\exists\neg\forall}}}
+\newcommand{\aall}{\myact{\ensuremath{\forall}}}
+\definecolor{mygray}{cmyk}{0.35,0.35,0.35,0.35}
+\newcommand{\mygray}[1]{{\textcolor{mygray}{#1}}}
+%%% 
+
 
 %--------------------
 %
@@ -106,7 +129,7 @@ semantics and pragmatics could have evolved. Models of meaning evolution abound.
 simulation-based models studying the evolution of meaning in populations of communicating
 agents
 \citep{Hurford1989:Biological-Evol,Steels1995:A-Self-Organizi,LenaertsJansen2005:The-Evolutionar,SteelsBelpaeme2005:Coordinating-Pe,BaronchelliPuglisi2008:Cultural-route-,steels:2011,SpikeStadler2016:Minimal-Require}
-and there are mathematical models of meaning evolution, mostly rooted in game theory
+and there are mathematical models of meaning evolution, mostly coming from in game theory
 \citep{lewis:1969,Warneryd1993:Cheap-Talk-Coor,BlumeKim1993:Evolutionary-St,nowak+krakauer:1999,Huttegger2007:Evolution-and-t,Skyrms2010:Signals}. Much
 work has focused on explaining basic properties such as compositionality and combinatoriality
 \citep[e.g.][]{Batali1998:Computational-S,nowak+krakauer:1999,nowak+etal:2000,KirbyHurford2002:The-Emergence-o,kirby:2002,SmithKirby2003:Iterated-Learni,Gong2007:Language-Evolut,kirby+etal:2015,verhoef+etal:2014,Franke2015:Proto-Syntax}. But
@@ -115,7 +138,7 @@ use. What is more, many mathematical models explain evolved meaning as a regular
 behavior of agents which maps objective states of the world to observable signals. There is no
 room in such a purely extensional approach to address the semantics-pragmatics division
 directly. We would need to look at richer representations of cognizing agents and their
-communicative interaction.  
+communicative interaction.
 
 
 To fill this gap, we here spell out a model of the co-evolution of conventional meaning and
@@ -124,19 +147,19 @@ meanings and general types of pragmatic behavior, which we represent using state
 probabilistic cognitive models of pragmatic language use
 \citep{frank+goodman:2012,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}. Replication
 and selection is described by the \emph{replicator mutator dynamic}, a general and established
-model of language evolution
+model of evolutionary change in large and homogeneous populations
 \citep{Hofbauer1985:The-Selection-M,nowak+etal:2000,NowakKomarova2001:Evolution-of-Un,hofbauer+sigmund:2003,Nowak2006:Evolutionary-Dy}. The
 approach allows us to study the interaction between (i) evolutionary pressure towards
 communicative efficiency and (ii) possible infidelity in the transmission of linguistic
-knowledge, such as from inductive learning biases or systematic perceptual errors. The latter
-is particularly important because neither semantic meanings nor pragmatic usage patterns are
-directly observable. Language learners have to infer these from observable behavior which is
-the product of the former. We formalize this acquisition process as a form of Bayesian
-inference. Our approach thereby contains a well-understood model of iterated Bayesian learning
-\citep{griffiths+kalish:2007} as a special cases, but combines it with functional selection,
-here formalized as the most versatile dynamic from evolutionary game theory, the replicator
-dynamic \citep{TaylorJonker1978:Evolutionary-St}. Section~\ref{sec:model} introduces this
-model.
+knowledge, such as from inductive learning biases or systematic perceptual errors. Considering
+transmission of linguistic knowledge is important because neither semantic meanings nor
+pragmatic usage patterns are directly observable. Language learners have to infer these
+unobservables from the observable behavior in which they result. We formalize this acquisition
+process as a form of Bayesian inference. Our approach thereby contains a well-understood model
+of iterated Bayesian learning \citep{griffiths+kalish:2007} as a special case, but combines it
+with functional selection, here formalized as the most versatile dynamic from evolutionary game
+theory, the replicator dynamic
+\citep{TaylorJonker1978:Evolutionary-St}. Section~\ref{sec:model} introduces this model.
 
 Section~\ref{sec:si-case-study} applies this model to a case study on scalar implicatures. We
 discuss a setting in which the majority view of underspecified lexical meanings and pragmatic
@@ -191,94 +214,109 @@ single form-meaning association is easy to learn but lacking in expressivity. Co
 language that associates a distinct form with all possible meanings a speaker may want to
 convey is maximally expressive but challenging to acquire.
 
-An elegant formal approach to modeling the competition between expressivity and learnability is
-the \emph{replicator mutator dynamic}
+An elegant formal approach to capturing the interaction between expressivity and learnability
+is the \emph{replicator mutator dynamic}
 \citep{Hofbauer1985:The-Selection-M,nowak+etal:2000,NowakKomarova2001:Evolution-of-Un,hofbauer+sigmund:2003,Nowak2006:Evolutionary-Dy}. In
 its simplest, discrete-time formulation, the RMD defines the frequency $x'_i$ of each type $i$
 in a population at the next time step as a function of: (i) the frequency $x_i$ of each type
-$i$ before the update step, (ii) the fitness $f_i$ of each type $i$, and (iii) the probability
-$Q_{ji}$ that an agent who wants to imitate, adopt or learn the type of an agent with type $j$
-ends up acquiring type $i$:
+$i$ before the update, (ii) the fitness $f_i$ of each type $i$ before the update, and (iii) the
+probability $Q_{ji}$ that an agent who wants to imitate, adopt or learn the type of an agent
+with type $j$ ends up acquiring type $i$:
 \begin{align}
   \label{eq:RMD_discrete}
   x'_i = \sum_j Q_{ji} \frac{x_jf_j}{\sum_k x_k f_k}\,.
 \end{align}
-The replicator mutator dynamic consists of two components: fitness-based selection and
-transmission biases. This becomes most transparent when we consider an equivalent formulation
-in terms of a step-wise application of the discrete-time replicator dynamic
-\citep{TaylorJonker1978:Evolutionary-St} and subsequent multiplication with a mutation matrix
-$Q$ of the initial population vector $\vec{x}$:
+The RMD consists of two components: fitness-based selection and transmission biases. This
+becomes most transparent when we consider an equivalent formulation in terms of a step-wise
+application of the discrete-time replicator dynamic \citep{TaylorJonker1978:Evolutionary-St}
+and subsequent multiplication with a mutation matrix $Q$ of the initial population vector
+$\vec{x}$:
 \begin{align}
   \label{eq:RMD_discrete_recast}
   x'_i & = (\text{M}(\text{RD}(\vec{x})))_i\,,
 \end{align}
 where
 \begin{align*}
-  (\text{M}(\vec{x}))_i = (\vec{x} \cdot Q)_i = \left ( \sum_j
-          x_j Q_{ji} \right)_i \ \ \ \ \text{and} \ \ \ \ 
       \left ( \text{RD}(\vec{x}) \right )_i 
-         = \frac{x_i f_i}{\sum_k x_k f_k}\,.
- \end{align*}
- If the transmission matrix $Q$ is trivial in the sense that $Q_{ij}=1$ whenever $i=j$, the
- dynamic reduces to the replicator dynamic. The replicator dynamic is a model of fitness-based
- selection in which the relative frequency of type $i$ will increase with a gradient
- proportional to its average fitness in the population. The replicator dynamic is popular and
- versatile because it can be derived from many abstract processes of biological and cultural
- transmission and selection \citep[for overview and any derivations
- see][]{Sandholm2010:Population-Game}, including conditional imitation
- \citep[e.g.][]{Helbing1996:A-Stochastic-Be,Schlag1998:Why-Imitate-and} or reinforcement
- learning \citep[e.g.][]{BorgersSarin997:Learning-Throug,Beggs2005:On-the-Converge}. If $f_i$
- is the same for all types $i$, the replicator step is the identity map
- $ \left ( \text{RD}(\vec{x}) \right )_i = x_i$ and the dynamic reduces to a process of
- iteration of the transmission bias encoded in $Q$. In this way, the process in
- (\ref{eq:RMD_discrete}), equivalently (\ref{eq:RMD_discrete_recast}), contains a model of
- iterated learning \citep{griffiths+kalish:2007}.
+         = \frac{x_i f_i}{\sum_k x_k f_k}
+ \ \ \ \ \text{and} \ \ \ \ 
+  (\text{M}(\vec{x}))_i = (\vec{x} \cdot Q)_i = \left ( \sum_j
+          x_j Q_{ji} \right)_i\,.
+\end{align*}
+If the transmission matrix $Q$ is trivial in the sense that $Q_{ji}=1$ whenever $j=i$, the
+dynamic reduces to the replicator dynamic. The replicator dynamic is a model of fitness-based
+selection in which the relative frequency of type $i$ will increase with a gradient
+proportional to its average fitness in the population. The replicator dynamic is popular and
+versatile because it can be derived from many abstract processes of biological and cultural
+transmission and selection \citep[for overview and several derivations
+see][]{Sandholm2010:Population-Game}, including conditional imitation
+\citep[e.g.][]{Helbing1996:A-Stochastic-Be,Schlag1998:Why-Imitate-and} or reinforcement
+learning \citep[e.g.][]{BorgersSarin997:Learning-Throug,Beggs2005:On-the-Converge}. If fitness
+$f_i$ is the same for all types $i$, the replicator step is the identity map
+$ \left ( \text{RD}(\vec{x}) \right )_i = x_i$ and the dynamic reduces to a process of
+iteration of the transmission bias encoded in $Q$. In this way, the process in
+(\ref{eq:RMD_discrete}), equivalently (\ref{eq:RMD_discrete_recast}), contains a model of
+iterated learning \citep{griffiths+kalish:2007}. \mf{should we include a simple example here? I
+have an example from a lecture ready at hand; it's a simple coordination game in a
+one-population setting.}
 
 Where our goal is an application of this dynamic to the case of co-evolution of semantic
 meaning and pragmatic use, we need to fix what the relevant types are, how fitness is measured
 and how the mutation matrix is computed. These issues will be addressed, one by one, in the
 following.
 
-\bigskip
-
-The replicator equation gives us the means to make these dynamics precise. The proportion of
-types in a given population is codified in a vector $x$, where $x_i$ is type $i$'s
-proportion. As noted above, the fitness of type $i$ is equal to its relative communicative
-success within this population, $f_i = \sum_j x_j \text{EU}(t_i,t_j)$. The expected
-communicative success of $i$ and $j$ is simply the average success of $i$ conveying information
-to $j$ and vice versa: $\text{EU}(t_i,t_j) = [U_S(t_i,t_j) + U_R(t_i,t_j)]/2$. $U_S(x,y)$ and
-$U_R(x,y)$ are, respectively, $\sum_s P(s)\sum_m S_n(m|s;L) \sum_{s'} R_o(s'|m;L) \delta(s,s')$
-and $U_S(y,x)$, for $n$ and $o$ being the reasoning level of $x$ and $y$, and
-$\delta(s,s') = 1$ iff $s = s'$ and $0$ otherwise. This quantity is symmetric, reflecting the
-probability of two types' mutual understanding. The average fitness of the population is given
-by $\Phi$, $\Phi = \sum_i x_i f_i$, serving as a normalizing constant for the discrete
-replicator equation: $\dot{x}_i = \frac{x_i f_i}{\Phi}$
-
-\bigskip
-
-However, this is
-not the only challenge learners confront. More central to our explanandum is the issue of
-selecting particular hypotheses out of a potentially infinite space of alternatives compatible
-with the data learners are exposed to. At the semantics-pragmatics interface this concerns the
-selection between functional (near-)equivalents, noting in particular that what is
-systematically conveyed through pragmatics could alternatively be codified
-lexically. Notwithstanding, lexical meanings that allow for pragmatic modifications often seem
-to resist the lexicalization of their pragmatic component. The question is why.
-
-We assume an integral part of the answer to lie in the effects of transmission perturbations that arise when linguistic knowledge is acquired by new learners. As shown in the following, such perturbations may take the form of learning biases, but may also stem from extraneous factors such as a noisy perception of the environment.
-
-
-We model these components using the replicator-mutator dynamics, combining functional pressure on successful communication with effects of transmission perturbations on (iterated) Bayesian learning \citep{griffiths+kalish:2007}. The semantics-pragmatics distinction and its bearing on production and comprehension are captured by a probabilistic model of rational language use with different degrees of pragmatic sophisitication and different lexica \citep{frank+goodman:2012,franke+jaeger:2014, bergen+etal:2016}. The remainder of this section introduces these components together with the assumptions underlying them. These are: the representation of languages and their use (\S\ref{sec:languages+use}), as well as pressures towards expressivity (\S\ref{sec:expressivity}) and learnability (\S\ref{sec:learnability}). After laying out the model, we analyze its predictions in a case-study on the lack of lexicalization of scalar implicatures in \S\ref{sec:si-case-study}. Additionally, \S\ref{subsec:noise} shows how the outcome predicted under the assumption of an inductive bias for simplicity in \S\ref{subsec:bias} can also arise from as a byproduct of the noisy perception of language users and learners. Section \S\ref{sec:discussion} discusses the general predictions of the model, as well as the implications drawn from its noisy counterpart.
-
-
-
-
 \subsection{Types: Lexica and linguistic behavior}
 \label{sec:languages+use}
 
-Lexica codify the truth-conditions of a language's expressions. Following \citet{franke+jaeger:2014}, a convenient way to represent lexica is by $(|S|,|M|)$-Boolean matrices, where $S$ is a set of states of affairs (meanings) and $M$ a set of messages (forms available in the language).
+Types are what cultural evolution operates on. In standard applications of evolutionary game
+theory, types correspond to ways of acting in a game, e.g., either cooperating or defecting in
+a prisoner's dilemma. \mf{maybe good to refer back to the example from before if there was
+  one?} For our purposes, we would rather like to identify a type by its cognitive make-up. A
+type is a pair consisting of a lexicon and a pragmatic strategy. This is because we are
+interested in the question under which conditions processes of cultural evolution will favor
+specific divisions of labor between lexical meaning and pragmatic use. 
 
-We distinguish between two kinds of linguistic behavior. {\em Literal interlocutors} produce and interpret messages literally, being guided only by their lexica. {\em Pragmatic interlocutors} instead engage in mutual reasoning to inform their choices. Following models of rational language use such as Rational Speech Act models \citep{frank+goodman:2012} and their game-theoretic predecessors, the Iterated Best/Quantal Response models \citep{franke:2009,franke+jaeger:2014}, these behaviors are captured by a reasoning hierarchy. The hierarchy's bottom, level $0$, corresponds to literal language use. Pragmatic language users of level $n + 1$ behave rationally according to expected level $n$ behavior of their interlocutors. (\ref{h:level0}) and (\ref{h:leveln}) specify the behavior of literal and pragmatic hearers of a language $L$. Their speaker counterparts are given in (\ref{s:level0}) and (\ref{s:leveln}).
+Lexica codify the truth-conditions of a language's expressions. A convenient way to represent
+lexica is by $(\card{\States}, \card{\Messgs})$-Boolean matrices, where $\States$ is a set of
+states of affairs (meanings) and $M$ a set of messages (forms available in the language). For
+example, suppose that there are two relevant world states $\States = \set{\msome, \mall}$:
+$\msome$ where Chris owns some but not all of Johnny Cash's albums and $\mall$ where Chris owns
+them all. Suppose that there are two messages $\Messgs = \set{\msome, \mall}$ where $\msome$ is
+short for a sentence like \emph{Chris owns some of Johnny Cash's albums} and $\mall$ for the
+same sentence with \emph{some} replaced by \emph{all}. Lexica for this case would assign a
+truth value for each state-message pair. The following two lexica exemplify the distinction
+between a lexicalized upper-bound for \emph{some} in $L_4$ and the widely assumed logical
+semantics with only a lower-bound in $L_5$. \mf{can we not give these guys more mnemonic names?}
+\begin{align*}
+  L_{4} & = \begin{blockarray}{lcc}
+    & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[cc]}
+      \mygray{\ssome} & 1 & 0 \\
+      \mygray{\sall}  & 0 & 1 \\
+    \end{block}
+  \end{blockarray} &
+  L_{5} & = \begin{blockarray}{lcc}
+    & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[cc]}
+      \mygray{\ssome} & 1 & 0 \\
+      \mygray{\sall}  & 1 & 1 \\
+    \end{block}
+  \end{blockarray}
+\end{align*}
+
+
+
+We distinguish between two kinds of linguistic behavior. {\em Literal interlocutors} produce
+and interpret messages literally, being guided only by their lexica. {\em Pragmatic
+  interlocutors} instead engage in mutual reasoning to inform their choices. Following models
+of rational language use such as Rational Speech Act models \citep{frank+goodman:2012} and
+their game-theoretic predecessors, the Iterated Best/Quantal Response models
+\citep{franke:2009,franke+jaeger:2014}, these behaviors are captured by a reasoning
+hierarchy. The hierarchy's bottom, level $0$, corresponds to literal language use. Pragmatic
+language users of level $n + 1$ behave rationally according to expected level $n$ behavior of
+their interlocutors. (\ref{h:level0}) and (\ref{h:leveln}) specify the behavior of literal and
+pragmatic hearers of a language $L$. Their speaker counterparts are given in (\ref{s:level0})
+and (\ref{s:leveln}).
 
 \begin{flalign}
 &H_{0}(s|m;L) \propto pr(s) L_{sm} \label{h:level0}\\
@@ -288,11 +326,24 @@ We distinguish between two kinds of linguistic behavior. {\em Literal interlocut
 \end{flalign}
 
 
-According to (\ref{h:level0}), a literal hearer's interpretation of a message $m$ as a state $s$ depends on her lexicon and her prior over states, $pr \in \Delta(S)$. For simplicity, in the following this prior is assumed to be uniform across hearers. The behavior of literal speakers, given in (\ref{s:level0}), is regulated by a parameter $\alpha$ which controls the sensitivity to which speakers prefer one signal over another based on its expected communicative success. 
+According to (\ref{h:level0}), a literal hearer's interpretation of a message $m$ as a state
+$s$ depends on her lexicon and her prior over states, $pr \in \Delta(S)$. For simplicity, in
+the following this prior is assumed to be uniform across hearers. The behavior of literal
+speakers, given in (\ref{s:level0}), is regulated by a parameter $\alpha$ which controls the
+sensitivity to which speakers prefer one signal over another based on its expected
+communicative success.
 
-Pragmatic behavior is similar to its literal counterparts. Their difference lies in that level $n+1$ speakers/hearers reason about level $n$ hearer/speaker behavior instead of solely relaying on their lexicon. That is, they reason about the way a rational level $n$ interlocutor would use or interpret a message, and behave according to these expectations.  Speaker behavior is further influenced by a soft-max parameter $\lambda$, $\lambda \geq 1$ \citep{luce:1959,sutton+barto:1998}. As $\lambda$ increases, choices made in production are more rational in that higher values lead to behavior that is increasingly in line with expected utility maximization. 
+Pragmatic behavior is similar to its literal counterparts. Their difference lies in that level
+$n+1$ speakers/hearers reason about level $n$ hearer/speaker behavior instead of solely
+relaying on their lexicon. That is, they reason about the way a rational level $n$ interlocutor
+would use or interpret a message, and behave according to these expectations.  Speaker behavior
+is further influenced by a soft-max parameter $\lambda$, $\lambda \geq 1$
+\citep{luce:1959,sutton+barto:1998}. As $\lambda$ increases, choices made in production are
+more rational in that higher values lead to behavior that is increasingly in line with expected
+utility maximization.
 
-We call the combination of a lexicon with its use, i.e., a level in the reasoning hierarchy, a {\em type}. These are the basic units on which the model's dynamics operate. 
+We call the combination of a lexicon with its use, i.e., a level in the reasoning hierarchy, a
+{\em type}. These are the basic units on which the model's dynamics operate.
 
 \subsection{Expressivity}\label{sec:expressivity}
 Expressivity has received particular attention from investigations using evolutionary game theory (e.g. \citealt{nowak+krakauer:1999,nowak+etal:2000, nowak+etal:2002}). Under this view, a type's ability to convey and interpret information successfully confers it a higher fitness, a measure that is relative to the success of other types in the population. In the simplest models, fitness directly translates into the proportion of types present in the population after a generational turnover. This association of communicative success within a population with changes in the proportion of types present in it creates a feedback loop that pressures the population towards greater expressivity. 
