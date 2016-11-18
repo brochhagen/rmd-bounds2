@@ -304,34 +304,45 @@ semantics with only a lower-bound in $L_5$. \mf{can we not give these guys more 
   \end{blockarray}
 \end{align*}
 
-
-
-We distinguish between two kinds of linguistic behavior. {\em Literal interlocutors} produce
-and interpret messages literally, being guided only by their lexica. {\em Pragmatic
-  interlocutors} instead engage in mutual reasoning to inform their choices. Following models
-of rational language use such as Rational Speech Act models \citep{frank+goodman:2012} and
-their game-theoretic predecessors, the Iterated Best/Quantal Response models
-\citep{franke:2009,franke+jaeger:2014}, these behaviors are captured by a reasoning
-hierarchy. The hierarchy's bottom, level $0$, corresponds to literal language use. Pragmatic
-language users of level $n + 1$ behave rationally according to expected level $n$ behavior of
-their interlocutors. (\ref{h:level0}) and (\ref{h:leveln}) specify the behavior of literal and
-pragmatic hearers of a language $L$. Their speaker counterparts are given in (\ref{s:level0})
-and (\ref{s:leveln}).
-
+We distinguish between two kinds of pragmatic behavior. {\em Literal interlocutors} produce and
+interpret messages literally, being guided only by their lexica. {\em Pragmatic interlocutors}
+instead engage in mutual reasoning to inform their choices. Recent probabilistic models of
+rational language use
+\citep{franke:2009,frank+goodman:2012,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}
+capture different types of pragmatic behavior in a reasoning hierarchy. The hierarchy's bottom,
+level $0$, corresponds to literal language use. Pragmatic language users of level $n + 1$
+act (approximately) rational with respect to level $n$ behavior of their
+interlocutors. (\ref{h:level0}) and (\ref{s:level0}) define probabilistic behavior of literal
+hearers and speakers respectively: \mf{is it a problem that $S$ denotes speakers and the set of
+states?}
 \begin{flalign}
 &H_{0}(s|m;L) \propto pr(s) L_{sm} \label{h:level0}\\
-&S_{0}(m|s;L) \propto \exp((L_{sm})^\alpha) \label{s:level0}\\
+&S_{0}(m|s;L) \propto \exp((L_{sm})^\alpha) \label{s:level0}
+\end{flalign}
+According to (\ref{h:level0}), a literal hearer's interpretation of a message $m$ as a state
+$s$ depends on her lexicon and her prior over states, $pr \in \Delta(S)$. For simplicity, in
+the following this prior is assumed to be uniform. A literal interpreter with lexicon $L_4$
+from above would then assign $\ssome$ a probability of one after hearing $\msome$, while a
+literal interpreter with lexicon $L_5$ would assign $\ssome$ probability $.5$. The simplest
+definition of a literal speaker would just be $S_{0}(m|s;L) \propto \exp((L_{sm})^\alpha)$, but
+the more complex formulation in (\ref{s:level0}) 
+
+\begin{itemize}
+\item no prob zero
+\item $\alpha$ adjusts the level of avoidance of untrue signaling
+\end{itemize}
+
+ The behavior of literal speakers, given in
+(\ref{s:level0}), is regulated by a parameter $\alpha$ which controls the sensitivity to which
+speakers prefer one signal over another based on its expected communicative success.
+
+\begin{flalign}
 &H_{n+1}(s|m;L) \propto pr(s) S_{n}(m|s;L) \label{h:leveln}\\
 &S_{n+1}(m|s;L) \propto  \exp(\lambda \; H_{n}(s|m;L)^\alpha) \label{s:leveln}
 \end{flalign}
 
 
-According to (\ref{h:level0}), a literal hearer's interpretation of a message $m$ as a state
-$s$ depends on her lexicon and her prior over states, $pr \in \Delta(S)$. For simplicity, in
-the following this prior is assumed to be uniform across hearers. The behavior of literal
-speakers, given in (\ref{s:level0}), is regulated by a parameter $\alpha$ which controls the
-sensitivity to which speakers prefer one signal over another based on its expected
-communicative success.
+
 
 Pragmatic behavior is similar to its literal counterparts. Their difference lies in that level
 $n+1$ speakers/hearers reason about level $n$ hearer/speaker behavior instead of solely
