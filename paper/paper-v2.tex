@@ -391,21 +391,95 @@ extension to environmental transmission noise in Section~XYZ. \mf{I would sugges
 say?} 
 
 
-\subsection{Expressivity}\label{sec:expressivity}
-Expressivity has received particular attention from investigations using evolutionary game theory (e.g. \citealt{nowak+krakauer:1999,nowak+etal:2000, nowak+etal:2002}). Under this view, a type's ability to convey and interpret information successfully confers it a higher fitness, a measure that is relative to the success of other types in the population. In the simplest models, fitness directly translates into the proportion of types present in the population after a generational turnover. This association of communicative success within a population with changes in the proportion of types present in it creates a feedback loop that pressures the population towards greater expressivity. 
+\subsection{Fitness \& fitness-based selection based on expressivity}\label{sec:expressivity}
 
-The replicator equation gives us the means to make these dynamics precise. The proportion of types in a given population is codified in a vector $x$, where $x_i$ is type $i$'s proportion. As noted above, the fitness of type $i$ is equal to its relative communicative success within this population, $f_i = \sum_j x_j \text{EU}(t_i,t_j)$. The expected communicative success of $i$ and $j$ is simply the average success of $i$ conveying information to $j$ and vice versa: $\text{EU}(t_i,t_j) = [U_S(t_i,t_j) + U_R(t_i,t_j)]/2$. $U_S(x,y)$ and $U_R(x,y)$ are, respectively, $\sum_s P(s)\sum_m S_n(m|s;L) \sum_{s'} R_o(s'|m;L) \delta(s,s')$ and $U_S(y,x)$, for $n$ and $o$ being the reasoning level of $x$ and $y$, and $\delta(s,s') = 1$ iff $s = s'$ and $0$ otherwise. This quantity is symmetric, reflecting the probability of two types' mutual understanding. The average fitness of the population is given by $\Phi$, $\Phi = \sum_i x_i f_i$, serving as a normalizing constant for the discrete replicator equation: $\dot{x}_i = \frac{x_i f_i}{\Phi}$ 
+Most evolutionary dynamics assume that the proportion of type $i$ in a population will increase
+or decrease as a function of its relative fitness $f_i$. In the context of language evolution,
+fitness is frequently associated with expressivity, i.e., the ability to successfully
+communicate with other language users from the same population
+\citep[e.g.][]{nowak+krakauer:1999,nowak+etal:2000, nowak+etal:2002}. Under a biological
+interpretation, the assumption is that organisms have a higher chance of survival and
+reproduction if they are able to share and receive useful information via communication with
+peers. Under a cultural interpretation, the picture is that agents themselves strive towards
+communicative success and therefore adapt or revise their behavior occasionally to achieve a
+higher communicative success (see \citealt[\S3.3]{benz+etal:2005b} for discussion).
 
-Under its biological interpretation, the replicator dynamics capture the idea of fitness-relative selection whereby fitter types produce more offspring, leading to their propagation in subsequent generations. Many aspects of language are subject to transmission and change that can be likened to such biological processes. Amongst others, replication can be construed as modelling language acquisition, as e.g. in \citealt{nowak+etal:2002}, but also as a process of horizontal adaptation in a single generation (see \citealt[\S3.3]{benz+etal:2005b} for discussion).
+The replicator equation gives us the means to make the ensuing dynamics precise, without
+necessarily committing to a biological or cultural interpretation. The proportion of types in a
+given population is codified in a vector $\vec{x}$, where $x_i$ is type $i$'s proportion. The
+fitness of type $i$ is type $i$'s average expected communicative success, or \emph{expected
+  utility} (EU), given the current frequencies of types in the current population:
+\begin{align*}
+  f_i = \sum_j x_j \text{EU}(t_i,t_j)\,.
+\end{align*}
+The expected utility $\text{EU}(t_i,t_j)$ for type $i$ when communicating with type $j$ is the
+average success of $i$ when talking or listening to $j$. Assuming that agents are speakers half
+of the time this yields:
+\begin{align*}
+  \text{EU}(t_i,t_j) = \nicefrac{1}{2} \, U_S(t_i,t_j) + \nicefrac{1}{2} \, U_H(t_i,t_j)\,,
+\end{align*}
+where $\text{EU}_S(t_i,t_j)$ and $\text{EU}_H(t_i,t_j)$ are the expected utilities for $i$ as a
+speaker and as a hearer when communicating with $j$, defined as follows where $n_i$ and $n_j$
+are type $i$'s and $j$'s pragmatic reasoning types and $L_i$ and $L_j$ are their lexica:
+\begin{flalign*}
+  & \text{EU}_S(t_i,t_j)  = \sum_s P(s)\sum_m S_{n_i}(m \mid s;L_i) \sum_{s'} R_{n_j}(s' \mid m;L_j)
+  \delta(s,s') \\
+ & \text{EU}_H(t_i,t_j)  = \text{EU}_S(t_j,t_i)
+\end{flalign*}
+As usual, $\delta(s,s') = 1$ iff $s = s'$ and $0$ otherwise. % The average fitness of the
+% population is given by $\Phi$, $\Phi = \sum_i x_i f_i$, serving as a normalizing constant for
+% the discrete replicator equation: $x'_i = \frac{x_i f_i}{\Phi}$.
 
-In their series of papers on language evolution, Nowak and colleagues did not only consider expressivity but also recognized the central role of the fidelity by which language is transmitted. Among others, linguistic production can be prone to errors, states or messages may be percieved incorrectly, and multiple languages may be compatible with the data learners are exposed to. These sources of uncertainty introduce variation in their transmission from one generation to the next which can be likened to mutation to the effect that a type's offspring may adopt a different type than that of its parent as a result of transmission perturbations. Importantly, this variation should be relative to the learnability of a type under these perturbations (instead of, e.g., being a constant that is equal across all types as in \citealt{nowak+etal:2002}). For this purpose, we turn to a different strand of research in cultural evolution: iterated learning. 
+\bigskip
+
+In their series of papers on language evolution, Nowak and colleagues did not only consider
+expressivity but also recognized the central role of the fidelity by which language is
+transmitted. Among others, linguistic production can be prone to errors, states or messages may
+be percieved incorrectly, and multiple languages may be compatible with the data learners are
+exposed to. These sources of uncertainty introduce variation in their transmission from one
+generation to the next which can be likened to mutation to the effect that a type's offspring
+may adopt a different type than that of its parent as a result of transmission
+perturbations. Importantly, this variation should be relative to the learnability of a type
+under these perturbations (instead of, e.g., being a constant that is equal across all types as
+in \citealt{nowak+etal:2002}). For this purpose, we turn to a different strand of research in
+cultural evolution: iterated learning.
 
 %errors were considered in N+K:1999, mutation in N+etal:2002
 
-\subsection{Learnability}\label{sec:learnability}
-Iterated learning is a process in which the behavior of one individual serves as learning input for another. This learner, upon acquisition of this behavior, then goes on to produce behavior that serves as input for a new learner. This process can be thought of as a progression through chains of parents and children; the parent produces linguistic data from which the child infers a language. The latter, now a parent, goes on to produce data for a new generation of learners. Following \citet{griffiths+kalish:2007} we model iterated learning as a repeated process of Bayesian inference in which learners combine the likelihood of a type producing the received learning input with prior inductive biases. 
+\subsection{Learnability}
+\label{sec:learnability}
 
-Due to the pressure towards learnability it exherts, iterated learning generally leads to simpler and more regular languages (see \citealt{kirby+etal:2014} and \citealt{tamariz+kirby:2016} for recent surveys). Importantly, experimental and mathematical results have been taken to suggest that the outcome of this process reflects learners' inductive biases. In a Bayesian setting these biases can be codified in a prior $P \in \Delta(T)$, which can be thought of as the amount of data a learner would require in order to adopt a language (cf. \citealt[450]{griffiths+kalish:2007}). Or, in our case, a combination of a lexicon and its use. The extent of the prior's influence has been shown to heavily depend on the learning strategy assumed to underly the inference process. On the one hand, early simulation results suggested that weak biases could be magnified by exposing learners to only small data samples (e.g. in \citealt{brighton:2002}). On the other, \citeposs{griffiths+kalish:2007} mathematical characterization showed that iterated learning converged to the prior, i.e., the resulting distribution over languages corresponds to the learners' prior distribution and is not influenced by the amount of input given to them. This difference in predictions can be traced back to differences in the selection of hypotheses from the posterior. Griffith \& Kalish's convergence to the prior holds for learners that sample from the posterior. More deterministic strategies such as the adoption of the type with the highest posterior probability, so-called {\it maximum a posterior estimation} (MAP), increase the influence of both the prior and the data \citep{griffiths+kalish:2007,kirby+etal:2007}. In the following, we parametrize the posterior by $l \geq 1$. In doing so, we obtain a range of learning strategies between posterior sampling and MAP. When $l = 1$ learners sample from the posterior and the learners propensity to maximize the posterior grows as $l$ increases.
+Iterated learning is a process in which the behavior of one individual serves as learning input
+for another. This learner, upon acquisition of this behavior, then goes on to produce behavior
+that serves as input for a new learner. This process can be thought of as a progression through
+chains of parents and children; the parent produces linguistic data from which the child infers
+a language. The latter, now a parent, goes on to produce data for a new generation of
+learners. Following \citet{griffiths+kalish:2007} we model iterated learning as a repeated
+process of Bayesian inference in which learners combine the likelihood of a type producing the
+received learning input with prior inductive biases.
+
+Due to the pressure towards learnability it exherts, iterated learning generally leads to
+simpler and more regular languages (see \citealt{kirby+etal:2014} and
+\citealt{tamariz+kirby:2016} for recent surveys). Importantly, experimental and mathematical
+results have been taken to suggest that the outcome of this process reflects learners'
+inductive biases. In a Bayesian setting these biases can be codified in a prior
+$P \in \Delta(T)$, which can be thought of as the amount of data a learner would require in
+order to adopt a language (cf. \citealt[450]{griffiths+kalish:2007}). Or, in our case, a
+combination of a lexicon and its use. The extent of the prior's influence has been shown to
+heavily depend on the learning strategy assumed to underly the inference process. On the one
+hand, early simulation results suggested that weak biases could be magnified by exposing
+learners to only small data samples (e.g. in \citealt{brighton:2002}). On the other,
+\citeposs{griffiths+kalish:2007} mathematical characterization showed that iterated learning
+converged to the prior, i.e., the resulting distribution over languages corresponds to the
+learners' prior distribution and is not influenced by the amount of input given to them. This
+difference in predictions can be traced back to differences in the selection of hypotheses from
+the posterior. Griffith \& Kalish's convergence to the prior holds for learners that sample
+from the posterior. More deterministic strategies such as the adoption of the type with the
+highest posterior probability, so-called {\it maximum a posterior estimation} (MAP), increase
+the influence of both the prior and the data \citep{griffiths+kalish:2007,kirby+etal:2007}. In
+the following, we parametrize the posterior by $l \geq 1$. In doing so, we obtain a range of
+learning strategies between posterior sampling and MAP. When $l = 1$ learners sample from the
+posterior and the learners propensity to maximize the posterior grows as $l$ increases.
 
 
 The data learners are exposed to is described by a set $D$ containing sequences of state-message pairs, e.g., $\tuple{\tuple{s_i,m_v},...\tuple{s_j,m_w}}$. These are sequences of language use witnessed by learners, the length of which we denote by $k$. %Put differently, each datum $d \in D$ contains $k$ members of the set $\{\tuple{s_i,m_v} | s_i \in S, m_v \in M\}$.
