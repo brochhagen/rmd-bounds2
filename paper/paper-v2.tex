@@ -271,22 +271,23 @@ following.
 Types are what cultural evolution operates on. In standard applications of evolutionary game
 theory, types correspond to ways of acting in a game, e.g., either cooperating or defecting in
 a prisoner's dilemma. \mf{maybe good to refer back to the example from before if there was
-  one?} For our purposes, we would rather like to identify a type by its cognitive make-up. A
-type is a pair consisting of a lexicon and a pragmatic strategy. This is because we are
+  one?} For our purposes here, types are identified by their cognitive make-up. Since we are
 interested in the question under which conditions processes of cultural evolution will favor
-specific divisions of labor between lexical meaning and pragmatic use. 
+specific divisions of labor between lexical meaning and pragmatic use, a type is a pair
+consisting of a lexicon and a pragmatic strategy.
 
-Lexica codify the truth-conditions of a language's expressions. A convenient way to represent
-lexica is by $(\card{\States}, \card{\Messgs})$-Boolean matrices, where $\States$ is a set of
-states of affairs (meanings) and $M$ a set of messages (forms available in the language). For
-example, suppose that there are two relevant world states $\States = \set{\msome, \mall}$:
-$\msome$ where Chris owns some but not all of Johnny Cash's albums and $\mall$ where Chris owns
-them all. Suppose that there are two messages $\Messgs = \set{\msome, \mall}$ where $\msome$ is
+Lexica codify the truth-conditions of expressions. A convenient way to represent lexica is by
+$(\card{\States}, \card{\Messgs})$-Boolean matrices, where $\States$ is a set of states
+(meanings) and $M$ a set of messages (forms available in the language). For example, suppose
+that there are two relevant world states $\States = \set{\ssome, \sall}$. In state $\ssome$
+Chris owns some but not all of Johnny Cash's albums while in $\sall$ Chris owns them
+all. Suppose that there are two messages $\Messgs = \set{\msome, \mall}$ where $\msome$ is
 short for a sentence like \emph{Chris owns some of Johnny Cash's albums} and $\mall$ for the
 same sentence with \emph{some} replaced by \emph{all}. Lexica for this case would assign a
 truth value for each state-message pair. The following two lexica exemplify the distinction
 between a lexicalized upper-bound for \emph{some} in $L_4$ and the widely assumed logical
-semantics with only a lower-bound in $L_5$. \mf{can we not give these guys more mnemonic names?}
+semantics with only a lower-bound in $L_5$. \mf{can we not give these guys more mnemonic
+  names?}
 \begin{align*}
   L_{4} & = \begin{blockarray}{lcc}
     & \mygray{\msome} & \mygray{\mall} \\
@@ -311,50 +312,84 @@ rational language use
 \citep{franke:2009,frank+goodman:2012,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}
 capture different types of pragmatic behavior in a reasoning hierarchy. The hierarchy's bottom,
 level $0$, corresponds to literal language use. Pragmatic language users of level $n + 1$
-act (approximately) rational with respect to level $n$ behavior of their
+act (approximately) rational with respect to level-$n$ behavior of their
 interlocutors. (\ref{h:level0}) and (\ref{s:level0}) define probabilistic behavior of literal
 hearers and speakers respectively: \mf{is it a problem that $S$ denotes speakers and the set of
-states?}
+states?}\mf{Literal speaker definition had $\alpha$ but that has no effect if we have Boolean
+semantics; I left this out.}
 \begin{flalign}
-&H_{0}(s|m;L) \propto pr(s) L_{sm} \label{h:level0}\\
-&S_{0}(m|s;L) \propto \exp((L_{sm})^\alpha) \label{s:level0}
+&H_{0}(s \mid m;L) \propto pr(s) L_{sm} \label{h:level0}\\
+&S_{0}(m \mid s;L) \propto \exp(L_{sm}) \label{s:level0}
 \end{flalign}
 According to (\ref{h:level0}), a literal hearer's interpretation of a message $m$ as a state
 $s$ depends on her lexicon and her prior over states, $pr \in \Delta(S)$. For simplicity, in
 the following this prior is assumed to be uniform. A literal interpreter with lexicon $L_4$
-from above would then assign $\ssome$ a probability of one after hearing $\msome$, while a
-literal interpreter with lexicon $L_5$ would assign $\ssome$ probability $.5$. The simplest
-definition of a literal speaker would just be $S_{0}(m|s;L) \propto \exp((L_{sm})^\alpha)$, but
-the more complex formulation in (\ref{s:level0}) 
+from above would assign $\ssome$ a probability of $H_0(\ssome \mid \msome; L_4) = 1$ after
+hearing $\msome$, while a literal interpreter with lexicon $L_5$ would assign $\ssome$
+probability $H_0(\ssome \mid \msome; L_5) = 0.5$. A literal speaker chooses any true message
+for a state with equal probability and prefers a true message over a false one. The formulation
+in (\ref{s:level0}) allows also false messages to be sent with a small positive probability in
+analogy to the definition of pragmatic speakers in probabilistic pragmatic models. This is
+necessary to guarantee a mutation matrix with only positive entries (see below). A literal
+speaker with lexicon $L_4$ or $L_5$ produces $\msome$ in $\ssome$ with probability $S_{0}(\msome \mid
+\ssome;L_{4,5}) \approx .73$. The probability of producing $\msome$ in $\sall$ is $S_{0}(\msome \mid
+\sall;L_4) \approx .27$ for $L_4$ and $S_{0}(\msome \mid
+\sall;L_4) \approx .5$ for $L_5$. \mf{I realize that the probability of producing a false
+  message for literal speakers is actually rather high. That's iffy because our pragmatic types
+are able (given favorable parameter values) to perform much better. That means that we
+implicitly have engineered in a possible fitness advantage of pragmatic types! Should we do
+something about this? Use definition $S_{0}(m \mid s;L) \propto L_{sm} + 0.001$? Make sure we
+only look at parameters for pragmatic types that make them not much better than the literal guys?}
 
-\begin{itemize}
-\item no prob zero
-\item $\alpha$ adjusts the level of avoidance of untrue signaling
-\end{itemize}
-
- The behavior of literal speakers, given in
-(\ref{s:level0}), is regulated by a parameter $\alpha$ which controls the sensitivity to which
-speakers prefer one signal over another based on its expected communicative success.
-
+Pragmatic behavior of level-$n+1$ is similar to its literal counterparts but uses the
+interpretation or production behavior of a level-$n$ player instead of the lexical meaning:
 \begin{flalign}
 &H_{n+1}(s|m;L) \propto pr(s) S_{n}(m|s;L) \label{h:leveln}\\
 &S_{n+1}(m|s;L) \propto  \exp(\lambda \; H_{n}(s|m;L)^\alpha) \label{s:leveln}
 \end{flalign}
+As usual in probabilistic pragmatics models, speaker behavior is regulated by a soft-max
+parameter $\lambda$, $\lambda \geq 1$ \citep{luce:1959,sutton+barto:1998}. As $\lambda$
+increases, choices made in production are more rational in that higher values lead to behavior
+that is increasingly in line with expected utility maximization. Expected utility of a message
+$\messg$ in state $\state$ is here defined as $H_{n}(s|m;L)^\alpha$. The probability
+$H_{n}(s|m;L)$ is the probability that the hearer will assign to or choose the correct
+meaning. The transformation with $\alpha$ allows to differentiate theoretically interesting
+speaker production behavior. To see this, notice that for two states and two messages (the
+minimal scenario we will investigate), the possible values for $H_{0}(s|m;L)$ are restricted to
+zero, $0.5$ and one. Consider the case of $H_0$ with $L_5$, which assigns the following
+probabilities to states after hearing messages:
+\begin{align*}
+  H_{0}(\messg \mid \state; L_5) & = \begin{blockarray}{lcc}
+    & \mygray{\ssome} & \mygray{\sall} \\
+    \begin{block}{l[cc]}
+      \mygray{\msome} & 0.5 & 0.5 \\
+      \mygray{\mall}  & 0 & 1 \\
+    \end{block}
+  \end{blockarray}
+\end{align*}
+A level-1 speaker's utilities are then:
+\begin{align*}
+  \begin{blockarray}{lcc}
+    & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[cc]}
+      \mygray{\ssome} & 0.5^\alpha & 0^\alpha \\
+      \mygray{\sall}  & 0.5^\alpha & 1^\alpha \\
+    \end{block}
+  \end{blockarray}
+\end{align*}
+As the soft-max choice rule is sensitive to differences in utilities, no matter what $\lambda$
+is we will get $S_1(\msome \mid \ssome; L_5) = S_1(\mall \mid \sall; L_5)$ if $\alpha =
+1$. This means that we cannot distinguish pragmatically deviant choices (selecting a less
+informative message instead of a more informative one), from semantically deviant choices
+(selecting a false message instead of a true one). If $\alpha > 1$ pragmatically deviant
+choices will get less likely than semantically deviant choices; if $\alpha < 0$ it is the other
+way around. In sum, parameter $\lambda$ regulates the overall tendency to avoid pragmatically
+or semantically deviant choices, $\alpha$ further distinguishes between pragmatically and
+semantically deviant behavior. Variation in $\alpha$ is only necessary for the technical
+extension to environmental transmission noise in Section~XYZ. \mf{I would suggest to just give
+  the intuitive summary here and have a little appendix paragraph with the example. What do you
+say?} 
 
-
-
-
-Pragmatic behavior is similar to its literal counterparts. Their difference lies in that level
-$n+1$ speakers/hearers reason about level $n$ hearer/speaker behavior instead of solely
-relaying on their lexicon. That is, they reason about the way a rational level $n$ interlocutor
-would use or interpret a message, and behave according to these expectations.  Speaker behavior
-is further influenced by a soft-max parameter $\lambda$, $\lambda \geq 1$
-\citep{luce:1959,sutton+barto:1998}. As $\lambda$ increases, choices made in production are
-more rational in that higher values lead to behavior that is increasingly in line with expected
-utility maximization.
-
-We call the combination of a lexicon with its use, i.e., a level in the reasoning hierarchy, a
-{\em type}. These are the basic units on which the model's dynamics operate.
 
 \subsection{Expressivity}\label{sec:expressivity}
 Expressivity has received particular attention from investigations using evolutionary game theory (e.g. \citealt{nowak+krakauer:1999,nowak+etal:2000, nowak+etal:2002}). Under this view, a type's ability to convey and interpret information successfully confers it a higher fitness, a measure that is relative to the success of other types in the population. In the simplest models, fitness directly translates into the proportion of types present in the population after a generational turnover. This association of communicative success within a population with changes in the proportion of types present in it creates a feedback loop that pressures the population towards greater expressivity. 
