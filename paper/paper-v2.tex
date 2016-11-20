@@ -426,80 +426,103 @@ are type $i$'s and $j$'s pragmatic reasoning types and $L_i$ and $L_j$ are their
   \delta(s,s') \\
  & \text{EU}_H(t_i,t_j)  = \text{EU}_S(t_j,t_i)
 \end{flalign*}
-As usual, $\delta(s,s') = 1$ iff $s = s'$ and $0$ otherwise. % The average fitness of the
-% population is given by $\Phi$, $\Phi = \sum_i x_i f_i$, serving as a normalizing constant for
-% the discrete replicator equation: $x'_i = \frac{x_i f_i}{\Phi}$.
-
-\bigskip
-
-In their series of papers on language evolution, Nowak and colleagues did not only consider
-expressivity but also recognized the central role of the fidelity by which language is
-transmitted. Among others, linguistic production can be prone to errors, states or messages may
-be percieved incorrectly, and multiple languages may be compatible with the data learners are
-exposed to. These sources of uncertainty introduce variation in their transmission from one
-generation to the next which can be likened to mutation to the effect that a type's offspring
-may adopt a different type than that of its parent as a result of transmission
-perturbations. Importantly, this variation should be relative to the learnability of a type
-under these perturbations (instead of, e.g., being a constant that is equal across all types as
-in \citealt{nowak+etal:2002}). For this purpose, we turn to a different strand of research in
-cultural evolution: iterated learning.
-
-%errors were considered in N+K:1999, mutation in N+etal:2002
+As usual, $\delta(s,s') = 1$ iff $s = s'$ and $0$ otherwise.
 
 \subsection{Learnability}
 \label{sec:learnability}
 
-Iterated learning is a process in which the behavior of one individual serves as learning input
-for another. This learner, upon acquisition of this behavior, then goes on to produce behavior
-that serves as input for a new learner. This process can be thought of as a progression through
-chains of parents and children; the parent produces linguistic data from which the child infers
-a language. The latter, now a parent, goes on to produce data for a new generation of
-learners. Following \citet{griffiths+kalish:2007} we model iterated learning as a repeated
-process of Bayesian inference in which learners combine the likelihood of a type producing the
-received learning input with prior inductive biases.
+Languages are shaped not only by functionalist forces towards greater expressivity. Another
+important factor is the fidelity by which language is transmitted. Among others, linguistic
+production can be prone to errors, states or messages may be perceived incorrectly, and
+multiple languages may be compatible with the data learners are exposed to. These sources of
+uncertainty introduce variation in their transmission from one generation to the next. Biases
+or systematic noise in the iterated transmission process can influence language evolution
+substantially.
 
-Due to the pressure towards learnability it exherts, iterated learning generally leads to
-simpler and more regular languages (see \citealt{kirby+etal:2014} and
-\citealt{tamariz+kirby:2016} for recent surveys). Importantly, experimental and mathematical
-results have been taken to suggest that the outcome of this process reflects learners'
-inductive biases. In a Bayesian setting these biases can be codified in a prior
-$P \in \Delta(T)$, which can be thought of as the amount of data a learner would require in
-order to adopt a language (cf. \citealt[450]{griffiths+kalish:2007}). Or, in our case, a
-combination of a lexicon and its use. The extent of the prior's influence has been shown to
-heavily depend on the learning strategy assumed to underly the inference process. On the one
-hand, early simulation results suggested that weak biases could be magnified by exposing
-learners to only small data samples (e.g. in \citealt{brighton:2002}). On the other,
-\citeposs{griffiths+kalish:2007} mathematical characterization showed that iterated learning
-converged to the prior, i.e., the resulting distribution over languages corresponds to the
-learners' prior distribution and is not influenced by the amount of input given to them. This
-difference in predictions can be traced back to differences in the selection of hypotheses from
-the posterior. Griffith \& Kalish's convergence to the prior holds for learners that sample
-from the posterior. More deterministic strategies such as the adoption of the type with the
-highest posterior probability, so-called {\it maximum a posterior estimation} (MAP), increase
-the influence of both the prior and the data \citep{griffiths+kalish:2007,kirby+etal:2007}. In
-the following, we parametrize the posterior by $l \geq 1$. In doing so, we obtain a range of
-learning strategies between posterior sampling and MAP. When $l = 1$ learners sample from the
-posterior and the learners propensity to maximize the posterior grows as $l$ increases.
+In biological evolution, where types are expressed genetically, transmission infidelity comes
+into the picture through infrequent and mostly random genetic mutations. But an agent's lexicon
+and pragmatic reasoning behavior is not inherited genetically. They need to be learned from
+observation. Concretely, when agents of type $j$ want to adopt or imitate the linguistic
+behavior of type $i$, they observe the linguistic behavior of type $i$ and need to infer what
+their type is from that. Iterated learning is a process in which languages are learned repeatedly from the observation
+of linguistic behavior of agents who have acquired the language from observation and inference
+in the same way before. In the simplest case, there is a single teacher and a single
+learner. After sufficient training, each learner becomes a teacher and produces behavior that
+serves as input for a new learner. Due to the pressure towards learnability it exerts, iterated
+learning generally leads to simpler and more regular languages (see \citealt{kirby+etal:2014}
+and \citealt{tamariz+kirby:2016} for recent surveys). 
 
+Following \citet{griffiths+kalish:2007} we model language acquisition as a process of Bayesian
+inference in which learners combine the likelihood of a type producing the received learning
+input with prior inductive biases. Experimental and mathematical results on iterated learning
+suggest that the outcome of this process reflects learners' inductive biases
+\citep[e.g.][]{kirby+etal:2014}. In a Bayesian setting these biases can be codified in a prior
+$P \in \Delta(T)$, which reflect the amount of data a learner requires to faithfully acquire
+the language of the teacher \citep[c.f.][450]{griffiths+kalish:2007}. The extent of the prior's
+influence has been shown to heavily depend on the learning strategy assumed to underly the
+inference process. On the one hand, early simulation results suggested that weak biases could
+be magnified by exposing learners to only small data samples (e.g. in
+\citealt{brighton:2002}). On the other, \citeposs{griffiths+kalish:2007} mathematical
+characterization showed that iterated learning converged to the prior, i.e., the resulting
+distribution over languages corresponds to the learners' prior distribution and is not
+influenced by the amount of input given to them. This difference in predictions can be traced
+back to differences in the selection of hypotheses from the posterior. Griffith \& Kalish's
+convergence to the prior holds for learners that sample from the posterior. More deterministic
+strategies such as the adoption of the type with the highest posterior probability, so-called
+{\it maximum a posterior estimation} (MAP), increase the influence of both the prior and the
+data \citep{griffiths+kalish:2007,kirby+etal:2007}. In the following, we use a paremeter
+$l\ge1$ to modulate between posterior sampling and the MAP strategy. When $l = 1$ learners
+sample from the posterior and the learners propensity to maximize the posterior grows as $l$
+increases.
 
-The data learners are exposed to is described by a set $D$ containing sequences of state-message pairs, e.g., $\tuple{\tuple{s_i,m_v},...\tuple{s_j,m_w}}$. These are sequences of language use witnessed by learners, the length of which we denote by $k$. %Put differently, each datum $d \in D$ contains $k$ members of the set $\{\tuple{s_i,m_v} | s_i \in S, m_v \in M\}$.
+Let $D$ be the set of possible data that learners may be exposed to. This set $D$ contains all
+sequences of length $k$ of state-message pairs, e.g.,
+$\tuple{\tuple{s_1,m_1},\dots , \tuple{s_k,m_k}}$. The number $k$ of observations is another model
+parameters. As $k$ increases, learners have more data to base their inference on and so tend to
+recover the true types that generated a given sequence with higher probability. The mutation
+matrix $Q$ of the replicator mutator dynamics in (\ref{eq:RMD_discrete}) can then be defined as
+follows: $Q_{ji}$ is the probability that a learner acquires type $i$ when learning from an
+agent of type $j$. The learner observes one length-$k$ sequence $d$ of state-message pairs, but
+the probability $P(d \mid t_j)$ with which sequence $d = \tuple{\tuple{s_1,m_1},\dots , \tuple{s_k,m_k}}$ is observed depends on type $j$'s
+behavior:
+\begin{align*}
+  P(d = \tuple{\tuple{s_1,m_1},\dots , \tuple{s_k,m_k}} \mid t_j) = \prod_{i = 1}^k S_{n_j}(m_i
+  \mid t_i; L_{j})\,,
+\end{align*}
+where, as before, $n_j$ is $j$'s pragmatic reasoning type and $L_j$ is $j$'s lexicon. For a
+given observation $d$, the probability of acquiring type $i$ is $F(t_i \mid d)$, so that:
+\mf{check if we need ``proportional to'' here or whether ``equals to'' is okay}
+\begin{flalign*}
+  Q_{ji} \propto \sum_{d \in D} P(d \mid t_j) F(t_i \mid d)\,.
+\end{flalign*}
+The acquisition probability $F(t_i \mid
+d)$ given datum $d$ is obtained by probability matching $l = 1$ or a tendency towards choosing
+the most likely type $l > 1$ from the posterior distribution $P(\cdot \mid d)$ over types given
+the data, which is calculated by Bayes' rule:
+\begin{flalign*}
+  & F(t_i \mid d) \propto P(t_i \mid d)^l \; \text{ and }\\
+  & P(t_i \mid d) \propto P(t_i) P(d \mid t_i)\,.
+\end{flalign*}
 
-%To summarize, the parametrized posterior, $P(d|t)^l$, is obtained from combining the prior $P(t)$ and the likelihood $P(d|t)$. Since types are combinations of a lexicon and its use, the latter can be computed straightforwardly from a type's production behavior. 
-We combine the above with the replicator dynamics by codifying iterated learning in a transition matrix $Q$, where $Q_{ij}$ indicates the probability that a child of a parent of type $i$ adopts type $j$. This quantity is proportional to the probability of $i$ producing the learning data and that of inferring $j$ given the data: 
-
-
-\[
- Q_{ij} \propto \sum_{d \in D} P(d|t_i) F(t_j,d), \; \text{where } F(t_j,d) \propto P(t_j|d)^l \text{ and } P(t_j|d) \propto P(t_j) P(d|t_j).
-\]
 
 \subsection{Model summary}
-Drawing from past research, we argued that expressivity and learnability are central to the cultural evolution of language. We propose these components to be modelled respectively as communicative efficiency-relative replication and (iterated) Bayesian learning. Taken together their interaction is described by the replicator-mutator dynamics \citep{hofbauer+sigmund:2003}: 
 
-\[ 
-\hat{x}_i = \sum_j Q_{ji} \frac{x_jf_j}{\Phi}
-\]
-
-The units that the dynamics operate on are a combination of a lexicon and a degree of pragmatic sophistication determining its use. We call this combination a type. A type's expressivity depends on its communicative efficiency within a population while its learnability depends on the fidelity by which it is inferred by new generations of learners. The learners' task is consequently to perform a joint inference over types of linguistic behavior and lexical meaning. With this model at hand we turn to the analysis of the lack of lexicalization of productive pragmatic inferences in a case study on scalar implicatures. 
+Expressivity and learnability are central to the cultural evolution of language. These
+components can be modelled, respectively, as replication based on a measure of fitness in terms
+of communicative efficiency and iterated Bayesian learning. Their interaction is described by
+the discrete time replicator mutator dynamics in (\ref{eq:RMD_discrete}), repeated here:
+\begin{align*}
+  x'_i = \sum_j Q_{ji} \frac{x_jf_j}{\sum_k x_k f_k}\,.
+\end{align*}
+This equation defines the frequency $x'_i$ of type $i$ at the next time step, based on its
+frequency $x_i$ before the update, its fitness $f_i$ and the probability that a learner infers
+$i$ when observing the behavior of a type-$j$ agent. Fitness-based selection can be thought of
+as biological (fitness as expected relative number of offspring) or cultural (fitness of
+likelihood of being imitated or repeated). The types that the dynamic operates on are pairs
+consisting of a lexicon and a pragmatic use pattern. A type's expressivity depends on its
+communicative efficiency within a population while its learnability depends on the fidelity by
+which it is inferred by new generations of learners. The learners' task is consequently to
+perform a joint inference over types of linguistic behavior and lexical meaning.
 
 
 \section{Scalar implicatures}\label{sec:si-case-study}
