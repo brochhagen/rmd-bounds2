@@ -1,5 +1,5 @@
 \newcommand{\SortNoop}[1]{}
-\begin{thebibliography}{86}
+\begin{thebibliography}{87}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -34,11 +34,10 @@ A.W. Beggs.
   2005.
 \newblock \doi{10.1016/j.jet.2004.03.008}.
 
-\bibitem[Benz et~al.(2005)Benz, J{\"a}ger, Van~Rooij, and
-  Van~Rooij]{benz+etal:2005b}
-Anton Benz, Gerhard J{\"a}ger, Robert Van~Rooij, and Robert Van~Rooij, editors.
-\newblock \emph{An Introduction to Game Theory for Linguists}.
-\newblock Springer, 2005.
+\bibitem[Benz et~al.(2005)Benz, J{\"a}ger, and {van Rooij}]{benz+etal:2005b}
+Anton Benz, Gerhard J{\"a}ger, and Robert {van Rooij}.
+\newblock \emph{An Introduction to Game Theory for Linguists}, pages 1--82.
+\newblock Palgrave, 2005.
 
 \bibitem[Bergen et~al.(2012)Bergen, Goodman, and Levy]{bergen+etal:2012}
 Leon Bergen, Noah~D Goodman, and Roger Levy.
@@ -394,6 +393,12 @@ Martin~A. Nowak, Natalia~L. Komarova, and Partha Niyogi.
 \newblock Computational and evolutionary aspects of language.
 \newblock \emph{Nature}, 417\penalty0 (6889):\penalty0 611--617, 2002.
 \newblock \doi{10.1038/nature00771}.
+
+\bibitem[O'Connor(2015)]{oconnor:2015}
+Cailin O'Connor.
+\newblock Evolving to generalize: Trading precision for speed.
+\newblock \emph{The British Journal for the Philosophy of Science}, 2015.
+\newblock \doi{10.1093/bjps/axv038}.
 
 \bibitem[Pagel(2009)]{Pagel2009:Human-Language-}
 Mark Pagel.

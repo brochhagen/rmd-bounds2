@@ -4,7 +4,7 @@ import modsinglescalaronlylearning as learner
 #parameter order for run(*) is run(alpha,cost,lam,k,sample_amount, learning_parameter,gens,runs)
 
 
-def cost_to_learning():
+def cost_to_learning(): #results 1
     a = 1
     lam = 30
     cost = [x/100. for x in xrange(100)]
@@ -64,4 +64,4 @@ def only_r_and_m():
 
 
 
-only_r_and_m()
+#only_r_and_m()
