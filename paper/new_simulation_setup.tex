@@ -1,0 +1,203 @@
+\documentclass[a4paper]{article}
+
+\usepackage{geometry}
+\usepackage{natbib}
+\bibpunct[:]{(}{)}{,}{a}{}{;}
+
+%--------------------
+%\usepackage{gb4e}
+%\noautomath
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{nicefrac}
+%\usepackage{stmaryrd}
+%\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{booktabs}
+%\newcommand{\mvalueof}[1]{\llbracket#1\rrbracket}
+\newcommand{\citeposs}[2][]{\citeauthor{#2}'s (\citeyear[#1]{#2})}
+\newcommand{\tuple}[1]{\ensuremath{\left\langle #1 \right\rangle}} 
+
+\newcommand{\hl}[1]{\textcolor[rgb]{.8,.33,.0}{#1}}% prints in orange
+%\newcommand{\argmax}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{max}}\;}
+%\newcommand{\argmin}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{min}}\;}
+%\newcommand{\sbna}{\exists\lnot\forall}
+
+\definecolor{Red}{RGB}{178,34,34}
+\newcommand{\mf}[1]{\textcolor{Red}{[MF: #1]}} 
+\newcommand{\tb}[1]{\textcolor[rgb]{.8,.33,.0}{[TB: #1]}}% prints in orange
+
+\usepackage{blkarray}
+\usepackage{xspace}
+
+%%% MF's commands
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\card}[1]{\left \lvert \, #1 \, \right\rvert}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\States}{\ensuremath{S}\xspace}		% Set of States
+\newcommand{\state}{\ensuremath{s}\xspace}		% single states
+\newcommand{\mystate}[1]{\ensuremath{\state_{\text{#1}}}\xspace} %meaningful states
+\newcommand{\Messgs}{\ensuremath{M}\xspace}		% Set of Messages
+\newcommand{\messg}{\ensuremath{m}\xspace}		% single messages
+\newcommand{\mymessg}[1]{\ensuremath{\messg_{\text{#1}}}\xspace} %meaningful messages
+\newcommand{\ssome}{\mystate{\ensuremath{\exists\neg\forall}}}
+\newcommand{\sall}{\mystate{\ensuremath{\forall}}}
+\newcommand{\snone}{\mystate{\ensuremath{\emptyset}}}
+\newcommand{\msome}{\mymessg{some}}
+\newcommand{\mall}{\mymessg{all}}
+\newcommand{\asome}{\myact{\ensuremath{\exists\neg\forall}}}
+\newcommand{\aall}{\myact{\ensuremath{\forall}}}
+\definecolor{mygray}{cmyk}{0.35,0.35,0.35,0.35}
+\newcommand{\mygray}[1]{{\textcolor{mygray}{#1}}}
+%%% 
+
+
+%--------------------
+%
+%\usepackage{setspace}
+%\onehalfspacing
+%
+%-------------------
+
+
+\title{Tracing the cultural evolution of meaning at the semantics-pragmatics interface}
+
+\author{%\bf NAME1 and NAME2\\
+    ( -- draft \today --- )
+}
+
+
+\date{}
+
+\begin{document}
+
+We consider three states $\States = \set{\snone, \ssome, \sall}$. This state space can be
+thought of as a partition of possible worlds into cells where none, some or all of the $A$s are
+$B$s, for some arbitrary fixed predicates $A$ and $B$. Eight concepts can be distinguished
+based on their truth or falsity in three world states, six of which are not contradictory
+(always false) or tautologous (always true). These are listed with mnemonic names in
+Table~\ref{tab:concepts}. 
+
+\begin{table}
+  \centering
+\begin{center}
+  \begin{tabular}{lccccl}
+    \toprule
+    intuitive name
+    & \snone
+    & \ssome
+    & \sall
+    & min.~derivation length
+    & formula
+    \\ \midrule
+    ``all''
+    & 0
+    & 0
+    & 1
+    & $3$
+    & $A \subseteq B$
+    \\
+    ``some but not all''
+    & 0
+    & 1
+    & 0
+    & $7$
+    & $A \cap B \neq \emptyset \wedge A \neq \emptyset$
+    \\    
+    ``some''
+    & 0
+    & 1
+    & 1
+    & $4$
+    & $A \cap B \neq \emptyset$
+    \\
+    ``none''
+    & 1
+    & 0
+    & 0
+    & $4$
+    & $A \cap B = \emptyset$
+    \\
+    ``none or all''
+    & 1
+    & 0
+    & 1
+    & $8$
+    & $\neg(A \cap B \neq \emptyset \wedge A \neq \emptyset)$
+    \\
+    ``not all''
+    & 1
+    & 1
+    & 0
+    & $4$
+    & $\neg (A \subseteq B)$
+    \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+\caption{Available concepts and their minimal derivation length}
+\label{tab:concepts}
+\end{table}
+
+Identifying three world states requires three messages in $\Messgs$. As before, we call a
+lexicon $L$ a mapping $\Messgs \rightarrow C$ from messages to concepts. There are $6^3 = 343$
+possible lexica, but many of these assign the same concept to more than one message. For
+simplicity, attention could be restricted to only those lexica which avoid expressive
+redundancy. Hardcoding such an \emph{mutual exclusivity bias}
+\citep[e.g.][]{Clark2009:Lexical-Meaning}, there are 20 non-redundant
+lexica.\footnote{Functional pressure towards efficient communication will evidently favor
+  non-redundant lexica, so this restriction is fairly innocuous but practical.}
+
+As before, the type of a player is a combination of a lexicon and a manner of pragmatic
+language use: literal or pragmatic. With this, there are 40 types in this model.
+
+\begin{table}
+  \centering
+  \begin{align*}
+    C & \rightarrow C \wedge C 
+    & 
+    X & \rightarrow \set{A,B} \\
+    C & \rightarrow\neg C 
+    & 
+    X & \rightarrow X \cap X \\
+    C & \rightarrow X \subseteq X
+    & 
+    X & \rightarrow X \cup X \\
+    C & \rightarrow X \neq \emptyset
+    & 
+    X & \rightarrow X \setminus X \\
+    C & \rightarrow X = \emptyset     
+    & 
+    X & \rightarrow \overline{M}
+  \end{align*}
+  \caption{Toy grammar in a set-theoretic "language of thought"}
+  \label{tab:grammar}
+\end{table}
+
+
+The prior probability of a type is just the prior probability of its lexicon. The prior of a
+lexicon is a function of the complexity of the concepts in its image set. Lexica that use
+simpler concepts are \emph{a priori} more likely. This can be motivated by assuming that
+learners beam search for suitable concepts to map onto overt signals by (probabilistically)
+considering simpler concepts first. There are many ways for defining complexity of a
+concept. Following \citet{piantadosi+etal:underreview} and related work, we define complexity
+of a concept as a function of its derivation length in a generative ``language of
+thought''. For concreteness of example, consider the toy grammar of concepts in
+Table~\ref{tab:grammar}. This grammar uses basic set-theoretic operations to form expressions
+which can be evaluated as true or false in our three world states. Table~\ref{tab:concepts}
+lists the minimal length of a derivation of an expression that represents each concept. A
+simple way of forming priors over a lexicon is:
+\begin{align*}
+  P(L)  & = \prod_{c \in Im(L)} P(c)  \ \ \ \text{, with} & 
+  P(c) & \propto \max_{c'}Compl(c') - Compl(c')\,,
+\end{align*}
+where $Compl(c)$ is the minimum length of a derivation of concept $c$.
+
+\bibliographystyle{plainnat}
+\bibliography{./bounds-rmd}
+\end{document}
