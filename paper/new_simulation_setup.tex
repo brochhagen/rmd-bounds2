@@ -194,7 +194,7 @@ concept, the least complex formula derivable in this grammar that has the approp
 conditions. A simple way of defining priors over a lexicon is:
 \begin{align*}
   P(L)  & = \prod_{c \in Im(L)} P(c)  \ \ \ \text{, with} & 
-  P(c) & \propto \max_{c'}Compl(c') - Compl(c')\,,
+  P(c) & \propto \max_{c'}Compl(c') - Compl(c') + 1\,,
 \end{align*}
 where $Compl(c)$ is the complexity of each concepts.
 
