@@ -5,9 +5,12 @@ np.set_printoptions(threshold=np.nan)
 from random import sample
 from itertools import product
 from player import LiteralPlayer,GriceanPlayer
+from lexica import get_lexica,get_prior
+
 import sys 
 import datetime
 import csv
+import os.path
 
 def normalize(m):
     return m / m.sum(axis=1)[:, np.newaxis]
@@ -47,62 +50,114 @@ def get_likelihood(obs,likelihoods):
             out[lhi,o] = np.prod([flat_lhi[x]**obs[o][x] for x in xrange(len(obs[o]))]) 
     return out
 
-def get_mutation_matrix(s_amount,m_amount,state_freq, likelihoods,lexica_prior,learning_parameter,sample_amount,k):
-    obs = get_obs(s_amount,m_amount,k,likelihoods,state_freq,sample_amount) #get production data from all types
-    out = np.zeros([len(likelihoods),len(likelihoods)]) #matrix to store Q
+def get_mutation_matrix(s_amount,m_amount,state_freq, likelihoods,lexica_prior,learning_parameter,sample_amount,k,lam,alpha):
 
-    for parent_type in xrange(len(likelihoods)):
-        type_obs = obs[parent_type] #Parent production data
-        lhs = get_likelihood(type_obs,likelihoods) #P(parent data|t_i) for all types
-        post = normalize(lexica_prior * np.transpose(lhs)) #P(t_j|parent data) for all types; P(d|t_j)P(t_j)
-        parametrized_post = normalize(post**learning_parameter)
+    if os.path.isfile('./matrices/qmatrix-s%d-m%d-lam%d-a%d-k%d-samples%d-l%d.csv' %(s_amount,m_amount,lam,alpha,k,sample_amount,learning_parameter)):
+        print '#Loading mutation matrix, ', datetime.datetime.now()
+        return np.genfromtxt('./matrices/qmatrix-s%d-m%d-lam%d-a%d-k%d-samples%d-l%d.csv' %(s_amount,m_amount,lam,alpha,k,sample_amount,learning_parameter), delimiter=',')
+    else:
+        print '#Computing mutation matrix, ', datetime.datetime.now()
+    
 
-        out[parent_type] = np.dot(np.transpose(lhs[parent_type]),parametrized_post)
+        obs = get_obs(s_amount,m_amount,k,likelihoods,state_freq,sample_amount) #get production data from all types
+        out = np.zeros([len(likelihoods),len(likelihoods)]) #matrix to store Q
+    
+        for parent_type in xrange(len(likelihoods)):
+            type_obs = obs[parent_type] #Parent production data
+            lhs = get_likelihood(type_obs,likelihoods) #P(parent data|t_i) for all types
+            post = normalize(lexica_prior * np.transpose(lhs)) #P(t_j|parent data) for all types; P(d|t_j)P(t_j)
+            parametrized_post = normalize(post**learning_parameter)
+    
+            out[parent_type] = np.dot(np.transpose(lhs[parent_type]),parametrized_post)
+    
+        q = normalize(out)
+        f_q = csv.writer(open('./matrices/qmatrix-s%d-m%d-lam%d-a%d-k%d-samples%d-l%d.csv' %(s_amount,m_amount,lam,alpha,k,sample_amount,learning_parameter),'wb'))
+        for i in q:
+            f_q.writerow(i)
+    
+        return q
 
-    return normalize(out)
 
+def get_utils(typeList,states,messages,lam,alpha):
+    if os.path.isfile('./matrices/umatrix-s%d-m%d-lam%d-a%d.csv' %(states,messages,lam,alpha)):
+        print '#Loading utilities, ', datetime.datetime.now()
+        return np.genfromtxt('./matrices/umatrix-s%d-m%d-lam%d-a%d.csv' %(states,messages,lam,alpha),delimiter=',')
+    else:
+        print '#Computing utilities, ', datetime.datetime.now()
+        out = np.zeros([len(typeList), len(typeList)])
+        for i in range(len(typeList)):
+            for j in range(len(typeList)):
+                out[i,j] = (np.sum(typeList[i].sender_matrix * np.transpose(typeList[j].receiver_matrix)) /3. + \
+                         np.sum(typeList[j].sender_matrix * np.transpose(typeList[i].receiver_matrix))/3. ) / 2
 
-def get_utils(typeList):
-    out = np.zeros([len(typeList), len(typeList)])
-    for i in range(len(typeList)):
-        for j in range(len(typeList)):
-            out[i,j] = (np.sum(typeList[i].sender_matrix * np.transpose(typeList[j].receiver_matrix)) /3. + \
-                     np.sum(typeList[j].sender_matrix * np.transpose(typeList[i].receiver_matrix))/3. ) / 2
-    return out
+        f_u = csv.writer(open('./matrices/umatrix-s%d-m%d-lam%d-a%d.csv' %(states,messages,lam,alpha),'wb'))
+        for i in out:
+            f_u.writerow(i)
+    
 
-#print '#Computing Q, ', datetime.datetime.now()
-#
-#q = get_mutation_matrix(k)
-#
-#for i in q:
-#    para = np.array([str(alpha), str(cost), str(lam), str(k), str(sample_amount), str(learning_parameter)])
-#    j = np.append(para,i)
-#    f_q.writerow(j)
-#
-#
-####Multiple runs
-#print '#Beginning multiple runs, ', datetime.datetime.now()
-#
-#p_sum = np.zeros(len(typeList)) #vector to store results from a run
-#
-#for i in xrange(runs):
-#    p = np.random.dirichlet(np.ones(len(typeList))) # unbiased random starting state
-#    p_initial = p
-#
-#    for r in range(gens):
-#        pPrime = p * [np.sum(u[t,] * p)  for t in range(len(typeList))]
-#        pPrime = pPrime / np.sum(pPrime)
-#        p = np.dot(pPrime, q)
-#        f.writerow([str(i),str(p_initial[0]), str(p_initial[1]), str(p_initial[2]), str(p_initial[3]), str(p_initial[4]), str(p_initial[5]), str(p_initial[6]), str(p_initial[7]), str(p_initial[8]), str(p_initial[9]), str(p_initial[10]), str(p_initial[11]), str(alpha), str(cost), str(lam), str(k), str(sample_amount), str(learning_parameter), str(gens), str(p[0]), str(p[1]),str(p[2]),str(p[3]),str(p[4]),str(p[5]),str(p[6]),str(p[7]),str(p[8]),str(p[9]),str(p[10]),str(p[11])])
-#    
-#    p_sum += p
-#
-#p_mean = p_sum / runs
-#
-#
-#
-#
-#print '###Overview of results###', datetime.datetime.now()
-#print 'Parameters: alpha = %d, c = %.2f, lambda = %d, k = %d, samples per type = %d, learning parameter = %.2f, generations = %d, runs = %d' % (alpha, cost, lam, k, sample_amount, learning_parameter, gens, runs)
-#print 'Mean by type:'
-#print p_mean
+        return out
+
+def run_dynamics(alpha,lam,k,sample_amount,gens,runs,states,messages,learning_parameter,kind):
+
+    state_freq = np.ones(states) / float(states) #frequency of states s_1,...,s_n 
+
+    print '#Starting, ', datetime.datetime.now()
+    
+    lexica = get_lexica(states,messages,mutual_exclusivity=True)
+    l_prior = get_prior(lexica)
+    typeList = [LiteralPlayer(lam,lex) for lex in lexica] + [GriceanPlayer(alpha,lam,lex) for lex in lexica]
+    
+    likelihoods = np.array([t.sender_matrix for t in typeList])
+    
+    u = get_utils(typeList,states,messages,lam,alpha)
+    q = get_mutation_matrix(states, messages, state_freq, likelihoods,l_prior,learning_parameter,sample_amount,k,lam,alpha)
+    
+    
+    
+    print '#Beginning multiple runs, ', datetime.datetime.now()
+    f = csv.writer(open('./results/%s-s%d-m%d-lam%d-a%d-k%d-samples%d-l%d-g%d.csv' %(kind,states,messages,lam,alpha,k,sample_amount,learning_parameter,gens),'wb'))
+    f.writerow(['runID','kind']+['t_ini'+str(x) for x in xrange(len(typeList))] +\
+               ['lam', 'alpha','k','samples','l','gens'] + ['t_final'+str(x) for x in xrange(len(typeList))])
+    
+    if os.path.isfile('./results/00mean-%s-s%d-m%d-g%d-r%d.csv' %(kind,states,messages,gens,runs)):
+        f_mean = csv.writer(open('./results/00mean-%s-s%d-m%d-g%d-r%d.csv' %(kind,states,messages,gens,runs), 'a'))
+    else: 
+        f_mean = csv.writer(open('./results/00mean-%s-s%d-m%d-g%d-r%d.csv' %(kind,states,messages,gens,runs), 'wb'))
+        f_mean.writerow(['kind','lam','alpha','k','samples','l','gens','runs'] + ['t_mean'+str(x) for x in xrange(len(typeList))])
+       
+    
+    p_sum = np.zeros(len(typeList)) #vector to store mean across runs
+    
+    for i in xrange(runs):
+        p = np.random.dirichlet(np.ones(len(typeList))) # unbiased random starting state
+        p_initial = p
+        for r in range(gens):
+            if kind == 'rmd':
+                pPrime = p * [np.sum(u[t,] * p)  for t in range(len(typeList))]
+                pPrime = pPrime / np.sum(pPrime)
+                p = np.dot(pPrime, q)
+            elif kind == 'm':
+                p = np.dot(p,q)
+            elif kind == 'r':
+                pPrime = p * [np.sum(u[t,] * p)  for t in range(len(typeList))]
+                p = pPrime / np.sum(pPrime)
+    
+        f.writerow([str(i),kind] + [str(p_initial[x]) for x in xrange(len(typeList))]+\
+                   [str(lam),str(alpha),str(k),str(sample_amount),str(learning_parameter),str(gens)] +\
+                   [str(p[x]) for x in xrange(len(typeList))])
+        p_sum += p
+    p_mean = p_sum / runs
+    f_mean.writerow([kind,str(lam),str(alpha),str(k),str(sample_amount),str(learning_parameter),str(gens),str(runs)] +\
+                        [str(p_mean[x]) for x in xrange(len(typeList))])
+    
+
+    print 
+    print '##### Mean results#####'
+    print '### Parameters: ###'
+    print 'dynamics= %s, alpha = %d, lambda = %d, k = %d, samples per type = %d, learning parameter = %.2f, generations = %d, runs = %d' % (kind, alpha, lam, k, sample_amount, learning_parameter, gens, runs)
+    print '#######################'
+    print 
+    print 'Incumbent type:', np.argmax(p_mean), ' with proportion ', p_mean[np.argmax(p_mean)]
+    print 'Target type (t24) proportion: ', p_mean[24]
+    print '#######################'
+    print 

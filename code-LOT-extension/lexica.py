@@ -39,5 +39,3 @@ def get_prior(lexica_list):
         out.append(lex_val)
     out = out + out #double for two types of linguistic behavior
     return np.array(out) / np.sum(out)
-
-
