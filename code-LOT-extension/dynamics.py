@@ -1,10 +1,4 @@
 ##### Main file to run dynamics
-#RMD with parametrized iterated parental learning 
-#three states (none,sbna,all), three messages 
-#2 possible signaling behaviors: literal or gricean
-#Target type: index 24 in type/lexica/prior list
-#####
-
 from rmd import run_dynamics
 
 ##### Parameters & setup #####
@@ -23,17 +17,17 @@ states = 3 #number of states
 messages = 3 #number of messages
 
 
-#for alpha in a:
-#    for lam in lamb:
-#        for k in seq_length:
-#            for sample_amount in samples:
-#                for learning_parameter in l:
-#                    for gens in g:
-#                        for runs in r:
-#                            for kind in dynamics:
-#                                run_dynamics(alpha,lam,k,sample_amount,gens,runs,states,messages,learning_parameter,kind) 
+for alpha in a:
+    for lam in lamb:
+        for k in seq_length:
+            for sample_amount in samples:
+                for learning_parameter in l:
+                    for gens in g:
+                        for runs in r:
+                            for kind in dynamics:
+                                run_dynamics(alpha,lam,k,sample_amount,gens,runs,states,messages,learning_parameter,kind) 
 
-
+#### This is all that is needed to run either replication only, mutation only or both together #####
 
 ############################### Decomment for testing individual components ########################################
 #import numpy as np
