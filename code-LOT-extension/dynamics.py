@@ -23,16 +23,15 @@ states = 3 #number of states
 messages = 3 #number of messages
 
 
-for alpha in a:
-    for lam in lamb:
-        for k in seq_length:
-            for sample_amount in samples:
-                for learning_parameter in l:
-                    for gens in g:
-                        for runs in r:
-                            for kind in dynamics:
+#for alpha in a:
+#    for lam in lamb:
+#        for k in seq_length:
+#            for sample_amount in samples:
+#                for learning_parameter in l:
+#                    for gens in g:
+#                        for runs in r:
+#                            for kind in dynamics:
 #                                run_dynamics(alpha,lam,k,sample_amount,gens,runs,states,messages,learning_parameter,kind) 
-
 
 
 
@@ -45,23 +44,24 @@ for alpha in a:
 #import datetime
 #import csv
 #import os.path
-
-
+#
+#lam = 30
+#alpha = 1
+#
 #
 #state_freq = np.ones(states) / float(states) #frequency of states s_1,...,s_n 
-
+#
 ##### Auxiliary functions #####
 #def m_max(m): #aux function for convenience
 #    return np.unravel_index(m.argmax(), m.shape)
-
-#print '#Starting, ', datetime.datetime.now()
 #
+#print '#Starting, ', datetime.datetime.now()
 #lexica = get_lexica(states,messages,mutual_exclusivity=True)
 #l_prior = get_prior(lexica)
 #typeList = [LiteralPlayer(lam,lex) for lex in lexica] + [GriceanPlayer(alpha,lam,lex) for lex in lexica]
 #
 #likelihoods = np.array([t.sender_matrix for t in typeList])
-#
+
 #u = get_utils(typeList,states,messages,lam,alpha)
 #q = get_mutation_matrix(states, messages, state_freq, likelihoods,l_prior,learning_parameter,sample_amount,k,lam,alpha)
 #

@@ -19,6 +19,10 @@
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{booktabs}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
 %\newcommand{\mvalueof}[1]{\llbracket#1\rrbracket}
 \newcommand{\citeposs}[2][]{\citeauthor{#2}'s (\citeyear[#1]{#2})}
 \newcommand{\tuple}[1]{\ensuremath{\left\langle #1 \right\rangle}} 
@@ -50,6 +54,7 @@
 \newcommand{\snone}{\mystate{\ensuremath{\emptyset}}}
 \newcommand{\msome}{\mymessg{some}}
 \newcommand{\mall}{\mymessg{all}}
+\newcommand{\mnone}{\mymessg{none}}
 \newcommand{\asome}{\myact{\ensuremath{\exists\neg\forall}}}
 \newcommand{\aall}{\myact{\ensuremath{\forall}}}
 \definecolor{mygray}{cmyk}{0.35,0.35,0.35,0.35}
@@ -128,7 +133,7 @@ Table~\ref{tab:concepts}.
     & 0
     & 1
     & $\neg(A \cap B \neq \emptyset \wedge A \neq \emptyset)$
-    & $9$
+    & \tb{$10$}
     \\
     ``not all''
     & 1
@@ -196,7 +201,80 @@ conditions. A simple way of defining priors over a lexicon is:
   P(L)  & = \prod_{c \in Im(L)} P(c)  \ \ \ \text{, with} & 
   P(c) & \propto \max_{c'}Compl(c') - Compl(c') + 1\,,
 \end{align*}
-where $Compl(c)$ is the complexity of each concepts.
+where $Compl(c)$ is the complexity of each concepts. \tb{I changed `$P(L) = $' to `$P(L) \propto$', as well as   `$P(c) \propto \max_{c'}Compl(c') - Compl(c) + 1$'. I hope both were intended like this}.
+
+\section*{Some results} To get an idea of how this changes our previous results, I inspected some of the new setup's properties. Overall, the results are quite similar. A couple remarks: 
+\begin{enumerate}
+\item So far there is no parameter to regulate the strength of the inductive bias (before controlled by $c$). This means that we could get stronger/weaker results than the ones presented here
+\item Our target type is $t_{24}$, made explicit below, which currently has (i) the most a priori probable lexicon (see Figure \ref{fig:priors}), but is (ii) not the most learnable (see Figure \ref{fig:q-matrices}), nor (iii) the fittest type (see Figure \ref{fig:u-matrix}). 
+\item In terms of the dynamics, $t_{24}$ fares worse than in our target type in the previous setup under only replication, OK but far from perfectly under mutation, but fares surprisingly well under when both dynamics are involved (see Figure \ref{fig:outcomes})
+\item Functional deficiency of $t_{24}$ is due to its (Gricean) receiver behavior. In principle, this would not be so if either (i) receivers were one level higher in the reasoning type hierarchy or (ii) receivers soft-maximized.
+\item As noted earlier by Michael, having our target be the most a priori probable is not so nice. On the other hand, we could stress the fact that its not the most communicatively efficient nor the most learnable language (when learning from a parent of the same type). 
+\item Overall, this seems to work. We have a lot more types and more complex lexica but the results are roughly the same even without involving parameter $c$. The most important issue is to settle on a good way to transform a LOT-like representation into a prior over lexica. Personally, I'm torn between a probabilistic conception (skipping complexity and considering the probability of each rule application directly) and something akin to what Michael proposed here. I'll read up more on how other people have done it in the past in the meantime. Let me know if you have suggestions about this. Afterwards, I can run a more proper analysis.
+\end{enumerate}
+
+\section*{Details}
+
+Our target, Gricean $t_{24}$ lexicalizes messages corresponding to the \sall, \snone and \{\sall,\ssome\} (cf. Table \ref{tab:concepts}). Its lexicon is accordingly (same as literal player $t_4$):
+
+\begin{centering}
+\bordermatrix{~ &	  \mall & \msome & \mnone \cr 
+                  \snone &  0 & 0 & 1 \cr
+                  \ssome & 0 & 1 & 0 \cr
+		  \sall & 1 & 1 & 0 \cr}
+\end{centering}
+
+Following the setup above and the complexity values in Table \ref{tab:concepts}, the priors of our $40$ types are shown here:
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=.35]{../code-LOT-extension/priors.png} %width = 0.75\linewidth
+  \caption{Prior over types (lexica). The green prior corresponds to $t_{24}$.}
+  \label{fig:priors}
+\end{figure}
+
+I thought it would be instructive to inspect different fitness and Q-matrices. As before, the matrix for expected utility only depends on parameters $\alpha$ and $\lambda$. There do not seem to be any particular surprises; $t_{24}$ is not the best but also far from the worse (see remark 4 above). With $\alpha = 1$ and $\lambda = 30$ we get $\text{EU}(t_{24},t_{24}) \approx .88$. Here's a visualization of the entire u-matrix:
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=.25]{../code-LOT-extension/u-l30-a1.png} %width = 0.75\linewidth
+  \caption{Utility-Matrix for $\alpha = 1$ and $\lambda = 30$. The boxed value corresponds to $\text{EU}(t_{24},t_{24})$.}
+  \label{fig:u-matrix}
+\end{figure}
+
+For $Q$ there are more values to test. For sequence length $k$ there's not that much change as long as it is not too small and possible noise due to the sampling of learning data is accounted for (it's still important, but I'll background this for now). As before, the posterior parameter $l$ is very important. If $l \geq 10$ we get very faithful transmission of our target type. Lower values lead to more mutation. Here's a visual impression of two $Q$ matrices for different $l$ values:
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[scale=0.4]{../code-LOT-extension/q-l30-a1-k5-l1.png}
+  \end{subfigure}
+  ~
+   \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[scale=0.4]{../code-LOT-extension/q-l30-a1-k5-l10.png}
+  \end{subfigure}
+  \caption{$Q$-matrices for $\alpha = 1, \lambda = 30, k = 5$, $200$ samples per parent type with either $l = 1$ (left) and $l = 10$ (right). The boxed value corresponds to $P(t_{24} | t_{24})$.}
+  \label{fig:q-matrices}
+\end{figure}
+
+\newpage
+
+Finally, we can see how the above affects actual applications of only replication, only mutation, and replication \emph{and} mutation using the matrices shown above. To construct these plots I took the mean top $3$ types from $1000$ simulations using either of the three dynamics. If $t_{24}$ was not in the top $3$, I took out the third most prolific type and added $t_{24}$ instead. 
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[scale=0.4]{../code-LOT-extension/rmd-lam30-a1-k5-s200-l1.png}
+  \end{subfigure}
+  ~
+   \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[scale=0.4]{../code-LOT-extension/rmd-lam30-a1-k5-s200-l10.png}
+  \end{subfigure}
+  \caption{Mean proportion of top $2/3$ types and target $t_{24}$ under replication only (green plot), mutation only (blue plot), and replication {\em and} mutation (red plot) after $50$ generations with $\alpha = 1, \lambda = 30, k = 5$, $200$ samples per parent type and $l = 1$ (left figure) and $l = 10$ (right figure).}
+  \label{fig:outcomes}
+\end{figure}
+
+
+
 
 \bibliographystyle{plainnat}
 \bibliography{./bounds-rmd}
