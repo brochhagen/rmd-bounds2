@@ -150,7 +150,7 @@ Table~\ref{tab:concepts}.
 \end{table}
 
 A lexicon $L$ is a mapping $\Messgs \rightarrow C$ from messages to concepts. With three
-messages there are $6^3 = 343$ possible lexica, but many of these assign the same concept to
+messages there are $6^3 = 216$ possible lexica, but many of these assign the same concept to
 more than one message. For simplicity, we restrict attention to only those lexica which avoid
 expressive redundancy. Hardcoding such an \emph{mutual exclusivity bias}
 \citep[e.g.][]{Clark2009:Lexical-Meaning}, there are 20 non-redundant lexica. Functional
@@ -213,7 +213,7 @@ where $Compl(c)$ is the complexity of each concepts. \tb{I changed `$P(L) = $' t
 \item Overall, this seems to work. We have a lot more types and more complex lexica but the results are roughly the same even without involving parameter $c$. The most important issue is to settle on a good way to transform a LOT-like representation into a prior over lexica. Personally, I'm torn between a probabilistic conception (skipping complexity and considering the probability of each rule application directly) and something akin to what Michael proposed here. I'll read up more on how other people have done it in the past in the meantime. Let me know if you have suggestions about this. Afterwards, I can run a more proper analysis.
 \end{enumerate}
 
-\section*{Details}
+\section*{Details for mutual exclusivity type space}
 
 Our target, Gricean $t_{24}$ lexicalizes messages corresponding to the \sall, \snone and \{\sall,\ssome\} (cf. Table \ref{tab:concepts}). Its lexicon is accordingly (same as literal player $t_4$):
 
@@ -228,7 +228,7 @@ Following the setup above and the complexity values in Table \ref{tab:concepts},
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=.35]{../code-LOT-extension/priors.png} %width = 0.75\linewidth
+  \includegraphics[scale=.35]{../code-LOT-extension/plots/priors-meTrue.png} %width = 0.75\linewidth
   \caption{Prior over types (lexica). The green prior corresponds to $t_{24}$.}
   \label{fig:priors}
 \end{figure}
@@ -237,7 +237,7 @@ I thought it would be instructive to inspect different fitness and Q-matrices. A
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=.25]{../code-LOT-extension/u-l30-a1.png} %width = 0.75\linewidth
+  \includegraphics[scale=.25]{../code-LOT-extension/plots/u-l30-a1-meTrue.png} %width = 0.75\linewidth
   \caption{Utility-Matrix for $\alpha = 1$ and $\lambda = 30$. The boxed value corresponds to $\text{EU}(t_{24},t_{24})$.}
   \label{fig:u-matrix}
 \end{figure}
@@ -246,11 +246,11 @@ For $Q$ there are more values to test. For sequence length $k$ there's not that 
 \begin{figure}[h!]
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[scale=0.4]{../code-LOT-extension/q-l30-a1-k5-l1.png}
+    \includegraphics[scale=0.4]{../code-LOT-extension/plots/q-l30-a1-k5-l1-meTrue.png}
   \end{subfigure}
   ~
    \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[scale=0.4]{../code-LOT-extension/q-l30-a1-k5-l10.png}
+    \includegraphics[scale=0.4]{../code-LOT-extension/plots/q-l30-a1-k5-l10-meTrue.png}
   \end{subfigure}
   \caption{$Q$-matrices for $\alpha = 1, \lambda = 30, k = 5$, $200$ samples per parent type with either $l = 1$ (left) and $l = 10$ (right). The boxed value corresponds to $P(t_{24} | t_{24})$.}
   \label{fig:q-matrices}
@@ -263,15 +263,72 @@ Finally, we can see how the above affects actual applications of only replicatio
 \begin{figure}[h!]
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[scale=0.4]{../code-LOT-extension/rmd-lam30-a1-k5-s200-l1.png}
+    \includegraphics[scale=0.4]{../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l1-meTrue.png}
   \end{subfigure}
   ~
    \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[scale=0.4]{../code-LOT-extension/rmd-lam30-a1-k5-s200-l10.png}
+    \includegraphics[scale=0.4]{../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l10-meTrue.png}
   \end{subfigure}
   \caption{Mean proportion of top $2/3$ types and target $t_{24}$ under replication only (green plot), mutation only (blue plot), and replication {\em and} mutation (red plot) after $50$ generations with $\alpha = 1, \lambda = 30, k = 5$, $200$ samples per parent type and $l = 1$ (left figure) and $l = 10$ (right figure).}
   \label{fig:outcomes}
 \end{figure}
+
+\newpage
+
+\section*{Details for larger type space}
+
+Our target is now Gricean $t_{68}$ with the same lexicon as $t_{24}$ in the reduced type space. Following the setup above and the complexity values in Table \ref{tab:concepts}, the priors of our now $112$ types are shown here:
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=.35]{../code-LOT-extension/plots/priors-meFalse.png} %width = 0.75\linewidth
+  \caption{Prior over types (lexica). The green prior corresponds to $t_{68}$.}
+  \label{fig:priors}
+\end{figure}
+
+As before,  $t_{68}$ is not the best but also far from the worse. Here's a visualization of the entire u-matrix:
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=.25]{../code-LOT-extension/plots/u-l30-a1-meFalse.png} %width = 0.75\linewidth
+  \caption{Utility-Matrix for $\alpha = 1$ and $\lambda = 30$. The boxed value corresponds to $\text{EU}(t_{68},t_{68})$.}
+  \label{fig:u-matrix}
+\end{figure}
+
+Here's a visual impression of two $Q$ matrices for different $l$ values with the larger type space:
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[scale=0.4]{../code-LOT-extension/plots/q-l30-a1-k5-l1-meFalse.png}
+  \end{subfigure}
+  ~
+   \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[scale=0.4]{../code-LOT-extension/plots/q-l30-a1-k5-l10-meFalse.png}
+  \end{subfigure}
+  \caption{$Q$-matrices for $\alpha = 1, \lambda = 30, k = 5$, $200$ samples per parent type with either $l = 1$ (left) and $l = 10$ (right). The boxed value corresponds to $P(t_{68} | t_{68})$. You have to zoom in all the way to see something. Otherwise; it's similar to the mutation value of our target in the reduced space}
+  \label{fig:q-matrices}
+\end{figure}
+
+\newpage
+
+Finally, we can see how the above affects actual applications of only replication, only mutation, and replication \emph{and} mutation using the matrices shown above. To construct these plots I took the mean top $3$ types from $1000$ simulations using either of the three dynamics. If $t_{68}$ was not in the top $3$, I took out the third most prolific type and added $t_{68}$ instead. 
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[scale=0.4]{../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l1-meFalse.png}
+  \end{subfigure}
+  ~
+   \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[scale=0.4]{../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l10-meFalse.png}
+  \end{subfigure}
+  \caption{Mean proportion of top $2/3$ types and target $t_{68}$ under replication only (green plot), mutation only (blue plot), and replication {\em and} mutation (red plot) after $50$ generations with $\alpha = 1, \lambda = 30, k = 5$, $200$ samples per parent type and $l = 1$ (left figure) and $l = 10$ (right figure).}
+  \label{fig:outcomes}
+\end{figure}
+
+
+
 
 
 

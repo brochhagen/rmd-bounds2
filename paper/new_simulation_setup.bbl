@@ -1,0 +1,22 @@
+\newcommand{\SortNoop}[1]{}
+\begin{thebibliography}{2}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Clark(2009)]{Clark2009:Lexical-Meaning}
+Eve~V. Clark.
+\newblock Lexical meaning.
+\newblock In Edith~L. Bavin, editor, \emph{Child Language}, pages 283--300.
+  Cambridge University Press, New York, 2009.
+\newblock \doi{10.1017/CBO9780511576164.016}.
+
+\bibitem[Piantadosi et~al.(under review)Piantadosi, Tenenbaum, and
+  Goodman]{piantadosi+etal:underreview}
+Steven~T. Piantadosi, Joshua~B. Tenenbaum, and Noah~D. Goodman.
+\newblock Modeling the acquisition of quantifier semantics: a case study in
+  function word learnability, under review.
+
+\end{thebibliography}

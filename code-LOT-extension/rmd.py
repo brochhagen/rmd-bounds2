@@ -50,11 +50,11 @@ def get_likelihood(obs,likelihoods):
             out[lhi,o] = np.prod([flat_lhi[x]**obs[o][x] for x in xrange(len(obs[o]))]) 
     return out
 
-def get_mutation_matrix(s_amount,m_amount,state_freq, likelihoods,lexica_prior,learning_parameter,sample_amount,k,lam,alpha):
+def get_mutation_matrix(s_amount,m_amount,state_freq, likelihoods,lexica_prior,learning_parameter,sample_amount,k,lam,alpha,mutual_exclusivity):
 
-    if os.path.isfile('./matrices/qmatrix-s%d-m%d-lam%d-a%d-k%d-samples%d-l%d.csv' %(s_amount,m_amount,lam,alpha,k,sample_amount,learning_parameter)):
+    if os.path.isfile('./matrices/qmatrix-s%d-m%d-lam%d-a%d-k%d-samples%d-l%d-me%s.csv' %(s_amount,m_amount,lam,alpha,k,sample_amount,learning_parameter,str(mutual_exclusivity))):
         print '#Loading mutation matrix, ', datetime.datetime.now()
-        return np.genfromtxt('./matrices/qmatrix-s%d-m%d-lam%d-a%d-k%d-samples%d-l%d.csv' %(s_amount,m_amount,lam,alpha,k,sample_amount,learning_parameter), delimiter=',')
+        return np.genfromtxt('./matrices/qmatrix-s%d-m%d-lam%d-a%d-k%d-samples%d-l%d-me%s.csv' %(s_amount,m_amount,lam,alpha,k,sample_amount,learning_parameter,str(mutual_exclusivity)), delimiter=',')
     else:
         print '#Computing mutation matrix, ', datetime.datetime.now()
     
@@ -71,17 +71,17 @@ def get_mutation_matrix(s_amount,m_amount,state_freq, likelihoods,lexica_prior,l
             out[parent_type] = np.dot(np.transpose(lhs[parent_type]),parametrized_post)
     
         q = normalize(out)
-        f_q = csv.writer(open('./matrices/qmatrix-s%d-m%d-lam%d-a%d-k%d-samples%d-l%d.csv' %(s_amount,m_amount,lam,alpha,k,sample_amount,learning_parameter),'wb'))
+        f_q = csv.writer(open('./matrices/qmatrix-s%d-m%d-lam%d-a%d-k%d-samples%d-l%d-me%s.csv' %(s_amount,m_amount,lam,alpha,k,sample_amount,learning_parameter,str(mutual_exclusivity)),'wb'))
         for i in q:
             f_q.writerow(i)
     
         return q
 
 
-def get_utils(typeList,states,messages,lam,alpha):
-    if os.path.isfile('./matrices/umatrix-s%d-m%d-lam%d-a%d.csv' %(states,messages,lam,alpha)):
+def get_utils(typeList,states,messages,lam,alpha,mutual_exclusivity):
+    if os.path.isfile('./matrices/umatrix-s%d-m%d-lam%d-a%d-me%s.csv' %(states,messages,lam,alpha,str(mutual_exclusivity))):
         print '#Loading utilities, ', datetime.datetime.now()
-        return np.genfromtxt('./matrices/umatrix-s%d-m%d-lam%d-a%d.csv' %(states,messages,lam,alpha),delimiter=',')
+        return np.genfromtxt('./matrices/umatrix-s%d-m%d-lam%d-a%d-me%s.csv' %(states,messages,lam,alpha,str(mutual_exclusivity)),delimiter=',')
     else:
         print '#Computing utilities, ', datetime.datetime.now()
         out = np.zeros([len(typeList), len(typeList)])
@@ -90,40 +90,40 @@ def get_utils(typeList,states,messages,lam,alpha):
                 out[i,j] = (np.sum(typeList[i].sender_matrix * np.transpose(typeList[j].receiver_matrix)) /3. + \
                          np.sum(typeList[j].sender_matrix * np.transpose(typeList[i].receiver_matrix))/3. ) / 2
 
-        f_u = csv.writer(open('./matrices/umatrix-s%d-m%d-lam%d-a%d.csv' %(states,messages,lam,alpha),'wb'))
+        f_u = csv.writer(open('./matrices/umatrix-s%d-m%d-lam%d-a%d-me%s.csv' %(states,messages,lam,alpha,str(mutual_exclusivity)),'wb'))
         for i in out:
             f_u.writerow(i)
     
 
         return out
 
-def run_dynamics(alpha,lam,k,sample_amount,gens,runs,states,messages,learning_parameter,kind):
+def run_dynamics(alpha,lam,k,sample_amount,gens,runs,states,messages,learning_parameter,kind,mutual_exclusivity):
 
     state_freq = np.ones(states) / float(states) #frequency of states s_1,...,s_n 
 
     print '#Starting, ', datetime.datetime.now()
     
-    lexica = get_lexica(states,messages,mutual_exclusivity=True)
+    lexica = get_lexica(states,messages,mutual_exclusivity)
     l_prior = get_prior(lexica)
     typeList = [LiteralPlayer(lam,lex) for lex in lexica] + [GriceanPlayer(alpha,lam,lex) for lex in lexica]
     
     likelihoods = np.array([t.sender_matrix for t in typeList])
     
-    u = get_utils(typeList,states,messages,lam,alpha)
-    q = get_mutation_matrix(states, messages, state_freq, likelihoods,l_prior,learning_parameter,sample_amount,k,lam,alpha)
+    u = get_utils(typeList,states,messages,lam,alpha,mutual_exclusivity)
+    q = get_mutation_matrix(states, messages, state_freq, likelihoods,l_prior,learning_parameter,sample_amount,k,lam,alpha,mutual_exclusivity)
     
     
     
     print '#Beginning multiple runs, ', datetime.datetime.now()
-    f = csv.writer(open('./results/%s-s%d-m%d-lam%d-a%d-k%d-samples%d-l%d-g%d.csv' %(kind,states,messages,lam,alpha,k,sample_amount,learning_parameter,gens),'wb'))
+    f = csv.writer(open('./results/%s-s%d-m%d-lam%d-a%d-k%d-samples%d-l%d-g%d-me%s.csv' %(kind,states,messages,lam,alpha,k,sample_amount,learning_parameter,gens,str(mutual_exclusivity)),'wb'))
     f.writerow(['runID','kind']+['t_ini'+str(x) for x in xrange(len(typeList))] +\
-               ['lam', 'alpha','k','samples','l','gens'] + ['t_final'+str(x) for x in xrange(len(typeList))])
+               ['lam', 'alpha','k','samples','l','gens', 'm_excl'] + ['t_final'+str(x) for x in xrange(len(typeList))])
     
-    if os.path.isfile('./results/00mean-%s-s%d-m%d-g%d-r%d.csv' %(kind,states,messages,gens,runs)):
-        f_mean = csv.writer(open('./results/00mean-%s-s%d-m%d-g%d-r%d.csv' %(kind,states,messages,gens,runs), 'a'))
+    if os.path.isfile('./results/00mean-%s-s%d-m%d-g%d-r%d-me%s.csv' %(kind,states,messages,gens,runs,str(mutual_exclusivity))):
+        f_mean = csv.writer(open('./results/00mean-%s-s%d-m%d-g%d-r%d-me%s.csv' %(kind,states,messages,gens,runs,str(mutual_exclusivity)), 'a'))
     else: 
-        f_mean = csv.writer(open('./results/00mean-%s-s%d-m%d-g%d-r%d.csv' %(kind,states,messages,gens,runs), 'wb'))
-        f_mean.writerow(['kind','lam','alpha','k','samples','l','gens','runs'] + ['t_mean'+str(x) for x in xrange(len(typeList))])
+        f_mean = csv.writer(open('./results/00mean-%s-s%d-m%d-g%d-r%d-me%s.csv' %(kind,states,messages,gens,runs,str(mutual_exclusivity)), 'wb'))
+        f_mean.writerow(['kind','lam','alpha','k','samples','l','gens','runs','m_excl'] + ['t_mean'+str(x) for x in xrange(len(typeList))])
        
     
     p_sum = np.zeros(len(typeList)) #vector to store mean across runs
@@ -143,11 +143,11 @@ def run_dynamics(alpha,lam,k,sample_amount,gens,runs,states,messages,learning_pa
                 p = pPrime / np.sum(pPrime)
     
         f.writerow([str(i),kind] + [str(p_initial[x]) for x in xrange(len(typeList))]+\
-                   [str(lam),str(alpha),str(k),str(sample_amount),str(learning_parameter),str(gens)] +\
+                   [str(lam),str(alpha),str(k),str(sample_amount),str(learning_parameter),str(gens),str(mutual_exclusivity)] +\
                    [str(p[x]) for x in xrange(len(typeList))])
         p_sum += p
     p_mean = p_sum / runs
-    f_mean.writerow([kind,str(lam),str(alpha),str(k),str(sample_amount),str(learning_parameter),str(gens),str(runs)] +\
+    f_mean.writerow([kind,str(lam),str(alpha),str(k),str(sample_amount),str(learning_parameter),str(gens),str(runs),str(mutual_exclusivity)] +\
                         [str(p_mean[x]) for x in xrange(len(typeList))])
     
 
@@ -158,6 +158,7 @@ def run_dynamics(alpha,lam,k,sample_amount,gens,runs,states,messages,learning_pa
     print '#######################'
     print 
     print 'Incumbent type:', np.argmax(p_mean), ' with proportion ', p_mean[np.argmax(p_mean)]
-    print 'Target type (t24) proportion: ', p_mean[24]
+    if mutual_exclusivity:
+        print 'Target type (t24) proportion: ', p_mean[24]
     print '#######################'
     print 

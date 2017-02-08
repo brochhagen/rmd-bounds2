@@ -1,12 +1,12 @@
 ##generation of lexica and prior
 import numpy as np
-from itertools import product,combinations
+from itertools import product,combinations,combinations_with_replacement
 
 def get_lexica(s_amount,m_amount,mutual_exclusivity=True):
     columns = list(product([0.,1.],repeat=s_amount))
+    columns.remove((0,0,0)) #remove message false of all states
+    columns.remove((1,1,1)) #remove message true of all states
     if mutual_exclusivity:
-        columns.remove((0,0,0)) #remove message false of all states
-        columns.remove((1,1,1)) #remove message true of all states
         matrix = list(combinations(columns,r=m_amount)) #no concept assigned to more than one message
         out = []
         for mrx in matrix:
@@ -14,8 +14,8 @@ def get_lexica(s_amount,m_amount,mutual_exclusivity=True):
             lex = np.transpose(np.array([mrx[i] for i in xrange(s_amount)]))
             out.append(lex)
     else:
-        columns.remove((0,0,0)) #remove message false of all states
-        matrix = list(product(columns,repeat=m_amount)) 
+#        matrix = list(product(columns,repeat=m_amount)) #If we allow for symmetric lexica
+        matrix = list(combinations_with_replacement(columns,m_amount)) 
         out = []
         for mrx in matrix:
             lex = np.array([mrx[i] for i in xrange(s_amount)])

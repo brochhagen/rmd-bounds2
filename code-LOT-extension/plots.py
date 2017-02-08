@@ -12,68 +12,85 @@ import sys
 #####################
 
 
-def get_prior_plot():
+def get_prior_plot(m_excl):
     from lexica import get_prior, get_lexica
-    prior = get_prior(get_lexica(3,3,mutual_exclusivity=True))
+    prior = get_prior(get_lexica(3,3,m_excl))
     
-    X = np.arange(40)
-    Y_target = [0 for _ in xrange(24)] + [prior[24]] + [0 for _ in xrange(15)]
-    print prior[24]
-    prior[24] = 0
+    X = np.arange(len(prior))
+    if m_excl:
+        target = 24
+    else:
+        target = 68
+    Y_target = [0 for _ in xrange(target)] + [prior[target]] + [0 for _ in xrange(len(prior)-target-1)]
+    
+    prior[target] = 0
     Y_rest = prior
-    print prior[24]
     
     fig, ax = plt.subplots()
     ax.bar(X,Y_target,width=1, color='green')
     ax.bar(X,Y_rest,width=1)
     plt.show()
 
-#get_prior_plot()
+#get_prior_plot(False)
 
-def get_utility_heatmap(s_amount,m_amount,lam,alpha):
+def get_utility_heatmap(s_amount,m_amount,lam,alpha,m_excl):
     print 'Loading U-matrix'
-    df = pd.read_csv('./matrices/umatrix-s%d-m%d-lam%d-a%d.csv' %(s_amount,m_amount,lam,alpha))
-    yticks = [0] + ["" for _ in xrange(9)] + [10] + ["" for _ in xrange(9)] +\
-             [20] + ["" for _ in xrange(9)] + [30] + ["" for _ in xrange(9)]
+    df = pd.read_csv('./matrices/umatrix-s%d-m%d-lam%d-a%d-me%s.csv' %(s_amount,m_amount,lam,alpha,str(m_excl)))
     
-    ax = sns.heatmap(df, yticklabels=yticks, xticklabels=yticks)#, annot=True) 
+    axlabels=["" for _ in xrange(df.shape[1])]
+    show = np.arange(0,df.shape[1]+1,10)
+    for i in xrange(len(show)):
+        axlabels[show[i]] = show[i]
+
+    ax = sns.heatmap(df, xticklabels=axlabels, yticklabels=axlabels)#, annot=True) 
+    ax.invert_yaxis()
+
+
 #    plt.yticks(rotation=0)
     from matplotlib.patches import Rectangle
-    
-    ax.add_patch(Rectangle((24,15), 1, 1, fill=False, edgecolor='blue', lw=3))
-    ax.invert_yaxis()
+    if m_excl:
+        ax.add_patch(Rectangle((24,15), 1, 1, fill=False, edgecolor='blue', lw=3))
+    else:
+        ax.add_patch(Rectangle((68,43), 1, 1, fill=False, edgecolor='blue', lw=3))
+
     plt.show()
 
-#get_utility_heatmap(3,3,10,1)
+#get_utility_heatmap(3,3,10,1,False)
 
 
-def get_mutation_heatmap(s_amount,m_amount,lam,alpha,k,samples,l):
+def get_mutation_heatmap(s_amount,m_amount,lam,alpha,k,samples,l,m_excl):
     print 'Loading Q-matrix'
-    df = pd.read_csv('./matrices/qmatrix-s%d-m%d-lam%d-a%d-k%d-samples%d-l%d.csv' %(s_amount,m_amount,lam,alpha,k,samples,l))
-    yticks = [0] + ["" for _ in xrange(9)] + [10] + ["" for _ in xrange(9)] +\
-             [20] + ["" for _ in xrange(9)] + [30] + ["" for _ in xrange(9)]
-    
-    ax = sns.heatmap(df, yticklabels=yticks, xticklabels=yticks, cmap="YlGnBu")#, annot=True) 
+    df = pd.read_csv('./matrices/qmatrix-s%d-m%d-lam%d-a%d-k%d-samples%d-l%d-me%s.csv' %(s_amount,m_amount,lam,alpha,k,samples,l,str(m_excl)))
+ 
+    axlabels=["" for _ in xrange(df.shape[1])]
+    show = np.arange(0,df.shape[1]+1,10)
+    for i in xrange(len(show)):
+        axlabels[show[i]] = show[i]
+   
+    ax = sns.heatmap(df, yticklabels=axlabels, xticklabels=axlabels, cmap="YlGnBu")#, annot=True) 
 #    plt.yticks(rotation=0)
     from matplotlib.patches import Rectangle
-    
-    ax.add_patch(Rectangle((24,15), 1, 1, fill=False, edgecolor='black', lw=3))
+    if m_excl: 
+        ax.add_patch(Rectangle((24,15), 1, 1, fill=False, edgecolor='red', lw=3))
+    else:
+        ax.add_patch(Rectangle((68,43), 1.25, 1.25, fill=False, edgecolor='red', lw=3))
+
     ax.invert_yaxis()
     plt.show()
 
-#get_mutation_heatmap(3,3,30,1,5,200,1)
-#get_mutation_heatmap(3,3,30,1,5,200,10)
-#get_mutation_heatmap(3,3,30,1,15,200,1)
-#get_mutation_heatmap(3,3,30,1,15,200,10)
+get_mutation_heatmap(3,3,30,1,5,200,1,False)
+get_mutation_heatmap(3,3,30,1,5,200,10,False)
+get_mutation_heatmap(3,3,30,1,15,200,1,False)
+get_mutation_heatmap(3,3,30,1,15,200,10,False)
 #
 
 
 
-def get_some_analysis(group1,group2,group3):
+def get_some_analysis(group1,group2,group3,m_excl):
     print 'Loading data'
-    df_r = pd.read_csv('./results/00mean-r-s3-m3-g50-r1000.csv')
-    df_m = pd.read_csv('./results/00mean-m-s3-m3-g50-r1000.csv')
-    df_rm = pd.read_csv('./results/00mean-rmd-s3-m3-g50-r1000.csv')
+    df_r = pd.read_csv('./results/00mean-r-s3-m3-g50-r1000-me%s.csv' % (str(m_excl)))
+    df_m = pd.read_csv('./results/00mean-m-s3-m3-g50-r1000-me%s.csv' % (str(m_excl)))
+    df_rm = pd.read_csv('./results/00mean-rmd-s3-m3-g50-r1000-me%s.csv' %(str(m_excl)))
     
     df_r = df_r.loc[df_r['lam'] == group1[0]]
     df_r = df_r.loc[df_r['alpha'] == group1[1]]
@@ -128,24 +145,26 @@ def get_some_analysis(group1,group2,group3):
     for i in rm_top:
         index = rm_array.index(i)
         idx_rm.append(index)
+    if m_excl: target = 24
+    else: target = 68
     
-    if 24 not in idx_r:
+    if target not in idx_r:
         r_top.pop()
         idx_r.pop()
-        r_top.append(r_array[24])
+        r_top.append(r_array[target])
         idx_r.append(24)
     
-    if 24 not in idx_m:
+    if target not in idx_m:
         m_top.pop()
         idx_m.pop()
-        m_top.append(m_array[24])
-        idx_r.append(24)
+        m_top.append(m_array[target])
+        idx_r.append(target)
     
-    if 24 not in idx_rm:
+    if target not in idx_rm:
         rm_top.pop()
         idx_rm.pop()
-        rm_top.append(rm_array[24])
-        idx_r.append(24)
+        rm_top.append(rm_array[target])
+        idx_r.append(target)
     
     
     X = np.arange(21)
@@ -171,17 +190,15 @@ def get_some_analysis(group1,group2,group3):
     
     plt.show()
 
+#m_excl = False
 #group1,group2,group3 = [30,1,5,200,1,50,1000], [30,1,5,200,1,50,1000],[30,1,5,200,1,50,1000]
-#get_some_analysis(group1,group2,group3)
+#get_some_analysis(group1,group2,group3,m_excl)
 #
 #group1,group2,group3 = [30,1,5,200,10,50,1000], [30,1,5,200,10,50,1000],[30,1,5,200,10,50,1000]
-#get_some_analysis(group1,group2,group3)
+#get_some_analysis(group1,group2,group3,m_excl)
 #
 #group1,group2,group3 = [30,1,15,200,1,50,1000], [30,1,15,200,1,50,1000],[30,1,15,200,1,50,1000]
-#get_some_analysis(group1,group2,group3)
+#get_some_analysis(group1,group2,group3,m_excl)
 #
 #group1,group2,group3 = [30,1,15,200,10,50,1000], [30,1,15,200,10,50,1000],[30,1,15,200,10,50,1000]
-#get_some_analysis(group1,group2,group3)
-
-
-sys.exit()
+#get_some_analysis(group1,group2,group3,m_excl)
