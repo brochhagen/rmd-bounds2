@@ -14,14 +14,43 @@ def get_lexica(s_amount,m_amount,mutual_exclusivity=True):
             lex = np.transpose(np.array([mrx[i] for i in xrange(s_amount)]))
             out.append(lex)
     else:
-#        matrix = list(product(columns,repeat=m_amount)) #If we allow for symmetric lexica
-        matrix = list(combinations_with_replacement(columns,m_amount)) 
+        matrix = list(product(columns,repeat=m_amount)) #If we allow for symmetric lexica
+#        matrix = list(combinations_with_replacement(columns,m_amount)) #only 112 types
         out = []
         for mrx in matrix:
             lex = np.array([mrx[i] for i in xrange(s_amount)])
             lex = np.transpose(np.array([mrx[i] for i in xrange(s_amount)]))
             out.append(lex)
     return out 
+
+def get_lexica_bins(lexica_list):
+    concepts = [[0,0,1],[0,1,0],[0,1,1],\
+                    [1,0,0],[1,0,1],[1,1,0]]
+    lexica_concepts = []
+    for lex_idx in xrange(len(lexica_list)):
+        concept_indices = []
+        current_lex = np.transpose(lexica_list[lex_idx])
+        for concept_idx in xrange(len(current_lex)):
+            concept_indices.append(concepts.index(list(current_lex[concept_idx])))
+        lexica_concepts.append(concept_indices)
+    
+    bin_counter = []
+    bins = []
+    for lex_idx in xrange(len(lexica_list)):
+        sorted_lexica_concepts = lexica_concepts[lex_idx]
+        sorted_lexica_concepts.sort()
+        if not(sorted_lexica_concepts in bin_counter):
+            bin_counter.append(sorted_lexica_concepts)
+            bins.append([lex_idx])
+        else:
+            bins[bin_counter.index(sorted_lexica_concepts)].append(lex_idx)
+    ### up to here we get bins for a single linguistic behavior. Now we double that for Literal/Gricean split 
+    gricean_bins = []
+    for b in bins:
+        g_bin = [x+len(lexica_list) for x in b]
+        gricean_bins.append(g_bin)
+    bins = bins+gricean_bins
+    return bins
 
 def get_prior(lexica_list):
     concepts = [[0,0,1],[0,1,0],[0,1,1],\

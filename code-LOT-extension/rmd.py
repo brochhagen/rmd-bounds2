@@ -5,7 +5,7 @@ np.set_printoptions(threshold=np.nan)
 from random import sample
 from itertools import product
 from player import LiteralPlayer,GriceanPlayer
-from lexica import get_lexica,get_prior
+from lexica import get_lexica,get_prior,get_lexica_bins
 
 import sys 
 import datetime
@@ -97,6 +97,12 @@ def get_utils(typeList,states,messages,lam,alpha,mutual_exclusivity):
 
         return out
 
+def get_type_bin(type_idx,bins):
+    for b in xrange(len(bins)):
+        if type_idx in bins[b]:
+            return b
+    
+
 def run_dynamics(alpha,lam,k,sample_amount,gens,runs,states,messages,learning_parameter,kind,mutual_exclusivity):
 
     state_freq = np.ones(states) / float(states) #frequency of states s_1,...,s_n 
@@ -104,6 +110,7 @@ def run_dynamics(alpha,lam,k,sample_amount,gens,runs,states,messages,learning_pa
     print '#Starting, ', datetime.datetime.now()
     
     lexica = get_lexica(states,messages,mutual_exclusivity)
+    bins = get_lexica_bins(lexica) #To bin types with identical lexica
     l_prior = get_prior(lexica)
     typeList = [LiteralPlayer(lam,lex) for lex in lexica] + [GriceanPlayer(alpha,lam,lex) for lex in lexica]
     
@@ -150,6 +157,9 @@ def run_dynamics(alpha,lam,k,sample_amount,gens,runs,states,messages,learning_pa
     f_mean.writerow([kind,str(lam),str(alpha),str(k),str(sample_amount),str(learning_parameter),str(gens),str(runs),str(mutual_exclusivity)] +\
                         [str(p_mean[x]) for x in xrange(len(typeList))])
     
+    
+    inc = np.argmax(p_mean)
+    inc_bin = get_type_bin(inc,bins)
 
     print 
     print '##### Mean results#####'
@@ -157,8 +167,11 @@ def run_dynamics(alpha,lam,k,sample_amount,gens,runs,states,messages,learning_pa
     print 'dynamics= %s, alpha = %d, lambda = %d, k = %d, samples per type = %d, learning parameter = %.2f, generations = %d, runs = %d' % (kind, alpha, lam, k, sample_amount, learning_parameter, gens, runs)
     print '#######################'
     print 
-    print 'Incumbent type:', np.argmax(p_mean), ' with proportion ', p_mean[np.argmax(p_mean)]
+    print 'Incumbent type:', inc, ' with proportion ', p_mean[inc]
     if mutual_exclusivity:
         print 'Target type (t24) proportion: ', p_mean[24]
+    else:
+        print 'The bin of the incumbent', inc_bin
+        print 'Bin #', bins[inc_bin]
     print '#######################'
     print 
