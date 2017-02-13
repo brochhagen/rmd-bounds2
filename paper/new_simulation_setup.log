@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  8 FEB 2017 13:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  13 FEB 2017 19:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -264,6 +264,15 @@ LaTeX Warning: Label `fig:q-matrices' multiply defined.
 
 LaTeX Warning: Label `fig:outcomes' multiply defined.
 
+
+LaTeX Warning: Label `fig:priors' multiply defined.
+
+
+LaTeX Warning: Label `fig:priors' multiply defined.
+
+
+LaTeX Warning: Label `fig:outcomes' multiply defined.
+
 )
 \openout1 = `new_simulation_setup.aux'.
 
@@ -480,29 +489,31 @@ Overfull \hbox (43.04703pt too wide) in paragraph at lines 270--271
 on/plots/q-l30-a1-k5-l10-meTrue.png> <../code-LOT-extension/plots/rmd-lam30-a1-
 k5-s200-l1-meTrue.png> <../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l10-me
 True.png>]
-<../code-LOT-extension/plots/priors-meFalse.png, id=38, 578.16pt x 397.485pt>
-File: ../code-LOT-extension/plots/priors-meFalse.png Graphic file (type png)
+<../code-LOT-extension/plots/priors-meFalse112.png, id=38, 578.16pt x 397.485pt
+>
+File: ../code-LOT-extension/plots/priors-meFalse112.png Graphic file (type png)
 
-<use ../code-LOT-extension/plots/priors-meFalse.png>
-Package pdftex.def Info: ../code-LOT-extension/plots/priors-meFalse.png used on
- input line 284.
+ <use ../code-LOT-extension/plots/priors-meFalse112.png>
+Package pdftex.def Info: ../code-LOT-extension/plots/priors-meFalse112.png used
+ on input line 284.
 (pdftex.def)             Requested size: 202.35902pt x 139.12183pt.
 
-<../code-LOT-extension/plots/u-l30-a1-meFalse.png, id=39, 1156.32pt x 872.2989p
-t>
-File: ../code-LOT-extension/plots/u-l30-a1-meFalse.png Graphic file (type png)
- <use ../code-LOT-extension/plots/u-l30-a1-meFalse.png>
-Package pdftex.def Info: ../code-LOT-extension/plots/u-l30-a1-meFalse.png used 
-on input line 293.
+<../code-LOT-extension/plots/u-l30-a1-meFalse112.png, id=39, 1156.32pt x 872.29
+89pt>
+File: ../code-LOT-extension/plots/u-l30-a1-meFalse112.png Graphic file (type pn
+g)
+ <use ../code-LOT-extension/plots/u-l30-a1-meFalse112.png>
+Package pdftex.def Info: ../code-LOT-extension/plots/u-l30-a1-meFalse112.png us
+ed on input line 293.
 (pdftex.def)             Requested size: 289.07928pt x 218.07419pt.
 
-<../code-LOT-extension/plots/q-l30-a1-k5-l1-meFalse.png, id=40, 578.16pt x 397.
-485pt>
-File: ../code-LOT-extension/plots/q-l30-a1-k5-l1-meFalse.png Graphic file (type
- png)
- <use ../code-LOT-extension/plots/q-l30-a1-k5-l1-meFalse.png>
-Package pdftex.def Info: ../code-LOT-extension/plots/q-l30-a1-k5-l1-meFalse.png
- used on input line 303.
+<../code-LOT-extension/plots/q-l30-a1-k5-l1-meFalse112.png, id=40, 578.16pt x 3
+97.485pt>
+File: ../code-LOT-extension/plots/q-l30-a1-k5-l1-meFalse112.png Graphic file (t
+ype png)
+ <use ../code-LOT-extension/plots/q-l30-a1-k5-l1-meFalse112.png>
+Package pdftex.def Info: ../code-LOT-extension/plots/q-l30-a1-k5-l1-meFalse112.
+png used on input line 303.
 (pdftex.def)             Requested size: 231.2599pt x 158.99118pt.
 
 Overfull \hbox (43.04703pt too wide) in paragraph at lines 303--304
@@ -510,13 +521,13 @@ Overfull \hbox (43.04703pt too wide) in paragraph at lines 303--304
  []
 
 
-<../code-LOT-extension/plots/q-l30-a1-k5-l10-meFalse.png, id=41, 578.16pt x 397
-.485pt>
-File: ../code-LOT-extension/plots/q-l30-a1-k5-l10-meFalse.png Graphic file (typ
-e png)
- <use ../code-LOT-extension/plots/q-l30-a1-k5-l10-meFalse.png>
-Package pdftex.def Info: ../code-LOT-extension/plots/q-l30-a1-k5-l10-meFalse.pn
-g used on input line 307.
+<../code-LOT-extension/plots/q-l30-a1-k5-l10-meFalse112.png, id=41, 578.16pt x 
+397.485pt>
+File: ../code-LOT-extension/plots/q-l30-a1-k5-l10-meFalse112.png Graphic file (
+type png)
+ <use ../code-LOT-extension/plots/q-l30-a1-k5-l10-meFalse112.png>
+Package pdftex.def Info: ../code-LOT-extension/plots/q-l30-a1-k5-l10-meFalse112
+.png used on input line 307.
 (pdftex.def)             Requested size: 231.2599pt x 158.99118pt.
 
 Overfull \hbox (43.04703pt too wide) in paragraph at lines 307--308
@@ -526,16 +537,16 @@ Overfull \hbox (43.04703pt too wide) in paragraph at lines 307--308
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[5 <../code-LOT-extension/plots/priors-meFalse.png> <../code-LOT-extension/plot
-s/u-l30-a1-meFalse.png>]
-<../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l1-meFalse.png, id=47, 578.16
-pt x 397.485pt>
-File: ../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l1-meFalse.png Graphic f
-ile (type png)
+[5 <../code-LOT-extension/plots/priors-meFalse112.png> <../code-LOT-extension/p
+lots/u-l30-a1-meFalse112.png>]
+<../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l1-meFalse112.png, id=47, 578
+.16pt x 397.485pt>
+File: ../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l1-meFalse112.png Graphi
+c file (type png)
 
-<use ../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l1-meFalse.png>
+<use ../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l1-meFalse112.png>
 Package pdftex.def Info: ../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l1-me
-False.png used on input line 320.
+False112.png used on input line 320.
 (pdftex.def)             Requested size: 231.2599pt x 158.99118pt.
 
 Overfull \hbox (43.04703pt too wide) in paragraph at lines 320--321
@@ -543,50 +554,210 @@ Overfull \hbox (43.04703pt too wide) in paragraph at lines 320--321
  []
 
 
-<../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l10-meFalse.png, id=48, 578.1
-6pt x 397.485pt>
-File: ../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l10-meFalse.png Graphic 
-file (type png)
+<../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l10-meFalse112.png, id=48, 57
+8.16pt x 397.485pt>
+File: ../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l10-meFalse112.png Graph
+ic file (type png)
 
-<use ../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l10-meFalse.png>
+<use ../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l10-meFalse112.png>
 Package pdftex.def Info: ../code-LOT-extension/plots/rmd-lam30-a1-k5-s200-l10-m
-eFalse.png used on input line 324.
+eFalse112.png used on input line 324.
 (pdftex.def)             Requested size: 231.2599pt x 158.99118pt.
 
 Overfull \hbox (43.04703pt too wide) in paragraph at lines 324--325
 [][] 
  []
 
-(./new_simulation_setup.bbl [6 <../code-LOT-extension/plots/q-l30-a1-k5-l1-meFa
-lse.png> <../code-LOT-extension/plots/q-l30-a1-k5-l10-meFalse.png> <../code-LOT
--extension/plots/rmd-lam30-a1-k5-s200-l1-meFalse.png> <../code-LOT-extension/pl
-ots/rmd-lam30-a1-k5-s200-l10-meFalse.png>]) [7] (./new_simulation_setup.aux)
+[6 <../code-LOT-extension/plots/q-l30-a1-k5-l1-meFalse112.png> <../code-LOT-ext
+ension/plots/q-l30-a1-k5-l10-meFalse112.png> <../code-LOT-extension/plots/rmd-l
+am30-a1-k5-s200-l1-meFalse112.png> <../code-LOT-extension/plots/rmd-lam30-a1-k5
+-s200-l10-meFalse112.png>]
+<../code-LOT-extension/plots/priors-meFalse432.png, id=56, 578.16pt x 397.485pt
+>
+File: ../code-LOT-extension/plots/priors-meFalse432.png Graphic file (type png)
+
+ <use ../code-LOT-extension/plots/priors-meFalse432.png>
+Package pdftex.def Info: ../code-LOT-extension/plots/priors-meFalse432.png used
+ on input line 340.
+(pdftex.def)             Requested size: 202.35902pt x 139.12183pt.
+
+<../code-LOT-extension/plots/priors-binned-meFalse432.png, id=57, 578.16pt x 39
+7.485pt>
+File: ../code-LOT-extension/plots/priors-binned-meFalse432.png Graphic file (ty
+pe png)
+ <use ../code-LOT-extension/plots/priors-binned-meFalse432.png>
+Package pdftex.def Info: ../code-LOT-extension/plots/priors-binned-meFalse432.p
+ng used on input line 348.
+(pdftex.def)             Requested size: 202.35902pt x 139.12183pt.
+
+<../code-LOT-extension/plots/rmd-l30-a1-k5-l1-meFalse432.png, id=58, 1156.32pt 
+x 872.2989pt>
+File: ../code-LOT-extension/plots/rmd-l30-a1-k5-l1-meFalse432.png Graphic file 
+(type png)
+
+<use ../code-LOT-extension/plots/rmd-l30-a1-k5-l1-meFalse432.png>
+Package pdftex.def Info: ../code-LOT-extension/plots/rmd-l30-a1-k5-l1-meFalse43
+2.png used on input line 361.
+(pdftex.def)             Requested size: 289.07928pt x 218.07419pt.
+
+Overfull \hbox (100.86641pt too wide) in paragraph at lines 361--362
+[][] 
+ []
+
+
+<../code-LOT-extension/plots/rmd-l30-a1-k5-l10-meFalse432.png, id=59, 1156.32pt
+ x 872.2989pt>
+File: ../code-LOT-extension/plots/rmd-l30-a1-k5-l10-meFalse432.png Graphic file
+ (type png)
+
+<use ../code-LOT-extension/plots/rmd-l30-a1-k5-l10-meFalse432.png>
+Package pdftex.def Info: ../code-LOT-extension/plots/rmd-l30-a1-k5-l10-meFalse4
+32.png used on input line 365.
+(pdftex.def)             Requested size: 289.07928pt x 218.07419pt.
+
+Overfull \hbox (100.86641pt too wide) in paragraph at lines 365--366
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7 <../code-LOT-extension/plots/priors-meFalse432.png> <../code-LOT-extension/p
+lots/priors-binned-meFalse432.png>]
+<../code-LOT-extension/plots/rmd-l30-a1-k5-l1-meFalse432_binned.png, id=67, 115
+6.32pt x 872.2989pt>
+File: ../code-LOT-extension/plots/rmd-l30-a1-k5-l1-meFalse432_binned.png Graphi
+c file (type png)
+
+<use ../code-LOT-extension/plots/rmd-l30-a1-k5-l1-meFalse432_binned.png>
+Package pdftex.def Info: ../code-LOT-extension/plots/rmd-l30-a1-k5-l1-meFalse43
+2_binned.png used on input line 378.
+(pdftex.def)             Requested size: 289.07928pt x 218.07419pt.
+
+Overfull \hbox (100.86641pt too wide) in paragraph at lines 378--379
+[][] 
+ []
+
+
+<../code-LOT-extension/plots/rmd-l30-a1-k5-l10-meFalse432_binned.png, id=68, 11
+56.32pt x 872.2989pt>
+File: ../code-LOT-extension/plots/rmd-l30-a1-k5-l10-meFalse432_binned.png Graph
+ic file (type png)
+
+<use ../code-LOT-extension/plots/rmd-l30-a1-k5-l10-meFalse432_binned.png>
+Package pdftex.def Info: ../code-LOT-extension/plots/rmd-l30-a1-k5-l10-meFalse4
+32_binned.png used on input line 382.
+(pdftex.def)             Requested size: 289.07928pt x 218.07419pt.
+
+Overfull \hbox (100.86641pt too wide) in paragraph at lines 382--383
+[][] 
+ []
+
+[8 <../code-LOT-extension/plots/rmd-l30-a1-k5-l1-meFalse432.png> <../code-LOT-e
+xtension/plots/rmd-l30-a1-k5-l10-meFalse432.png> <../code-LOT-extension/plots/r
+md-l30-a1-k5-l1-meFalse432_binned.png> <../code-LOT-extension/plots/rmd-l30-a1-
+k5-l10-meFalse432_binned.png>]
+<../code-LOT-extension/plots/r-lam30-a1-k15-s200-l10-meFalse432-nomean.png, id=
+76, 1156.32pt x 872.2989pt>
+File: ../code-LOT-extension/plots/r-lam30-a1-k15-s200-l10-meFalse432-nomean.png
+ Graphic file (type png)
+
+<use ../code-LOT-extension/plots/r-lam30-a1-k15-s200-l10-meFalse432-nomean.png>
+Package pdftex.def Info: ../code-LOT-extension/plots/r-lam30-a1-k15-s200-l10-me
+False432-nomean.png used on input line 394.
+(pdftex.def)             Requested size: 520.3392pt x 392.53087pt.
+
+Overfull \hbox (102.08553pt too wide) in paragraph at lines 394--395
+ [][] 
+ []
+
+
+<../code-LOT-extension/plots/m-lam30-a1-k15-s200-l10-meFalse432-nomean.png, id=
+77, 578.16pt x 397.485pt>
+File: ../code-LOT-extension/plots/m-lam30-a1-k15-s200-l10-meFalse432-nomean.png
+ Graphic file (type png)
+
+<use ../code-LOT-extension/plots/m-lam30-a1-k15-s200-l10-meFalse432-nomean.png>
+Package pdftex.def Info: ../code-LOT-extension/plots/m-lam30-a1-k15-s200-l10-me
+False432-nomean.png used on input line 402.
+(pdftex.def)             Requested size: 462.52863pt x 317.98842pt.
+
+Overfull \hbox (44.27495pt too wide) in paragraph at lines 402--403
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<../code-LOT-extension/plots/rm-lam30-a1-k15-s200-l10-meFalse432-nomean.png, id
+=78, 578.16pt x 397.485pt>
+File: ../code-LOT-extension/plots/rm-lam30-a1-k15-s200-l10-meFalse432-nomean.pn
+g Graphic file (type png)
+
+<use ../code-LOT-extension/plots/rm-lam30-a1-k15-s200-l10-meFalse432-nomean.png
+>
+Package pdftex.def Info: ../code-LOT-extension/plots/rm-lam30-a1-k15-s200-l10-m
+eFalse432-nomean.png used on input line 411.
+(pdftex.def)             Requested size: 462.52863pt x 317.98842pt.
+
+Overfull \hbox (44.27495pt too wide) in paragraph at lines 411--412
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[9 <../code-LOT-extension/plots/r-lam30-a1-k15-s200-l10-meFalse432-nomean.png>]
+
+<../code-LOT-extension/plots/rm-lam30-a1-k5-s200-l1-meFalse432-nomean.png, id=8
+3, 1156.32pt x 872.2989pt>
+File: ../code-LOT-extension/plots/rm-lam30-a1-k5-s200-l1-meFalse432-nomean.png 
+Graphic file (type png)
+
+<use ../code-LOT-extension/plots/rm-lam30-a1-k5-s200-l1-meFalse432-nomean.png>
+Package pdftex.def Info: ../code-LOT-extension/plots/rm-lam30-a1-k5-s200-l1-meF
+alse432-nomean.png used on input line 420.
+(pdftex.def)             Requested size: 462.5198pt x 348.91338pt.
+
+Overfull \hbox (44.26613pt too wide) in paragraph at lines 420--421
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(./new_simulation_setup.bbl) [10 <../code-LOT-extension/plots/m-lam30-a1-k15-s2
+00-l10-meFalse432-nomean.png>] [11 <../code-LOT-extension/plots/rm-lam30-a1-k15
+-s200-l10-meFalse432-nomean.png>] [12 <../code-LOT-extension/plots/rm-lam30-a1-
+k5-s200-l1-meFalse432-nomean.png>] (./new_simulation_setup.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4898 strings out of 493029
- 72670 string characters out of 6136234
- 147231 words of memory out of 5000000
- 8337 multiletter control sequences out of 15000+600000
- 6785 words of font info for 28 fonts, out of 8000000 for 9000
+ 4950 strings out of 493029
+ 75936 string characters out of 6136234
+ 147233 words of memory out of 5000000
+ 8378 multiletter control sequences out of 15000+600000
+ 7093 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,16n,39p,679b,386s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmti10.pfb>
-Output written on new_simulation_setup.pdf (7 pages, 405394 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ti10.pfb>
+Output written on new_simulation_setup.pdf (12 pages, 746788 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
- 49 compressed objects within 1 object stream
+ 132 PDF objects out of 1000 (max. 8388607)
+ 62 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
 

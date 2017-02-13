@@ -52,6 +52,9 @@ def get_lexica_bins(lexica_list):
     bins = bins+gricean_bins
     return bins
 
+lex = get_lexica(3,3,False)
+bins = get_lexica_bins(lex)
+
 def get_prior(lexica_list):
     concepts = [[0,0,1],[0,1,0],[0,1,1],\
                     [1,0,0],[1,0,1],[1,1,0]]
