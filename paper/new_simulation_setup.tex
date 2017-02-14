@@ -331,97 +331,95 @@ Finally, we can see how the above affects actual applications of only replicatio
 
 \section*{Details for an even larger type space}
 
-Allowing for all possible concept permutations gives us $216$ lexica and accordingly $432$ types. Binning equivalent lexica of identical signaling behavior gives us $112$ type-bins. There are $6$ concept orderings that are equivalent to our Gricean target type; $t_{231}$, $t_{236}$, $t_{291}$, $t_{306}$, $t_{326}$ and $t_{336}$. When binned, I will refer to this class of types as $b_{68}$.
+Allowing for all possible concept permutations gives us $216$ lexica ($432$ types). There are $6$ concept orderings that are equivalent to our previous Gricean target type; $t_{231}$, $t_{236}$, $t_{291}$, $t_{306}$, $t_{326}$ and $t_{336}$. Binning equivalent lexica of identical signaling behavior gives us $112$ type-bins. When binned, I will refer to the bin of our targets as $b_{68}$.
 
 Following the setup above and the complexity values in Table \ref{tab:concepts}, the priors of our now $432$ types are shown here:
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=.35]{../code-LOT-extension/plots/priors-meFalse432.png} %width = 0.75\linewidth
+  \includegraphics[scale=.45]{../code-LOT-extension/plots/priors-meFalse432.png} %width = 0.75\linewidth
   \caption{Prior over types (lexica). The red priors corresponds to our targets.}
-  \label{fig:priors}
 \end{figure}
 
-Note however that, when binned (summing values of types corresponding to each bin), our target bin is again the most probable. The main reason being that there are comparably many types in this bin (some have only one type).
+Note that when binned our target bin is the most probable. The main reason being that there are comparably many types in this bin and each of them has a comparably high prior probability.
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=.35]{../code-LOT-extension/plots/priors-binned-meFalse432.png} %width = 0.75\linewidth
+  \includegraphics[scale=.45]{../code-LOT-extension/plots/priors-binned-meFalse432.png} %width = 0.75\linewidth
   \caption{Prior over bins. The red prior corresponds to our target bin.}
-  \label{fig:priors}
 \end{figure}
 
-
-Inspecting the entire utility or mutation matrix visually makes little sense. Let us instead first compare the {\bf mean} results of replication only, mutation only, and replication and mutation together. Both with the full space and with bins. As before, the graphs show the mean top $3$ types. This time, I refrained from adding our target if it wasn't in the top three. Full space first:
-
+\newpage
+Inspecting the full utility or mutation matrix visually makes little sense. Let us instead first compare the {\bf mean} results of (i) replication only, (ii) mutation only, and (iii) replication and mutation together (over $1000$ independent populations). As before, the graphs show the mean top $3$ types. This time, I refrained from adding our target if it wasn't in the top three (as we have many to chose from). Here are some results without binning:
 
 %
 \begin{figure}[h!]
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[scale=0.25]{../code-LOT-extension/plots/rmd-l30-a1-k5-l1-meFalse432.png}
+    \includegraphics[scale=0.4]{../code-LOT-extension/plots/rmd-l30-a1-k5-l1-meFalse432.png}
   \end{subfigure}
   ~
    \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[scale=0.25]{../code-LOT-extension/plots/rmd-l30-a1-k5-l10-meFalse432.png}
+    \includegraphics[scale=0.4]{../code-LOT-extension/plots/rmd-l30-a1-k5-l10-meFalse432.png}
   \end{subfigure}
   \caption{Mean proportion of top $3$ under replication only (green plot), mutation only (blue plot), and replication {\em and} mutation (red plot) after $50$ generations with $\alpha = 1, \lambda = 30, k = 5$, $200$ samples per parent type and $l = 1$ (left figure) and $l = 10$ (right figure).}
   \label{fig:outcomes}
 \end{figure}
 %
 
-What these results suggest (if you squint) is that: (i) as before, replication alone does not help our targets much, (ii) mutation helps, particularly when $l$ is high, and (iii) replication and mutation only seems to do slightly better than mutation alone. Note also that the proportion of the incumbent types is pretty low for these parameter values. My first thought was that we may not see the effects very clearly because we are looking only at the top $3$ but actually have $6$ targets. Therefore, I looked at the binned state space (recall $b_{68}$ is our target):
+This seems to suggest that: (i) as before, replication alone does not help our targets much, (ii) mutation helps, particularly when $l$ is high, and (iii) replication and mutation only seems to do slightly better than mutation alone. Note also that the proportion of the incumbent types is low for these parameters compared to what we got in smaller spaces. My first thought was that we may not see the effects very clearly because we are looking only at the top $3$, but actually have $6$ targets. Therefore, I looked at the binned state space (recall $b_{68}$ is our target):
 
 
 \begin{figure}[h!]
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[scale=0.25]{../code-LOT-extension/plots/rmd-l30-a1-k5-l1-meFalse432_binned.png}
+    \includegraphics[scale=0.4]{../code-LOT-extension/plots/rmd-l30-a1-k5-l1-meFalse432_binned.png}
   \end{subfigure}
   ~
    \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[scale=0.25]{../code-LOT-extension/plots/rmd-l30-a1-k5-l10-meFalse432_binned.png}
+    \includegraphics[scale=0.4]{../code-LOT-extension/plots/rmd-l30-a1-k5-l10-meFalse432_binned.png}
   \end{subfigure}
   \caption{Mean proportion of top $3$ under replication only (green plot), mutation only (blue plot), and replication {\em and} mutation (red plot) after $50$ generations with $\alpha = 1, \lambda = 30, k = 5$, $200$ samples per parent type and $l = 1$ (left figure) and $l = 10$ (right figure).}
 \end{figure}
 
-This pattern is very similar to the one before. We get higher incumbeny proportions but replication seems to add little to what mutation alone already achieves. However, we are looking at the mean across $1000$ simulations -- binned or not -- instead of individual population trajectories. This seems to make all the difference. I haven't had a good idea how to visually show this for all simulations and all types, but it's already instructive to look at a subset of just the first $30$ independent simulations and only our targets.
+This pattern is very similar to the one before. We get more monomorphic populations but replication seems to add little to what mutation alone already achieves. Now for the punch line. So far, we have looked at the mean across $1000$ simulations -- binned or not -- instead of individual population trajectories. This seems to make all the difference. I don't know yet how to best visualize this, so let us focus at a subset of just the first $30$ independent populations and only our targets.
 
-Here's the trajectory of $30$ populations under only replication:
+Here's the development of $30$ populations under only replication (y-axis gives the population \#):
 
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[scale=.45]{../code-LOT-extension/plots/r-lam30-a1-k15-s200-l10-meFalse432-nomean.png} %width = 0.75\linewidth
+  \includegraphics[scale=.4]{../code-LOT-extension/plots/r-lam30-a1-k15-s200-l10-meFalse432-nomean.png} %width = 0.75\linewidth
   \caption{Proportions of target types in $30$ independent populations under replication after $50$ generations ($\lambda = 20, \alpha = 1)$.}
 \end{figure}
 
-The only thing to note here seems to be that replication does not favor any particular target and, in each population, rules out all but one of them. Contrast this with mutation:
+The main thing to note here is that replication does not favor any particular target type, and, more importantly, replication rules out all targets but one in each individual population. Contrast this with mutation:
+
+\newpage
 
 \begin{figure}[h!]
   \centering
-    \includegraphics[scale=.8]{../code-LOT-extension/plots/m-lam30-a1-k15-s200-l10-meFalse432-nomean.png}
+    \includegraphics[scale=.65]{../code-LOT-extension/plots/m-lam30-a1-k15-s200-l10-meFalse432-nomean.png}
   \caption{Mean proportion of target types in $30$ independent populations under mutation after $50$ generations with $\alpha = 1, \lambda = 30, k = 15$, $200$ samples per parent type and $l = 10$.}
 \end{figure}
 
-This is pretty messy, but the take-home message is that mutation alone leads to cohabitation of our targets. A similar pattern seems to obtain for other values of $l$ and $k$. Finally, we can look at replication and mutation:
-
-
+So it seems that mutation alone leads to cohabitation of our targets. This also explains why the mean results for mutation only were so high compared to replication only. Similar patterns seems to obtain for other values of $l$ and $k$. Finally, we can look at replication and mutation:
+\newpage
 \begin{figure}[h!]
   \centering
-    \includegraphics[scale=0.8]{../code-LOT-extension/plots/rm-lam30-a1-k15-s200-l10-meFalse432-nomean.png}
+    \includegraphics[scale=0.65]{../code-LOT-extension/plots/rm-lam30-a1-k15-s200-l10-meFalse432-nomean.png}
   \caption{Mean proportion of target types in $30$ independent populations under mutation after $50$ generations with $\alpha = 1, \lambda = 30, k = 15$, $200$ samples per parent type and $l = 10$.}
 \end{figure}
 
-And what we see is that, indeed, in each population only one of our types is an incumbent under replication {\em and} mutation under good learning conditions. We still see a similar trend for lower $l$ and $k$, but a bit more noisy, as expected. For example, with $l = 1$ and $k = 5$:
+And what we see is that in each population only one of our types is an incumbent under replication {\em and} mutation under good learning conditions. We still see a similar trend for lower $l$ and $k$ with more ``target cohabitation'' because transmission is noisier.  For example, with $l = 1$ and $k = 5$:
 
 
 \begin{figure}[h!]
   \centering
-    \includegraphics[scale=0.4]{../code-LOT-extension/plots/rm-lam30-a1-k5-s200-l1-meFalse432-nomean.png}
+    \includegraphics[scale=0.35]{../code-LOT-extension/plots/rm-lam30-a1-k5-s200-l1-meFalse432-nomean.png}
   \caption{Mean proportion of target types in $30$ independent populations under mutation after $50$ generations with $\alpha = 1, \lambda = 30, k = 5$, $200$ samples per parent type and $l = 1$.}
 \end{figure}
 
-
+\newpage
 \bibliographystyle{plainnat}
 \bibliography{./bounds-rmd}
 \end{document}

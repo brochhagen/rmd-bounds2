@@ -134,12 +134,12 @@ def get_bins_and_mean(group1,group2,group3,m_excl):
         idx_bin_rm.append(index)
     
     
-    X = np.arange(21)
-    empty = [0 for _ in xrange(3)]
+    X = np.arange(11)
+    empty = [0 for _ in xrange(1)]
     
-    Y_r = empty + r_mean_top + empty * 5
-    Y_m = empty * 3 + m_mean_top + empty * 3
-    Y_rm = empty * 5 + rm_mean_top + empty
+    Y_r = r_mean_top + empty * 8
+    Y_m = empty * 4 + m_mean_top + empty * 4
+    Y_rm = empty * 8 + rm_mean_top
     
     
     fig, ax = plt.subplots()
@@ -151,16 +151,18 @@ def get_bins_and_mean(group1,group2,group3,m_excl):
     m_labels = ['t'+str(x) for x in idx_mean_m]
     rm_labels = ['t'+str(x) for x in idx_mean_rm]
     
-    ax.set_xticks(xrange(21))
-    ax.set_xticklabels(['', '', '', r_labels[0], r_labels[1],r_labels[2], '', '', '', m_labels[0], m_labels[1],m_labels[2], '', '', '',\
-                        rm_labels[0], rm_labels[1],rm_labels[2], '', '', ''])
+    ax.set_xticks(xrange(11))
+    ax.set_xticklabels([r_labels[0], r_labels[1],r_labels[2], '', m_labels[0], m_labels[1],m_labels[2], '', \
+                        rm_labels[0], rm_labels[1],rm_labels[2]])
     
+
+
     plt.show()
 
     ### Bins ###
-    Y_r = empty + r_bin_top+ empty * 5
-    Y_m = empty * 3 + m_bin_top + empty * 3
-    Y_rm = empty * 5 + rm_bin_top + empty
+    Y_r = r_bin_top + empty * 8
+    Y_m = empty * 4 + m_bin_top + empty * 4
+    Y_rm = empty * 8 + rm_bin_top
     
     
     fig, ax = plt.subplots()
@@ -172,16 +174,16 @@ def get_bins_and_mean(group1,group2,group3,m_excl):
     m_labels = ['b'+str(x) for x in idx_bin_m]
     rm_labels = ['b'+str(x) for x in idx_bin_rm]
     
-    ax.set_xticks(xrange(21))
-    ax.set_xticklabels(['', '', '', r_labels[0], r_labels[1],r_labels[2], '', '', '', m_labels[0], m_labels[1],m_labels[2], '', '', '',\
-                        rm_labels[0], rm_labels[1],rm_labels[2], '', '', ''])
+    ax.set_xticks(xrange(11))
+    ax.set_xticklabels([r_labels[0], r_labels[1],r_labels[2], '', m_labels[0], m_labels[1],m_labels[2], '',\
+                        rm_labels[0], rm_labels[1],rm_labels[2]])
     
     plt.show()
 
 #m_excl = False
 #group1,group2,group3 = [30,1,5,200,1,50,1000], [30,1,5,200,1,50,1000],[30,1,5,200,1,50,1000]
 #get_bins_and_mean(group1,group2,group3,m_excl)
-
+#
 #group1,group2,group3 = [30,1,5,200,10,50,1000], [30,1,5,200,10,50,1000],[30,1,5,200,10,50,1000]
 #get_bins_and_mean(group1,group2,group3,m_excl)
 #
@@ -190,6 +192,7 @@ def get_bins_and_mean(group1,group2,group3,m_excl):
 #
 #group1,group2,group3 = [30,1,15,200,10,50,1000], [30,1,15,200,10,50,1000],[30,1,15,200,10,50,1000]
 #get_bins_and_mean(group1,group2,group3,m_excl)
+#
 
 def targets_across_sims(group1,group2,group3,m_excl):
     print 'Loading data'
@@ -228,54 +231,12 @@ m_excl = False
 #group1,group2,group3 = [30,1,15,200,10,50,1000], [30,1,15,200,10,50,1000],[30,1,15,200,10,50,1000]
 #targets_across_sims(group1,group2,group3,m_excl)
 
-group1,group2,group3 = [30,1,5,200,1,50,1000], [30,1,5,200,1,50,1000],[30,1,5,200,1,50,1000]
-targets_across_sims(group1,group2,group3,m_excl)
+#group1,group2,group3 = [30,1,5,200,1,50,1000], [30,1,5,200,1,50,1000],[30,1,5,200,1,50,1000]
+#targets_across_sims(group1,group2,group3,m_excl)
 
-#r_mean_sorted = sorted(mean_r,reverse=True)
-#r_bin_sorted = sorted(binned_r,reverse=True)
-#r_mean_top = r_mean_sorted[:3]
-#r_bin_top = r_bin_sorted[:3]
-#
-#m_mean_sorted = sorted(mean_m,reverse=True)
-#m_bin_sorted = sorted(binned_m,reverse=True)
-#m_mean_top = m_mean_sorted[:3]
-#m_bin_top = m_bin_sorted[:3]
-#
-#rm_mean_sorted = sorted(mean_rm,reverse=True)
-#rm_bin_sorted = sorted(binned_rm,reverse=True)
-#rm_mean_top = rm_mean_sorted[:3]
-#rm_bin_top = rm_bin_sorted[:3]
-#
-#
-#idx_mean_r,idx_mean_m,idx_mean_rm = [], [], []
-#idx_bin_r,idx_bin_m,idx_bin_rm = [], [], []
-#
-#
-#for i in r_mean_top:
-#    index = mean_r.index(i)
-#    idx_mean_r.append(index)
-#
-#for i in r_bin_top:
-#    index = binned_r.index(i)
-#    idx_bin_r.append(index)
-#
-#for i in m_mean_top:
-#    index = mean_m.index(i)
-#    idx_mean_m.append(index)
-#
-#for i in m_bin_top:
-#    index = binned_m.index(i)
-#    idx_bin_m.append(index)
-#
-#for i in rm_mean_top:
-#    index = mean_rm.index(i)
-#    idx_mean_rm.append(index)
-#
-#for i in rm_bin_top:
-#    index = binned_rm.index(i)
-#    idx_bin_rm.append(index)
-#
-#
+#group1,group2,group3 = [30,1,20,200,1,50,1000], [30,1,20,200,5,50,1000],[30,1,20,200,5,50,1000]
+#targets_across_sims(group1,group2,group3,m_excl)
+
 
 
 
