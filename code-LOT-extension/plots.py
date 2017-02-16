@@ -180,6 +180,7 @@ def get_bins_and_mean(group1,group2,group3,m_excl):
     
     plt.show()
 
+
 #m_excl = False
 #group1,group2,group3 = [30,1,5,200,1,50,1000], [30,1,5,200,1,50,1000],[30,1,5,200,1,50,1000]
 #get_bins_and_mean(group1,group2,group3,m_excl)
@@ -236,6 +237,113 @@ m_excl = False
 
 #group1,group2,group3 = [30,1,20,200,1,50,1000], [30,1,20,200,5,50,1000],[30,1,20,200,5,50,1000]
 #targets_across_sims(group1,group2,group3,m_excl)
+
+
+
+
+#################################
+def get_independent_runs_heatmap(lam,a,k,sam,l,g,m_excl):
+    print 'Loading data'
+    df = pd.read_csv('./results/rmd-s3-m3-lam%d-a%d-k%d-samples%d-l%d-g%d-me%s.csv' % (lam,a,k,sam,l,g,m_excl))
+    df = df.ix[:,'t_final0':]
+    targets = [231,236,291,306,326,336]
+    
+    for i in targets:
+        targetcol = df['t_final'+str(i)]
+        df.drop(labels=['t_final'+str(i)], axis=1,inplace=True)
+        df.insert(0,'t_final'+str(i), targetcol)
+    
+    df = df.iloc[:25]
+    
+    axlabels=["" for _ in xrange(df.shape[1])]
+    axlabels[len(axlabels)/2] = 'types'
+    ax = sns.heatmap(df, xticklabels=axlabels)#, annot=True) 
+    ax.invert_yaxis()
+    plt.show()
+##################################
+lam,a,k,sam,l,g = 30,1,15,200,10,50
+
+#def get_independent_runs_heatmap(lam,a,k,sam,l,g,m_excl):
+print 'Loading data'
+df = pd.read_csv('./results/rmd-s3-m3-lam%d-a%d-k%d-samples%d-l%d-g%d-me%s.csv' % (lam,a,k,sam,l,g,m_excl))
+df = df.ix[:,'t_final0':]
+#sort by mean
+df_sorted = df.reindex_axis(df.mean().sort_values(ascending=False).index, axis=1)
+#slide subset of data
+df = df_sorted.iloc[:50,:25] #50 independent simulations, top 25
+
+targets = [231,236,291,306,326,336]
+targets = [df.columns.get_loc("t_final"+str(x)) for x in targets]
+
+nrows,ncols = df.shape
+
+# Make data for display
+mask = np.array(nrows * [ncols * [False]], dtype=bool)
+for t_idx in targets:
+    mask[:,t_idx] = True
+red = np.ma.masked_where(mask, df)#np.repeat(x, 2, axis=1))
+
+mask = np.array(nrows * [ncols * [True]], dtype=bool)
+for t_idx in targets:
+    mask[:,t_idx] = False
+blue = np.ma.masked_where(mask, df)
+
+fig, ax = plt.subplots()
+redmesh = ax.pcolormesh(red, cmap='BuGn')
+bluemesh = ax.pcolormesh(blue, cmap='Oranges')
+
+# Make things a touch fancier
+
+#       yticks=np.arange(nrows) + 0.5,
+#       xticklabels=['Column ' + letter for letter in 'ABCDE'],
+#       yticklabels=['Row {}'.format(i+1) for i in range(nrows)])
+#
+
+plt.tick_params(axis='x',    which='both', bottom='off', top='off',labelbottom='off') 
+
+fig.subplots_adjust(bottom=0.05, right=0.78, top=0.88)
+cbar = fig.colorbar(bluemesh, cax=fig.add_axes([0.81, 0.05, 0.04, 0.83]))#, extend='max', extendfrac=[0,0], extendrect=True)
+cbar.ax.text(0.55, 0.1, 'Targets', rotation=90, ha='center', va='center',
+             transform=cbar.ax.transAxes, color='gray')
+cbar = fig.colorbar(redmesh, cax=fig.add_axes([0.9, 0.05, 0.04, 0.83]))#, extend='max', extendfrac=[0,5],extendrect=True,spacing='uniform')
+cbar.ax.text(0.55, 0.1, 'Other types', rotation=90, ha='center', va='center',
+             transform=cbar.ax.transAxes, color='gray')
+
+# Make the grouping clearer
+#ax.set_xticks(np.arange(0, 2 * ncols, 2), minor=True)
+#ax.grid(axis='x', ls='-', color='gray', which='minor')
+#ax.grid(axis='y', ls=':', color='gray')
+
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#for i in targets:
+#    targetcol = df['t_final'+str(i)]
+#    df.drop(labels=['t_final'+str(i)], axis=1,inplace=True)
+#    df.insert(0,'t_final'+str(i), targetcol)
+
+
+axlabels=["" for _ in xrange(df.shape[1])]
+axlabels[len(axlabels)/2] = 'types'
+#ax = sns.heatmap(df, xticklabels=axlabels)#, annot=True) 
+#ax.invert_yaxis()
+#plt.show()
+
+
 
 
 
