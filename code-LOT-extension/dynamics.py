@@ -3,9 +3,9 @@ from rmd import run_dynamics
 
 ##### Parameters & setup #####
 a = [1] # rate to control difference between semantic and pragmatic violations
-lamb = [10,30] # soft-max parameter
-seq_length = [5,10,15,20]  # length of observation sequences
-samples = [200] #amount of k-length samples for each production type
+lamb = [1,5,20,30] # soft-max parameter
+seq_length = [1,5,10,15]  # length of observation sequences
+samples = [250] #amount of k-length samples for each production type
 l = [1,5,10,15] #prob-matching = 1, increments approach MAP
 
 g = [50] #number of generations per simulation run
