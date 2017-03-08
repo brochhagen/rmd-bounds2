@@ -1,5 +1,5 @@
 \newcommand{\SortNoop}[1]{}
-\begin{thebibliography}{87}
+\begin{thebibliography}{86}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -99,6 +99,13 @@ Gennaro Chierchia, Danny Fox, and Benjamin Spector.
   Paul Portner, editors, \emph{Semantics. {A}n International Handbook of
   Natural Language Meaning}, pages 2297--2332. de Gruyter, Berlin, 2012.
 
+\bibitem[Clark(2009)]{Clark2009:Lexical-Meaning}
+Eve~V. Clark.
+\newblock Lexical meaning.
+\newblock In Edith~L. Bavin, editor, \emph{Child Language}, pages 283--300.
+  Cambridge University Press, New York, 2009.
+\newblock \doi{10.1017/CBO9780511576164.016}.
+
 \bibitem[Degen and Tanenhaus(2015)]{DegenTanenhaus2012:Processing-Scal}
 Judith Degen and Michael~K. Tanenhaus.
 \newblock Processing scalar implicatures: {A} constraint-based approach.
@@ -133,11 +140,6 @@ Michael Franke.
 \newblock \emph{Journal of Logic, Language and Information}, 25\penalty0
   (3--4):\penalty0 355--377, 2016.
 \newblock \doi{10.1007/s10849-015-9232-5}.
-
-\bibitem[Franke and Correia(to appear)]{franke+correia:toappear}
-Michael Franke and Jose~Pedro Correia.
-\newblock Vagueness and imprecise imitation in signalling games.
-\newblock \emph{British Journal for the Philosophy of Science}, to appear.
 
 \bibitem[Franke and Degen(2016)]{franke+degen:2016}
 Michael Franke and Judith Degen.
@@ -393,12 +395,6 @@ Martin~A. Nowak, Natalia~L. Komarova, and Partha Niyogi.
 \newblock Computational and evolutionary aspects of language.
 \newblock \emph{Nature}, 417\penalty0 (6889):\penalty0 611--617, 2002.
 \newblock \doi{10.1038/nature00771}.
-
-\bibitem[O'Connor(2015)]{oconnor:2015}
-Cailin O'Connor.
-\newblock Evolving to generalize: Trading precision for speed.
-\newblock \emph{The British Journal for the Philosophy of Science}, 2015.
-\newblock \doi{10.1093/bjps/axv038}.
 
 \bibitem[Pagel(2009)]{Pagel2009:Human-Language-}
 Mark Pagel.
