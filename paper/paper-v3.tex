@@ -52,6 +52,7 @@
 \newcommand{\msome}{\mymessg{some}}
 \newcommand{\mall}{\mymessg{all}}
 \newcommand{\mnone}{\mymessg{none}}
+\newcommand{\Lall}{\mylang{all}}
 \newcommand{\Lbound}{\mylang{bound}}
 \newcommand{\Llack}{\mylang{lack}}
 \newcommand{\asome}{\myact{\ensuremath{\exists\neg\forall}}}
@@ -495,11 +496,11 @@ Instead, the systematicity and typological spread of scalar implicatures togethe
 \subsection{Analysis}
 We analyze the model's predictions in populations of types with one of the two signaling behaviors introduced earlier; literal or pragmatic. The former correspond to level $0$ reasoners and the latter to ones of level $1$. Higher level reasoning is not required to derive scalar implicatures from the lexica we consider here, nor do they leave room for substantial pragmatic refinement.
 
-\paragraph{Lexica and transmission bias.} We consider a state space with three states $\States = \set{\snone, \ssome, \sall}$. This space can be
+\paragraph{Lexica, types, and transmission bias.} We consider a state space with three states $\States = \set{\snone, \ssome, \sall}$. This space can be
 thought of as a partition of possible worlds into cells where none, some or all of the $A$s are
 $B$s, for some arbitrary fixed predicates $A$ and $B$. Eight concepts can be distinguished
 based on their truth or falsity in three world states, six of which are not contradictory
-(always false) or tautologous (always true). These are listed with mnemonic names in
+ or tautologous. These are listed with mnemonic names in
 Table~\ref{tab:concepts}. 
 
 \begin{table}
@@ -547,7 +548,7 @@ Table~\ref{tab:concepts}.
     & 0
     & 1
     & $\neg(A \cap B \neq \emptyset \wedge A \neq \emptyset)$
-    & \tb{$10$}
+    & $10$
     \\
     ``not all''
     & 1
@@ -564,15 +565,50 @@ Table~\ref{tab:concepts}.
 \end{table}
 
 A lexicon $L$ is a mapping $\Messgs \rightarrow C$ from messages to concepts. With three
-messages there are $6^3 = 216$ possible lexica. \tb{Many of these assign the same concept to
+messages there are $6^3 = 216$ possible lexica. Of these, three kinds of lexica are of particular relevance for our purpose. First, lexica that assign the same concept to more than message. Such lexica lack in expressivity under either signaling behavior but may be easier to acquire than others. Second, lexica that conventionalized upper-bounds to realize a (quasi-)partition of the relevant semantic space. As discussed in relation to $\Lbound$, users of these lexica need not resort to pragmatic reasoning to convey an upper-bound with weak scalar expressions. Instead, this information is already given by the semantics of their lexicon, giving them a functional advantage over others. Third and lastly, $\Llack$-style lexica that, paired with mutual reasoning, can be used to convey an upper-bound pragmatically. Overall, there are \hl{{\bf N}} lexica of the second kind and $12$ of the third. The following three lexica exemplify each kind, with $\Lall$ being a communicatively suboptimal lexicon that conventionalizes the meaning of ``all''  with each message (cf. Table \ref{tab:concepts}). 
+\begin{align*}
+  \begin{blockarray}{lccc}
+    & & \underline{\Lall} & \\
+    & \mygray{\mnone} & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[ccc]}
+     \mygray{\snone}  & 0 & 0 & 0\\
+     \mygray{\ssome}  & 0 & 0 & 0\\
+    \mygray{\sall}   & 1 & 1 & 1\\
+    \end{block}
+  \end{blockarray} & &
+ \begin{blockarray}{lccc}
+    & & \underline{\Lbound} & \\
+    & \mygray{\mnone} & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[ccc]}
+       & 1 & 0 & 0\\
+       & 0 & 1 & 0\\
+       & 0 & 0 & 1\\
+    \end{block}
+  \end{blockarray} & &
+  \begin{blockarray}{lccc}
+    & & \underline{\Llack} & \\
+    & \mygray{\mnone} & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[ccc]}
+       & 1 & 0 & 0\\
+       & 0 & 1 & 0\\
+       & 0 & 1 & 1\\
+    \end{block}
+  \end{blockarray}
+\end{align*}
+
+Recall that types are a combination of a lexicon and a manner of language use: literal or pragmatic. Accordingly, there are $432$ types in this model. \hl{Here. Add footnote on redundancy and results holding for smaller spaces with $40$ types or the original $12$ from Br}
+
+
+In our setup, pragmatic $\Llack$-style speakers have a functional disadvantage over $\Lbound$-style ones as 
+
+
+\tb{Many of these assign the same concept to
 more than one message. For simplicity, we restrict attention to only those lexica which avoid
 expressive redundancy. Hardcoding such an \emph{mutual exclusivity bias}
 \citep[e.g.][]{Clark2009:Lexical-Meaning}, there are 20 non-redundant lexica. Functional
 pressure towards efficient communication will evidently favor non-redundant lexica, so this
 restriction is fairly innocuous but practical.}
 
-As before, the type of a player is a combination of a lexicon and a manner of pragmatic
-language use: literal or pragmatic. With this, there are $432$ types in this model.
 
 \begin{table}
   \centering
@@ -621,27 +657,16 @@ conditions. A simple way of defining priors over a lexicon is:
 \end{align*}
 where $Compl(c)$ is the complexity of each concepts. 
 
-The space of possible lexica is given in Table \ref{tab:lexica}. These $(2,2)$-Boolean matrices are the simplest ones that allow us to make the contrast between the presence or absence of an upper-bound and the use of scalar implicatures precise. As illustrated in Section \ref{sec:languages+use}, one may think of the state corresponding to the first row of any such lexicon as a ``some but not all''-state, $\ssome$, and the second as an ``all''-state, $\sall$. The literal meaning of weak scalar expressions such as English {\em some} then corresponds to a message true of both rows in these fragments. While there are $16$ possible $(2,2)$-lexica, a number of them are identical both in terms of expressivity and on whether they codify upper-bounds lexically. The competition between such types is therefore determined by the initial configuration of a population. This fact can be obscured when averaging across outcomes. We therefore focus on this smaller representative subset. Simulations conducted with the full space confirm that the general results reported here do not hinge on this choice.
+The space of possible lexica is given in Table . These $(2,2)$-Boolean matrices are the simplest ones that allow us to make the contrast between the presence or absence of an upper-bound and the use of scalar implicatures precise. As illustrated in Section \ref{sec:languages+use}, one may think of the state corresponding to the first row of any such lexicon as a ``some but not all''-state, $\ssome$, and the second as an ``all''-state, $\sall$. The literal meaning of weak scalar expressions such as English {\em some} then corresponds to a message true of both rows in these fragments. 
 
 Lexica $L_1$ to $L_3$ are not optimal for communication because they assign all their messages to the same state(s). This failure to be able to associate a state to single a form inevitably leads to a communicative disadvantage in their use. $L_4$ and $L_5$ are our target lexica. The former assings upper-bounded semantics to \msome (the first matrix's column) whereas the latter does not. Lastly, $L_6$ is similar to $L_5$ in that one message is true of the same state but differs from it in assigning upper-bounded semantics to \msome. 
 
-\begin{table}[t]
-\centering 
-\begin{tabular}{l c l}
-$L_1$ = $\begin{pmatrix} 0 & 0 \\ 1 & 1 \end{pmatrix}$ & 
-$L_2$ = $\begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$ & 
-$L_3$ = $\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}$\\[0.5cm]
-
-$L_4$ = $\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ &
-$L_5$ = $\begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix}$ &
-$L_6$ = $\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$
-\end{tabular}
-\caption{Space of possible lexica.}
-\label{tab:lexica}
-\end{table}
 
 
-\hl{Instead of this: Give an example of one of our target lexica, one of our competing (functional) lexica and one that is functionally deficient} Combining a linguistic behavior with each of these $6$ lexica yields a total of $12$ distinct types. Note in particular  that a type that has conventionalized upper-bounds to realize a (quasi-)partition of the relevant semantic space, such as $L_4$, will produce speaker behavior that is {\em almost} indistinguishable from that of a language that lacks upper-bounds, but with pragmatic users, such as $L_5$. Almost, because there may be slight differences between the probability with which speakers would (erroneously) use a semantically false description and the probability with which speakers would (erroneously) use a pragmatically suboptimal description. Due to this possibly marginal difference between pragmatic $L_4$ and $L_5$, the selection of one type over the other is expected to mainly depend on how well each can be transmitted to new learners. Things are less clear for literal $L_5$ contrasted with literal/pragmatic $L_4$. The former has a learning advantage when learners are biased against upper-bounds but is expected to fare worse in communicative terms.
+
+
+
+\hl{Instead of this: Give an example of one of our target lexica, one of our competing (functional) lexica and one that is functionally deficient} Combining a linguistic behavior with each of these $6$ lexica yields a total of $12$ distinct types. , such as $L_4$, will produce speaker behavior that is {\em almost} indistinguishable from that of a language that lacks upper-bounds, but with pragmatic users, such as $L_5$. Almost, because there may be slight differences between the probability with which speakers would (erroneously) use a semantically false description and the probability with which speakers would (erroneously) use a pragmatically suboptimal description. Due to this possibly marginal difference between pragmatic $L_4$ and $L_5$, the selection of one type over the other is expected to mainly depend on how well each can be transmitted to new learners. Things are less clear for literal $L_5$ contrasted with literal/pragmatic $L_4$. The former has a learning advantage when learners are biased against upper-bounds but is expected to fare worse in communicative terms.
 
 
 The dynamic is initialized with an arbitrary distribution over types, constituting the population's first generation. The results for each parameter setting were obtained from $1000$ independent runs, each consisting of $20$ generations. This corresponds to a developmental plateau after which no noteworthy change was registered. As specified in \S\ref{sec:learnability}, the mutation matrix $Q$ can be obtained by considering all possible state-message sequences of length $k$. Given that this is intractable for large $k$, matrices were approximated by sampling $10$ sequences from each type's production probabilities and a type's children being exposed only to this subset. 
