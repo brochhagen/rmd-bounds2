@@ -1,5 +1,5 @@
 \newcommand{\SortNoop}[1]{}
-\begin{thebibliography}{86}
+\begin{thebibliography}{88}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -177,6 +177,14 @@ Tao Gong.
 \newblock \emph{Language Evolution from a Simulation Perspective: {O}n the
   Coevolution of Compositionality and Regularity}.
 \newblock Chinese University of Hong Kong, 2007.
+
+\bibitem[Goodman et~al.(2008)Goodman, Tenenbaum, Feldman, and
+  Griffiths]{goodman+etal:2008}
+Noah Goodman, Joshua Tenenbaum, Jacob Feldman, and Thomas Griffiths.
+\newblock A rational analysis of rule-based concept learning.
+\newblock \emph{Cognitive Science: A Multidisciplinary Journal}, 32\penalty0
+  (1):\penalty0 108--154, 2008.
+\newblock \doi{10.1080/03640210701802071}.
 
 \bibitem[Goodman and Frank(2016)]{GoodmanFrank2016:Pragmatic-Langu}
 Noah~D. Goodman and Michael~C. Frank.
@@ -409,6 +417,13 @@ Steven~T Piantadosi.
 \newblock \emph{Psychonomic bulletin \& review}, 21\penalty0 (5):\penalty0
   1112--1130, 2014.
 \newblock \doi{10.3758/s13423-014-0585-6}.
+
+\bibitem[Piantadosi and Jacobs(2016)]{piantadosi+jacobs:2016}
+Steven~T. Piantadosi and Robert~A. Jacobs.
+\newblock Four problems solved by the probabilistic language of thought.
+\newblock \emph{Current Directions in Psychological Science}, 25\penalty0
+  (1):\penalty0 54--59, 2016.
+\newblock \doi{10.1177/0963721415609581}.
 
 \bibitem[Piantadosi et~al.(2012{\natexlab{a}})Piantadosi, Tenenbaum, and
   Goodman]{piantadosi+etal:2012a}

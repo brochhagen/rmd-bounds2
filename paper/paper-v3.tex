@@ -428,7 +428,7 @@ strategies such as the adoption of the type with the highest posterior probabili
 {\it maximum a posterior estimation} (MAP), increase the influence of both the prior and the
 data \citep{griffiths+kalish:2007,kirby+etal:2007}. In the following, we use a parameter
 $l\ge1$ to modulate between posterior sampling and the MAP strategy. When $l = 1$ learners
-sample from the posterior. The learners propensity to maximize the posterior grows as $l$
+sample from the posterior. The learners' propensity to maximize the posterior grows as $l$
 increases.
 
 Let $D$ be the set of possible data that learners may be exposed to. This set $D$ contains all
@@ -492,16 +492,54 @@ We see two main explanations for the lack of upper-bounds in the lexical meaning
 Instead, the systematicity and typological spread of scalar implicatures together with the observation that monomorphemic expressions that lexically rule out stronger alternatives are unattested across languages (\citealt[252-267]{horn:1984}, \citealt{horn:1972,traugott:2004,vdAuwera:2010}) suggests that other forces may be at play. In what follows we investigate the predictions of our model under the assumption that the lack of lexicalization of scalar inferences may be accounted for by the relative representational simplicity of lexical meanings lacking an upper-bound over those that explicitly codify it. This difference is reflected in a learning bias towards more compressed lexical representations. That is, in a preference of learners for simpler over more complex explanations of the data they witness \citep{feldman:2000, chater+vitanyi:2003, piantadosi+etal:2012a, kirby+etal:2015,piantadosi+etal:underreview}. While we do not want to argue that functional aspects as the ones discussed above do not play a role, we do see a clear benefit in exploring whether matters of transmission biases would not give us additional explanatory leverage.
 
 
-
 \subsection{Analysis}
-We analyze the model's predictions in populations of types with one of the two signaling behaviors introduced earlier; literal or pragmatic. The former correspond to level $0$ reasoners and the latter to ones of level $1$. Higher level reasoning is not required to derive scalar implicatures from the lexica we consider here, nor do they leave room for substantial pragmatic refinement.
+The dynamics are initialized with an arbitrary distribution over types, constituting a population's first generation. We report the outcome of their development under different parameters and pressures after $50$ generations. This ensures that these outcomes correspond to developmental plateaus after which no noteworthy change is registered. As specified in \S\ref{sec:learnability}, the mutation matrix $Q$ can be obtained by considering all possible state-message sequences of length $k$. Given that this is intractable for large $k$, they were approximated by sampling $250$ sequences from each type's production probabilities. 
 
-\paragraph{Lexica, types, and transmission bias.} We consider a state space with three states $\States = \set{\snone, \ssome, \sall}$. This space can be
+We begin setting the stage by defining the learning prior and the set of types under consideration. Drawing from our preceding discussion, functional pressure on successful communication combined with learning pressures in the form of a bias against upper-bounds may lead to the selection of $\Llack$-like semantics. However, it is instructive to first inspect the effect of these pressures in isolation. Accordingly, we first showcase the effects that expressivity and learnability have on their own before turning to those resulting from their combination. 
+
+
+\subsubsection{Inductive learning bias}
+There is a growing effort to develop empirically  testable  representational  languages that allow for the measure of semantic complexity. For instance, so-called {\em languages of thought} (LOT) have been put to test in various rational probabilistic models that show encouraging results (see, e.g., \citealt{katz+etal:2008, piantadosi+etal:underreview, piantadosi+etal:2012a} and \citealt{piantadosi+jacobs:2016} for recent discussion). At its core, a LOT defines a set of operations and composition rules from which lexical meaning can be derived. As a first approximation and for the sake of concreteness, we follow this approach to make the preference of learners for simpler semantic representations precise by defining the complexity of a concept as a function of its derivation cost in a weighed generative LOT.
+
+Our toy grammar of concepts is given in Table~\ref{tab:grammar}. This grammar uses basic set-theoretic operations to form expressions which can be evaluated as true or false in different world states (see below). Applications of generative  rules have a cost attached to them. (Alternatively, a probability.) Here we simply assume that Boolean combinations of concepts are more complex than ``atomic'' concepts and that otherwise each rule application adds the same cost unit.
+\begin{table}
+  \centering
+  \begin{align*}
+    C & \rightarrow_2 C \wedge C 
+    & 
+    X & \rightarrow_1 \set{A,B} \\
+    C & \rightarrow_2 \neg C 
+    & 
+    X & \rightarrow_1 X \cap X \\
+    C & \rightarrow_1 X \subseteq X
+    & 
+    X & \rightarrow_1 X \cup X \\
+    C & \rightarrow_1 X \neq \emptyset \\
+    C & \rightarrow_1 X = \emptyset     
+  \end{align*}
+  \caption{Toy grammar in a set-theoretic LOT with weighted rules.}
+  \label{tab:grammar}
+\end{table}
+
+
+The prior probability of a type is just the prior probability of its lexicon. The prior of a lexicon is a function of the complexity of the concepts in its image set. As motivated above, lexica that use simpler concepts are \emph{a priori} more likely. A simple way of defining such priors over lexica is:
+\begin{align*}
+  P(L)  & \propto \prod_{c \in Im(L)} P(c)   \ \text{, with} & 
+  P(c) & \propto \max_{c'}Compl(c') - Compl(c) + 1\,,
+\end{align*}
+
+where $Compl(c)$ is the complexity of each concept. There are other more sophisticated ways to define priors over lexica (see, e.g., \citealt{goodman+etal:2008, piantadosi+etal:2012a}) but the key assumption here, common to all of them, is that simple representational expressions should be favored and complex ones disfavored. Overall, we should stress that these details -- from generative grammar to complexity measure -- are stipulated and should therefore be regarded as an illustratory instantiation of our general assumptions instead of as strong empirical claims. %Additionally, this choice is intended to showcase how insights and representations from linguistics, cultural evolution, evolutionary game theory, and (probabilistic) language learning can fruitfully be combined.  
+
+
+
+
+\subsubsection{Lexica, signaling behavior \& types}
+We consider a state space with three states $\States = \set{\snone, \ssome, \sall}$. This space can be
 thought of as a partition of possible worlds into cells where none, some or all of the $A$s are
 $B$s, for some arbitrary fixed predicates $A$ and $B$. Eight concepts can be distinguished
 based on their truth or falsity in three world states, six of which are not contradictory
- or tautologous. These are listed with mnemonic names in
-Table~\ref{tab:concepts}. 
+ or tautological. These are listed with mnemonic names in
+Table~\ref{tab:concepts} together with their complexity according to the grammar given in \ref{tab:grammar} and $Compl(c)$. 
 
 \begin{table}
   \centering
@@ -565,7 +603,7 @@ Table~\ref{tab:concepts}.
 \end{table}
 
 A lexicon $L$ is a mapping $\Messgs \rightarrow C$ from messages to concepts. With three
-messages there are $6^3 = 216$ possible lexica. Of these, three kinds of lexica are of particular relevance for our purpose. First, lexica that assign the same concept to more than message. Such lexica lack in expressivity under either signaling behavior but may be easier to acquire than others. Second, lexica that conventionalized upper-bounds to realize a (quasi-)partition of the relevant semantic space. As discussed in relation to $\Lbound$, users of these lexica need not resort to pragmatic reasoning to convey an upper-bound with weak scalar expressions. Instead, this information is already given by the semantics of their lexicon, giving them a functional advantage over others. Third and lastly, $\Llack$-style lexica that, paired with mutual reasoning, can be used to convey an upper-bound pragmatically. Overall, there are \hl{{\bf N}} lexica of the second kind and $12$ of the third. The following three lexica exemplify each kind, with $\Lall$ being a communicatively suboptimal lexicon that conventionalizes the meaning of ``all''  with each message (cf. Table \ref{tab:concepts}). 
+messages there are $6^3 = 216$ possible lexica. Of these, three kinds of lexica are of particular relevance to our purpose. First, lexica that assign the same concept to more than message. Such lexica lack in expressivity under either signaling behavior but may be easier to acquire and be favored by the learning bias. Second, lexica that conventionalize upper-bounds to realize a (quasi-)partition of the relevant semantic space. As discussed above in relation with $\Lbound$, users of these lexica need not resort to pragmatic reasoning to convey an upper-bound with weak scalar expressions. Instead, this information is already given by the semantics of their lexicon, giving them an advantage in terms of expressivity. Third and lastly, $\Llack$-style lexica that, paired with mutual reasoning, can be used to convey an upper-bound pragmatically. Overall, there are \hl{{\bf N}} lexica of the second kind and $6$ of the third. The following three lexica exemplify each kind, with $\Lall$ being a lexicon that is not optimal for communication as it assigns all its messages to the same state $\sall$. This failure to be able to associate a state to single a form inevitably leads to a communicative disadvantage in its use.  
 \begin{align*}
   \begin{blockarray}{lccc}
     & & \underline{\Lall} & \\
@@ -575,6 +613,7 @@ messages there are $6^3 = 216$ possible lexica. Of these, three kinds of lexica 
      \mygray{\ssome}  & 0 & 0 & 0\\
     \mygray{\sall}   & 1 & 1 & 1\\
     \end{block}
+% \\ & & P(\Lall)\rlap{ $\propto 9$} & \\
   \end{blockarray} & &
  \begin{blockarray}{lccc}
     & & \underline{\Lbound} & \\
@@ -584,6 +623,7 @@ messages there are $6^3 = 216$ possible lexica. Of these, three kinds of lexica 
        & 0 & 1 & 0\\
        & 0 & 0 & 1\\
     \end{block}
+%  \\& & P(\Lbound)\rlap{ $\propto 96$} & \\
   \end{blockarray} & &
   \begin{blockarray}{lccc}
     & & \underline{\Llack} & \\
@@ -593,87 +633,23 @@ messages there are $6^3 = 216$ possible lexica. Of these, three kinds of lexica 
        & 0 & 1 & 0\\
        & 0 & 1 & 1\\
     \end{block}
+%   \\& & P(\Llack)\rlap{ $\propto 48$} & \\
   \end{blockarray}
 \end{align*}
 
-Recall that types are a combination of a lexicon and a manner of language use: literal or pragmatic. Accordingly, there are $432$ types in this model. \hl{Here. Add footnote on redundancy and results holding for smaller spaces with $40$ types or the original $12$ from Br}
+As we consider the full space of lexica, some assign the same concept to more than one message, as $\Lall$, or lexicalize the same meanings but associate them with different messages, as the $6$ $\Llack$-style types. The main results reported in the following do not hinge on the inclusion of these lexica but such an unadulterated space does better illustrate the influence of the linguistic pressures at hand. 
+
+Lastly, recall that types are a combination of a lexicon and a manner of language use. We analyze the model's predictions in populations of types with one of the two signaling behaviors introduced earlier; literal or pragmatic. The former correspond to level $0$ reasoners and the latter to ones of level $1$. Higher level reasoning is not required to derive scalar implicatures from the lexica we consider here, nor do they leave room for substantial pragmatic refinement. Accordingly, there are $432$ types in this model.
 
 
-In our setup, pragmatic $\Llack$-style speakers have a functional disadvantage over $\Lbound$-style ones as 
-
-
-\tb{Many of these assign the same concept to
-more than one message. For simplicity, we restrict attention to only those lexica which avoid
-expressive redundancy. Hardcoding such an \emph{mutual exclusivity bias}
-\citep[e.g.][]{Clark2009:Lexical-Meaning}, there are 20 non-redundant lexica. Functional
-pressure towards efficient communication will evidently favor non-redundant lexica, so this
-restriction is fairly innocuous but practical.}
-
-
-\begin{table}
-  \centering
-  \begin{align*}
-    C & \rightarrow_2 C \wedge C 
-    & 
-    X & \rightarrow_1 \set{A,B} \\
-    C & \rightarrow_2 \neg C 
-    & 
-    X & \rightarrow_1 X \cap X \\
-    C & \rightarrow_1 X \subseteq X
-    & 
-    X & \rightarrow_1 X \cup X \\
-    C & \rightarrow_1 X \neq \emptyset \\
-    C & \rightarrow_1 X = \emptyset     
-  \end{align*}
-  \caption{Toy grammar in a set-theoretic "language of thought"}
-  \label{tab:grammar}
-\end{table}
-
-\tb{ Note however that we do not represent the contrast between lexical representations explicitly. Instead, the bias is directly encoded in the learners' prior over types.\footnote{In principle this difference could be made precise with an adequate representational language, e.g., through measures over representational complexity such as minimal description length.  There is a growing effort to develop such empirically  testable  representational  languages. For instance, the so-called {\em language of thought} has been put to test in various rational probabilistic models that show encouraging results (see e.g. \citealt{katz+etal:2008, piantadosi+etal:underreview, piantadosi+etal:2012a} and references therein). At present we decide against such an enrichment in favor of a stronger focus on the general predictions of the model and the interaction of its components.}}
-
-Following our assumption of an inductive bias that favors simpler lexical representations, the prior biases learners against lexica in which a message holds true only of the first row, i.e., against messages that lexicalize an upper-bound that rules out state \sall. All other semantics are assumed to be a priori equally probable. This is captured by $P(t_i) \propto n - c \cdot r$, where $n$ is the total number of states and $r$ is the number of messages only true of \ssome in $t_i$'s lexicon, $c \in [0,1]$. Increments in the value of $c$ thereby bring about a stronger bias against languages that lexicalize upper-bounds, i.e., $L_2, L_4$ and $L_6$.
-
-
-\tb{This entire paragraphs needs to add: mention to LOT, other possible priors in LOT and why we use ours} The prior probability of a type is just the prior probability of its lexicon. The prior of a
-lexicon is a function of the complexity of the concepts in its image set. Lexica that use
-simpler concepts are \emph{a priori} more likely. This can be motivated by assuming that
-learners beam search for suitable concepts to map onto overt signals by (probabilistically)
-considering simpler concepts first. Many ways for defining complexity of a concept are
-conceivable. If strong empirical claims were at stake here, empirically motivated measures of
-complexity should be used. For the sake of a non-trivial example, we follow
-\citet{piantadosi+etal:underreview} and related work to define complexity of a concept as a
-function of its derivation cost in a (weighed or probabilistic) generative ``language of
-thought''. For concreteness of example, consider the toy grammar of concepts in
-Table~\ref{tab:grammar}. This grammar uses basic set-theoretic operations to form expressions
-which can be evaluated as true or false in our three world states. Applications of generative
-rules have a cost attached to them. (Alternatively, a probability.) Here we simply assume that
-Boolean combinations of concepts are more complex than ``atomic'' concepts and that otherwise
-each rule application adds the same cost unit. Table~\ref{tab:concepts} lists, for each
-concept, the least complex formula derivable in this grammar that has the appropriate truth
-conditions. A simple way of defining priors over a lexicon is:
-\begin{align*}
-  P(L)  & = \prod_{c \in Im(L)} P(c)  \ \ \ \text{, with} & 
-  P(c) & \propto \max_{c'}Compl(c') - Compl(c') + 1\,,
-\end{align*}
-where $Compl(c)$ is the complexity of each concepts. 
-
-The space of possible lexica is given in Table . These $(2,2)$-Boolean matrices are the simplest ones that allow us to make the contrast between the presence or absence of an upper-bound and the use of scalar implicatures precise. As illustrated in Section \ref{sec:languages+use}, one may think of the state corresponding to the first row of any such lexicon as a ``some but not all''-state, $\ssome$, and the second as an ``all''-state, $\sall$. The literal meaning of weak scalar expressions such as English {\em some} then corresponds to a message true of both rows in these fragments. 
-
-Lexica $L_1$ to $L_3$ are not optimal for communication because they assign all their messages to the same state(s). This failure to be able to associate a state to single a form inevitably leads to a communicative disadvantage in their use. $L_4$ and $L_5$ are our target lexica. The former assings upper-bounded semantics to \msome (the first matrix's column) whereas the latter does not. Lastly, $L_6$ is similar to $L_5$ in that one message is true of the same state but differs from it in assigning upper-bounded semantics to \msome. 
+\tb{Maybe note somewhere that pragmatic $\Lbound$ is functionally worse than literal/pragmatic $\Lbound$ but still very hard to distinguish when there's little data. But the latter has a learning advantage. Or do this while discussing each dynamic. See commented out below}
+%Combining a linguistic behavior with each of these $6$ lexica yields a total of $12$ distinct types. , such as $L_4$, will produce speaker behavior that is {\em almost} indistinguishable from that of a language that lacks upper-bounds, but with pragmatic users, such as $L_5$. Almost, because there may be slight differences between the probability with which speakers would (erroneously) use a semantically false description and the probability with which speakers would (erroneously) use a pragmatically suboptimal description. Due to this possibly marginal difference between pragmatic $L_4$ and $L_5$, the selection of one type over the other is expected to mainly depend on how well each can be transmitted to new learners. Things are less clear for literal $L_5$ contrasted with literal/pragmatic $L_4$. The former has a learning advantage when learners are biased against upper-bounds but is expected to fare worse in communicative terms.
 
 
 
+\subsubsection{Expressivity only} 
 
-
-
-\hl{Instead of this: Give an example of one of our target lexica, one of our competing (functional) lexica and one that is functionally deficient} Combining a linguistic behavior with each of these $6$ lexica yields a total of $12$ distinct types. , such as $L_4$, will produce speaker behavior that is {\em almost} indistinguishable from that of a language that lacks upper-bounds, but with pragmatic users, such as $L_5$. Almost, because there may be slight differences between the probability with which speakers would (erroneously) use a semantically false description and the probability with which speakers would (erroneously) use a pragmatically suboptimal description. Due to this possibly marginal difference between pragmatic $L_4$ and $L_5$, the selection of one type over the other is expected to mainly depend on how well each can be transmitted to new learners. Things are less clear for literal $L_5$ contrasted with literal/pragmatic $L_4$. The former has a learning advantage when learners are biased against upper-bounds but is expected to fare worse in communicative terms.
-
-
-The dynamic is initialized with an arbitrary distribution over types, constituting the population's first generation. The results for each parameter setting were obtained from $1000$ independent runs, each consisting of $20$ generations. This corresponds to a developmental plateau after which no noteworthy change was registered. As specified in \S\ref{sec:learnability}, the mutation matrix $Q$ can be obtained by considering all possible state-message sequences of length $k$. Given that this is intractable for large $k$, matrices were approximated by sampling $10$ sequences from each type's production probabilities and a type's children being exposed only to this subset. 
-
-Drawing from our preceding discussion, functional pressure on successful communication combined with learning pressures in the form of a bias against upper-bounds may lead to the selection of $L_5$-like semantics. However, it is instructive to first inspect the effect of these pressures in isolation. For this purpose we focus our attention on three pragmatic types.\footnote{Pragmatic reasoning allows language users to refine their (possibly erroneous) choices. Therefore, it is advantageous even for types that codify more lexically.} Pragmatic $L_3$, a type that is lacking in expressivity but is a priori preferred for its lack of upper-bounds. Pragmatic $L_4$, a type that is functionally advantageous but biased against. And pragmatic $L_5$, combining virtues of the latter two.  
-
-\paragraph{Expressivity only.} The replicator dynamic is sensitive to $\lambda$ and $\alpha$ as both have a bearing on a type's fitness. The influence of $\lambda$ is depicted in Figure \ref{fig:either-R-or-M}.A. The less expressive $L_3$ speakers fare the worst and are influenced the least by change in $\lambda$. In contrast, low values of $\lambda$ result in a higher proportion of $L_4$ speakers relative to $L_5$. This is expected given the central role of rationality in producing more deterministic behavior in users of $L_5$-like languages. Consequently, as the rationality parameter increases the functional difference between $L_4$ and $L_5$ is leveled. Overall, the outcome from only a pressure towards expressivity approximates an even share of pragmatic $L_4, L_5$ and $L_6$ types. The latter follows the same trajectory as $L_5$ in Figure \ref{fig:either-R-or-M}.A.  This illustrates an important issue in the evolution of meaning at the semantics-pragmatics interface: expressivity alone can not differentiate between (near-)functional equivalents to a degree that justifies the systematic prevalence of $L_5$-like semantics.  
+The replicator dynamic is sensitive to $\lambda$ and $\alpha$ as both have a bearing on a type's fitness. The influence of $\lambda$ is depicted in Figure \ref{fig:either-R-or-M}.A. The less expressive $L_3$ speakers fare the worst and are influenced the least by change in $\lambda$. In contrast, low values of $\lambda$ result in a higher proportion of $L_4$ speakers relative to $L_5$. This is expected given the central role of rationality in producing more deterministic behavior in users of $L_5$-like languages. Consequently, as the rationality parameter increases the functional difference between $L_4$ and $L_5$ is leveled. Overall, the outcome from only a pressure towards expressivity approximates an even share of pragmatic $L_4, L_5$ and $L_6$ types. The latter follows the same trajectory as $L_5$ in Figure \ref{fig:either-R-or-M}.A.  This illustrates an important issue in the evolution of meaning at the semantics-pragmatics interface: expressivity alone can not differentiate between (near-)functional equivalents to a degree that justifies the systematic prevalence of $L_5$-like semantics.  
 
 
 %In particular, low $\alpha$ disadvantages types that rely on pragmatic reasoning to the gain of those that codify more semantically. The rationality parameter $\lambda$ has a similar effect for different reasons: Low rationality leads to a less pronounced preference for the choice(s) expected to succeed best in communication. That is, $\lambda$ regulates the strength by which users of $L_5$ associate non-upper-bounded $m_1$ exclusively with the ``some''-state $s_1$ over the ``all''-state $s_2$. Speakers of $L_4$ need not rely on $\lambda$ for this as the association of $m_1$ with $s_1$ is already part of their language's semantics.
