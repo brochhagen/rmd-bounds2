@@ -539,7 +539,7 @@ thought of as a partition of possible worlds into cells where none, some or all 
 $B$s, for some arbitrary fixed predicates $A$ and $B$. Eight concepts can be distinguished
 based on their truth or falsity in three world states, six of which are not contradictory
  or tautological. These are listed with mnemonic names in
-Table~\ref{tab:concepts} together with their complexity according to the grammar given in \ref{tab:grammar} and $Compl(c)$. 
+Table~\ref{tab:concepts} together with their complexity according to the grammar given in Table \ref{tab:grammar}.
 
 \begin{table}
   \centering
@@ -603,7 +603,8 @@ Table~\ref{tab:concepts} together with their complexity according to the grammar
 \end{table}
 
 A lexicon $L$ is a mapping $\Messgs \rightarrow C$ from messages to concepts. With three
-messages there are $6^3 = 216$ possible lexica. Of these, three kinds of lexica are of particular relevance to our purpose. First, lexica that assign the same concept to more than message. Such lexica lack in expressivity under either signaling behavior but may be easier to acquire and be favored by the learning bias. Second, lexica that conventionalize upper-bounds to realize a (quasi-)partition of the relevant semantic space. As discussed above in relation with $\Lbound$, users of these lexica need not resort to pragmatic reasoning to convey an upper-bound with weak scalar expressions. Instead, this information is already given by the semantics of their lexicon, giving them an advantage in terms of expressivity. Third and lastly, $\Llack$-style lexica that, paired with mutual reasoning, can be used to convey an upper-bound pragmatically. Overall, there are \hl{{\bf N}} lexica of the second kind and $6$ of the third. The following three lexica exemplify each kind, with $\Lall$ being a lexicon that is not optimal for communication as it assigns all its messages to the same state $\sall$. This failure to be able to associate a state to single a form inevitably leads to a communicative disadvantage in its use.  
+messages there are $6^3 = 216$ possible lexica. Of these, three kinds of lexica are of particular relevance to our purpose. First, lexica that assign the same concept to more than message. Such lexica lack in expressivity under either signaling behavior but may be easier to acquire and be favored by the learning bias. Second, lexica that conventionalize upper-bounds to realize a (quasi-)partition of the relevant semantic space. As discussed above in relation with $\Lbound$, users of these lexica need not resort to pragmatic reasoning to convey an upper-bound with weak scalar expressions. Instead, this information is already given by the semantics of their lexicon, giving them an advantage in terms of expressivity. Third and lastly, $\Llack$-style lexica that, paired with mutual reasoning, can be used to convey an upper-bound pragmatically. Overall, there are $6$ lexica of the second kind and $6$ of the third. The following three lexica exemplify each kind, with $\Lall$ being a lexicon that is not optimal for communication as it assigns all its messages to the same state $\sall$. This failure to be able to associate a state to single a form inevitably leads to a communicative disadvantage in its use. However, such a lexicon may be easy to acquire.
+
 \begin{align*}
   \begin{blockarray}{lccc}
     & & \underline{\Lall} & \\
@@ -637,32 +638,36 @@ messages there are $6^3 = 216$ possible lexica. Of these, three kinds of lexica 
   \end{blockarray}
 \end{align*}
 
-As we consider the full space of lexica, some assign the same concept to more than one message, as $\Lall$, or lexicalize the same meanings but associate them with different messages, as the $6$ $\Llack$-style types. The main results reported in the following do not hinge on the inclusion of these lexica but such an unadulterated space does better illustrate the influence of the linguistic pressures at hand. 
+As we consider the full space of possible lexica, some assign the same concept to more than one message, as $\Lall$, or lexicalize the same meanings but associate them with different messages, as the $6$ $\Llack$-style types. The main results reported in the following do not hinge on the inclusion of these lexica but such an unadulterated space does better illustrate the influence of the linguistic pressures at hand. 
 
 Lastly, recall that types are a combination of a lexicon and a manner of language use. We analyze the model's predictions in populations of types with one of the two signaling behaviors introduced earlier; literal or pragmatic. The former correspond to level $0$ reasoners and the latter to ones of level $1$. Higher level reasoning is not required to derive scalar implicatures from the lexica we consider here, nor do they leave room for substantial pragmatic refinement. Accordingly, there are $432$ types in this model.
 
 
-\tb{Maybe note somewhere that pragmatic $\Lbound$ is functionally worse than literal/pragmatic $\Lbound$ but still very hard to distinguish when there's little data. But the latter has a learning advantage. Or do this while discussing each dynamic. See commented out below}
 %Combining a linguistic behavior with each of these $6$ lexica yields a total of $12$ distinct types. , such as $L_4$, will produce speaker behavior that is {\em almost} indistinguishable from that of a language that lacks upper-bounds, but with pragmatic users, such as $L_5$. Almost, because there may be slight differences between the probability with which speakers would (erroneously) use a semantically false description and the probability with which speakers would (erroneously) use a pragmatically suboptimal description. Due to this possibly marginal difference between pragmatic $L_4$ and $L_5$, the selection of one type over the other is expected to mainly depend on how well each can be transmitted to new learners. Things are less clear for literal $L_5$ contrasted with literal/pragmatic $L_4$. The former has a learning advantage when learners are biased against upper-bounds but is expected to fare worse in communicative terms.
-
-
 
 \subsubsection{Expressivity only} 
 
-The replicator dynamic is sensitive to $\lambda$ and $\alpha$ as both have a bearing on a type's fitness. The influence of $\lambda$ is depicted in Figure \ref{fig:either-R-or-M}.A. The less expressive $L_3$ speakers fare the worst and are influenced the least by change in $\lambda$. In contrast, low values of $\lambda$ result in a higher proportion of $L_4$ speakers relative to $L_5$. This is expected given the central role of rationality in producing more deterministic behavior in users of $L_5$-like languages. Consequently, as the rationality parameter increases the functional difference between $L_4$ and $L_5$ is leveled. Overall, the outcome from only a pressure towards expressivity approximates an even share of pragmatic $L_4, L_5$ and $L_6$ types. The latter follows the same trajectory as $L_5$ in Figure \ref{fig:either-R-or-M}.A.  This illustrates an important issue in the evolution of meaning at the semantics-pragmatics interface: expressivity alone can not differentiate between (near-)functional equivalents to a degree that justifies the systematic prevalence of $L_5$-like semantics.  
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/fig1-onlyr}
+\caption{Proportion of pragmatic $\Llack$-style types and of the incumbent type in $5$ independent populations after $50$ generations under only a pressure for expressivity.}
+\label{fig:only-R}
+\end{figure}
+
+The replicator dynamic is sensitive to $\lambda$ as it influences signaling behavior and thereby has a bearing on a type's fitness as well. This influence is showcased in Figure \ref{fig:only-R}, which shows the proportion of pragmatic $\Llack$-style speakers and that of the type with the highest proportion, the incumbent, in $5$ independent populations. As is to be expected, less expressive types do not fare well under pressure for communicative success and those able to convey states unequivocally fare better. This difference increases with $\lambda$ as it promotes more deterministic linguistic behavior, widening the gap in expressivity between types. However, higher values of $\lambda$ alone do not lend a justification to the systematic prevalence of $\Llack$-like semantics paired with pragmatic reasoning. An inspection of $1000$ independent populations with $\lambda = 20$ shows a similar outcome to that hinted at by Figure \ref{fig:only-R}. Pragmatic $\Llack$ types only make up $11$ cases of incumbency, corresponding to a mean proportion of $0.003$ across populations. By contrast, $913$ incumbents are $\Lbound$-style users with close to an even share between literal ($454$) and pragmatic types ($459$), corresponding to a mean proportion of about $48\%$. Overall, incumbents of any type make up $50\%$ of the mean outcome, showcasing the strong dominance of $\Lbound$ semantics over other alternatives when only expressivity is at stake. 
 
 
-%In particular, low $\alpha$ disadvantages types that rely on pragmatic reasoning to the gain of those that codify more semantically. The rationality parameter $\lambda$ has a similar effect for different reasons: Low rationality leads to a less pronounced preference for the choice(s) expected to succeed best in communication. That is, $\lambda$ regulates the strength by which users of $L_5$ associate non-upper-bounded $m_1$ exclusively with the ``some''-state $s_1$ over the ``all''-state $s_2$. Speakers of $L_4$ need not rely on $\lambda$ for this as the association of $m_1$ with $s_1$ is already part of their language's semantics.
 
+\subsubsection{Learnability only}
 
 \begin{figure}
 \centering
-\includegraphics[scale=.5]{./fig1-only-R-or-M}
-\caption{Mean proportions of target types after $20$ generations in $1000$ populations with only a pressure for expressivity in A ($\alpha = 1$) and only for learnability in B ($\alpha =1, \lambda = 30, k = 5$, $l=1$).}
-\label{fig:either-R-or-M}
+\includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/fig2-onlym-pr}
+\caption{Proportion of pragmatic $\Llack$-style types and of the incumbent type in $5$ independent populations after $50$ generations under only a pressure for expressivity.}
+\label{fig:only-R}
 \end{figure}
 
-\paragraph{Learnability only.} The effect of iterated learning with posterior sampling but without a pressure for expressivity is shown in Figure \ref{fig:either-R-or-M}.B. In line with our expectations, the share of $L_4$ speakers decreases as the bias against upper-bounds increases. In turn, this benefits $L_3$ and, in particular, $L_5$. However, even a strong bias against lexical upper-bounds leads only to a moderate advantage of $L_5$ over $L_4$. More importantly, a pressure only towards learnability can promote functionally defective languages such as $L_3$.
+The effect of iterated learning with posterior sampling but without a pressure for expressivity is shown in Figure \ref{fig:either-R-or-M}.B. In line with our expectations, the share of $L_4$ speakers decreases as the bias against upper-bounds increases. In turn, this benefits $L_3$ and, in particular, $L_5$. However, even a strong bias against lexical upper-bounds leads only to a moderate advantage of $L_5$ over $L_4$. More importantly, a pressure only towards learnability can promote functionally defective languages such as $L_3$.
 
 Inspecting these pressures separately not only showcases the contribution of the model's components but also highlights some of their broader implications. First and foremost, neither dynamic on its own comes close to converging to a monomorphic population under most parameter configurations. For instance, while $L_4$ speakers can come to take over a substantial proportion of the population, this only happens in a restricted range of low degrees of rationality. Apart from polymorphy, both pressures make undesirable predictions in isolation. A pressure only towards expressivity leads to the expulsion of communicatively suboptimal $L_1$, $L_2$ and $L_3$ from the population but can not explain the regular selection of $L_5$-like semantics over either of its functionally similar alternatives. A pressure only towards learnability has a modest but clear effect in differentiating $L_5$ from these alternatives but fails to rule out functionally suboptimal types such as tautological $L_3$. 
 
