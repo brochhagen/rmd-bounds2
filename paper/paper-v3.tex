@@ -603,7 +603,7 @@ Table~\ref{tab:concepts} together with their complexity according to the grammar
 \end{table}
 
 A lexicon $L$ is a mapping $\Messgs \rightarrow C$ from messages to concepts. With three
-messages there are $6^3 = 216$ possible lexica. Of these, three kinds of lexica are of particular relevance to our purpose. First, lexica that assign the same concept to more than message. Such lexica lack in expressivity under either signaling behavior but may be easier to acquire and be favored by the learning bias. Second, lexica that conventionalize upper-bounds to realize a (quasi-)partition of the relevant semantic space. As discussed above in relation with $\Lbound$, users of these lexica need not resort to pragmatic reasoning to convey an upper-bound with weak scalar expressions. Instead, this information is already given by the semantics of their lexicon, giving them an advantage in terms of expressivity. Third and lastly, $\Llack$-style lexica that, paired with mutual reasoning, can be used to convey an upper-bound pragmatically. Overall, there are $6$ lexica of the second kind and $6$ of the third. The following three lexica exemplify each kind, with $\Lall$ being a lexicon that is not optimal for communication as it assigns all its messages to the same state $\sall$. This failure to be able to associate a state to single a form inevitably leads to a communicative disadvantage in its use. However, such a lexicon may be easy to acquire.
+messages there are $6^3 = 216$ possible lexica. Of these, three kinds of lexica are of particular relevance. First, lexica that assign the same concept to more than message. Such lexica lack in expressivity under either signaling behavior but may be favored by the learning bias. Second, lexica that conventionalize upper-bounds to realize a (quasi-)partition of the relevant semantic space. As discussed above in relation with $\Lbound$, users of these lexica need not resort to pragmatic reasoning to convey an upper-bound with weak scalar expressions. Instead, this information is already given by the semantics of their lexicon, giving them an advantage in terms of expressivity. Such lexica are expected to be the main contenders to the natural language like semantics that fail to lexicalize an upper-bound. Third and lastly, $\Llack$-style lexica that, paired with mutual reasoning, can convey an upper-bound pragmatically. Overall, there are $6$ lexica of the second kind and $6$ of the third. The following three lexica exemplify each kind, with $\Lall$ being a lexicon that is not optimal for communication as it assigns all its messages to the same state $\sall$. This failure to be able to associate a state to single a form inevitably leads to a communicative disadvantage in its use. This lexicon serves illustrative purposes in comparison to our target, $\Llack$, and its competitor $\Lbound$.
 
 \begin{align*}
   \begin{blockarray}{lccc}
@@ -650,11 +650,11 @@ Lastly, recall that types are a combination of a lexicon and a manner of languag
 \begin{figure}
 \centering
 \includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/fig1-onlyr}
-\caption{Proportion of pragmatic $\Llack$-style types and of the incumbent type in $5$ independent populations after $50$ generations under only a pressure for expressivity.}
+\caption{Proportion of pragmatic $\Llack$-style types and incumbent types in $5$ independent populations after $50$ generations under only a pressure for expressivity.}
 \label{fig:only-R}
 \end{figure}
 
-The replicator dynamic is sensitive to $\lambda$ as it influences signaling behavior and thereby has a bearing on a type's fitness as well. This influence is showcased in Figure \ref{fig:only-R}, which shows the proportion of pragmatic $\Llack$-style speakers and that of the type with the highest proportion, the incumbent, in $5$ independent populations. As is to be expected, less expressive types do not fare well under pressure for communicative success and those able to convey states unequivocally fare better. This difference increases with $\lambda$ as it promotes more deterministic linguistic behavior, widening the gap in expressivity between types. However, higher values of $\lambda$ alone do not lend a justification to the systematic prevalence of $\Llack$-like semantics paired with pragmatic reasoning. An inspection of $1000$ independent populations with $\lambda = 20$ shows a similar outcome to that hinted at by Figure \ref{fig:only-R}. Pragmatic $\Llack$ types only make up $11$ cases of incumbency, corresponding to a mean proportion of $0.003$ across populations. By contrast, $913$ incumbents are $\Lbound$-style users with close to an even share between literal ($454$) and pragmatic types ($459$), corresponding to a mean proportion of about $48\%$. Overall, incumbents of any type make up $50\%$ of the mean outcome, showcasing the strong dominance of $\Lbound$ semantics over other alternatives when only expressivity is at stake. 
+The replicator dynamic is sensitive to $\lambda$ as it influences signaling behavior and thereby has a bearing on a type's fitness. This influence is showcased in Figure \ref{fig:only-R}, which depicts the proportion of pragmatic $\Llack$-style speakers in $5$ independent populations after $50$ generations, as well as that of the type with the highest proportion, the incumbent. As is to be expected, less expressive types do not fare well under pressure for communicative success and those able to convey states less equivocally fare better. This difference increases with $\lambda$ as this parameter promotes more deterministic linguistic behavior, widening the gap in expressivity between types. Importantly, high values of $\lambda$ alone do not lend a justification to the systematic prevalence of $\Llack$-like semantics paired with pragmatic reasoning that we set out to explain. An inspection of $1000$ independent populations with $\lambda = 20$ shows a similar outcome to that hinted at by Figure \ref{fig:only-R}: Pragmatic $\Llack$ types only make up $11$ cases of incumbency, corresponding to a mean proportion of $0.003$ across populations. By contrast, $913$ incumbents were $\Lbound$-style users with close to an even share between literal ($454$) and pragmatic types ($459$), corresponding to a mean proportion of about $48\%$ together. Overall, incumbents of any type make up $50\%$ of the mean outcome. This, again, showcases the strong dominance of $\Lbound$ semantics over other alternatives when only expressivity is at stake. 
 
 
 
@@ -663,45 +663,27 @@ The replicator dynamic is sensitive to $\lambda$ as it influences signaling beha
 \begin{figure}
 \centering
 \includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/fig2-onlym-pr}
-\caption{Proportion of pragmatic $\Llack$-style types and of the incumbent type in $5$ independent populations after $50$ generations under only a pressure for expressivity.}
-\label{fig:only-R}
+\caption{Proportion of pragmatic $\Llack$-style types and incumbent types in $5$ independent populations after $50$ generations under only a pressure for learnability ($\lambda = 20, k = 5$). The types' prior probability is shown in the right-most plot.}
+\label{fig:only-M}
 \end{figure}
 
-The effect of iterated learning with posterior sampling but without a pressure for expressivity is shown in Figure \ref{fig:either-R-or-M}.B. In line with our expectations, the share of $L_4$ speakers decreases as the bias against upper-bounds increases. In turn, this benefits $L_3$ and, in particular, $L_5$. However, even a strong bias against lexical upper-bounds leads only to a moderate advantage of $L_5$ over $L_4$. More importantly, a pressure only towards learnability can promote functionally defective languages such as $L_3$.
+The effect of iterated learning without a pressure for expressivity using posterior sampling ($l = 1$) and a stronger tendency towards posterior maximization ($l = 15$) is shown in Figure \ref{fig:only-M} together with the prior over types. The latter illustrates that users of $\Llack$ are, while not the most favored types, advantaged by the inductive bias in virtue of the relatively simple semantics they conventionalize. Accordingly, a stronger propensity to maximize the posterior increases their proportion in the population in analogous fashion to increase in $\lambda$ under the replicator dynamic. However, while replication generally succeeds in driving out competing types of a kind, iterated learning leads to their coexistence as each of these types is passed on to next generations equal faithfulness. Although $\Llack$ is not the most favored type by the prior, it is the least semantically complex language in the type space that enables its users to convey each state with a single message when combined with pragmatic reasoning (provided sufficiently high $\lambda$). Put differently, it is easier to infer than functionally comparable lexica such as $\Lbound$ and it is less likely to be mistaken with others because its pragmatic use approximates a one-to-one form-meaning mapping. Consequently, as suggested by Figure \ref{fig:only-M}, in $1000$ analyzed independent populations all incumbents were pragmatic $\Llack$ users ($l = 15$ and $\lambda = 20$). 
 
-Inspecting these pressures separately not only showcases the contribution of the model's components but also highlights some of their broader implications. First and foremost, neither dynamic on its own comes close to converging to a monomorphic population under most parameter configurations. For instance, while $L_4$ speakers can come to take over a substantial proportion of the population, this only happens in a restricted range of low degrees of rationality. Apart from polymorphy, both pressures make undesirable predictions in isolation. A pressure only towards expressivity leads to the expulsion of communicatively suboptimal $L_1$, $L_2$ and $L_3$ from the population but can not explain the regular selection of $L_5$-like semantics over either of its functionally similar alternatives. A pressure only towards learnability has a modest but clear effect in differentiating $L_5$ from these alternatives but fails to rule out functionally suboptimal types such as tautological $L_3$. 
+\subsubsection{Expressivity and learnability.}
+Inspecting these pressures separately not only showcases the contribution of the model's components but also highlights some of their broader implications. First and foremost, neither dynamic on its own comes close to converging to a monomorphic population of a type of pragmatic $\Llack$ speakers. Under communicative pressure, the communicative advantage of $\Lbound$ leads to its selection when $\lambda$ is sufficiently high. Pressure only towards learnability has a modest but clear effect in differentiating $\Llack$ from such functionally similar but semantically more complex alternatives. However, this pressure on its own does not foment a propagation of these types across the population. Additionally, it leads to mixed populations that do not justify the selection of a particular type over others either.
+
+
+ Figure \ref{fig:cost} illustrates the effect of the learning bias for posterior sampling (\ref{fig:cost}.A) and slightly more MAP-like learning (\ref{fig:cost}.B) when pressured for both expressivity and learnability. More detailed results for all types across a sample of $c$-values for $l = 1$ and $l = 5$ are presented in Table \ref{tab:numeric-results}. These results show that a weak bias is sufficient to lead to a selection of $L_5$ over $L_4$. As when only learnability is considered, this effect increases with the bias' strength, provided $L_5$ users are pragmatic. Importantly, the addition of a pressure towards expressivity magnifies this effect and dampens the proliferation of functionally suboptimal types advantaged by the learning bias. As stressed above, this indicates that neither a learning bias nor functional pressure alone but their combination may lead to the lack of upper-bounds in the lexical meaning of scalar expressions.
 
 \begin{figure}
 \centering
-\includegraphics[scale=.5]{./fig2-rmd}
-\caption{Mean proportions of target types after $20$ generations in $1000$ populations across bias values $c \in [0,1]$ with $l =1$ in A and $l = 5$ in B ($\alpha =1, \lambda = 20, k = 5$).}
-\label{fig:cost}
+\includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/fig3-r+m}
+\caption{Proportion of pragmatic $\Llack$-style types and incumbent types in $5$ independent populations after $50$ generations under both pressures ($k = 5$).}
+\label{fig:only-M}
 \end{figure}
 
-\paragraph{Expressivity and learnability.} Figure \ref{fig:cost} illustrates the effect of the learning bias for posterior sampling (\ref{fig:cost}.A) and slightly more MAP-like learning (\ref{fig:cost}.B) when pressured for both expressivity and learnability. More detailed results for all types across a sample of $c$-values for $l = 1$ and $l = 5$ are presented in Table \ref{tab:numeric-results}. These results show that a weak bias is sufficient to lead to a selection of $L_5$ over $L_4$. As when only learnability is considered, this effect increases with the bias' strength, provided $L_5$ users are pragmatic. Importantly, the addition of a pressure towards expressivity magnifies this effect and dampens the proliferation of functionally suboptimal types advantaged by the learning bias. As stressed above, this indicates that neither a learning bias nor functional pressure alone but their combination may lead to the lack of upper-bounds in the lexical meaning of scalar expressions.
 
 
-\begin{table}
-\centering 
-\begin{tabular}{l | c c c c c| c c c c c c c c}
-\multicolumn{1}{c}{~} & \multicolumn{5}{c}{$l = 1$} & ~ & \multicolumn{5}{c}{$l = 5$}\\ \hline \hline
-  c        &  0  & .1  & .5  & .8  & .9 & ~ & 0 & .1 & .5 & .8 & .9\\ \hline \hline
-lit. $L_1$ & .03 & .03 & .04 & .04 & .04& ~ & 0 &0 & 0 & 0 & 0\\ 
-lit. $L_2$ & .03 & .03 & .02 & .01 & .04& ~ & 0& 0 & 0 & 0 & 0\\
-lit. $L_3$ & .03 & .03 & .04 & .04 & .04& ~ & 0& 0 & 0 & 0 & 0\\
-lit. $L_4$ & .07 & .07 & .06 & .06 & .05& ~ & 0& 0 & 0 & 0 & 0\\
-lit. $L_5$ & .04 & .05 & .05 & .06 & .06& ~ & 0& 0 & 0 & 0 & 0\\
-lit. $L_6$ & .04 & .04 & .04 & .04 & .03& ~ & 0& 0 & 0 & 0 & 0\\ \hline
-prg. $L_1$ & .03 & .03 & .04 & .04 & .04& ~ & 0& 0 & 0 & 0 & 0 \\
-prg. $L_2$ & .03 & .03 & .02 & .01 & .04& ~ & 0& 0 & 0 & 0 & 0 \\
-prg. $L_3$ & .03 & .03 & .04 & .04 & .04& ~ & 0& 0 & 0 & 0 & 0 \\ 
-prg. $L_4$ & .22 & .22 & .2 & .18 & .17& ~ & .33& .30 & .16 & .07 & .05 \\
-prg. $L_5$ & .22 & .23 & .27 & .3  & .32& ~ & .33& .39 & .68 & .86 & .90 \\
-prg. $L_6$ & .22 & .22 & .2 & .18 & .17& ~ & .33& .30 & .16 & .07 & .05
-\end{tabular}
-\caption{Mean proportions of types in $1000$ populations after $20$ generations across bias values $c \in [0,1]$ with $l =1$ and $l = 5$ ($\alpha = 1, \lambda = 30, k = 5$)}%, $\epsilon < 0.005$.}
-\label{tab:numeric-results}
-\end{table}
 
 Other than the involvement of both pressures, the resulting proportion of pragmatic $L_5$ speakers primarily hinges on three factors. First, the degree to which linguistic behavior is deterministic. This plays a role both for expressivity as well as in producing data that allows learners to discriminate this type from others. Second, the inductive bias, which controls the learners preference for simpler lexical representations. Lastly, the posterior parameter, as it magnifies the effects of the learning bias in tandem with replication. 
 
@@ -710,8 +692,8 @@ As showcased by Figure \ref{fig:cost}.A, posterior sampling can lead to the incu
 
 \begin{figure}
 \centering
-\includegraphics[scale=.5]{../presentations/01heatmap}
-\caption{Mean proportion of pragmatic $L_5$ in $1000$ populations after $20$ generations ($\alpha = 1, \lambda = 30, k = 5$)}
+\includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/fig4-incumbents-difference}
+%\caption{Mean proportion of pragmatic $L_5$ in $1000$ populations after $20$ generations ($\alpha = 1, \lambda = 30, k = 5$)}
 \label{fig:prior-posterior}
 \end{figure}
 

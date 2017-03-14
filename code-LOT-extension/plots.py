@@ -113,23 +113,25 @@ def get_subfigs_incumbents(type_list,list1,list2,kind,prior=False):
         Y_rest.reverse()
         
         ax = fig.add_subplot(133)
+        ax.grid(False)
 
-        ax.barh(X,Y_target,color='grey')#,width=1, color='grey')#, orientation='horizontal')
+        ax.barh(X,Y_target,color='black')#, edgecolor='none')#,width=1, color='grey')#, orientation='horizontal')
         ax.barh(X,Y_rest,color='white')#,width=1, color='white' )#, orientation='horizontal')
 
-#        ylabels = [x for x in xrange(len(X))]
-#        ylabels[-5] = 'L-lack style'
-#        ylabels[45] = 'Other types'
-#        ax.set_yticklabels(ylabels)
+
+        ylabels = ["" for x in xrange(len(X))]
+        ylabels[9] = 'L-lack'
+        ylabels[5] = 'Other types'
+        ax.set_yticklabels(ylabels,rotation=90)
+
+#        for label in ax.get_yticklabels()[::3]:
+#            label.set_visible(False)
+
         for label in ax.get_xticklabels()[::2]:
             label.set_visible(False)
 
-        for label in ax.get_yticklabels()[::2]:
-            label.set_visible(False)
-
-
-
-
+        ax.tick_params(axis='both', which='major', labelsize=17)
+        
 #        xlabels = [str(int(x) + 1) for x in xlabels]
 #        ax.set_xticklabels(xlabels)
 
@@ -140,6 +142,7 @@ def get_subfigs_incumbents(type_list,list1,list2,kind,prior=False):
 
     for idx in xrange(len(plt.gcf().axes)):
         ax = plt.gcf().axes[idx]
+        ax.tick_params(axis='both', which='major', labelsize=17)
 
         #Only add top label to subplots that are on the first row
         if idx - x_figs < 0 and not(kind == 'm'):
@@ -148,10 +151,10 @@ def get_subfigs_incumbents(type_list,list1,list2,kind,prior=False):
             ax.xaxis.set_label_position('top')
 
         elif idx - x_figs < 0:
-            ax.set_xlabel('l = '+str(learning_labels[idx]),fontsize=20)
+            ax.set_xlabel('l = '+str(learning_labels[idx]),fontsize=25)
             ax.xaxis.set_label_position('top')
-        elif idx > x_figs: #If there are more, it means the last is the prior
-                ax.set_xlabel('Prior',fontsize=20)
+        elif idx > x_figs and kind == 'm': #If there are more, it means the last is the prior
+                ax.set_xlabel('Prior',fontsize=25)
                 ax.xaxis.set_label_position('top')
 
         #Only add label to subplots that are on the left-most column
@@ -171,9 +174,15 @@ def get_subfigs_incumbents(type_list,list1,list2,kind,prior=False):
                   [label for i,label in enumerate(labels) if i in display], loc='best')
 
 #        #Alternatively: Hide legend
-        if idx == 0 and kind == 'm':
+        if idx == 0 and kind == 'm' or (not(idx == 2) and kind == 'rmd'):
             ax.legend().set_visible(False)
-#
+
+
+        if idx == 1 and kind == 'm':
+            ax.legend([handle for i,handle in enumerate(handles) if i in display], \
+                  [label for i,label in enumerate(labels) if i in display], loc='best', prop={'size':20})
+
+
 #        #Start counting simulations with 1 and not 0 on the x-axis
         if prior == False or idx < 1:
             xlabels = [item.get_text() for item in ax.get_xticklabels()]
@@ -194,6 +203,54 @@ def get_subfigs_incumbents(type_list,list1,list2,kind,prior=False):
     plt.tight_layout()
     plt.show()
 
+
+def get_heatmap_diff_incumbents(type_list,list1,list2,kind):
+    all_types = ['t_final'+str(z) for z in xrange(432)]
+    target_types = ['t_final'+str(x) for x in type_list]
+    other_types = [x for x in all_types if x not in target_types]
+    seq_length = 5
+
+    data = np.zeros((len(list1)+1, len(list2)+1))
+    for i in xrange(len(list1)):
+        for j in xrange(len(list2)):
+            #To avoid errors when adding cols to slices of copies:
+            dt = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[i],seq_length,list2[j]))
+            do = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[i],seq_length,list2[j]))
+
+            data[0,i+1] = list1[i]
+            data[j+1,0] = list2[j]
+            
+            dt = dt[target_types] 
+            do = do[other_types]
+            dt['incumbent_t'] = dt.max(axis=1) #incumbent amongst types in d_t
+            do['incumbent_o'] = do.max(axis=1) #incumbent amongst types in d_o
+            best_of_targets = dt['incumbent_t'].mean()
+            best_of_others = do['incumbent_o'].mean()
+            data[i+1,j+1] = best_of_targets - best_of_others
+    dPrime = data[1:,1:]
+
+#    axlabels=["" for _ in xrange(df.shape[1])]
+#    axlabels[len(axlabels)/2] = 'types'
+    sns.set(font_scale=2)
+    ax = sns.heatmap(dPrime, annot=True, xticklabels=list1, yticklabels=list2, vmin=0,annot_kws={"size": 20})# xticklabels=axlabels)#, annot=True) 
+    ax.set_xlabel('rationality parameter ('+r'$\lambda$'+')')#,fontsize=30)
+    ax.set_ylabel('posterior parameter (l)')#,fontsize=30)
+
+    ax.invert_yaxis()
+    plt.show()
+#    return dPrime
+
+
+kind = 'rmd'
+type_list = [231,236,291,306,326,336]
+list1 = [1,5,20,30] # soft-max parameter
+list2 = [1,5,10,15] #prob-matching = 1, increments approach MAP
+a = get_heatmap_diff_incumbents(type_list,list1,list2,kind)
+
+
+
+
+
 #Plot 1: 
 #kind='r'
 #types = [231,236,291,306,326,336]#[231,236,291,306,326,336]
@@ -202,13 +259,26 @@ def get_subfigs_incumbents(type_list,list1,list2,kind,prior=False):
 #get_subfigs_incumbents(types,list1,list2,kind)
 
 #Plot 2
-kind='m'
-types = [231,236,291,306,326,336]#[231,236,291,306,326,336]
-list1 = [20] #lambda
-list2 = [1,15] #posterior parameter
-get_subfigs_incumbents(types,list1,list2,kind,prior=True)
+#kind='m'
+#types = [231,236,291,306,326,336]#[231,236,291,306,326,336]
+#list1 = [20] #lambda
+#list2 = [1,15] #posterior parameter
+#get_subfigs_incumbents(types,list1,list2,kind,prior=True)
 
+#Plot 3
+#kind='rmd'
+#types = [231,236,291,306,326,336]#[231,236,291,306,326,336]
+#list1 = [1,5,20] #lambda
+#list2 = [1,5,15] #posterior parameter
+#get_subfigs_incumbents(types,list1,list2,kind)
 
+####
+#from lexica import get_lexica,get_lexica_bins,get_prior
+#from rmd import get_type_bin
+#
+#lex = get_lexica(3,3,False)
+#prior = get_prior(lex)
+#bins = get_lexica_bins(lex)
 
 #kind='r'
 #types = [231,236,291,306,326,336]#[231,236,291,306,326,336]
@@ -216,12 +286,15 @@ get_subfigs_incumbents(types,list1,list2,kind,prior=True)
 #val2 = 5 #posterior parameter
 #a = analysis(types,val1,val2,kind)
 
-
-
-
-
-
-
+#kind='m'
+#types = [231,236,291,306,326,336]#[231,236,291,306,326,336]
+#val1 = 20 #lambda
+#val2 = 15 #posterior parameter
+#a = analysis(types,val1,val2,kind)
+#dr = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,20,5,1))
+#df = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,20,5,15))
+#dx = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,1,5,1))
+#dw = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,1,5,1))
 
 ###################
 #def get_parameter_subfigs(type_list,list1,list2,kind):

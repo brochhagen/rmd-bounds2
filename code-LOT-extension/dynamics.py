@@ -2,16 +2,33 @@
 from rmd import run_dynamics
 
 ##### Parameters & setup #####
+#a = [1] # rate to control difference between semantic and pragmatic violations
+#lamb = [1,5,20,30] # soft-max parameter
+#seq_length = [1,5,10,15]  # length of observation sequences
+#samples = [250] #amount of k-length samples for each production type
+#l = [1,5,10,15] #prob-matching = 1, increments approach MAP
+#
+#g = [50] #number of generations per simulation run
+#r = [1000] #number of independent simulation runs
+#
+#dynamics = ['r','m','rmd'] #kind is the type of dynamics, either 'rmd', 'm' or 'r'
+#
+#states = 3 #number of states
+#messages = 3 #number of messages
+#me = [False] #mutual exclusivity
+
+
+# More focused run:
 a = [1] # rate to control difference between semantic and pragmatic violations
-lamb = [1,5,20,30] # soft-max parameter
-seq_length = [1,5,10,15]  # length of observation sequences
+lamb = [2,3,4,6,7,8,9,10,11,12,13,14,15,16,17,18,19] # soft-max parameter
+seq_length = [5]  # length of observation sequences
 samples = [250] #amount of k-length samples for each production type
-l = [1,5,10,15] #prob-matching = 1, increments approach MAP
+l = [2,3,4,6,7,8,9,11,12,13,14] #prob-matching = 1, increments approach MAP
 
 g = [50] #number of generations per simulation run
 r = [1000] #number of independent simulation runs
 
-dynamics = ['r','m','rmd'] #kind is the type of dynamics, either 'rmd', 'm' or 'r'
+dynamics = ['rmd'] #kind is the type of dynamics, either 'rmd', 'm' or 'r'
 
 states = 3 #number of states
 messages = 3 #number of messages
