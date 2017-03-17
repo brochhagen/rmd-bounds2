@@ -3,6 +3,8 @@ import pandas as pd
 import numpy as np 
 import matplotlib.pyplot as plt
 import seaborn as sns
+import matplotlib.patches as patches #to draw rectangles
+from mpl_toolkits.axes_grid.inset_locator import inset_axes, zoomed_inset_axes
 #sns.set_context(rc={'lines.markeredgewidth': 0.5})
 import os
 import glob
@@ -33,110 +35,240 @@ def analysis(types,val1,val2,kind):
     return [values_of_inc_in_bins / len(df), numb_of_inc]
 
 
-def get_subfigs_incumbents(type_list,list1,list2,kind,prior=False):
+def get_subfigs_replication(type_list,list1,list2):
     seq_length = 5
     num_of_runs = 5
     
-    if not(kind == 'm'):
-        x_figs = len(list1)
-        y_figs = len(list2)
-    else:
-        x_figs = len(list2)
-        y_figs = len(list1)
+    types_to_plot = ['t_final'+str(x) for x in type_list]  
+    restrict_to_final = ['t_final'+str(z) for z in xrange(432)] #as to avoid the incumbent to come from other columns
+
+    df1 = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('r',list1[0],seq_length,list2[0]))
+    df2 = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('r',list1[1],seq_length,list2[0]))
+    
+    df1 = df1[restrict_to_final]
+    df1['incumbent'] = df1.max(axis=1)
+
+    df2 = df2[restrict_to_final]
+    df2['incumbent'] = df2.max(axis=1)
+    
+    df1_large = df1[types_to_plot + ['incumbent']]
+    df1_large = df1_large.iloc[:num_of_runs]
+    Y1_large = df1_large.values
+                 
+    df2_large = df2[types_to_plot + ['incumbent']]
+    df2_large = df2_large.iloc[:num_of_runs]
+    Y2_large = df2_large.values
+
+    df1_targets = df1[types_to_plot]
+    df1_targets = df1_targets.iloc[:num_of_runs]
+    Y1_small = df1_targets.values
+
+    df2_targets = df2[types_to_plot]
+    df2_targets = df2_targets.iloc[:num_of_runs]
+    Y2_small = df2_targets.values
+
+
+
+    colors = ('palegreen','forestgreen','limegreen','darkgreen','green','mediumseagreen','darkred')
+    from stackedbar import StackedBarGrapher
+    SBG = StackedBarGrapher()
+
+    xlabels = [x for x in xrange(num_of_runs)] #runs
+    al = 0.6 #alpha
+    ax1_large = plt.subplot(1,3,1)
+    SBG.stackedBarPlot(ax1_large,Y1_large,colors,gap=.5,al=al,xLabels=xlabels)
+    plt.xticks(rotation='horizontal')
+
+
+    ax2_large = plt.subplot(1,3,2);
+    SBG.stackedBarPlot(ax2_large,Y2_large,colors,gap=.5,al=al,xLabels=xlabels)
+    plt.xticks(rotation='horizontal')
+
+    ax1_small = plt.subplot(2,3,3)
+    SBG.stackedBarPlot(ax1_small,Y1_small,colors,gap=.5,al=al,xLabels=xlabels)
+    plt.xticks(rotation='horizontal')
+
+    ax2_small = plt.subplot(2,3,6)
+    SBG.stackedBarPlot(ax2_small,Y2_small,colors,gap=.5,al=al,xLabels=xlabels)
+    plt.xticks(rotation='horizontal')
+
+    #Layout
+    from matplotlib.ticker import FormatStrFormatter
+    ax1_large.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
+    ax1_large.tick_params(axis='both',which='major',labelsize=17)
+    ax1_large.set_xlabel(r'$\lambda$ = '+str(list1[0]),fontsize=25)
+    ax1_large.xaxis.set_label_position('top')
+
+    handles, labels = ax1_large.get_legend_handles_labels()
+    labels = ['prag. L-lack kind' for _ in xrange(len(types))] + ['Incumbent']
+    display = (0,6)
+
+    ax1_large.legend([handle for i,handle in enumerate(handles) if i in display], \
+                  [label for i,label in enumerate(labels) if i in display], loc='best')
+
+    p1 = patches.Rectangle((0, 0), 1, 1, fc="green", alpha=al)
+    p2 = patches.Rectangle((0, 0), 1, 1, fc="darkred",alpha=al)
+    ax1_large.legend([p1, p2], ['prag. L-lack','Other incumbent'],loc='best',prop={'size':20})
+
+    ax2_large.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
+    ax2_large.tick_params(axis='both',which='major',labelsize=17)
+    ax2_large.set_xlabel(r'$\lambda$ = '+str(list1[1]),fontsize=25)
+    ax2_large.xaxis.set_label_position('top')
+
+    ax1_small.yaxis.set_major_formatter(FormatStrFormatter('%.3f'))
+    ax1_small.tick_params(axis='both',which='major',labelsize=17)
+    ax1_small.set_xlabel(r'$\lambda$ = '+str(list1[0]),fontsize=25)
+    ax1_small.xaxis.set_label_position('top')
+
+
+    ax2_small.yaxis.set_major_formatter(FormatStrFormatter('%.3f'))
+    ax2_small.tick_params(axis='both',which='major',labelsize=17)
+    ax2_small.set_xlabel(r'$\lambda$ = '+str(list1[1]),fontsize=25)
+    ax2_small.xaxis.set_label_position('top')
+
+    plt.tight_layout()
+    plt.show()
+
+def get_subfigs_mutation(type_list,list1,list2):
+    seq_length = 5
+    num_of_runs = 5
+    
+    types_to_plot = ['t_final'+str(x) for x in type_list]  
+    restrict_to_final = ['t_final'+str(z) for z in xrange(432)] #as to avoid the incumbent to come from other columns
+
+    df1 = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('m',list1[0],seq_length,list2[0]))
+    df2 = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('m',list1[0],seq_length,list2[1]))
+    
+    df1 = df1[restrict_to_final]
+    df2 = df2[restrict_to_final]
+    
+    df1_large = df1[types_to_plot]
+    df1_large = df1_large.iloc[:num_of_runs]
+    Y1_large = df1_large.values
+                 
+    df2_large = df2[types_to_plot]
+    df2_large = df2_large.iloc[:num_of_runs]
+    Y2_large = df2_large.values
+
+    colors = ('palegreen','forestgreen','limegreen','darkgreen','green','mediumseagreen','darkred')
+    from stackedbar import StackedBarGrapher
+    SBG = StackedBarGrapher()
+
+    xlabels = [x for x in xrange(num_of_runs)] #runs
+    al = 0.6 #alpha
+    ax1_large = plt.subplot(1,3,1)
+    SBG.stackedBarPlot(ax1_large,Y1_large,colors,gap=.5,al=al,xLabels=xlabels)
+    plt.xticks(rotation='horizontal')
+
+    ax2_large = plt.subplot(1,3,2);
+    SBG.stackedBarPlot(ax2_large,Y2_large,colors,gap=.5,al=al,xLabels=xlabels)
+    plt.xticks(rotation='horizontal')
+
+    #Third subfigure is the prior
+    ax_prior = plt.subplot(1,3,3)
+
+    from lexica import get_prior,get_lexica
+    priors = get_prior(get_lexica(3,3,False))
+    priors = list(priors)
+    targets = [231,236,291,306,326,336]
+    #reorder prior
+    for t in targets:
+        priors.insert(0,priors.pop(t))
+
+    white_space = 10 #to separate from other priors
+
+    X = np.arange(len(priors)+white_space) 
+    Y_target = [0 for _ in xrange(len(priors)+white_space)]
+    for target in xrange(len(targets)):
+        Y_target[target] = priors[target]
+        priors[target] = 0
+   
+    Y_rest = priors[:len(targets)] + [0 for _ in xrange(white_space)] + priors[len(targets):]
+    Y_target.reverse()
+    Y_rest.reverse()
+    
+    ax_prior.grid(False)
+
+    ax_prior.barh(X,Y_target,color='green',alpha=al)
+    ax_prior.barh(X,Y_rest,color='royalblue',alpha=al)
+
+
+    ylabels = ["" for x in xrange(len(X))]
+    ylabels[9] = 'L-lack'
+    ylabels[5] = 'Other types'
+#
+    for label in ax_prior.get_xticklabels()[::2]: #hide every 2nd xtick
+        label.set_visible(False)
+    ax_prior.tick_params(axis='both', which='major', labelsize=17)
+    ax_prior.set_yticklabels(ylabels,rotation=90,fontsize=25)
+
+    #Layout
+    from matplotlib.ticker import FormatStrFormatter
+    ax1_large.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
+    ax1_large.tick_params(axis='both',which='major',labelsize=17)
+    ax1_large.set_xlabel('l = '+str(list2[0]),fontsize=25)
+    ax1_large.xaxis.set_label_position('top')
+    ax1_large.set_ylim(0,np.max(Y1_large)+0.05)
+
+
+    ax2_large.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
+    ax2_large.tick_params(axis='both',which='major',labelsize=17)
+    ax2_large.set_xlabel('l = '+str(list2[1]),fontsize=25)
+    ax2_large.xaxis.set_label_position('top')
+    ax2_large.set_ylim(0,0.75)
+
+    ax_prior.set_xlabel('Prior',fontsize=25)
+    ax_prior.xaxis.set_label_position('top')
+
+    plt.tight_layout()
+    plt.show()
+
+
+
+def get_subfigs_rmd(type_list,list1,list2):
+    seq_length = 5
+    num_of_runs = 5
+    
+    x_figs = len(list1)
+    y_figs = len(list2)
     fig,axes = plt.subplots(nrows=y_figs,ncols=x_figs)
 
-    if prior == True: #To add prior subfigure
-        fig,axes = plt.subplots(nrows=y_figs,ncols=x_figs+1)
-
-    if y_figs == 1:
-        axes = axes[np.newaxis] #add axis if 1d vector. Otherwise error
-
-    types_to_plot = ['t_final'+str(x) for x in type_list] + ['incumbent']
+    types_to_plot = ['t_final'+str(x) for x in type_list] 
 
     #Finding incumbent for each individual run per parameter configuration and checking whether it's already one of the target types
     #This is pretty roundabout, but explicit and relatively fast
-    incumbent_list = [] #list of lists of incumbents. One list per parameter configuration, consisting of num_of_runs incumbents
+    incumbent_list = [] #list of x-y configurations where incumbent is not target type. 
     for x in xrange(y_figs):
         for y in xrange(x_figs):
-            if not(kind == 'm'):
-                df = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[y],seq_length,list2[x]))
-            else:
-                df = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[x],seq_length,list2[y]))
-
+            df = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('rmd',list1[y],seq_length,list2[x]))
             all_types = ['t_final'+str(z) for z in xrange(432)]
             df = df[all_types]
-            incumbents = []
+            incumbents = 0
             for run in xrange(num_of_runs):
                 ds = df.iloc[run]
                 incumbent = ds.idxmax()
-                if incumbent in type_list: 
-                    print '### Incumbent already a target_type ###'
-                    print x,y
-                incumbents.append(incumbent)
-            incumbent_list.append(incumbents)
+                if not incumbent in types_to_plot: 
+                    incumbents += 1
+            if incumbents == num_of_runs: incumbent_list.append([x,y])
+    print '### Incumbent not a target_type in coordinates: ###'
+    print incumbent_list
 
+    #Now to the actual plots:
     for x in xrange(y_figs):
         for y in xrange(x_figs):
-            if not(kind == 'm'):
-                df = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[y],seq_length,list2[x]))
-            else:
-                df = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[x],seq_length,list2[y]))
-
+            df = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('rmd',list1[y],seq_length,list2[x]))
             restrict_to_final = ['t_final'+str(z) for z in xrange(432)] #as to avoid the incumbent to come from other columns
             df = df[restrict_to_final]
-            df['incumbent'] = df.max(axis=1)
+        
+            types_to_plot = ['t_final'+str(i) for i in type_list] 
+            if [x,y] in incumbent_list:
+                df['incumbent'] = df.max(axis=1)
+                types_to_plot = types_to_plot + ['incumbent']
             df = df[types_to_plot]
             df = df.iloc[:num_of_runs]
-            df.plot(ax=axes[x,y],kind='bar',color=('grey','grey','grey','grey','grey','grey','white'))
-    #Adding prior subfig
-    if prior == True:
-        from lexica import get_prior, get_lexica
-    
-        priors = get_prior(get_lexica(3,3,False))
-        priors = list(priors)
-        targets = [231,236,291,306,326,336]
-        #reorder prior
-        for t in targets:
-            priors.insert(0,priors.pop(t))
+            df.plot(ax=axes[x,y],kind='bar', stacked=True, alpha=0.5, color=('palegreen','forestgreen','limegreen','darkgreen','green','mediumseagreen','darkred'), rot=0) #colormap='Greens')
 
-        white_space = 10 #to separate from other priors
-
-        X = np.arange(len(priors)+white_space)
-        Y_target = [0 for _ in xrange(len(priors)+white_space)]
-        for target in xrange(len(targets)):
-            Y_target[target] = priors[target]
-            priors[target] = 0
-       
-        Y_rest = priors[:len(targets)] + [0 for _ in xrange(white_space)] + priors[len(targets):]
-
-        Y_target.reverse()
-        Y_rest.reverse()
-        
-        ax = fig.add_subplot(133)
-        ax.grid(False)
-
-        ax.barh(X,Y_target,color='black')#, edgecolor='none')#,width=1, color='grey')#, orientation='horizontal')
-        ax.barh(X,Y_rest,color='white')#,width=1, color='white' )#, orientation='horizontal')
-
-
-        ylabels = ["" for x in xrange(len(X))]
-        ylabels[9] = 'L-lack'
-        ylabels[5] = 'Other types'
-        ax.set_yticklabels(ylabels,rotation=90)
-
-#        for label in ax.get_yticklabels()[::3]:
-#            label.set_visible(False)
-
-        for label in ax.get_xticklabels()[::2]:
-            label.set_visible(False)
-
-        ax.tick_params(axis='both', which='major', labelsize=17)
-        
-#        xlabels = [str(int(x) + 1) for x in xlabels]
-#        ax.set_xticklabels(xlabels)
-
-
-    #Adding labels and modifying layout 
+#    #Adding labels and modifying layout 
     learning_labels = [x for x in list2]
     list2.reverse()
 
@@ -145,64 +277,56 @@ def get_subfigs_incumbents(type_list,list1,list2,kind,prior=False):
         ax.tick_params(axis='both', which='major', labelsize=17)
 
         #Only add top label to subplots that are on the first row
-        if idx - x_figs < 0 and not(kind == 'm'):
-            x = idx % x_figs
+        if idx - x_figs < 0:
+            print idx
+            x = idx 
             ax.set_xlabel(r'$\lambda$ = '+str(list1[x]),fontsize=20)
             ax.xaxis.set_label_position('top')
 
-        elif idx - x_figs < 0:
-            ax.set_xlabel('l = '+str(learning_labels[idx]),fontsize=25)
-            ax.xaxis.set_label_position('top')
-        elif idx > x_figs and kind == 'm': #If there are more, it means the last is the prior
-                ax.set_xlabel('Prior',fontsize=25)
-                ax.xaxis.set_label_position('top')
-
         #Only add label to subplots that are on the left-most column
         if idx % x_figs == 0:
-            if kind == 'rmd':
-                ax.set_ylabel('l = '+str(list2[-1]),fontsize=20)
-                list2.pop()
-            elif y_figs == 1 and prior == False:
-                ax.set_ylabel('Proportion in population',fontsize=17)
-                list2.pop()
+            ax.set_ylabel('l = '+str(list2[-1]),fontsize=20)
+            list2.pop()
+        elif y_figs == 1 and prior == False:
+            ax.set_ylabel('Proportion in population',fontsize=17)
+            list2.pop()
 
+        #Resize range of values on y to the maximal value in a row:
+        if idx in [0,1,2]:
+            ax.set_ylim(0,0.065)
+        elif idx in [3,4,5]:
+            ax.set_ylim(0,0.55)
+        elif idx in [6,7,8]:
+            ax.set_ylim(0,0.8)
+#
         handles, labels = ax.get_legend_handles_labels()
         labels = ['prag. L-lack kind' for _ in xrange(len(types))] + ['Incumbent']
-        display = (0,6)
-
+        display = (3,6)
+#
         ax.legend([handle for i,handle in enumerate(handles) if i in display], \
-                  [label for i,label in enumerate(labels) if i in display], loc='best')
-
+                  [label for i,label in enumerate(labels) if i in display], loc='best',prop={'size': 20})
+#
 #        #Alternatively: Hide legend
-        if idx == 0 and kind == 'm' or (not(idx == 2) and kind == 'rmd'):
+        if not idx == display[0]:
             ax.legend().set_visible(False)
 
-
-        if idx == 1 and kind == 'm':
-            ax.legend([handle for i,handle in enumerate(handles) if i in display], \
-                  [label for i,label in enumerate(labels) if i in display], loc='best', prop={'size':20})
-
-
-#        #Start counting simulations with 1 and not 0 on the x-axis
-        if prior == False or idx < 1:
+        #Start counting simulations with 1 and not 0 on the x-axis and hide other ticks
+        if idx in [6,7,8]:
             xlabels = [item.get_text() for item in ax.get_xticklabels()]
             xlabels = [str(int(x) + 1) for x in xlabels]
-            ax.set_xticklabels(xlabels)
-#        
-#        #hide every n-th tick
-            for label in ax.get_yticklabels()[::2]:
-                label.set_visible(False)
-        #Hide everything for the prior plot. Otherwise there's overlap
-        if prior == True and idx == 2:
+        else:
+            xlabels = ["" for _ in ax.get_xticklabels()]
+        ax.set_xticklabels(xlabels)
+
+        if not idx in [0,3,6]:
             for label in ax.get_yticklabels()[::1]:
                 label.set_visible(False)
-            for label in ax.get_xticklabels()[::1]:
-                label.set_visible(False)
-    if not(kind == 'm'):
-        fig.text(0.55, 0.015, 'Population', ha='center', va='center',fontsize=17)
+
     plt.tight_layout()
     plt.show()
 
+
+        
 
 def get_heatmap_diff_incumbents(type_list,list1,list2,kind):
     all_types = ['t_final'+str(z) for z in xrange(432)]
@@ -217,8 +341,8 @@ def get_heatmap_diff_incumbents(type_list,list1,list2,kind):
             dt = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[i],seq_length,list2[j]))
             do = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[i],seq_length,list2[j]))
 
-            data[0,i+1] = list1[i]
-            data[j+1,0] = list2[j]
+            data[0,j+1] = list2[j]
+            data[i+1,0] = list1[i]
             
             dt = dt[target_types] 
             do = do[other_types]
@@ -229,122 +353,36 @@ def get_heatmap_diff_incumbents(type_list,list1,list2,kind):
             data[i+1,j+1] = best_of_targets - best_of_others
     dPrime = data[1:,1:]
 
-#    axlabels=["" for _ in xrange(df.shape[1])]
-#    axlabels[len(axlabels)/2] = 'types'
     sns.set(font_scale=2)
-    ax = sns.heatmap(dPrime, annot=True, xticklabels=list1, yticklabels=list2, vmin=0,annot_kws={"size": 20})# xticklabels=axlabels)#, annot=True) 
-    ax.set_xlabel('rationality parameter ('+r'$\lambda$'+')')#,fontsize=30)
-    ax.set_ylabel('posterior parameter (l)')#,fontsize=30)
+    ax = sns.heatmap(dPrime, cmap='YlGnBu', xticklabels=list2, yticklabels=list1, annot_kws={"size": 20})# xticklabels=axlabels)#, annot=True) 
+    ax.set_ylabel('rationality parameter ('+r'$\lambda$'+')',fontsize=30)#,fontsize=30)
+    ax.set_xlabel('posterior parameter (l)',fontsize=30)#,fontsize=30)
 
     ax.invert_yaxis()
     plt.show()
-#    return dPrime
 
 
-kind = 'rmd'
-type_list = [231,236,291,306,326,336]
-list1 = [1,5,20,30] # soft-max parameter
-list2 = [1,5,10,15] #prob-matching = 1, increments approach MAP
-a = get_heatmap_diff_incumbents(type_list,list1,list2,kind)
+types = [231,236,291,306,326,336]
 
-
-
-
-
-#Plot 1: 
-#kind='r'
-#types = [231,236,291,306,326,336]#[231,236,291,306,326,336]
+##Plot 1
 #list1 = [1,20] #lambda
 #list2 = [5] #posterior parameter
-#get_subfigs_incumbents(types,list1,list2,kind)
+#get_subfigs_replication(types,list1,list2)
 
-#Plot 2
-#kind='m'
-#types = [231,236,291,306,326,336]#[231,236,291,306,326,336]
-#list1 = [20] #lambda
-#list2 = [1,15] #posterior parameter
-#get_subfigs_incumbents(types,list1,list2,kind,prior=True)
+##Plot 2
+#list1 = [20]
+#list2 = [1,15]
+#get_subfigs_mutation(types,list1,list2)
 
-#Plot 3
-#kind='rmd'
-#types = [231,236,291,306,326,336]#[231,236,291,306,326,336]
-#list1 = [1,5,20] #lambda
-#list2 = [1,5,15] #posterior parameter
-#get_subfigs_incumbents(types,list1,list2,kind)
+##Plot 3
+#list1 = [1,5,20]
+#list2 = [1,5,15]
+#get_subfigs_rmd(types,list1,list2)
 
-####
-#from lexica import get_lexica,get_lexica_bins,get_prior
-#from rmd import get_type_bin
-#
-#lex = get_lexica(3,3,False)
-#prior = get_prior(lex)
-#bins = get_lexica_bins(lex)
+##Plot 4
+#kind = 'rmd'
+#type_list = [231,236,291,306,326,336]
+#list1 = [x for x in xrange(1,21)]
+#list2 = [x for x in xrange(1,16)]
+#get_heatmap_diff_incumbents(type_list,list1,list2,kind)
 
-#kind='r'
-#types = [231,236,291,306,326,336]#[231,236,291,306,326,336]
-#val1 = 20 #lambda
-#val2 = 5 #posterior parameter
-#a = analysis(types,val1,val2,kind)
-
-#kind='m'
-#types = [231,236,291,306,326,336]#[231,236,291,306,326,336]
-#val1 = 20 #lambda
-#val2 = 15 #posterior parameter
-#a = analysis(types,val1,val2,kind)
-#dr = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,20,5,1))
-#df = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,20,5,15))
-#dx = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,1,5,1))
-#dw = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,1,5,1))
-
-###################
-#def get_parameter_subfigs(type_list,list1,list2,kind):
-#    seq_length = 5
-#    num_of_runs = 10
-#
-#    x_figs = len(list1)
-#    y_figs = len(list2)
-#    fig,axes = plt.subplots(nrows=y_figs,ncols=x_figs)
-#    types_to_plot = ['t_final'+str(x) for x in type_list]
-#
-#    for x in xrange(y_figs):
-#        for y in xrange(x_figs):
-#            df = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[y],seq_length,list2[x]))
-#            df = df[types_to_plot]
-#            df = df.iloc[:num_of_runs]
-#            df.plot(ax=axes[x,y],kind='bar')#,sharey=True,ylim=(0,.8),logy=True)
-#
-#    #Adding labels and modifying layout 
-#    list2.reverse()
-#    for idx in xrange(len(plt.gcf().axes)):
-#        ax = plt.gcf().axes[idx]
-#
-#        #Only add top label to subplots that are on the first row
-#        if idx - x_figs < 0:
-#            x = idx % x_figs
-#            ax.set_xlabel(r'$\lambda$ = '+str(list1[x]),fontsize=20)
-#            ax.xaxis.set_label_position('top')
-#
-#        #Only add label to subplots that are on the left-most column
-#        if idx % x_figs == 0:
-#            ax.set_ylabel('l = '+str(list2[-1]),fontsize=20)
-#            list2.pop()
-#
-#        #Hide legend
-#        ax.legend().set_visible(False)
-#
-#        #Start counting simulations with 1 and not 0 on the x-axis
-#        xlabels = [item.get_text() for item in ax.get_xticklabels()]
-#        xlabels = [str(int(x) + 1) for x in xlabels]
-#        ax.set_xticklabels(xlabels)
-#        
-#        #hide every n-th tick
-#        for label in ax.get_yticklabels()[::2]:
-#            label.set_visible(False)
-#    plt.tight_layout()
-#    plt.show()
-#
-##kind='rmd'
-##types = [231,236,291,306,326,336]#[231,236,291,306,326,336]
-##list1 = [1,5,20] #lambda
-##list2 = [1,5,15] #posterior parameter
-#
