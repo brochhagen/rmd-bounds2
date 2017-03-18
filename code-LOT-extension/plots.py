@@ -170,37 +170,66 @@ def get_subfigs_mutation(type_list,list1,list2):
     from lexica import get_prior,get_lexica
     priors = get_prior(get_lexica(3,3,False))
     priors = list(priors)
+
     targets = [231,236,291,306,326,336]
-    #reorder prior
-    for t in targets:
-        priors.insert(0,priors.pop(t))
+    targets = targets + [x-216 for x in targets] #adding literal Llack
+
+    lbound = [225, 235, 255, 270, 325, 330]
+    lbound = lbound + [x-216 for x in lbound]
+
+    lall = [0,216]
+
+
 
     white_space = 10 #to separate from other priors
+    Y_target = [0 for _ in xrange(len(priors)+white_space*3)]
+    Y_lbound = [0 for _ in xrange(len(priors)+white_space*3)]
+    Y_all = [0 for _ in xrange(len(priors)+white_space*3)]
 
-    X = np.arange(len(priors)+white_space) 
-    Y_target = [0 for _ in xrange(len(priors)+white_space)]
-    for target in xrange(len(targets)):
-        Y_target[target] = priors[target]
-        priors[target] = 0
+    for t in xrange(len(targets)):
+        Y_target[t] = priors[targets[t]]
+
+    for t in xrange(len(lbound)):
+        Y_lbound[len(targets)+white_space+t] = priors[lbound[t]]
+    for t in xrange(len(lall)):
+        Y_all[len(targets)+white_space+len(lbound)+white_space+t] = priors[lall[t]]
+
+    all_types = targets+lbound+lall
+    all_types.sort()
+
+    #reorder prior
+    for t in all_types:
+        priors.insert(0,priors.pop(t))
+    for t in xrange(len(all_types)):
+        priors[t] = 0
+
    
-    Y_rest = priors[:len(targets)] + [0 for _ in xrange(white_space)] + priors[len(targets):]
+    Y_rest = priors[:len(targets)] + [0 for _ in xrange(white_space)] + priors[len(targets):len(targets)+len(lbound)] +\
+     [0 for _ in xrange(white_space)] + priors[len(targets)+len(lbound):len(all_types)] + [0 for _ in xrange(white_space)] + priors[len(all_types):]
+
+            
     Y_target.reverse()
     Y_rest.reverse()
-    
+    Y_lbound.reverse()
+    Y_all.reverse()
+   
     ax_prior.grid(False)
-
+    
+    X = np.arange(len(priors)+white_space*3) 
     ax_prior.barh(X,Y_target,color='green',alpha=al)
+    ax_prior.barh(X,Y_lbound,color='yellow',alpha=al)
+    ax_prior.barh(X,Y_all,color='orange',alpha=al)
     ax_prior.barh(X,Y_rest,color='royalblue',alpha=al)
 
-
-    ylabels = ["" for x in xrange(len(X))]
-    ylabels[9] = 'L-lack'
-    ylabels[5] = 'Other types'
+    ax_prior.set_ylim(0,500)
+    ylabels = [x for x in xrange(len(X))]
+#    ylabels[9] = 'L-lack'
+#    ylabels[5] = 'Other types'
 #
-    for label in ax_prior.get_xticklabels()[::2]: #hide every 2nd xtick
-        label.set_visible(False)
-    ax_prior.tick_params(axis='both', which='major', labelsize=17)
-    ax_prior.set_yticklabels(ylabels,rotation=90,fontsize=25)
+#    for label in ax_prior.get_xticklabels()[::2]: #hide every 2nd xtick
+#        label.set_visible(False)
+#    ax_prior.tick_params(axis='both', which='major', labelsize=17)
+#    ax_prior.set_yticklabels(ylabels,rotation=90,fontsize=25)
 
     #Layout
     from matplotlib.ticker import FormatStrFormatter
@@ -208,7 +237,12 @@ def get_subfigs_mutation(type_list,list1,list2):
     ax1_large.tick_params(axis='both',which='major',labelsize=17)
     ax1_large.set_xlabel('l = '+str(list2[0]),fontsize=25)
     ax1_large.xaxis.set_label_position('top')
-    ax1_large.set_ylim(0,np.max(Y1_large)+0.05)
+    ax1_large.set_ylim(0,np.max(Y1_large)+0.065)
+
+    p1 = patches.Rectangle((0, 0), 1, 1, fc="green", alpha=al)
+    p2 = patches.Rectangle((0, 0), 1, 1, fc="darkred",alpha=al)
+    ax1_large.legend([p1, p2], ['prag. L-lack','Other incumbent'],loc='best',prop={'size':20})
+
 
 
     ax2_large.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
@@ -370,9 +404,9 @@ types = [231,236,291,306,326,336]
 #get_subfigs_replication(types,list1,list2)
 
 ##Plot 2
-#list1 = [20]
-#list2 = [1,15]
-#get_subfigs_mutation(types,list1,list2)
+list1 = [20]
+list2 = [1,15]
+get_subfigs_mutation(types,list1,list2)
 
 ##Plot 3
 #list1 = [1,5,20]
