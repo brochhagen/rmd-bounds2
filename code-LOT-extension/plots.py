@@ -99,32 +99,52 @@ def get_subfigs_replication(type_list,list1,list2):
     ax1_large.set_xlabel(r'$\lambda$ = '+str(list1[0]),fontsize=25)
     ax1_large.xaxis.set_label_position('top')
 
-    handles, labels = ax1_large.get_legend_handles_labels()
-    labels = ['prag. L-lack kind' for _ in xrange(len(types))] + ['Incumbent']
-    display = (0,6)
+    #Start counting simulations with 1 and not 0 on the x-axis and hide other ticks
+    xlabels = [item.get_text() for item in ax1_large.get_xticklabels()]
+    xlabels = [str(int(x) + 1) for x in xlabels]
+    ax1_large.set_xticklabels(xlabels)
 
-    ax1_large.legend([handle for i,handle in enumerate(handles) if i in display], \
-                  [label for i,label in enumerate(labels) if i in display], loc='best')
+
+#    handles, labels = ax1_large.get_legend_handles_labels()
+#    labels = ['prag. L-lack kind' for _ in xrange(len(types))] + ['Incumbent']
+#    display = (0,6)
+#
+#    ax1_large.legend([handle for i,handle in enumerate(handles) if i in display], \
+#                  [label for i,label in enumerate(labels) if i in display], loc='best')
 
     p1 = patches.Rectangle((0, 0), 1, 1, fc="green", alpha=al)
     p2 = patches.Rectangle((0, 0), 1, 1, fc="darkred",alpha=al)
-    ax1_large.legend([p1, p2], ['prag. L-lack','Other incumbent'],loc='best',prop={'size':20})
+    ax1_large.legend([p1, p2], ['prag. L-lack','Other incumbent'],loc='best',prop={'size':14})
 
     ax2_large.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
     ax2_large.tick_params(axis='both',which='major',labelsize=17)
     ax2_large.set_xlabel(r'$\lambda$ = '+str(list1[1]),fontsize=25)
     ax2_large.xaxis.set_label_position('top')
 
+    xlabels = [item.get_text() for item in ax2_large.get_xticklabels()]
+    xlabels = [str(int(x) + 1) for x in xlabels]
+    ax2_large.set_xticklabels(xlabels)
+
+
     ax1_small.yaxis.set_major_formatter(FormatStrFormatter('%.3f'))
     ax1_small.tick_params(axis='both',which='major',labelsize=17)
     ax1_small.set_xlabel(r'$\lambda$ = '+str(list1[0]),fontsize=25)
     ax1_small.xaxis.set_label_position('top')
+
+    xlabels = [item.get_text() for item in ax1_small.get_xticklabels()]
+    xlabels = [str(int(x) + 1) for x in xlabels]
+    ax1_small.set_xticklabels(xlabels)
 
 
     ax2_small.yaxis.set_major_formatter(FormatStrFormatter('%.3f'))
     ax2_small.tick_params(axis='both',which='major',labelsize=17)
     ax2_small.set_xlabel(r'$\lambda$ = '+str(list1[1]),fontsize=25)
     ax2_small.xaxis.set_label_position('top')
+
+    xlabels = [item.get_text() for item in ax2_small.get_xticklabels()]
+    xlabels = [str(int(x) + 1) for x in xlabels]
+    ax2_small.set_xticklabels(xlabels)
+
 
     plt.tight_layout()
     plt.show()
@@ -217,19 +237,11 @@ def get_subfigs_mutation(type_list,list1,list2):
     
     X = np.arange(len(priors)+white_space*3) 
     ax_prior.barh(X,Y_target,color='green',alpha=al)
-    ax_prior.barh(X,Y_lbound,color='yellow',alpha=al)
-    ax_prior.barh(X,Y_all,color='orange',alpha=al)
+    ax_prior.barh(X,Y_lbound,color='mediumorchid',alpha=al)
+    ax_prior.barh(X,Y_all,color='dimgrey',alpha=al)
     ax_prior.barh(X,Y_rest,color='royalblue',alpha=al)
 
-    ax_prior.set_ylim(0,500)
-    ylabels = [x for x in xrange(len(X))]
-#    ylabels[9] = 'L-lack'
-#    ylabels[5] = 'Other types'
-#
-#    for label in ax_prior.get_xticklabels()[::2]: #hide every 2nd xtick
-#        label.set_visible(False)
-#    ax_prior.tick_params(axis='both', which='major', labelsize=17)
-#    ax_prior.set_yticklabels(ylabels,rotation=90,fontsize=25)
+
 
     #Layout
     from matplotlib.ticker import FormatStrFormatter
@@ -239,10 +251,14 @@ def get_subfigs_mutation(type_list,list1,list2):
     ax1_large.xaxis.set_label_position('top')
     ax1_large.set_ylim(0,np.max(Y1_large)+0.065)
 
+    xlabels = [item.get_text() for item in ax1_large.get_xticklabels()]
+    xlabels = [str(int(x) + 1) for x in xlabels]
+    ax1_large.set_xticklabels(xlabels)
+
+
     p1 = patches.Rectangle((0, 0), 1, 1, fc="green", alpha=al)
     p2 = patches.Rectangle((0, 0), 1, 1, fc="darkred",alpha=al)
-    ax1_large.legend([p1, p2], ['prag. L-lack','Other incumbent'],loc='best',prop={'size':20})
-
+    ax1_large.legend([p1, p2], ['prag. L-lack','Other incumbent'],loc='best',prop={'size':17})
 
 
     ax2_large.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
@@ -251,8 +267,26 @@ def get_subfigs_mutation(type_list,list1,list2):
     ax2_large.xaxis.set_label_position('top')
     ax2_large.set_ylim(0,0.75)
 
+    xlabels = [item.get_text() for item in ax2_large.get_xticklabels()]
+    xlabels = [str(int(x) + 1) for x in xlabels]
+    ax2_large.set_xticklabels(xlabels)
+
     ax_prior.set_xlabel('Prior',fontsize=25)
     ax_prior.xaxis.set_label_position('top')
+    ax_prior.set_ylabel('Types', fontsize=25)
+    ax_prior.tick_params(axis='both', which='major', labelsize=17)
+    ax_prior.annotate('L-lack',xy=(.0063236,450),color='green',fontweight='extra bold')
+    ax_prior.annotate('L-bound',xy=(0.0028603,428.5),color='mediumorchid',fontweight='extra bold')
+    ax_prior.annotate('L-all',xy=(.0063236,419), color='dimgrey',fontweight='extra bold')
+
+    ax_prior.set_ylim(0,465)
+    ylabels = [x for x in xrange(len(X))]
+
+    #Hide all y-labels
+    for label in ax_prior.get_yticklabels():
+        label.set_visible(False)
+
+
 
     plt.tight_layout()
     plt.show()
@@ -334,7 +368,7 @@ def get_subfigs_rmd(type_list,list1,list2):
             ax.set_ylim(0,0.8)
 #
         handles, labels = ax.get_legend_handles_labels()
-        labels = ['prag. L-lack kind' for _ in xrange(len(types))] + ['Incumbent']
+        labels = ['prag. L-lack' for _ in xrange(len(types))] + ['Other Incumbent']
         display = (3,6)
 #
         ax.legend([handle for i,handle in enumerate(handles) if i in display], \
@@ -404,14 +438,14 @@ types = [231,236,291,306,326,336]
 #get_subfigs_replication(types,list1,list2)
 
 ##Plot 2
-list1 = [20]
-list2 = [1,15]
-get_subfigs_mutation(types,list1,list2)
+#list1 = [20]
+#list2 = [1,15]
+#get_subfigs_mutation(types,list1,list2)
 
 ##Plot 3
-#list1 = [1,5,20]
-#list2 = [1,5,15]
-#get_subfigs_rmd(types,list1,list2)
+list1 = [1,5,20]
+list2 = [1,5,15]
+get_subfigs_rmd(types,list1,list2)
 
 ##Plot 4
 #kind = 'rmd'
