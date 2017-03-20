@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  20 MAR 2017 12:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.30)  20 MAR 2017 16:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -353,34 +353,34 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 361.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 359.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 361.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 359.
  [5] [6] [7] [8]
 [9] [10] [11] <./plots/fig1-onlyr.png, id=53, 875.1897pt x 573.1011pt>
 File: ./plots/fig1-onlyr.png Graphic file (type png)
 
 <use ./plots/fig1-onlyr.png>
-Package pdftex.def Info: ./plots/fig1-onlyr.png used on input line 650.
+Package pdftex.def Info: ./plots/fig1-onlyr.png used on input line 648.
 (pdftex.def)             Requested size: 347.59914pt x 227.61859pt.
  [12 <./plots/fig1-onlyr.png>]
 <./plots/fig2-onlym-pr.png, id=59, 919.2744pt x 584.6643pt>
 File: ./plots/fig2-onlym-pr.png Graphic file (type png)
 
 <use ./plots/fig2-onlym-pr.png>
-Package pdftex.def Info: ./plots/fig2-onlym-pr.png used on input line 662.
+Package pdftex.def Info: ./plots/fig2-onlym-pr.png used on input line 660.
 (pdftex.def)             Requested size: 357.88435pt x 227.6167pt.
  [13 <./plots/fig2-onlym-pr.png>]
 <./plots/fig3-r+m.png, id=65, 865.7946pt x 571.6557pt>
 File: ./plots/fig3-r+m.png Graphic file (type png)
 
 <use ./plots/fig3-r+m.png>
-Package pdftex.def Info: ./plots/fig3-r+m.png used on input line 678.
+Package pdftex.def Info: ./plots/fig3-r+m.png used on input line 676.
 (pdftex.def)             Requested size: 344.73961pt x 227.62021pt.
 
 <./plots/fig4-incumbents-difference.png, id=66, 1156.32pt x 872.2989pt>
@@ -388,7 +388,7 @@ File: ./plots/fig4-incumbents-difference.png Graphic file (type png)
 
 <use ./plots/fig4-incumbents-difference.png>
 Package pdftex.def Info: ./plots/fig4-incumbents-difference.png used on input l
-ine 689.
+ine 687.
 (pdftex.def)             Requested size: 226.30194pt x 170.71652pt.
  [14] [15 <./plots/fig3-r+m.png> <./plots/fig4-incumbents-difference.png>] [16]
  [17] (./paper-v3.bbl [18] [19]
@@ -417,7 +417,7 @@ public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mti10.pfb>
-Output written on paper-v3.pdf (23 pages, 465366 bytes).
+Output written on paper-v3.pdf (23 pages, 465344 bytes).
 PDF statistics:
  152 PDF objects out of 1000 (max. 8388607)
  101 compressed objects within 2 object streams

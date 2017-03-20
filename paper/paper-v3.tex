@@ -116,7 +116,7 @@ implicatures
 \citep{horn:1984,Hirschberg1985:A-Theory-of-Sca,LevinsonPragmatics1983,Geurts2010:Quantity-Implic}. Usually,
 the utterance of a sentence like ``I own some of Johnny Cash's albums'' will be taken to mean
 that the speaker does not own all of them. This is because, if the speaker had them all, he
-could have used the stronger word \emph{all} instead of \emph{some} in his utterance, 
+could have used the word \emph{all} instead of \emph{some} in his utterance, 
 thereby making a more informative statement. Scalar implicatures, especially the
 inference from \emph{some} to \emph{some but not all}, have been studied extensively, both
 theoretically
@@ -228,7 +228,6 @@ The RMD consists of two components: fitness-based selection and transmission bia
 becomes most transparent when we consider an equivalent formulation in terms of a step-wise
 application of the discrete-time replicator dynamic \citep{TaylorJonker1978:Evolutionary-St} on the initial population vector $\vec{x}$
 and its subsequent multiplication with a mutation matrix $Q$:
-
 \begin{align}
   \label{eq:RMD_discrete_recast}
   x'_i & = (\text{M}(\text{RD}(\vec{x})))_i\,,
@@ -303,7 +302,7 @@ semantics with only a lower-bound in $\Llack$.
   \end{blockarray}
 \end{align*}
 
-We distinguish between two kinds of pragmatic behavior. {\em Literal interlocutors} produce and
+We distinguish between two kinds of linguistic behavior. {\em Literal interlocutors} produce and
 interpret messages literally, being guided only by their lexica. {\em Pragmatic interlocutors}
 instead engage in mutual reasoning to inform their choices. Recent probabilistic models of
 rational language use
@@ -326,9 +325,8 @@ from above would assign $\ssome$ a probability of $H_0(\ssome \mid \msome; \Lbou
 hearing $\msome$, while a literal interpreter with lexicon $\Llack$ would assign $\ssome$
 probability $H_0(\ssome \mid \msome; \Llack) = 0.5$. As usual in probabilistic pragmatics models, speaker behavior is regulated by a soft-max
 parameter $\lambda$, $\lambda \geq 1$ \citep{luce:1959,sutton+barto:1998}. As $\lambda$
-increases, choices made in production are more rational in that higher values lead to behavior
-that is increasingly in line with expected utility maximization. Expected utility of a message
-$\messg$ in state $\state$ for a level $n+1$ speaker is here defined as $H_{n}(s|m;L)$, the probability that the hearer will assign to or choose the correct meaning. Put differently, how likely the hearer is thought to infer $\state$ when sent $\messg$. The formulation
+increases, choices made in production are more rational in that they are increasingly in line with expected utility maximization. Expected utility of a message
+$\messg$ in state $\state$ for a level $n+1$ speaker is here defined as $H_{n}(s|m;L)$, the probability that the hearer will assign to or choose the correct meaning. Put differently, expected utility indicates how likely the hearer is thought to infer $\state$ when sent $\messg$. The formulation
 in (\ref{s:level0}) also allows false messages to be sent with a small positive probability in
 analogy to the definition of pragmatic speakers in probabilistic pragmatic models. This is also necessary to guarantee a mutation matrix with only positive entries (see below). If $\lambda = 1$ a literal
 speaker with either lexicon $\Lbound$ or $\Llack$ produces $\msome$ in $\ssome$ with probability $S_{0}(\msome \mid
@@ -345,7 +343,7 @@ interpretation or production on the expected behavior of a level-$n$ interlocuto
 &S_{n+1}(m|s;L) \propto  \exp(\lambda \; H_{n}(s|m;L)) \label{s:leveln}
 \end{flalign}
 
-Particularly important to our purpose is the fact that players of a level greater than $0$ using $\Llack$ can {\em pragmatically} associate $\msome$ with $\ssome$ over $\sall$,  in contrast to their literal counterparts. Intuitively, this is so because hearers reason a speaker to convey $\sall$ with $\mall$, as this has a higher chance of leading to mutual understanding than using underspecified $\msome$. Therefore they will expect $\msome$ to be more strongly associated with $\ssome$ than with $\sall$ as it is already possible to clearly convey the latter state with a different message. The converse reasoning pattern holds for the speaker. In this way, two distinct lexical conventions such as $\Lbound$ and $\Llack$ can give rise to similar observable linguistic behavior.
+Particularly important to our purpose is the fact non-literal interlocutors using $\Llack$ can {\em pragmatically} associate $\msome$ with $\ssome$ over $\sall$,  in contrast to their literal counterparts. Intuitively, this is so because hearers reason a speaker to convey $\sall$ with $\mall$, as this message has a higher chance of leading to mutual understanding than using underspecified $\msome$. Therefore they will expect $\msome$ to be more strongly associated with $\ssome$ than with $\sall$ as it is already possible to clearly convey the latter state $\mall$. The converse reasoning pattern holds for the speaker. In this way, two distinct lexical conventions such as $\Lbound$ and $\Llack$ can give rise to similar observable linguistic behavior. In this case, associating $\msome$ with $\ssome$ and $\mall$ with $\sall$.
 
 \subsection{Fitness \& fitness-based selection based on expressivity}\label{sec:expressivity}
 
@@ -398,7 +396,7 @@ In biological evolution, where types are expressed genetically, transmission inf
 into the picture through infrequent and mostly random genetic mutations. However, an agent's lexicon
 and pragmatic reasoning behavior is not inherited genetically. They need to be learned from
 observation. Concretely, when agents of type $j$ want to adopt or imitate the linguistic
-behavior of type $i$, they observe the linguistic behavior of type $i$ and need to infer what
+behavior of type $i$, they observe the overt linguistic behavior of type $i$ and need to infer what
 their type is from that. Iterated learning is a process in which languages are learned repeatedly from the observation
 of linguistic behavior of agents who have acquired the language from observation and inference
 before as well. In the simplest case there is a single teacher and a single
@@ -467,7 +465,7 @@ the discrete time replicator mutator dynamics in (\ref{eq:RMD_discrete}), repeat
   x'_i = \sum_j Q_{ji} \frac{x_jf_j}{\sum_k x_k f_k}\,.
 \end{align*}
 This equation defines the frequency $x'_i$ of type $i$ at the next time step, based on its
-frequency $x_i$ before the step, its fitness $f_i$ and the probability that a learner infers
+frequency $x_i$ before the step, its fitness $f_i$, and the probability that a learner infers
 $i$ when observing the behavior of a type-$j$ agent. Fitness-based selection can be thought of
 as biological (fitness as expected relative number of offspring) or cultural (fitness as 
 likelihood of being imitated or repeated). The types that the dynamic operates on are pairs
@@ -493,7 +491,7 @@ Instead, the systematicity and typological spread of scalar implicatures togethe
 \subsection{Analysis}
 The dynamics are initialized with an arbitrary distribution over types, constituting a population's first generation. In the following we report the outcome of their development under different parameters and pressures after $50$ generations. This ensures that these outcomes correspond to developmental plateaus after which no noteworthy change is registered. As specified in \S\ref{sec:learnability}, the mutation matrix $Q$ can be obtained by considering all possible state-message sequences of length $k$. Given that this is intractable for large $k$, the sets of data learners are exposed to are approximated by sampling $250$ $k$-length sequences from each type's production probabilities. 
 
-We begin setting the stage by defining the learning prior and the set of types under consideration. Drawing from our preceding discussion, functional pressure on successful communication combined with learning pressures in the form of a bias that favors simpler semantics may lead to the selection of $\Llack$-like semantics and to the majority view of a division of labor between semantics and pragmatics. We first showcase the effects that expressivity and learnability have in isolation before turning to those resulting from their combination. 
+We begin setting the stage by defining the learning prior and the set of types under consideration. Drawing from our preceding discussion, functional pressure on successful communication combined with learning pressures in the form of a bias that favors simpler semantics may lead to the selection of $\Llack$-like semantics and to a division of labor between semantics and pragmatics. We first showcase the effects that expressivity and learnability have in isolation before turning to those resulting from their combination. 
 
 
 \subsubsection{An inductive learning bias for semantic simplicity}
@@ -526,18 +524,18 @@ The prior probability of a type is just the prior probability of its lexicon. Th
   P(c) & \propto \max_{c'}Compl(c') - Compl(c) + 1\,,
 \end{align*}
 
-where $Compl(c)$ is the complexity of the minimal derivation length of $c$ according to the grammar. There are many ways to define priors over lexica (see, e.g., \citealt{goodman+etal:2008, piantadosi+etal:2012a}) but the key assumption here, common to all of them, is that simple representational expressions should be favored over more complex ones. We should stress that these details -- from the generative grammar to its complexity measure -- are to be regarded as an instantiation of our general assumptions instead of as empirical claims in their own right. 
+where $Compl(c)$ is the complexity of the minimal derivation length of $c$ according to the LOT-grammar. There are many ways to define priors over lexica (see, e.g., \citealt{goodman+etal:2008, piantadosi+etal:2012a}) but the key assumption here, common to all of them, is that simple representational expressions should be favored over more complex ones. We should stress that these details -- from the generative grammar to its complexity measure -- are to be regarded as an instantiation of our general assumptions instead of as empirical claims in their own right. 
 
 
 
 
 \subsubsection{Lexica, signaling behavior \& types}
-We consider a state space with three states $\States = \set{\snone, \ssome, \sall}$. \tb{Should we say something about the inclusion of $\snone$? It may be more natural to introduce this state earlier but may unnecessarily complicate the lexica showcased in the previous section.} This space can be
+We consider a state space with three states $\States = \set{\snone, \ssome, \sall}$. \tb{Should we say something about the inclusion of $\snone$? It may be more natural to introduce this state earlier but may unnecessarily complicate the exposition of signaling behavior in the previous section.} This space can be
 thought of as a partition of possible worlds into cells where none, some or all of the $A$s are
 $B$s, for some arbitrary fixed predicates $A$ and $B$. Eight concepts can be distinguished
 based on their truth or falsity in three world states, six of which are not contradictory
  or tautological. These are listed with mnemonic names in
-Table~\ref{tab:concepts} together with their complexity according to the grammar given in Table \ref{tab:grammar}.
+Table~\ref{tab:concepts} together with their complexity according to the grammar in Table \ref{tab:grammar}.
 
 \begin{table}
   \centering
@@ -601,9 +599,9 @@ Table~\ref{tab:concepts} together with their complexity according to the grammar
 \end{table}
 
 A lexicon $L$ is a mapping $\Messgs \rightarrow C$ from messages to concepts. With three
-messages there are $6^3 = 216$ possible lexica. Some assign the same concept to more than one message and others lexicalize the same meanings but associate them with different messages. The main results reported in the following do not hinge on the inclusion of these lexica but such an unaltered space does better illustrate the influence and differences of the linguistic pressures we consider. Additionally, the competition of different languages that lexicalize the same concepts through different forms allows us to take serious the problem of only one being selected for even though multiple alternatives of equal expressivity {\em and} learnability exist.
+messages there are $6^3 = 216$ possible lexica. Some assign the same concept to more than one message and others lexicalize the same concepts but associate them with different messages. The main results reported in the following do not hinge on the inclusion of these lexica but this unaltered space does better illustrate the influence and differences of the linguistic pressures we consider. Additionally, the competition of different languages that lexicalize the same concepts through different forms allows us to take serious the problem of only one being selected for even though multiple alternatives of equal expressivity {\em and} learnability exist.
 
-Out of these possible lexica, three kinds are of particular relevance. First, lexica that assign the same concept to more than one message. Such lexica lack in expressivity but are favored by the learning bias should they lexicalize simple concepts. Second, lexica that conventionalize upper-bounds to realize a (quasi-)partition of the state space. As discussed before in relation to $\Lbound$, users of these lexica need not resort to pragmatic reasoning to convey an upper-bound with weak scalar expressions. Instead, this information is already provided by the semantics of their lexicon, giving them an advantage in terms of expressivity. Types with such lexica are expected to be the main contenders of the natural language like semantics that do not lexicalize an upper-bound for weak scalar expressions. Third and lastly, $\Llack$-style lexica that, paired with mutual reasoning, can convey an upper-bound pragmatically. There are six lexica of the second kind and six of the third. The following three lexica exemplify each kind, with $\Lall$ being a lexicon of the first kind. This lexicon is not optimal for communication as it assigns all its messages to the same state, $\sall$. This inevitably leads to a communicative disadvantage in its use. However, it may have a learnability advantage over our target $\Llack$ and its competitor $\Lbound$ in virtue of being the simplest lexicon, making it a priori favored by learners.
+Out of these possible lexica, three kinds are of particular relevance. First, lexica that assign the same concept to more than one message. Such lexica lack in expressivity but may be favored by the learning prior should they lexicalize simple concepts. Second, lexica that conventionalize upper-bounds to realize a (quasi-)partition of the state space. As discussed before in relation to $\Lbound$, users of these lexica need not resort to pragmatic reasoning to convey an upper-bound with weak scalar expressions. Instead, this information is already provided by the semantics of their lexicon, giving them an advantage in terms of expressivity. Types with such lexica are expected to be the main contenders of the natural language like semantics that do not lexicalize an upper-bound for weak scalar expressions. Third and lastly, $\Llack$-style lexica that, paired with mutual reasoning, can convey an upper-bound pragmatically. There are six lexica of the second kind and six of the third. The following three lexica exemplify each kind, with $\Lall$ being a lexicon of the first kind. This lexicon is not optimal for communication as it assigns all its messages to the same state, $\sall$. This inevitably leads to a communicative disadvantage in its use. However, it may have a learnability advantage over our target $\Llack$ and its competitor $\Lbound$ in virtue of being the simplest lexicon, making it a priori favored by learners.
 
 \begin{align*}
   \begin{blockarray}{lccc}
