@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper, 11pt]{article}
 
 \usepackage{geometry}
 \usepackage{natbib}
@@ -19,6 +19,12 @@
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{booktabs}
+\usepackage{pgfplots}
+\usepackage{subcaption}
+\pgfplotsset{compat=1.3}
+\usetikzlibrary{pgfplots.groupplots,decorations.markings}
+
+
 %\newcommand{\mvalueof}[1]{\llbracket#1\rrbracket}
 \newcommand{\citeposs}[2][]{\citeauthor{#2}'s (\citeyear[#1]{#2})}
 \newcommand{\tuple}[1]{\ensuremath{\left\langle #1 \right\rangle}} 
@@ -34,6 +40,9 @@
 
 \usepackage{blkarray}
 \usepackage{xspace}
+
+\usepackage{tgtermes}
+\renewcommand{\baselinestretch}{1.2}
 
 %%% MF's commands
 \newcommand{\set}[1]{\left\{#1\right\}}
@@ -81,108 +90,116 @@
 \date{}
 
 \begin{document}
+
+  %% for arrow head placement
+  \tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+  %%% 
+
 \maketitle
 
 \begin{abstract}
-  According to standard linguistic theory, the meaning of an utterance is the product of 
-  conventional semantic meaning and general pragmatic reasoning applied
-  to the context of utterance. This implies that models of the cultural evolution of meaning
-  should likewise take into consideration that observable language use is a complex interaction
-  of semantic representations and pragmatic use. To this end, we present a game theoretic model
-  of cultural language evolution where communicative pressures work on abstract semantic
-  representations and pragmatic patterns of use. Our model traces two evolutionary forces and
-  their interaction: (i) fitness-based pressure towards communicative efficiency and (ii)
-  systematic transmission perturbations when linguistic knowledge is transferred from one agent
-  to another.  We illustrate the model based on a case study showing that learning biases that favor simple semantic
-  representations can prevent the lexicalization of pragmatic inferences as long as mutual reasoning counteracts a loss in expressivity otherwise incurred by the adoption of such semantics. 
+  According to standard linguistic theory, the meaning of an utterance is the product of
+  conventional semantic meaning and general pragmatic rules on language use. To investigate how
+  cultural evolution of language plays out under this picture of the semantics-pragmatics
+  interface, we present a game theoretic model of the competition between types of language
+  users, each endowed with her selection of lexical concepts and her own pragmatic dispositions
+  to act on them. Our model traces two evolutionary forces and their interaction: (i)
+  fitness-based pressure towards communicative efficiency and (ii) potential learning biases
+  during the transfer of linguistic knowledge. We illustrate the model based on a case study on
+  scalar implicatures. In this case study learning biases that favor simple semantic
+  representations can boost the evolution of more sophisticated pragmatic reasoning types and
+  so prevent the lexicalization of scalar implicatures.
 \end{abstract}
 
 \section{Introduction}\label{sec:introduction}
 What is conveyed usually goes beyond what is said. A request for a blanket can be politely
-veiled by uttering ``I'm cold.'' The temporal succession of events can be communicated by the
-order in which conjuncts appear as in ``I traveled to Paris and got married.'' An invitation
-can be declined by saying ``I have to work.'' An influential explanation of the relation
-between the literal meaning of expressions and what they are intended and interpreted to convey
-is due to \citet{grice:1975}, who characterizes pragmatic use and interpretation as a process of
-mutual reasoning about rational language use. For instance, under the assumption that the
-speaker is cooperative and relevant, ``I have to work'' may be interpreted as providing a
-reason why the speaker will not be able to accept an invitation, going beyond its literal
-meaning. Some of these enrichments are rather \emph{ad hoc}. Others show striking regularities,
-such as the use of ability questions for polite requests (``Could you please \dots?''), or
-certain enrichments of lexical meanings such as \emph{and} to mean \emph{and then}.
+veiled by uttering ``I'm cold;'' temporal succession of events can be communicated by the order
+in which conjuncts appear as in ``I traveled to Paris and got married;'' an invitation can be
+declined by saying ``I have to work.'' An influential explanation of the relation between the
+literal meaning of expressions and what they may convey in context is due to
+\citet{grice:1975}, who characterizes pragmatic use and interpretation as a process of mutual
+reasoning about rational language use. For instance, under the assumption that the speaker is
+cooperative and relevant, ``I have to work'' may be interpreted as providing a reason why the
+speaker will not be able to accept an invitation, going beyond its literal meaning. Some of
+these enrichments are rather \emph{ad hoc}. Others show striking regularities, such as the use
+of ability questions for polite requests (``Could you please \dots?''), or certain enrichments
+of lexical meanings such as \emph{and} to convey \emph{and then}.
 
 A particularly productive and well studied class of systematic pragmatic enrichments are scalar
 implicatures
 \citep{horn:1984,Hirschberg1985:A-Theory-of-Sca,LevinsonPragmatics1983,Geurts2010:Quantity-Implic}. Usually,
 the utterance of a sentence like ``I own some of Johnny Cash's albums'' will be taken to mean
-that the speaker does not own all of them. This is because, if the speaker had them all, he
-could have used the word \emph{all} instead of \emph{some} in his utterance, 
-thereby making a more informative statement. Scalar implicatures, especially the
-inference from \emph{some} to \emph{some but not all}, have been studied extensively, both
-theoretically
+that the speaker does not own all of them. This is because, if the speaker owned them all, she
+could have used the word \emph{all} instead of \emph{some} in his utterance, thereby making a
+more informative statement. Scalar implicatures, especially the inference from \emph{some} to
+\emph{some but not all}, have been studied extensively, both theoretically
 \citep[e.g.,][]{Sauerland2004:Scalar-Implicat,ChierchiaFox2008:The-Grammatical,Rooyvan-RooijJagerde-Jager2012:Explaining-Quan}
 as well as experimentally
 \citep[e.g.,][]{BottNoveck2004:Some-Utterances,huang+snedeker:2009,GrodnerKlein2010:Some-and-Possib,GoodmanStuhlmuller2013:Knowledge-and-I,DegenTanenhaus2012:Processing-Scal}. While
-there is much dispute in this domain about many details, a position endorsed by a
-clear majority is that a word like \emph{some} is underspecified to mean \emph{some and maybe
-  all} and that the enrichment to \emph{some but not all} is part of some regular 
-process with roots in pragmatics.
+there is much dispute in this domain about many details, a position endorsed by a clear
+majority is that a scalar item like \emph{some} is underspecified to mean \emph{some and maybe
+  all} and that the enrichment to \emph{some but not all} is part of some regular process with
+roots in pragmatics.
 
 If this majority view is correct, the question arises how such a division of labor between
-semantics and pragmatics could have evolved and why it would be so pervasive across natural languages. Models of language evolution abound. There are
-simulation-based models studying the evolution of language in populations of communicating
-agents
+semantics and pragmatics could have evolved and why it would be so pervasive across natural
+languages. Models of language evolution abound. There are simulation-based models studying the
+evolution of language in populations of communicating agents
 \citep{Hurford1989:Biological-Evol,Steels1995:A-Self-Organizi,LenaertsJansen2005:The-Evolutionar,SteelsBelpaeme2005:Coordinating-Pe,BaronchelliPuglisi2008:Cultural-route-,steels:2011,SpikeStadler2016:Minimal-Require}
 and there are mathematical models of language evolution, mostly coming from game theory
-\citep{lewis:1969,Warneryd1993:Cheap-Talk-Coor,BlumeKim1993:Evolutionary-St,nowak+krakauer:1999,Huttegger2007:Evolution-and-t,Skyrms2010:Signals}. Much of this work has focused on explaining basic properties such as compositionality and combinatoriality
-\citep[e.g.,][]{Batali1998:Computational-S,nowak+krakauer:1999,nowak+etal:2000,KirbyHurford2002:The-Emergence-o,kirby:2002,SmithKirby2003:Iterated-Learni,Gong2007:Language-Evolut,kirby+etal:2015,verhoef+etal:2014,Franke2015:Proto-Syntax}, but
-little attention has been paid to the interaction between conventional meaning and pragmatic
-use. What is more, many mathematical models explain evolved meaning as a regularity in the
-behavior of agents which maps objective states of the world to observable signals. There is no
-room in such a purely extensional approach to address the semantics-pragmatics division
-directly. Instead, we would need to look at richer representations of cognizing agents and their
-communicative interaction.
+\citep{lewis:1969,Warneryd1993:Cheap-Talk-Coor,BlumeKim1993:Evolutionary-St,nowak+krakauer:1999,Huttegger2007:Evolution-and-t,Skyrms2010:Signals}. Much
+of this work has focused on explaining basic properties such as compositionality and
+combinatoriality
+\citep[e.g.,][]{Batali1998:Computational-S,nowak+krakauer:1999,nowak+etal:2000,KirbyHurford2002:The-Emergence-o,kirby:2002,SmithKirby2003:Iterated-Learni,Gong2007:Language-Evolut,kirby+etal:2015,verhoef+etal:2014,Franke2015:Proto-Syntax},
+but little attention has been paid to the interaction between conventional meaning and
+pragmatic use. What is more, many mathematical models explain evolved meaning as a regularity
+in the overt behavior of agents. In contrast, we will here look at language users with a richer
+cognitive make-up and their dispositions to act.
 
 
-To fill this gap, we spell out a model of the co-evolution of conventional meaning and
+Towards this end, we spell out a model of the co-evolution of conventional meaning and
 pragmatic reasoning types. The objects of replication and selection are pairs of lexical
-meanings and general types of pragmatic behavior, which we represent using state-of-the-art
-probabilistic cognitive models of pragmatic language use
+meanings and general types of pragmatic behavior, which we represent using probabilistic models
+of pragmatic language use
 \citep{frank+goodman:2012,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}. Replication
 and selection are described by the \emph{replicator mutator dynamic}, a general and established
 model of evolutionary change in large and homogeneous populations
 \citep{Hofbauer1985:The-Selection-M,nowak+etal:2000,NowakKomarova2001:Evolution-of-Un,hofbauer+sigmund:2003,Nowak2006:Evolutionary-Dy}. The
 approach allows us to study the interaction between (i) evolutionary pressure towards
 communicative efficiency and (ii) possible infidelity in the transmission of linguistic
-knowledge, caused by factors such as inductive learning biases and sparse learning data. Considering
-transmission of linguistic knowledge is important because neither semantic meanings nor
-pragmatic usage patterns are directly observable. Instead, language learners have to infer these
-unobservables from the observable behavior in which they result. We formalize this 
-process as a form of Bayesian inference. Our approach thereby contains a well-understood model
-of iterated Bayesian learning \citep{griffiths+kalish:2007} as a special case, but combines it
-with functional selection, here formalized as the most versatile dynamic from evolutionary game
-theory; the replicator dynamic
+knowledge, caused by factors such as inductive learning biases and sparse learning
+data. Considering transmission of linguistic knowledge is important because neither semantic
+meanings nor pragmatic usage patterns are directly observable. Instead, language learners have
+to infer these unobservables from the observable behavior in which they result. We formalize
+this process as a form of Bayesian inference. Our approach thereby contains a well-understood
+model of iterated Bayesian learning \citep{griffiths+kalish:2007} as a special case, but
+combines it with functional selection, here formalized as the most versatile dynamic from
+evolutionary game theory; the replicator dynamic
 \citep{TaylorJonker1978:Evolutionary-St}. Section~\ref{sec:model} introduces this model.
 
 Section~\ref{sec:si-case-study} applies this model to a case study on scalar implicatures. We
 discuss a setting in which the majority view of underspecified lexical meanings and pragmatic
 enrichments emerges if selection and transmission infidelity are combined. In particular, we
 show that inductive learning biases of Bayesian learners that favor simpler lexical meanings
-can lead to this outcome. 
+can prevent the lexicalization of scalar inferences and lead to the emergence of Gricean-like
+pragmatic reasoning types. Results of this case study are critically assessed in the light of
+the assumptions that feed our model in Section~\ref{sec:discussion}.
 
-We see the main contribution of this work as conceptual and technical, not as a definite answer
-to the question why scalar implicatures emerge. It rather demonstrates how current
-probabilistic cognitive modeling of language use and evolutionary modeling can be fruitfully
-combined to study the co-evolution of semantics and pragmatics side-by-side. Reversely, the
-approach taken here may be seen as a first step towards giving an evolutionary rationale for
-empirically successful probabilistic models of language use that embrace the majority view of
-the division of labor between semantics and pragmatics. Section~\ref{sec:discussion} elaborates
-on these points.
+% We see the main contribution of this work as conceptual and technical, not as a definite answer
+% to the question why scalar implicatures emerge. It rather demonstrates how current
+% probabilistic cognitive modeling of language use and evolutionary modeling can be fruitfully
+% combined to study the co-evolution of semantics and pragmatics side-by-side. Reversely, the
+% approach taken here may be seen as a first step towards giving an evolutionary rationale for
+% empirically successful probabilistic models of language use that embrace the majority view of
+% the division of labor between semantics and pragmatics. Section~\ref{sec:discussion} elaborates
+% on these points.
 
-\section{Model}
+\section{A model of co-evolving lexical concepts and pragmatic behavior}
 \label{sec:model}
 
-\subsection{Expressivity and learnability at the semantics-pragmatics interface}
+\subsection{Expressivity and learnability}
 
 The emergence and change of linguistic structure is influenced by many intertwined
 factors. These range from biological and socio-ecological to cultural ones \citep{benz+etal:2005b,steels:2011,tamariz+kirby:2016}. Social and ecological pressures determine communicative needs, while
@@ -192,34 +209,37 @@ linguistic change are viewed as shaped by language use and its transmission, i.e
 of a process of cultural evolution
 \citep{Pagel2009:Human-Language-,ThompsonKirby2016:Culture-Shapes-}.
 
-The idea that language is an adaptation to serve a communicative function has played a pivotal
-role in synchronic and diachronic analyses at least since \citeposs{zipf:1949} explanation of
-word frequency rankings as a result of competing hearer and speaker preferences \citep[e.g., in][]{martinet:1962, horn:1984,jaeger+vRooij:2007,jaeger:2007,
-  piantadosi:2014,kirby+etal:2015}. If processes of selection, such as conditional imitation
-or reinforcement, favor more communicatively efficient types of behavior, languages are driven
+The idea that language is an adaptation to serve a communicative function is fundamental to
+many synchronic and diachronic analyses at least since \citeposs{zipf:1949} explanation of word
+frequency rankings as a result of competing hearer and speaker preferences \citep[e.g.,
+in][]{martinet:1962, horn:1984,jaeger+vRooij:2007,jaeger:2007,
+  piantadosi:2014,kirby+etal:2015}. If processes of selection, such as conditional imitation or
+reinforcement, favor more communicatively efficient types of behavior, languages are driven
 towards semantic expressivity \citep[e.g.,][]{nowak+krakauer:1999,Skyrms2010:Signals}. But
 pressure towards communicative efficiency is not the only force that shapes
-language. Learnability is another, as natural languages need to be learnable to survive their
-faithful transmission across generations. Clearly, an unlearnable code will not make it past
-the one happy fellow who invented it. Importantly, even small learning biases implicit in acquisition
-can build up and have quite striking effects on an evolving language in a process
-of iterated learning
-\citep{KirbyHurford2002:The-Emergence-o,SmithKirby2003:Iterated-Learni,kirby+etal:2014}. 
+language. Learnability is another. As natural languages need to be learnable to survive their
+faithful transmission across generations. Even small learning biases implicit in acquisition
+can build up and have quite striking effects on an evolving language in a process of iterated
+learning
+\citep{KirbyHurford2002:The-Emergence-o,SmithKirby2003:Iterated-Learni,kirby+etal:2014}.
 
-While natural languages are pressured for both expressivity and learnability these forces may pull in opposite directions. Their opposition becomes particularly clear when
-considering the extreme (cf. \citealt{kemp+regier:2012,kirby+etal:2015}). A language consisting of a 
-single form-meaning association is easy to learn but lacking in expressivity. Conversely, a
-language that lexicalizes a distinct form for each possible fine-grained meaning a speaker may want to
-convey is maximally expressive but challenging to acquire.
+While natural languages are pressured for both expressivity and learnability these forces may
+pull in opposite directions. Their opposition becomes particularly clear when considering the
+extreme (cf. \citealt{kemp+regier:2012,kirby+etal:2015}). A language consisting of a single
+form-meaning association is easy to learn but lacking in expressivity. Conversely, a language
+that lexicalizes a distinct form for a large number of different meanings is highly expressive
+but challenging to acquire.
 
-An elegant formal approach to capture the interaction between expressivity and learnability
-is the \emph{replicator mutator dynamic}
+\subsection{The replicator mutator dynamic}
+
+An elegant formal approach to capture the interaction between expressivity and learnability is
+the \emph{replicator mutator dynamic}
 \citep{Hofbauer1985:The-Selection-M,nowak+etal:2000,NowakKomarova2001:Evolution-of-Un,hofbauer+sigmund:2003,Nowak2006:Evolutionary-Dy}. In
 its simplest, discrete-time formulation, the RMD defines the frequency $x'_i$ of each type $i$
 in a population at the next time step as a function of: (i) the frequency $x_i$ of each type
-$i$ before the step, (ii) the fitness $f_i$ of each type $i$ before the step, and (iii) the
-probability $Q_{ji}$ that an agent who wants to imitate, adopt, or learn the type of an agent
-with type $j$ ends up acquiring type $i$:
+$i$ before the update step, (ii) the fitness $f_i$ of each type $i$ before the update, and
+(iii) the probability $Q_{ji}$ that an agent who wants to imitate, adopt, or learn the type of
+an agent with type $j$ ends up acquiring type $i$:
 \begin{align}
   \label{eq:RMD_discrete}
   x'_i = \sum_j Q_{ji} \frac{x_jf_j}{\sum_k x_k f_k}\,.
@@ -253,14 +273,139 @@ $f_i$ is the same for all types $i$, the replicator step is the identity map
 $ \left ( \text{RD}(\vec{x}) \right )_i = x_i$ and the dynamic reduces to a process of
 iteration of the transmission bias encoded in $Q$. In this way, the process in
 (\ref{eq:RMD_discrete}), equivalently (\ref{eq:RMD_discrete_recast}), contains a model of
-iterated learning \citep{griffiths+kalish:2007}. \mf{should we include a simple example here? I 
-have an example from a lecture ready at hand; it's a simple coordination game in a
-one-population setting.} \tb{Yes, I think that's a good idea. We can always cut it out again if the reviewers prefer more compression but let's explain more and cut later. The paper is relatively short at the moment.} 
+iterated learning \citep{griffiths+kalish:2007}. 
 
-Where our goal is an application of this dynamic to the case of co-evolution of semantic
-meaning and pragmatic use, we need to fix what the relevant types are, how fitness is measured
-and how the mutation matrix is computed. These issues are addressed, one by one, in the
-following.
+Consider the example of a simple coordination game. Agents are of two types: positive and
+negative. If agents of different type play with each other, they obtain a payoff of 0. If
+negative meets negative, each receives a payoff of 1. If positive meets positive, they get a
+payoff of 2. A population state is completely characterized by the proportion $x$ of
+negatives. The fitness of negatives is $f_n(x) = x$, that of positives is $f_p(x) = 2-2x$. The
+average fitness is $\Phi(x) = x f_n(x) + (1-x) f_p(x) = 3x^2 - 4x + 2$. Without mutation, the
+replicator dynamic will then update $x$ to $RD(x) = \nicefrac{x^2}{\Phi(x)}$. The replicator
+step is plotted in Figure~\ref{fig:Updates_RMS} as the blue line. Rest points, for which
+$RD(x)=x$, are at $x=0$, $x=1$ and $x= \nicefrac{2}{3}$. The former are attractors as nearby
+points converge to them. Points near $x=\nicefrac{2}{3}$ move towards 0 or 1. This is
+schematically pictured in the topmost phase portrait in Figure~\ref{fig:Phase_RD}.
+
+Adding mutation changes the dynamics and its rest points. Let's assume that $Q_{ji} = .9$ when
+$j=i$. The update effect of mutation alone is $M(x) = .9 x + .1 (1-x) = .8x + .1$ and is
+plotted as the linear green line in Figure~\ref{fig:Updates_RMS}. It has only one stable rest
+point at $x = 0.5$. If we first take the replicator dynamic update and then the mutation update
+in sequence, we obtain the replicator mutator dynamic $RMD(x) = M(RD(x)) = \nicefrac{.9x^2 -
+  .2x +.2}{3x^2 - 4x + 2}$, which is plotted in red in Figure~\ref{fig:Updates_RMS}. The rest
+points are at $x=.121$, $x=.903$ and $x=.609$. The former two are attractors (see bottom of
+Figure~\ref{fig:Phase_RD}). 
+
+
+\begin{figure}[t]
+  \centering
+
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+      \begin{tikzpicture}
+      \begin{axis}[xlabel=$x$, ylabel = $x'$,
+                   grid=major, width=6.85cm, height = 5cm,
+                   legend style = {legend pos = north west},
+                   ymin=0,ymax=1, xmin=0,xmax=1]
+
+      \addplot[smooth, color=blue] {x^2 / (3*x^2 - 4*x + 2) + 0.01};
+      \addplot[smooth, color=green] {.8*x + .1};
+
+      \addplot[smooth, color=red] {(.9*x^2 - .2*x +.2)/(3*x^2 - 4*x + 2)};
+
+      \addplot[smooth, color=gray] {x};
+
+      \legend{RD, M, RMD}
+
+      \end{axis}
+    \end{tikzpicture}
+
+
+        \caption{Update functions: the population state $x$ is mapped onto $x'$ in one update step}
+        \label{fig:Updates_RMS}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.5\textwidth}    
+      \centering
+    \begin{tikzpicture}[x=120]
+      \node[draw=black, circle, fill = black, minimum size = 0.25cm]
+      (0) at (0,0) {};
+
+      \node[draw=black, circle, fill = black, minimum size = 0.25cm]
+      (1) at (1,0) {};
+
+      \draw[-, thick] (0) -- (1);
+
+      \node[draw=black, circle, fill = white, minimum size = 0.25cm, thick]
+      (mid) at (2/3,0) {};
+
+      \node[]  (0.label) at (0,-0.5) {0};
+
+      \node[]  (1.label) at (1,-0.5) {1};
+
+      \node[]  (label) at (0.5,-0.5) {$x$};
+
+      \node[]  (label) at (0.5,0.55) {RD};
+
+      \draw[->-=0.8,very thick] (mid) -- (0);
+
+      \draw[->-=0.8,very thick] (mid) -- (1);
+
+    \end{tikzpicture}
+    
+    \vspace*{1cm}
+
+    \begin{tikzpicture}[x=120]
+
+      \node (0) at (-0.05,0) {};
+
+      \node (1) at (1.05,0) {};
+
+      \node[draw=black, circle, fill = black, minimum size = 0.25cm]
+      (S0) at (0.121,0) {};
+
+      \node[draw=black, circle, fill = black, minimum size = 0.25cm]
+      (S1) at (0.903,0) {};
+
+      \draw[-, thick] (0) -- (1);
+
+      \node[draw=black, circle, fill = white, minimum size = 0.25cm, thick]
+      (mid) at (0.609,0) {};
+
+      \node[]  (0.label) at (0,-0.3) {0};
+
+      \node[]  (1.label) at (1,-0.3) {1};
+
+      \node[]  (label) at (0.5,-0.5) {$x$};
+
+      \node[]  (label) at (0.5,0.55) {RMD};
+
+      \draw[->-=0.5,very thick] (mid) -- (S0);
+
+      \draw[->-=0.5,very thick] (mid) -- (S1);
+
+      \draw[->-=0.5,very thick] (0) -- (S0);
+
+      \draw[->-=0.5,very thick] (1) -- (S1);
+
+    \end{tikzpicture}
+        
+
+
+    \caption{Phase portraits for RD and RMD: unstable rest points are hollow, attractors are
+      solid.}
+        \label{fig:Phase_RD}
+    \end{subfigure}
+
+  \caption{Example}
+  \label{fig:Example_RMD}
+\end{figure}
+
+While this was only an abstract and simple example, our goal is to apply the RMD to a more
+complex case of co-evolving of lexical concepts and pragmatic behavior. To do so, we need to
+fix three things: (i) what the relevant types are, (ii) how fitness derives from communicative
+success and (iii) how the mutation matrix is computed. These issues are addressed, one by one,
+in the following.
 
 \subsection{Types: Lexica and linguistic behavior}
 \label{sec:languages+use}
