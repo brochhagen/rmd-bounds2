@@ -1,5 +1,5 @@
 \newcommand{\SortNoop}[1]{}
-\begin{thebibliography}{88}
+\begin{thebibliography}{86}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -72,12 +72,6 @@ Lewis Bott and Ira~A. Noveck.
 \newblock \emph{Journal of Memory and Language}, 51\penalty0 (3):\penalty0
   437--457, 2004.
 
-\bibitem[Bowerman(2010)]{bowerman:2010}
-Melissa Bowerman.
-\newblock \emph{Linguistic Typology and First Language Acquisition}.
-\newblock Oxford University Press, 2010.
-\newblock \doi{10.1093/oxfordhb/9780199281251.013.0028}.
-
 \bibitem[Brighton(2002)]{brighton:2002}
 Henry Brighton.
 \newblock Compositional syntax from cultural transmission.
@@ -98,13 +92,6 @@ Gennaro Chierchia, Danny Fox, and Benjamin Spector.
 \newblock In Claudia Maienborn, Klaus {\SortNoop{Heusinger}}von~Heusinger, and
   Paul Portner, editors, \emph{Semantics. {A}n International Handbook of
   Natural Language Meaning}, pages 2297--2332. de Gruyter, Berlin, 2012.
-
-\bibitem[Clark(2009)]{Clark2009:Lexical-Meaning}
-Eve~V. Clark.
-\newblock Lexical meaning.
-\newblock In Edith~L. Bavin, editor, \emph{Child Language}, pages 283--300.
-  Cambridge University Press, New York, 2009.
-\newblock \doi{10.1017/CBO9780511576164.016}.
 
 \bibitem[Degen and Tanenhaus(2015)]{DegenTanenhaus2012:Processing-Scal}
 Judith Degen and Michael~K. Tanenhaus.

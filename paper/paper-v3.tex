@@ -410,13 +410,26 @@ in the following.
 \subsection{Types: Lexica and linguistic behavior}
 \label{sec:languages+use}
 
-Types are what cultural evolution operates on. In standard applications of evolutionary game
-theory, types correspond to ways of acting in a game, e.g., either cooperating or defecting in
-a prisoner's dilemma. \mf{maybe good to refer back to the example from before if there was
-  one?} \tb{Yes!} For our present purpose types are identified by their cognitive make-up. Since we are
-interested in the question under which conditions processes of cultural evolution will favor
-specific divisions of labor between lexical meaning and pragmatic use, a type is a pair
-consisting of a lexicon and a pragmatic strategy.
+Types are what evolution operates on. In standard applications of evolutionary game theory,
+types are ways of acting in a game, e.g., either cooperating or defecting in a prisoner's
+dilemma, or, in our previous example, they are what defines an agent's fitness in interaction
+with others, such as being positive or negative (whatever that means). For our present
+purposes, types are identified more concretely by their cognitive make-up. In general terms, we
+are interested in the evolutionary competition between different lexical concepts and ways of
+using them in communication. A type in our setting is therefore a pair consisting of a lexicon
+and a pragmatic strategy.
+
+Agents play signaling games, in which the speaker wants to communicate a world state $s$ with a
+message $m$ to a hearer who receives $m$ but does not know $s$
+\citep[e.g.][]{lewis:1969,Skyrms2010:Signals}. A lexicon associates each message with a set of
+states. A pragmatic type maps a lexicon onto a probabilistic speaker rule (a probabilistic
+choice of message for each state) and a probabilistic listener rule (a probabilistic choice of
+state for each message). There are many ways of making these general notions more
+concrete. Here is what we will assume in the remainder of this paper.
+
+\bigskip
+\bigskip
+\bigskip
 
 Lexica codify the truth-conditions of expressions. A convenient way to represent lexica is by
 $(\card{\States}, \card{\Messgs})$-Boolean matrices, where $\States$ is a set of states
@@ -451,7 +464,7 @@ We distinguish between two kinds of linguistic behavior. {\em Literal interlocut
 interpret messages literally, being guided only by their lexica. {\em Pragmatic interlocutors}
 instead engage in mutual reasoning to inform their choices. Recent probabilistic models of
 rational language use
-\citep{franke:2009,frank+goodman:2012,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}
+\citep{frank+goodman:2012,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}
 capture different types of pragmatic behavior in a reasoning hierarchy. The hierarchy's bottom,
 level $0$, corresponds to literal language use. Pragmatic language users of level $n + 1$
 act (approximately) rational with respect to level-$n$ behavior of their
