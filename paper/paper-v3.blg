@@ -1,46 +1,57 @@
 This is BibTeX, Version 0.99d (TeX Live 2014)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: paper-v3.aux
-The style file: plainnat.bst
+White space in argument---line 110 of file paper-v3.aux
+ : \citation{NOVECK
+ :                  ETC}
+I'm skipping whatever remains of this command
+The style file: chicago.bst
 Database file #1: ./bounds-rmd.bib
-You've used 86 entries,
-            2773 wiz_defined-function locations,
-            1180 strings with 19857 characters,
-and the built_in function-call counts, 38149 in all, are:
-= -- 3570
-> -- 1744
-< -- 71
-+ -- 603
-- -- 516
-* -- 2977
-:= -- 5844
-add.period$ -- 306
-call.type$ -- 86
-change.case$ -- 410
-chr.to.int$ -- 85
-cite$ -- 172
-duplicate$ -- 1848
-empty$ -- 3379
-format.name$ -- 652
-if$ -- 8054
-int.to.chr$ -- 2
-int.to.str$ -- 1
-missing$ -- 99
-newline$ -- 479
-num.names$ -- 356
-pop$ -- 804
+Warning--no number and no volume in bergen+etal:2016
+Warning--page numbers missing in bergen+etal:2016
+Warning--page numbers missing in fay+etal:2013
+Warning--no number and no volume in franke+jaeger:2014
+Warning--no number and no volume in SpikeStadler2016:Minimal-Require
+Warning--page numbers missing in SpikeStadler2016:Minimal-Require
+You've used 84 entries,
+            2861 wiz_defined-function locations,
+            1150 strings with 18661 characters,
+and the built_in function-call counts, 56653 in all, are:
+= -- 4826
+> -- 3848
+< -- 9
++ -- 1126
+- -- 1334
+* -- 4940
+:= -- 10323
+add.period$ -- 259
+call.type$ -- 84
+change.case$ -- 570
+chr.to.int$ -- 84
+cite$ -- 90
+duplicate$ -- 1599
+empty$ -- 3612
+format.name$ -- 1530
+if$ -- 10506
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 96
+newline$ -- 423
+num.names$ -- 852
+pop$ -- 431
 preamble$ -- 2
-purify$ -- 340
+purify$ -- 1089
 quote$ -- 0
-skip$ -- 1323
+skip$ -- 1655
 stack$ -- 0
-substring$ -- 1773
-swap$ -- 166
-text.length$ -- 10
+substring$ -- 3278
+swap$ -- 529
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 871
-warning$ -- 0
-while$ -- 399
+type$ -- 1540
+warning$ -- 6
+while$ -- 879
 width$ -- 0
-write$ -- 1207
+write$ -- 1123
+(There was 1 error message)

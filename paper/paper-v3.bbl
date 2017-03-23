@@ -1,557 +1,517 @@
 \newcommand{\SortNoop}[1]{}
-\begin{thebibliography}{86}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+\begin{thebibliography}{}
 
-\bibitem[{\SortNoop{Auwera}}{van der Auwera}(2010)]{vdAuwera:2010}
-Johan {\SortNoop{Auwera}}{van der Auwera}.
+\bibitem[\protect\citeauthoryear{{\SortNoop{Auwera}}{van der
+  Auwera}}{{\SortNoop{Auwera}}{van der Auwera}}{2010}]{vdAuwera:2010}
+{\SortNoop{Auwera}}{van der Auwera}, J. (2010).
 \newblock On the diachrony of negation.
-\newblock In \emph{The Expression of Negation}, pages 73--110. Walter de
-  Gruyter {GmbH}, 2010.
-\newblock \doi{10.1515/9783110219302.73}.
+\newblock In {\em The Expression of Negation}, pp.\  73--110. Walter de Gruyter
+  {GmbH}.
 
-\bibitem[Baronchelli et~al.(2008)Baronchelli, Puglisi, and
-  Loreto]{BaronchelliPuglisi2008:Cultural-route-}
-Andrea Baronchelli, Andrea Puglisi, and Vittorio Loreto.
+\bibitem[\protect\citeauthoryear{Baronchelli, Puglisi, and Loreto}{Baronchelli
+  et~al.}{2008}]{BaronchelliPuglisi2008:Cultural-route-}
+Baronchelli, A., A.~Puglisi, and V.~Loreto (2008).
 \newblock Cultural route to the emergence of linguistic categories.
-\newblock \emph{PNAS}, 105\penalty0 (23):\penalty0 7936--7940, 2008.
-\newblock \doi{doi: 10.1073/pnas.0802485105}.
+\newblock {\em PNAS\/}~{\em 105\/}(23), 7936--7940.
 
-\bibitem[Batali(1998)]{Batali1998:Computational-S}
-John Batali.
+\bibitem[\protect\citeauthoryear{Batali}{Batali}{1998}]{Batali1998:Computational-S}
+Batali, J. (1998).
 \newblock Computational simulations of the emergence of grammar.
-\newblock In James~R. Hurford, Michael Studdert-Kennedy, and Chris Knight,
-  editors, \emph{Evolution of Language: {S}ocial and Cognitive Bases}.
-  Cambridge University Press, Cambridge, UK, 1998.
+\newblock In J.~R. Hurford, M.~Studdert-Kennedy, and C.~Knight (Eds.), {\em
+  Evolution of Language: {S}ocial and Cognitive Bases}. Cambridge, UK:
+  Cambridge University Press.
 
-\bibitem[Beggs(2005)]{Beggs2005:On-the-Converge}
-A.W. Beggs.
+\bibitem[\protect\citeauthoryear{Beggs}{Beggs}{2005}]{Beggs2005:On-the-Converge}
+Beggs, A. (2005).
 \newblock On the convergence of reinforcement learning.
-\newblock \emph{Journal of Economic Theory}, 122\penalty0 (1):\penalty0 1--36,
-  2005.
-\newblock \doi{10.1016/j.jet.2004.03.008}.
+\newblock {\em Journal of Economic Theory\/}~{\em 122\/}(1), 1--36.
 
-\bibitem[Benz et~al.(2005)Benz, J{\"a}ger, and {van Rooij}]{benz+etal:2005b}
-Anton Benz, Gerhard J{\"a}ger, and Robert {van Rooij}.
-\newblock \emph{An Introduction to Game Theory for Linguists}, pages 1--82.
-\newblock Palgrave, 2005.
+\bibitem[\protect\citeauthoryear{Benz, J{\"a}ger, and {van Rooij}}{Benz
+  et~al.}{2005}]{benz+etal:2005b}
+Benz, A., G.~J{\"a}ger, and R.~{van Rooij} (2005).
+\newblock {\em An Introduction to Game Theory for Linguists}, pp.\  1--82.
+\newblock Palgrave.
 
-\bibitem[Bergen et~al.(2012)Bergen, Goodman, and Levy]{bergen+etal:2012}
-Leon Bergen, Noah~D Goodman, and Roger Levy.
+\bibitem[\protect\citeauthoryear{Bergen, Goodman, and Levy}{Bergen
+  et~al.}{2012}]{bergen+etal:2012}
+Bergen, L., N.~D. Goodman, and R.~Levy (2012).
 \newblock That's what she (could have) said: How alternative utterances affect
   language use.
-\newblock In \emph{Proceedings of Thirty-Fourth Annual Meeting of the Cognitive
-  Science Society}, 2012.
+\newblock In {\em Proceedings of Thirty-Fourth Annual Meeting of the Cognitive
+  Science Society}.
 
-\bibitem[Bergen et~al.(2016)Bergen, Levy, and Goodman]{bergen+etal:2016}
-Leon Bergen, Roger Levy, and Noah~D Goodman.
+\bibitem[\protect\citeauthoryear{Bergen, Levy, and Goodman}{Bergen
+  et~al.}{2016}]{bergen+etal:2016}
+Bergen, L., R.~Levy, and N.~D. Goodman (2016).
 \newblock Pragmatic reasoning through semantic inference.
-\newblock \emph{Semantics and Pragmatics}, 2016.
+\newblock {\em Semantics and Pragmatics\/}.
 
-\bibitem[Blume et~al.(1993)Blume, Kim, and Sobel]{BlumeKim1993:Evolutionary-St}
-Andreas Blume, Yong-Gwan Kim, and Joel Sobel.
+\bibitem[\protect\citeauthoryear{Blume, Kim, and Sobel}{Blume
+  et~al.}{1993}]{BlumeKim1993:Evolutionary-St}
+Blume, A., Y.-G. Kim, and J.~Sobel (1993).
 \newblock Evolutionary stability in games of communication.
-\newblock \emph{Games and Economic Behavior}, 5\penalty0 (5):\penalty0
-  547--575, 1993.
-\newblock \doi{doi:10.1006/game.1993.1031}.
+\newblock {\em Games and Economic Behavior\/}~{\em 5\/}(5), 547--575.
 
-\bibitem[B\"{o}rgers and Sarin(1997)]{BorgersSarin997:Learning-Throug}
-Tilman B\"{o}rgers and Rajiv Sarin.
+\bibitem[\protect\citeauthoryear{B\"{o}rgers and Sarin}{B\"{o}rgers and
+  Sarin}{1997}]{BorgersSarin997:Learning-Throug}
+B\"{o}rgers, T. and R.~Sarin (1997).
 \newblock Learning through reinforcement and replicator dynamics.
-\newblock \emph{Journal of Economic Theory}, 77\penalty0 (1):\penalty0 1--14,
-  1997.
-\newblock \doi{10.1006/jeth.1997.2319}.
+\newblock {\em Journal of Economic Theory\/}~{\em 77\/}(1), 1--14.
 
-\bibitem[Bott and Noveck(2004)]{BottNoveck2004:Some-Utterances}
-Lewis Bott and Ira~A. Noveck.
+\bibitem[\protect\citeauthoryear{Bott and Noveck}{Bott and
+  Noveck}{2004}]{BottNoveck2004:Some-Utterances}
+Bott, L. and I.~A. Noveck (2004).
 \newblock Some utterances are underinformative: {T}he onset and time course of
   scalar inferences.
-\newblock \emph{Journal of Memory and Language}, 51\penalty0 (3):\penalty0
-  437--457, 2004.
+\newblock {\em Journal of Memory and Language\/}~{\em 51\/}(3), 437--457.
 
-\bibitem[Brighton(2002)]{brighton:2002}
-Henry Brighton.
+\bibitem[\protect\citeauthoryear{Brighton}{Brighton}{2002}]{brighton:2002}
+Brighton, H. (2002).
 \newblock Compositional syntax from cultural transmission.
-\newblock \emph{Artificial Life}, 8\penalty0 (1):\penalty0 25--54, 2002.
-\newblock \doi{10.1162/106454602753694756}.
+\newblock {\em Artificial Life\/}~{\em 8\/}(1), 25--54.
 
-\bibitem[Chater and Vit{\'{a}}nyi(2003)]{chater+vitanyi:2003}
-Nick Chater and Paul Vit{\'{a}}nyi.
+\bibitem[\protect\citeauthoryear{Chater and Vit{\'{a}}nyi}{Chater and
+  Vit{\'{a}}nyi}{2003}]{chater+vitanyi:2003}
+Chater, N. and P.~Vit{\'{a}}nyi (2003).
 \newblock Simplicity: a unifying principle in cognitive science?
-\newblock \emph{Trends in Cognitive Sciences}, 7\penalty0 (1):\penalty0 19--22,
-  2003.
-\newblock \doi{10.1016/s1364-6613(02)00005-0}.
+\newblock {\em Trends in Cognitive Sciences\/}~{\em 7\/}(1), 19--22.
 
-\bibitem[Chierchia et~al.(2012)Chierchia, Fox, and
-  Spector]{ChierchiaFox2008:The-Grammatical}
-Gennaro Chierchia, Danny Fox, and Benjamin Spector.
+\bibitem[\protect\citeauthoryear{Chierchia, Fox, and Spector}{Chierchia
+  et~al.}{2012}]{ChierchiaFox2008:The-Grammatical}
+Chierchia, G., D.~Fox, and B.~Spector (2012).
 \newblock Scalar implicature as a grammatical phenonenon.
-\newblock In Claudia Maienborn, Klaus {\SortNoop{Heusinger}}von~Heusinger, and
-  Paul Portner, editors, \emph{Semantics. {A}n International Handbook of
-  Natural Language Meaning}, pages 2297--2332. de Gruyter, Berlin, 2012.
+\newblock In C.~Maienborn, K.~{\SortNoop{Heusinger}}von~Heusinger, and
+  P.~Portner (Eds.), {\em Semantics. {A}n International Handbook of Natural
+  Language Meaning}, pp.\  2297--2332. Berlin: de Gruyter.
 
-\bibitem[Degen and Tanenhaus(2015)]{DegenTanenhaus2012:Processing-Scal}
-Judith Degen and Michael~K. Tanenhaus.
+\bibitem[\protect\citeauthoryear{Degen and Tanenhaus}{Degen and
+  Tanenhaus}{2015}]{DegenTanenhaus2012:Processing-Scal}
+Degen, J. and M.~K. Tanenhaus (2015).
 \newblock Processing scalar implicatures: {A} constraint-based approach.
-\newblock \emph{Cognitive Science}, 39:\penalty0 667--710, 2015.
-\newblock \doi{10.1111/cogs.12171}.
+\newblock {\em Cognitive Science\/}~{\em 39}, 667--710.
 
-\bibitem[Fay and Ellison(2013)]{fay+etal:2013}
-Nicolas Fay and T.~Mark Ellison.
+\bibitem[\protect\citeauthoryear{Fay and Ellison}{Fay and
+  Ellison}{2013}]{fay+etal:2013}
+Fay, N. and T.~M. Ellison (2013).
 \newblock The cultural evolution of human communication systems in different
   sized populations: Usability trumps learnability.
-\newblock \emph{{PLoS} {ONE}}, 8\penalty0 (8), 2013.
-\newblock \doi{10.1371/journal.pone.0071781}.
+\newblock {\em {PLoS} {ONE}\/}~{\em 8\/}(8).
 
-\bibitem[Feldman(2000)]{feldman:2000}
-Jacob Feldman.
+\bibitem[\protect\citeauthoryear{Feldman}{Feldman}{2000}]{feldman:2000}
+Feldman, J. (2000).
 \newblock Minimization of boolean complexity in human concept learning.
-\newblock \emph{Nature}, 407\penalty0 (6804):\penalty0 630--633, 2000.
+\newblock {\em Nature\/}~{\em 407\/}(6804), 630--633.
 
-\bibitem[Frank and Goodman(2012)]{frank+goodman:2012}
-Michael~C. Frank and Noah~D. Goodman.
+\bibitem[\protect\citeauthoryear{Frank and Goodman}{Frank and
+  Goodman}{2012}]{frank+goodman:2012}
+Frank, M.~C. and N.~D. Goodman (2012).
 \newblock Predicting pragmatic reasoning in language games.
-\newblock \emph{Science}, 336\penalty0 (6084):\penalty0 998--998, 2012.
+\newblock {\em Science\/}~{\em 336\/}(6084), 998--998.
 
-\bibitem[Franke(2009)]{franke:2009}
-Michael Franke.
-\newblock \emph{Signal to Act: Game Theoretic Pragmatics}.
-\newblock PhD thesis, University of Amsterdam, 2009.
-
-\bibitem[Franke(2016)]{Franke2015:Proto-Syntax}
-Michael Franke.
+\bibitem[\protect\citeauthoryear{Franke}{Franke}{2016}]{Franke2015:Proto-Syntax}
+Franke, M. (2016).
 \newblock The evolution of compositionality in signaling games.
-\newblock \emph{Journal of Logic, Language and Information}, 25\penalty0
-  (3--4):\penalty0 355--377, 2016.
-\newblock \doi{10.1007/s10849-015-9232-5}.
+\newblock {\em Journal of Logic, Language and Information\/}~{\em 25\/}(3--4),
+  355--377.
 
-\bibitem[Franke and Degen(2016)]{franke+degen:2016}
-Michael Franke and Judith Degen.
-\newblock Reasoning in reference games: Individual- vs. population-level
-  probabilistic modeling.
-\newblock \emph{{PLOS} {ONE}}, 11\penalty0 (5):\penalty0 e0154854, 2016.
-\newblock \doi{10.1371/journal.pone.0154854}.
-
-\bibitem[Franke and J{\"a}ger(2014)]{franke+jaeger:2014}
-Michael Franke and Gerhard J{\"a}ger.
+\bibitem[\protect\citeauthoryear{Franke and J{\"a}ger}{Franke and
+  J{\"a}ger}{2014}]{franke+jaeger:2014}
+Franke, M. and G.~J{\"a}ger (2014).
 \newblock Pragmatic back-and-forth reasoning.
-\newblock \emph{Semantics, Pragmatics and the Case of Scalar Implicatures.},
-  pages 170--200, 2014.
+\newblock {\em Semantics, Pragmatics and the Case of Scalar Implicatures.\/},
+  170--200.
 
-\bibitem[Franke and J{\"{a}}ger(2016)]{FrankeJager2015:Probabilistic-p}
-Michael Franke and Gerhard J{\"{a}}ger.
+\bibitem[\protect\citeauthoryear{Franke and J{\"{a}}ger}{Franke and
+  J{\"{a}}ger}{2016}]{FrankeJager2015:Probabilistic-p}
+Franke, M. and G.~J{\"{a}}ger (2016).
 \newblock Probabilistic pragmatics, or why bayes' rule is probably important
   for pragmatics.
-\newblock \emph{Zeitschrift f\"{u}r Sprachwissenschaft}, 35\penalty0
-  (1):\penalty0 3--44, 2016.
-\newblock \doi{10.1515/zfs-2016-0002}.
+\newblock {\em Zeitschrift f\"{u}r Sprachwissenschaft\/}~{\em 35\/}(1), 3--44.
 
-\bibitem[Gazdar(1979)]{gazdar:1979}
-Gerald Gazdar.
-\newblock \emph{Pragmatics, Implicature, Presuposition and Logical Form}.
-\newblock Academic Press, New York, 1979.
+\bibitem[\protect\citeauthoryear{Gazdar}{Gazdar}{1979}]{gazdar:1979}
+Gazdar, G. (1979).
+\newblock {\em Pragmatics, Implicature, Presuposition and Logical Form}.
+\newblock New York: Academic Press.
 
-\bibitem[Geurts(2010)]{Geurts2010:Quantity-Implic}
-Bart Geurts.
-\newblock \emph{Quantity Implicatures}.
-\newblock Cambridge University Press, Cambridge, UK, 2010.
+\bibitem[\protect\citeauthoryear{Geurts}{Geurts}{2010}]{Geurts2010:Quantity-Implic}
+Geurts, B. (2010).
+\newblock {\em Quantity Implicatures}.
+\newblock Cambridge, UK: Cambridge University Press.
 
-\bibitem[Gong(2007)]{Gong2007:Language-Evolut}
-Tao Gong.
-\newblock \emph{Language Evolution from a Simulation Perspective: {O}n the
+\bibitem[\protect\citeauthoryear{Gong}{Gong}{2007}]{Gong2007:Language-Evolut}
+Gong, T. (2007).
+\newblock {\em Language Evolution from a Simulation Perspective: {O}n the
   Coevolution of Compositionality and Regularity}.
-\newblock Chinese University of Hong Kong, 2007.
+\newblock Chinese University of Hong Kong.
 
-\bibitem[Goodman et~al.(2008)Goodman, Tenenbaum, Feldman, and
-  Griffiths]{goodman+etal:2008}
-Noah Goodman, Joshua Tenenbaum, Jacob Feldman, and Thomas Griffiths.
+\bibitem[\protect\citeauthoryear{Goodman, Tenenbaum, Feldman, and
+  Griffiths}{Goodman et~al.}{2008}]{goodman+etal:2008}
+Goodman, N., J.~Tenenbaum, J.~Feldman, and T.~Griffiths (2008).
 \newblock A rational analysis of rule-based concept learning.
-\newblock \emph{Cognitive Science: A Multidisciplinary Journal}, 32\penalty0
-  (1):\penalty0 108--154, 2008.
-\newblock \doi{10.1080/03640210701802071}.
+\newblock {\em Cognitive Science: A Multidisciplinary Journal\/}~{\em 32\/}(1),
+  108--154.
 
-\bibitem[Goodman and Frank(2016)]{GoodmanFrank2016:Pragmatic-Langu}
-Noah~D. Goodman and Michael~C. Frank.
+\bibitem[\protect\citeauthoryear{Goodman and Frank}{Goodman and
+  Frank}{2016}]{GoodmanFrank2016:Pragmatic-Langu}
+Goodman, N.~D. and M.~C. Frank (2016).
 \newblock Pragmatic language interpretation as probabilistic inference.
-\newblock \emph{Trends in Cognitive Sciences}, 20\penalty0 (11):\penalty0
-  818--829, 2016.
-\newblock \doi{10.1016/j.tics.2016.08.005Au}.
+\newblock {\em Trends in Cognitive Sciences\/}~{\em 20\/}(11), 818--829.
 
-\bibitem[Goodman and
-  Stuhlm\"{u}ller(2013)]{GoodmanStuhlmuller2013:Knowledge-and-I}
-Noah~D. Goodman and Andreas Stuhlm\"{u}ller.
+\bibitem[\protect\citeauthoryear{Goodman and Stuhlm\"{u}ller}{Goodman and
+  Stuhlm\"{u}ller}{2013}]{GoodmanStuhlmuller2013:Knowledge-and-I}
+Goodman, N.~D. and A.~Stuhlm\"{u}ller (2013).
 \newblock Knowledge and implicature: {M}odeling lanuage understanding as social
   cognition.
-\newblock \emph{Topics in Cognitive Science}, 5:\penalty0 173--184, 2013.
-\newblock \doi{10.1111/tops.12007}.
+\newblock {\em Topics in Cognitive Science\/}~{\em 5}, 173--184.
 
-\bibitem[Grice(1975)]{grice:1975}
-Paul Grice.
+\bibitem[\protect\citeauthoryear{Grice}{Grice}{1975}]{grice:1975}
+Grice, P. (1975).
 \newblock Logic and conversation.
-\newblock In \emph{Studies in the Ways of Words}, chapter~2, pages 22--40.
-  Harvard University Press, Cambridge, MA, 1975.
+\newblock In {\em Studies in the Ways of Words}, Chapter~2, pp.\  22--40.
+  Cambridge, MA: Harvard University Press.
 
-\bibitem[Griffiths and Kalish(2007)]{griffiths+kalish:2007}
-Thomas~L. Griffiths and Michael~L. Kalish.
+\bibitem[\protect\citeauthoryear{Griffiths and Kalish}{Griffiths and
+  Kalish}{2007}]{griffiths+kalish:2007}
+Griffiths, T.~L. and M.~L. Kalish (2007).
 \newblock Language evolution by iterated learning with bayesian agents.
-\newblock \emph{Cognitive Science}, 31\penalty0 (3):\penalty0 441--480, 2007.
+\newblock {\em Cognitive Science\/}~{\em 31\/}(3), 441--480.
 
-\bibitem[Grodner et~al.(2010)Grodner, Klein, Carbary, and
-  Tanenhaus]{GrodnerKlein2010:Some-and-Possib}
-Daniel~J. Grodner, Natalie~M. Klein, Kathleen~M. Carbary, and Michael~K.
-  Tanenhaus.
+\bibitem[\protect\citeauthoryear{Grodner, Klein, Carbary, and
+  Tanenhaus}{Grodner et~al.}{2010}]{GrodnerKlein2010:Some-and-Possib}
+Grodner, D.~J., N.~M. Klein, K.~M. Carbary, and M.~K. Tanenhaus (2010).
 \newblock ``some,'' and possibly all, scalar inferences are not delayed:
   {E}vidence for immediate pragmatic enrichment.
-\newblock \emph{Cognition}, 166:\penalty0 42--55, 2010.
+\newblock {\em Cognition\/}~{\em 166}, 42--55.
 
-\bibitem[Helbing(1996)]{Helbing1996:A-Stochastic-Be}
-Dirk Helbing.
+\bibitem[\protect\citeauthoryear{Helbing}{Helbing}{1996}]{Helbing1996:A-Stochastic-Be}
+Helbing, D. (1996).
 \newblock A stochastic behavioral model and a `microscopic' foundation of
   evolutionary game theory.
-\newblock \emph{Theory and Decision}, 40\penalty0 (2):\penalty0 149--179, 1996.
-\newblock \doi{10.1007/BF00133171}.
+\newblock {\em Theory and Decision\/}~{\em 40\/}(2), 149--179.
 
-\bibitem[Hirschberg(1985)]{Hirschberg1985:A-Theory-of-Sca}
-Julia Hirschberg.
-\newblock \emph{A Theory of Scalar Implicature}.
-\newblock PhD thesis, University of Pennsylvania, 1985.
+\bibitem[\protect\citeauthoryear{Hirschberg}{Hirschberg}{1985}]{Hirschberg1985:A-Theory-of-Sca}
+Hirschberg, J. (1985).
+\newblock {\em A Theory of Scalar Implicature}.
+\newblock Ph.\ D. thesis, University of Pennsylvania.
 
-\bibitem[Hofbauer(1985)]{Hofbauer1985:The-Selection-M}
-Josef Hofbauer.
+\bibitem[\protect\citeauthoryear{Hofbauer}{Hofbauer}{1985}]{Hofbauer1985:The-Selection-M}
+Hofbauer, J. (1985).
 \newblock The selection mutation equation.
-\newblock \emph{Journal of Mathematical Biology}, 23:\penalty0 41--53, 1985.
+\newblock {\em Journal of Mathematical Biology\/}~{\em 23}, 41--53.
 
-\bibitem[Hofbauer and Sigmund(2003)]{hofbauer+sigmund:2003}
-Josef Hofbauer and Karl Sigmund.
+\bibitem[\protect\citeauthoryear{Hofbauer and Sigmund}{Hofbauer and
+  Sigmund}{2003}]{hofbauer+sigmund:2003}
+Hofbauer, J. and K.~Sigmund (2003).
 \newblock Evolutionary game dynamics.
-\newblock \emph{Bulletin of the American Mathematical Society}, 40\penalty0
-  (04):\penalty0 479--520, 2003.
+\newblock {\em Bulletin of the American Mathematical Society\/}~{\em 40\/}(04),
+  479--520.
 
-\bibitem[Horn(1972)]{horn:1972}
-Laurence~R. Horn.
-\newblock \emph{On the Semantic Properties of Logical Operators in English}.
-\newblock Indiana University Linguistics Club, Bloomington, IN, 1972.
+\bibitem[\protect\citeauthoryear{Horn}{Horn}{1972}]{horn:1972}
+Horn, L.~R. (1972).
+\newblock {\em On the Semantic Properties of Logical Operators in English}.
+\newblock Bloomington, IN: Indiana University Linguistics Club.
 
-\bibitem[Horn(1984)]{horn:1984}
-Laurence~R. Horn.
+\bibitem[\protect\citeauthoryear{Horn}{Horn}{1984}]{horn:1984}
+Horn, L.~R. (1984).
 \newblock Toward a new taxonomy for pragmatic inference: {Q}-based and
   {R}-based implicature.
-\newblock In D.~Schiffrin, editor, \emph{Meaning, Form and Use in Context},
-  pages 11 -- 42. Georgetown University Press, Washington, 1984.
+\newblock In D.~Schiffrin (Ed.), {\em Meaning, Form and Use in Context}, pp.\
+  11 -- 42. Washington: Georgetown University Press.
 
-\bibitem[Huang and Snedeker(2009)]{huang+snedeker:2009}
-Yi~Ting Huang and Jesse Snedeker.
+\bibitem[\protect\citeauthoryear{Huang and Snedeker}{Huang and
+  Snedeker}{2009}]{huang+snedeker:2009}
+Huang, Y.~T. and J.~Snedeker (2009).
 \newblock Online interpretation of scalar quantifiers: Insight into the
   semantics{\textendash}pragmatics interface.
-\newblock \emph{Cognitive Psychology}, 58\penalty0 (3):\penalty0 376--415,
-  2009.
+\newblock {\em Cognitive Psychology\/}~{\em 58\/}(3), 376--415.
 
-\bibitem[Hurford(1989)]{Hurford1989:Biological-Evol}
-James~R. Hurford.
+\bibitem[\protect\citeauthoryear{Hurford}{Hurford}{1989}]{Hurford1989:Biological-Evol}
+Hurford, J.~R. (1989).
 \newblock Biological evolution of the saussurean sign as a component of the
   language acquisition device.
-\newblock \emph{Lingua}, 77\penalty0 (2):\penalty0 187--222, 1989.
+\newblock {\em Lingua\/}~{\em 77\/}(2), 187--222.
 
-\bibitem[Huttegger(2007)]{Huttegger2007:Evolution-and-t}
-Simon~M. Huttegger.
+\bibitem[\protect\citeauthoryear{Huttegger}{Huttegger}{2007}]{Huttegger2007:Evolution-and-t}
+Huttegger, S.~M. (2007).
 \newblock Evolution and the explanation of meaning.
-\newblock \emph{Philosophy of Science}, 74:\penalty0 1--27, 2007.
-\newblock \doi{10.1086/519477}.
+\newblock {\em Philosophy of Science\/}~{\em 74}, 1--27.
 
-\bibitem[J\"ager(2007)]{jaeger:2007}
-Gerhard J\"ager.
+\bibitem[\protect\citeauthoryear{J\"ager}{J\"ager}{2007}]{jaeger:2007}
+J\"ager, G. (2007).
 \newblock Evolutionary game theory and typology: A case study.
-\newblock \emph{Language}, 83\penalty0 (1):\penalty0 74--109, 2007.
-\newblock \doi{10.2307/4490338}.
+\newblock {\em Language\/}~{\em 83\/}(1), 74--109.
 
-\bibitem[J\"ager and van Rooij(2007)]{jaeger+vRooij:2007}
-Gerhard J\"ager and Robert van Rooij.
+\bibitem[\protect\citeauthoryear{J\"ager and van Rooij}{J\"ager and van
+  Rooij}{2007}]{jaeger+vRooij:2007}
+J\"ager, G. and R.~van Rooij (2007).
 \newblock Language structure: psychological and social constraints.
-\newblock \emph{Synthese}, 159\penalty0 (1):\penalty0 99--130, 2007.
-\newblock \doi{10.1007/s11229-006-9073-5}.
+\newblock {\em Synthese\/}~{\em 159\/}(1), 99--130.
 
-\bibitem[Katz et~al.(2008)Katz, Goodman, Kersting, Kemp, and
-  Tenenbaum]{katz+etal:2008}
-Yarden Katz, Noah~D Goodman, Kristian Kersting, Charles Kemp, and Joshua~B
-  Tenenbaum.
+\bibitem[\protect\citeauthoryear{Katz, Goodman, Kersting, Kemp, and
+  Tenenbaum}{Katz et~al.}{2008}]{katz+etal:2008}
+Katz, Y., N.~D. Goodman, K.~Kersting, C.~Kemp, and J.~B. Tenenbaum (2008).
 \newblock Modeling semantic cognition as logical dimensionality reduction.
-\newblock In \emph{Proceedings of Thirtieth Annual Meeting of the Cognitive
-  Science Society}, 2008.
+\newblock In {\em Proceedings of Thirtieth Annual Meeting of the Cognitive
+  Science Society}.
 
-\bibitem[Kemp and Regier(2012)]{kemp+regier:2012}
-C.~Kemp and T.~Regier.
+\bibitem[\protect\citeauthoryear{Kemp and Regier}{Kemp and
+  Regier}{2012}]{kemp+regier:2012}
+Kemp, C. and T.~Regier (2012).
 \newblock Kinship categories across languages reflect general communicative
   principles.
-\newblock \emph{Science}, 336\penalty0 (6084):\penalty0 1049--1054, 2012.
-\newblock \doi{10.1126/science.1218811}.
+\newblock {\em Science\/}~{\em 336\/}(6084), 1049--1054.
 
-\bibitem[Kirby et~al.(2007)Kirby, Dowman, and Griffiths]{kirby+etal:2007}
-S.~Kirby, M.~Dowman, and T.~L. Griffiths.
-\newblock Innateness and culture in the evolution of language.
-\newblock \emph{Proceedings of the National Academy of Sciences}, 104\penalty0
-  (12):\penalty0 5241--5245, 2007.
-\newblock \doi{10.1073/pnas.0608222104}.
+\bibitem[\protect\citeauthoryear{Kirby}{Kirby}{2002}]{kirby:2002}
+Kirby, S. (2002).
+\newblock Learning, bottlenecks and the evolution of recursive syntax.
+\newblock In T.~Briscoe (Ed.), {\em Linguistic Evolution Through Language
+  Acquisition}, pp.\  173--204. Cambridge University Press ({CUP}).
 
-\bibitem[Kirby et~al.(2008)Kirby, Cornish, and Smith]{kirby+etal:2008}
-S.~Kirby, H.~Cornish, and K.~Smith.
+\bibitem[\protect\citeauthoryear{Kirby, Cornish, and Smith}{Kirby
+  et~al.}{2008}]{kirby+etal:2008}
+Kirby, S., H.~Cornish, and K.~Smith (2008).
 \newblock Cumulative cultural evolution in the laboratory: An experimental
   approach to the origins of structure in human language.
-\newblock \emph{Proceedings of the National Academy of Sciences}, 105\penalty0
-  (31):\penalty0 10681--10686, 2008.
-\newblock \doi{10.1073/pnas.0707835105}.
+\newblock {\em Proceedings of the National Academy of Sciences\/}~{\em
+  105\/}(31), 10681--10686.
 
-\bibitem[Kirby(2002)]{kirby:2002}
-Simon Kirby.
-\newblock Learning, bottlenecks and the evolution of recursive syntax.
-\newblock In Ted Briscoe, editor, \emph{Linguistic Evolution Through Language
-  Acquisition}, pages 173--204. Cambridge University Press ({CUP}), 2002.
-\newblock \doi{10.1017/cbo9780511486524.006}.
+\bibitem[\protect\citeauthoryear{Kirby, Dowman, and Griffiths}{Kirby
+  et~al.}{2007}]{kirby+etal:2007}
+Kirby, S., M.~Dowman, and T.~L. Griffiths (2007).
+\newblock Innateness and culture in the evolution of language.
+\newblock {\em Proceedings of the National Academy of Sciences\/}~{\em
+  104\/}(12), 5241--5245.
 
-\bibitem[Kirby and Hurford(2002)]{KirbyHurford2002:The-Emergence-o}
-Simon Kirby and James~R. Hurford.
+\bibitem[\protect\citeauthoryear{Kirby, Griffiths, and Smith}{Kirby
+  et~al.}{2014}]{kirby+etal:2014}
+Kirby, S., T.~Griffiths, and K.~Smith (2014).
+\newblock Iterated learning and the evolution of language.
+\newblock {\em Current Opinion in Neurobiology\/}~{\em 28}, 108--114.
+
+\bibitem[\protect\citeauthoryear{Kirby and Hurford}{Kirby and
+  Hurford}{2002}]{KirbyHurford2002:The-Emergence-o}
+Kirby, S. and J.~R. Hurford (2002).
 \newblock The emergence of linguistic structure: {A}n overview of the iterated
   learning model.
-\newblock In A.~Cangelosi and D.~Parisi, editors, \emph{Simulating the
-  Evolution of Language}, pages 121--148. Springer, 2002.
+\newblock In A.~Cangelosi and D.~Parisi (Eds.), {\em Simulating the Evolution
+  of Language}, pp.\  121--148. Springer.
 
-\bibitem[Kirby et~al.(2014)Kirby, Griffiths, and Smith]{kirby+etal:2014}
-Simon Kirby, Tom Griffiths, and Kenny Smith.
-\newblock Iterated learning and the evolution of language.
-\newblock \emph{Current Opinion in Neurobiology}, 28:\penalty0 108--114, 2014.
-\newblock \doi{10.1016/j.conb.2014.07.014}.
-
-\bibitem[Kirby et~al.(2015)Kirby, Tamariz, Cornish, and Smith]{kirby+etal:2015}
-Simon Kirby, Monica Tamariz, Hannah Cornish, and Kenny Smith.
+\bibitem[\protect\citeauthoryear{Kirby, Tamariz, Cornish, and Smith}{Kirby
+  et~al.}{2015}]{kirby+etal:2015}
+Kirby, S., M.~Tamariz, H.~Cornish, and K.~Smith (2015).
 \newblock Compression and communication in the cultural evolution of linguistic
   structure.
-\newblock \emph{Cognition}, 141:\penalty0 87--102, 2015.
+\newblock {\em Cognition\/}~{\em 141}, 87--102.
 
-\bibitem[Lenaerts et~al.(2005)Lenaerts, Jansen, Tuyls, and
-  Vylder]{LenaertsJansen2005:The-Evolutionar}
-Tom Lenaerts, Bart Jansen, Karl Tuyls, and Bart~De Vylder.
+\bibitem[\protect\citeauthoryear{Lenaerts, Jansen, Tuyls, and Vylder}{Lenaerts
+  et~al.}{2005}]{LenaertsJansen2005:The-Evolutionar}
+Lenaerts, T., B.~Jansen, K.~Tuyls, and B.~D. Vylder (2005).
 \newblock The evolutionary language game: {A}n orthogonal approach.
-\newblock \emph{Journal of Theoretical Biology}, 235:\penalty0 566--582, 2005.
+\newblock {\em Journal of Theoretical Biology\/}~{\em 235}, 566--582.
 
-\bibitem[Levinson(1983)]{LevinsonPragmatics1983}
-Stephen~C. Levinson.
-\newblock \emph{Pragmatics}.
-\newblock Cambridge University Press, Cambridge, UK, 1983.
+\bibitem[\protect\citeauthoryear{Levinson}{Levinson}{1983}]{LevinsonPragmatics1983}
+Levinson, S.~C. (1983).
+\newblock {\em Pragmatics}.
+\newblock Cambridge, UK: Cambridge University Press.
 
-\bibitem[Lewis(1969)]{lewis:1969}
-David Lewis.
-\newblock \emph{Convention: A Philosophical Study}.
-\newblock Harvard University Press, Cambridge, 1969.
+\bibitem[\protect\citeauthoryear{Lewis}{Lewis}{1969}]{lewis:1969}
+Lewis, D. (1969).
+\newblock {\em Convention: A Philosophical Study}.
+\newblock Cambridge: Harvard University Press.
 
-\bibitem[Luce(1959)]{luce:1959}
-Duncan~R. Luce.
-\newblock \emph{Individual choice behavior: a theoretical analysis}.
-\newblock Wiley, 1959.
+\bibitem[\protect\citeauthoryear{Luce}{Luce}{1959}]{luce:1959}
+Luce, D.~R. (1959).
+\newblock {\em Individual choice behavior: a theoretical analysis}.
+\newblock Wiley.
 
-\bibitem[Martinet(1962)]{martinet:1962}
-Andr\'{e} Martinet.
-\newblock \emph{Functionalist View of Language}.
-\newblock Clarendon Press, Oxford, 1962.
+\bibitem[\protect\citeauthoryear{Martinet}{Martinet}{1962}]{martinet:1962}
+Martinet, A. (1962).
+\newblock {\em Functionalist View of Language}.
+\newblock Oxford: Clarendon Press.
 
-\bibitem[Neys and Schaeken(2007)]{deNeys+schaeken:2007}
-Wim~De Neys and Walter Schaeken.
+\bibitem[\protect\citeauthoryear{Neys and Schaeken}{Neys and
+  Schaeken}{2007}]{deNeys+schaeken:2007}
+Neys, W.~D. and W.~Schaeken (2007).
 \newblock When people are more logical under cognitive load.
-\newblock \emph{Experimental Psychology}, 54\penalty0 (2):\penalty0 128--133,
-  2007.
+\newblock {\em Experimental Psychology\/}~{\em 54\/}(2), 128--133.
 
-\bibitem[Nowak and Krakauer(1999)]{nowak+krakauer:1999}
-M.~A. Nowak and D.~C. Krakauer.
-\newblock The evolution of language.
-\newblock \emph{Proceedings of the National Academy of Sciences}, 96\penalty0
-  (14):\penalty0 8028--8033, 1999.
+\bibitem[\protect\citeauthoryear{Nowak}{Nowak}{2006}]{Nowak2006:Evolutionary-Dy}
+Nowak, M.~A. (2006).
+\newblock {\em Evolutionary Dynamics: {E}xploring the Equations of Life}.
+\newblock Harvard University Press.
 
-\bibitem[Nowak(2006)]{Nowak2006:Evolutionary-Dy}
-Martin~A. Nowak.
-\newblock \emph{Evolutionary Dynamics: {E}xploring the Equations of Life}.
-\newblock Harvard University Press, 2006.
-
-\bibitem[Nowak et~al.(2000)Nowak, Plotkin, and Jansen]{nowak+etal:2000}
-Martin~A. Nowak, Joshua~B. Plotkin, and Vincent A.~A. Jansen.
-\newblock The evolution of syntactic communication.
-\newblock \emph{Nature}, 404\penalty0 (6777):\penalty0 495--498, 2000.
-\newblock \doi{10.1038/35006635}.
-
-\bibitem[Nowak et~al.(2001)Nowak, Komarova, and
-  Niyogi]{NowakKomarova2001:Evolution-of-Un}
-Martin~A. Nowak, Natalia~L. Komarova, and Partha Niyogi.
+\bibitem[\protect\citeauthoryear{Nowak, Komarova, and Niyogi}{Nowak
+  et~al.}{2001}]{NowakKomarova2001:Evolution-of-Un}
+Nowak, M.~A., N.~L. Komarova, and P.~Niyogi (2001).
 \newblock Evolution of universal grammar.
-\newblock \emph{Science}, 291\penalty0 (5501):\penalty0 114--118, 2001.
-\newblock \doi{10.1126/science.291.5501.114}.
+\newblock {\em Science\/}~{\em 291\/}(5501), 114--118.
 
-\bibitem[Nowak et~al.(2002)Nowak, Komarova, and Niyogi]{nowak+etal:2002}
-Martin~A. Nowak, Natalia~L. Komarova, and Partha Niyogi.
+\bibitem[\protect\citeauthoryear{Nowak, Komarova, and Niyogi}{Nowak
+  et~al.}{2002}]{nowak+etal:2002}
+Nowak, M.~A., N.~L. Komarova, and P.~Niyogi (2002).
 \newblock Computational and evolutionary aspects of language.
-\newblock \emph{Nature}, 417\penalty0 (6889):\penalty0 611--617, 2002.
-\newblock \doi{10.1038/nature00771}.
+\newblock {\em Nature\/}~{\em 417\/}(6889), 611--617.
 
-\bibitem[Pagel(2009)]{Pagel2009:Human-Language-}
-Mark Pagel.
+\bibitem[\protect\citeauthoryear{Nowak and Krakauer}{Nowak and
+  Krakauer}{1999}]{nowak+krakauer:1999}
+Nowak, M.~A. and D.~C. Krakauer (1999).
+\newblock The evolution of language.
+\newblock {\em Proceedings of the National Academy of Sciences\/}~{\em
+  96\/}(14), 8028--8033.
+
+\bibitem[\protect\citeauthoryear{Nowak, Plotkin, and Jansen}{Nowak
+  et~al.}{2000}]{nowak+etal:2000}
+Nowak, M.~A., J.~B. Plotkin, and V.~A.~A. Jansen (2000).
+\newblock The evolution of syntactic communication.
+\newblock {\em Nature\/}~{\em 404\/}(6777), 495--498.
+
+\bibitem[\protect\citeauthoryear{Pagel}{Pagel}{2009}]{Pagel2009:Human-Language-}
+Pagel, M. (2009).
 \newblock Human language as a culturally transmitted replicator.
-\newblock \emph{Nature Reviews Genetics}, 10:\penalty0 405--415, 2009.
-\newblock \doi{10.1038/nrg2560}.
+\newblock {\em Nature Reviews Genetics\/}~{\em 10}, 405--415.
 
-\bibitem[Piantadosi(2014)]{piantadosi:2014}
-Steven~T Piantadosi.
+\bibitem[\protect\citeauthoryear{Piantadosi}{Piantadosi}{2014}]{piantadosi:2014}
+Piantadosi, S.~T. (2014).
 \newblock Zipf's word frequency law in natural language: A critical review and
   future directions.
-\newblock \emph{Psychonomic bulletin \& review}, 21\penalty0 (5):\penalty0
-  1112--1130, 2014.
-\newblock \doi{10.3758/s13423-014-0585-6}.
+\newblock {\em Psychonomic bulletin \& review\/}~{\em 21\/}(5), 1112--1130.
 
-\bibitem[Piantadosi and Jacobs(2016)]{piantadosi+jacobs:2016}
-Steven~T. Piantadosi and Robert~A. Jacobs.
+\bibitem[\protect\citeauthoryear{Piantadosi and Jacobs}{Piantadosi and
+  Jacobs}{2016}]{piantadosi+jacobs:2016}
+Piantadosi, S.~T. and R.~A. Jacobs (2016).
 \newblock Four problems solved by the probabilistic language of thought.
-\newblock \emph{Current Directions in Psychological Science}, 25\penalty0
-  (1):\penalty0 54--59, 2016.
-\newblock \doi{10.1177/0963721415609581}.
+\newblock {\em Current Directions in Psychological Science\/}~{\em 25\/}(1),
+  54--59.
 
-\bibitem[Piantadosi et~al.(2012{\natexlab{a}})Piantadosi, Tenenbaum, and
-  Goodman]{piantadosi+etal:2012a}
-Steven~T. Piantadosi, Joshua~B. Tenenbaum, and Noah~D. Goodman.
+\bibitem[\protect\citeauthoryear{Piantadosi, Tenenbaum, and Goodman}{Piantadosi
+  et~al.}{2012}]{piantadosi+etal:2012a}
+Piantadosi, S.~T., J.~B. Tenenbaum, and N.~D. Goodman (2012).
 \newblock Bootstrapping in a language of thought: A formal model of numerical
   concept learning.
-\newblock \emph{Cognition}, 123\penalty0 (2):\penalty0 199--217,
-  2012{\natexlab{a}}.
+\newblock {\em Cognition\/}~{\em 123\/}(2), 199--217.
 
-\bibitem[Piantadosi et~al.(2012{\natexlab{b}})Piantadosi, Tily, and
-  Gibson]{piantadosi+etal:2012b}
-Steven~T. Piantadosi, Harry Tily, and Edward Gibson.
-\newblock The communicative function of ambiguity in language.
-\newblock \emph{Cognition}, 122\penalty0 (3):\penalty0 280--291,
-  2012{\natexlab{b}}.
-\newblock \doi{10.1016/j.cognition.2011.10.004}.
-
-\bibitem[Piantadosi et~al.(under review)Piantadosi, Tenenbaum, and
-  Goodman]{piantadosi+etal:underreview}
-Steven~T. Piantadosi, Joshua~B. Tenenbaum, and Noah~D. Goodman.
+\bibitem[\protect\citeauthoryear{Piantadosi, Tenenbaum, and Goodman}{Piantadosi
+  et~al.}{view}]{piantadosi+etal:underreview}
+Piantadosi, S.~T., J.~B. Tenenbaum, and N.~D. Goodman (under review).
 \newblock Modeling the acquisition of quantifier semantics: a case study in
-  function word learnability, under review.
+  function word learnability.
 
-\bibitem[{\SortNoop{Rooy}}van~Rooij and
-  {\SortNoop{Jager}}de~Jager(2012)]{Rooyvan-RooijJagerde-Jager2012:Explaining-Quan}
-Robert {\SortNoop{Rooy}}van~Rooij and Tikitu {\SortNoop{Jager}}de~Jager.
+\bibitem[\protect\citeauthoryear{Piantadosi, Tily, and Gibson}{Piantadosi
+  et~al.}{2012}]{piantadosi+etal:2012b}
+Piantadosi, S.~T., H.~Tily, and E.~Gibson (2012).
+\newblock The communicative function of ambiguity in language.
+\newblock {\em Cognition\/}~{\em 122\/}(3), 280--291.
+
+\bibitem[\protect\citeauthoryear{{\SortNoop{Rooy}}van~Rooij and
+  {\SortNoop{Jager}}de~Jager}{{\SortNoop{Rooy}}van~Rooij and
+  {\SortNoop{Jager}}de~Jager}{2012}]{Rooyvan-RooijJagerde-Jager2012:Explaining-Quan}
+{\SortNoop{Rooy}}van~Rooij, R. and T.~{\SortNoop{Jager}}de~Jager (2012).
 \newblock Explaining quantity implicatures.
-\newblock \emph{Journal of Logic, Language and Information}, 21\penalty0
-  (4):\penalty0 461--477, 2012.
-\newblock \doi{10.1007/s10849-012-9163-3}.
+\newblock {\em Journal of Logic, Language and Information\/}~{\em 21\/}(4),
+  461--477.
 
-\bibitem[Sandholm(2010)]{Sandholm2010:Population-Game}
-William~H. Sandholm.
-\newblock \emph{Population Games and Evolutionary Dynamics}.
-\newblock MIT Press, Cambridge, MA, 2010.
+\bibitem[\protect\citeauthoryear{Sandholm}{Sandholm}{2010}]{Sandholm2010:Population-Game}
+Sandholm, W.~H. (2010).
+\newblock {\em Population Games and Evolutionary Dynamics}.
+\newblock Cambridge, MA: MIT Press.
 
-\bibitem[Sauerland(2004)]{Sauerland2004:Scalar-Implicat}
-Uli Sauerland.
+\bibitem[\protect\citeauthoryear{Sauerland}{Sauerland}{2004}]{Sauerland2004:Scalar-Implicat}
+Sauerland, U. (2004).
 \newblock Scalar implicatures in complex sentences.
-\newblock \emph{Linguistics and Philosophy}, 27:\penalty0 367--391, 2004.
-\newblock \doi{10.1023/B:LING.0000023378.71748.db}.
+\newblock {\em Linguistics and Philosophy\/}~{\em 27}, 367--391.
 
-\bibitem[Schlag(1998)]{Schlag1998:Why-Imitate-and}
-Karl~H. Schlag.
+\bibitem[\protect\citeauthoryear{Schlag}{Schlag}{1998}]{Schlag1998:Why-Imitate-and}
+Schlag, K.~H. (1998).
 \newblock Why imitate, and if so, how?
-\newblock \emph{Journal of Economic Theory}, 78\penalty0 (1):\penalty0
-  130--156, 1998.
-\newblock \doi{doi:10.1006/jeth.1997.2347}.
+\newblock {\em Journal of Economic Theory\/}~{\em 78\/}(1), 130--156.
 
-\bibitem[Silvey et~al.(2014)Silvey, Kirby, and Smith]{silvey+etal:2014}
-Catriona Silvey, Simon Kirby, and Kenny Smith.
+\bibitem[\protect\citeauthoryear{Silvey, Kirby, and Smith}{Silvey
+  et~al.}{2014}]{silvey+etal:2014}
+Silvey, C., S.~Kirby, and K.~Smith (2014).
 \newblock Word meanings evolve to selectively preserve distinctions on salient
   dimensions.
-\newblock \emph{Cognitive Science}, 39\penalty0 (1):\penalty0 212--226, 2014.
-\newblock \doi{10.1111/cogs.12150}.
+\newblock {\em Cognitive Science\/}~{\em 39\/}(1), 212--226.
 
-\bibitem[Skyrms(2010)]{Skyrms2010:Signals}
-Brian Skyrms.
-\newblock \emph{Signals: {E}volution, Learning, and Information}.
-\newblock Oxford University Press, Oxford, 2010.
+\bibitem[\protect\citeauthoryear{Skyrms}{Skyrms}{2010}]{Skyrms2010:Signals}
+Skyrms, B. (2010).
+\newblock {\em Signals: {E}volution, Learning, and Information}.
+\newblock Oxford: Oxford University Press.
 
-\bibitem[Smith et~al.(2003)Smith, Kirby, and
-  Brighton]{SmithKirby2003:Iterated-Learni}
-Kenny Smith, Simon Kirby, and Henry Brighton.
+\bibitem[\protect\citeauthoryear{Smith, Kirby, and Brighton}{Smith
+  et~al.}{2003}]{SmithKirby2003:Iterated-Learni}
+Smith, K., S.~Kirby, and H.~Brighton (2003).
 \newblock Iterated learning: {A} framework for the emergence of language.
-\newblock \emph{Artificial Life}, 9:\penalty0 371--386, 2003.
+\newblock {\em Artificial Life\/}~{\em 9}, 371--386.
 
-\bibitem[Spike et~al.(2016)Spike, Stadler, Kirby, and
-  Smith]{SpikeStadler2016:Minimal-Require}
-Matthew Spike, Kevin Stadler, Simon Kirby, and Kenny Smith.
+\bibitem[\protect\citeauthoryear{Spike, Stadler, Kirby, and Smith}{Spike
+  et~al.}{2016}]{SpikeStadler2016:Minimal-Require}
+Spike, M., K.~Stadler, S.~Kirby, and K.~Smith (2016).
 \newblock Minimal requirements for the emergence of learned signaling.
-\newblock \emph{Cognitive Science}, 2016.
-\newblock \doi{10.1111/cogs.12351}.
+\newblock {\em Cognitive Science\/}.
 
-\bibitem[Steels(1995)]{Steels1995:A-Self-Organizi}
-Luc Steels.
+\bibitem[\protect\citeauthoryear{Steels}{Steels}{1995}]{Steels1995:A-Self-Organizi}
+Steels, L. (1995).
 \newblock A self-organizing spatial vocabulary.
-\newblock \emph{Artificial Life}, 2\penalty0 (3):\penalty0 319--332, 1995.
-\newblock \doi{10.1162/artl.1995.2.3.319}.
+\newblock {\em Artificial Life\/}~{\em 2\/}(3), 319--332.
 
-\bibitem[Steels(2011)]{steels:2011}
-Luc Steels.
+\bibitem[\protect\citeauthoryear{Steels}{Steels}{2011}]{steels:2011}
+Steels, L. (2011).
 \newblock Modeling the cultural evolution of language.
-\newblock \emph{Physics of Life Reviews}, 8\penalty0 (4):\penalty0 339--356,
-  2011.
+\newblock {\em Physics of Life Reviews\/}~{\em 8\/}(4), 339--356.
 
-\bibitem[Steels and Belpaeme(2005)]{SteelsBelpaeme2005:Coordinating-Pe}
-Luc Steels and Tony Belpaeme.
+\bibitem[\protect\citeauthoryear{Steels and Belpaeme}{Steels and
+  Belpaeme}{2005}]{SteelsBelpaeme2005:Coordinating-Pe}
+Steels, L. and T.~Belpaeme (2005).
 \newblock Coordinating perceptually grounded categories through language: {A}
   case study for color.
-\newblock \emph{Behavioral and Brain Sciences}, 28\penalty0 (4):\penalty0
-  469--529, 2005.
-\newblock \doi{10.1017/S0140525X05000087}.
+\newblock {\em Behavioral and Brain Sciences\/}~{\em 28\/}(4), 469--529.
 
-\bibitem[Sutton and Barto(1998)]{sutton+barto:1998}
-Richard~S. Sutton and Andrew~G. Barto.
-\newblock \emph{Introduction to Reinforcement Learning}.
-\newblock MIT Press, Cambridge, MA, USA, 1998.
+\bibitem[\protect\citeauthoryear{Sutton and Barto}{Sutton and
+  Barto}{1998}]{sutton+barto:1998}
+Sutton, R.~S. and A.~G. Barto (1998).
+\newblock {\em Introduction to Reinforcement Learning}.
+\newblock Cambridge, MA, USA: MIT Press.
 
-\bibitem[Tamariz and Kirby(2016)]{tamariz+kirby:2016}
-Monica Tamariz and Simon Kirby.
+\bibitem[\protect\citeauthoryear{Tamariz and Kirby}{Tamariz and
+  Kirby}{2016}]{tamariz+kirby:2016}
+Tamariz, M. and S.~Kirby (2016).
 \newblock The cultural evolution of language.
-\newblock \emph{Current Opinion in Psychology}, 8:\penalty0 37--43, 2016.
+\newblock {\em Current Opinion in Psychology\/}~{\em 8}, 37--43.
 
-\bibitem[Taylor and Jonker(1978)]{TaylorJonker1978:Evolutionary-St}
-Peter~D. Taylor and Leo~B. Jonker.
+\bibitem[\protect\citeauthoryear{Taylor and Jonker}{Taylor and
+  Jonker}{1978}]{TaylorJonker1978:Evolutionary-St}
+Taylor, P.~D. and L.~B. Jonker (1978).
 \newblock Evolutionary stable strategies and game dynamics.
-\newblock \emph{Mathematical Bioscience}, 40\penalty0 (1--2):\penalty0
-  145--156, 1978.
+\newblock {\em Mathematical Bioscience\/}~{\em 40\/}(1--2), 145--156.
 
-\bibitem[Thompson et~al.(2016)Thompson, Kirby, and
-  Smith]{ThompsonKirby2016:Culture-Shapes-}
-Bill Thompson, Simon Kirby, and Kenny Smith.
+\bibitem[\protect\citeauthoryear{Thompson, Kirby, and Smith}{Thompson
+  et~al.}{2016}]{ThompsonKirby2016:Culture-Shapes-}
+Thompson, B., S.~Kirby, and K.~Smith (2016).
 \newblock Culture shapes the evolution of cognition.
-\newblock \emph{Proceedings of the National Academy of Sciences of the United
-  States of America}, 113\penalty0 (16):\penalty0 4530--4535, 2016.
-\newblock \doi{10.1073/pnas.1523631113}.
+\newblock {\em Proceedings of the National Academy of Sciences of the United
+  States of America\/}~{\em 113\/}(16), 4530--4535.
 
-\bibitem[Traugott(2004)]{traugott:2004}
-Elizabeth~Closs Traugott.
+\bibitem[\protect\citeauthoryear{Traugott}{Traugott}{2004}]{traugott:2004}
+Traugott, E.~C. (2004).
 \newblock Historical pragmatics.
-\newblock In Laurence~R. Horn and Gregory Wand, editors, \emph{The Handbook of
-  Pragmatics}, pages 538--561. Blackwell Publishing, 2004.
+\newblock In L.~R. Horn and G.~Wand (Eds.), {\em The Handbook of Pragmatics},
+  pp.\  538--561. Blackwell Publishing.
 
-\bibitem[Verhoef et~al.(2014)Verhoef, Kirby, and de~Boer]{verhoef+etal:2014}
-Tessa Verhoef, Simon Kirby, and Bart de~Boer.
+\bibitem[\protect\citeauthoryear{Verhoef, Kirby, and de~Boer}{Verhoef
+  et~al.}{2014}]{verhoef+etal:2014}
+Verhoef, T., S.~Kirby, and B.~de~Boer (2014).
 \newblock Emergence of combinatorial structure and economy through iterated
   learning with continuous acoustic signals.
-\newblock \emph{Journal of Phonetics}, 43:\penalty0 57--68, 2014.
-\newblock \doi{10.1016/j.wocn.2014.02.005}.
+\newblock {\em Journal of Phonetics\/}~{\em 43}, 57--68.
 
-\bibitem[W\"{a}rneryd(1993)]{Warneryd1993:Cheap-Talk-Coor}
-Karl W\"{a}rneryd.
+\bibitem[\protect\citeauthoryear{W\"{a}rneryd}{W\"{a}rneryd}{1993}]{Warneryd1993:Cheap-Talk-Coor}
+W\"{a}rneryd, K. (1993).
 \newblock Cheap talk, coordination, and evolutionary stability.
-\newblock \emph{Games and Economic Behavior}, 5\penalty0 (4):\penalty0
-  532--546, 1993.
-\newblock \doi{doi:10.1006/game.1993.1030}.
+\newblock {\em Games and Economic Behavior\/}~{\em 5\/}(4), 532--546.
 
-\bibitem[Zipf(1949)]{zipf:1949}
-George Zipf.
-\newblock \emph{Human behavior and the principle of least effort}.
-\newblock Addison-Wesley Press, 1949.
+\bibitem[\protect\citeauthoryear{Zipf}{Zipf}{1949}]{zipf:1949}
+Zipf, G. (1949).
+\newblock {\em Human behavior and the principle of least effort}.
+\newblock Addison-Wesley Press.
 
 \end{thebibliography}
