@@ -304,7 +304,7 @@ iterated learning \citep{griffiths+kalish:2007}.
   move towards 0 or 1. This is schematically pictured in the topmost phase portrait in
   Figure~\ref{fig:Phase_RD}.
 
-  Adding mutation changes the dynamics and its rest points. Let's assume that $Q_{ji} = .9$
+  Adding mutation changes the dynamic and its rest points. Let's assume that $Q_{ji} = .9$
   when $j=i$. The update effect of mutation alone is $M(x) = .9 x + .1 (1-x) = .8x + .1$ and is
   plotted as the linear green line in Figure~\ref{fig:Updates_RMS}. It has only one stable rest
   point at $x = 0.5$ (see Figure~\ref{fig:Phase_RD}). If we first take the replicator step and
@@ -451,35 +451,35 @@ iterated learning \citep{griffiths+kalish:2007}.
   \label{fig:Example_RMD}
 \end{figure}
 
-While this was only an abstract and simple example, our goal is to apply the RMD to a more
-complex case of co-evolving of lexical concepts and pragmatic behavior. To do so, we need to
-fix three things: (i) what the relevant types are, (ii) how fitness derives from communicative
-success and (iii) how the mutation matrix is computed. These issues are addressed, one by one,
-in the following.
 
-\subsection{Types: Lexica and linguistic behavior}
+\subsection{Fitness \& learnability of lexical meanings \& pragmatic strategies}
+\label{sec:fitn--learn}
+
+Moving beyond an abstract example, our goal is to apply the RMD to investigate the co-evolution
+of lexical concepts and pragmatic behavior. To do so, we need to fix three things: (i) what the
+relevant types are, (ii) how fitness derives from communicative success and (iii) how the
+mutation matrix is computed. These issues are addressed, one by one, in the following.
+
+\subsubsection{Types: Lexica and pragmatic strategies}
 \label{sec:languages+use}
 
-Types are what evolution operates on. In standard applications of evolutionary game theory,
-types are ways of acting in a game, e.g., either cooperating or defecting in a prisoner's
-dilemma, or, in our previous example, they are what defines an agent's fitness in interaction
-with others, such as being positive or negative (whatever that means). For our present
-purposes, types are identified more concretely by their cognitive make-up. In general terms, we
-are interested in the evolutionary competition between different lexical concepts and ways of
-using them in communication. A type in our setting is therefore a pair consisting of a lexicon
-and a pragmatic strategy.
+Types are what evolution operates on. They define an agent's fitness, usually through a payoff
+accrued in single interactions with other agents. Often types can be identified as the possible
+acts in a game, e.g., either cooperating or defecting in a prisoner's dilemma. In other cases,
+they may be thought of as general properties of an agent that influences her fitness, such as
+being positive or negative in our previous example (whatever that means). For our present
+purposes, types are identified more concretely by specific assumptions about their cognitive
+make-up. Since we are interested in the evolutionary competition between different lexical
+concepts and ways of using them in communication, a type is here defined as a pair consisting
+of a lexicon and a pragmatic strategy.
 
 Agents play signaling games, in which the speaker wants to communicate a world state $s$ with a
 message $m$ to a hearer who receives $m$ but does not know $s$
-\citep[e.g.][]{lewis:1969,Skyrms2010:Signals}. A lexicon associates each message with a set of
-states. A pragmatic type maps a lexicon onto a probabilistic speaker rule (a probabilistic
-choice of message for each state) and a probabilistic listener rule (a probabilistic choice of
-state for each message). There are many ways of making these general notions more
-concrete. Here is what we will assume in the remainder of this paper.
-
-\bigskip
-\bigskip
-\bigskip
+\citep[e.g.][]{lewis:1969,Skyrms2010:Signals}. A lexicon associates each message with a
+(possibly fuzzy) set of states. A pragmatic type maps a lexicon onto a probabilistic speaker
+rule (a probabilistic choice of message for each state) and a probabilistic listener rule (a
+probabilistic choice of state for each message). There are many ways of making these general
+notions more concrete. Here is what we will assume in the remainder of this paper.
 
 Lexica codify the truth-conditions of expressions. A convenient way to represent lexica is by
 $(\card{\States}, \card{\Messgs})$-Boolean matrices, where $\States$ is a set of states
@@ -488,10 +488,11 @@ that there are two relevant world states $\States = \set{\ssome, \sall}$. In sta
 Chris owns some but not all of Johnny Cash's albums while in $\sall$ Chris owns them
 all. Suppose that there are two messages $\Messgs = \set{\msome, \mall}$ where $\msome$ is
 short for a sentence like \emph{Chris owns some of Johnny Cash's albums} and $\mall$ for the
-same sentence with \emph{some} replaced by \emph{all}.  
-Lexica for this case would assign a Boolean truth value, either $0$ for false or $1$ for true, to each state-message pair. The following two lexica exemplify the distinction
-between a lexicalized upper-bound for \emph{some} in $\Lbound$ and the widely assumed logical
-semantics with only a lower-bound in $\Llack$.
+same sentence with \emph{some} replaced by \emph{all}.  Lexica for this case would assign a
+Boolean truth value, either $0$ for false or $1$ for true, to each state-message pair. The
+following two lexica are minimal examples for the distinction between a lexicalized upper-bound
+for \emph{some} in $\Lbound$ and the widely assumed logical semantics with only a lower-bound
+in $\Llack$.
 
 \begin{align*}
   \Lbound & = \begin{blockarray}{lcc}
@@ -510,73 +511,198 @@ semantics with only a lower-bound in $\Llack$.
   \end{blockarray}
 \end{align*}
 
-We distinguish between two kinds of linguistic behavior. {\em Literal interlocutors} produce and
+Pragmatic types define dispositions of produce and interpret messages given a lexicon. We
+distinguish between two kinds of pragmatic types. {\em Literal interlocutors} produce and
 interpret messages literally, being guided only by their lexica. {\em Pragmatic interlocutors}
 instead engage in mutual reasoning to inform their choices. Recent probabilistic models of
 rational language use
 \citep{frank+goodman:2012,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}
 capture different types of pragmatic behavior in a reasoning hierarchy. The hierarchy's bottom,
-level $0$, corresponds to literal language use. Pragmatic language users of level $n + 1$
-act (approximately) rational with respect to level-$n$ behavior of their
-interlocutors. (\ref{h:level0}) and (\ref{s:level0}) define probabilistic behavior of literal
-hearers and speakers respectively: \mf{is it a problem that $S$ denotes speakers and the set of
-states?} \tb{I think that's fine. $S_n(\cdot \mid \cdot)$ is not used beyond this section. Otherwise we can, e.g., relabel $M$ as $F$(orms) and use $M$(eanings) instead of $S$(tates). I'm fine with either option.}
-\begin{flalign}
-&H_{0}(s \mid m;L) \propto pr(s) L_{sm} \label{h:level0}\\
-&S_{0}(m \mid s;L) \propto \exp(\lambda \; L_{sm}) \label{s:level0}
-\end{flalign}
+level $0$, corresponds to literal language use, as in Equations~(\ref{h:level0}) and
+(\ref{s:level0}). Pragmatic language users of level $n + 1$ act (approximately) rational with
+respect to level-$n$ behavior of their interlocutors, as in Equations~(\ref{h:leveln}) and
+(\ref{s:leveln}).
+\begin{alignat}{3}
+&H_{0}(s \mid m;L) &&\propto pr(s) L_{sm} \label{h:level0}\\
+&S_{0}(m \mid s;L) &&\propto \exp(\lambda \; L_{sm}) \label{s:level0}\\
+&H_{n+1}(s|m;L) &&\propto pr(s) S_{n}(m|s;L) \label{h:leveln}\\
+&S_{n+1}(m|s;L) &&\propto  \exp(\lambda \; H_{n}(s|m;L)) \label{s:leveln}
+\end{alignat}
 
-According to (\ref{h:level0}), a literal hearer's interpretation of a message $m$ as a state
-$s$ depends on her lexicon and her prior over states, $pr \in \Delta(S)$. For simplicity, in
-the following this prior is assumed to be uniform. A literal interpreter with lexicon $\Lbound$
-from above would assign $\ssome$ a probability of $H_0(\ssome \mid \msome; \Lbound) = 1$ after
-hearing $\msome$, while a literal interpreter with lexicon $\Llack$ would assign $\ssome$
-probability $H_0(\ssome \mid \msome; \Llack) = 0.5$. As usual in probabilistic pragmatics models, speaker behavior is regulated by a soft-max
-parameter $\lambda$, $\lambda \geq 1$ \citep{luce:1959,sutton+barto:1998}. As $\lambda$
-increases, choices made in production are more rational in that they are increasingly in line with expected utility maximization. Expected utility of a message
-$\messg$ in state $\state$ for a level $n+1$ speaker is here defined as $H_{n}(s|m;L)$, the probability that the hearer will assign to or choose the correct meaning. Put differently, expected utility indicates how likely the hearer is thought to infer $\state$ when sent $\messg$. The formulation
-in (\ref{s:level0}) also allows false messages to be sent with a small positive probability in
-analogy to the definition of pragmatic speakers in probabilistic pragmatic models. This is also necessary to guarantee a mutation matrix with only positive entries (see below). If $\lambda = 1$ a literal
-speaker with either lexicon $\Lbound$ or $\Llack$ produces $\msome$ in $\ssome$ with probability $S_{0}(\msome \mid
-\ssome;L_{\text{bound},\text{lack}}) \approx .73$. The probability of producing $\msome$ in $\sall$ is $S_{0}(\msome \mid
-\sall;\Lbound) \approx .27$ for $\Lbound$ and $S_{0}(\msome \mid
-\sall;\Llack) = .5$ for $\Llack$. By contrast, if $\lambda = 20$, a literal speaker with either lexicon produces $\msome$ in $\ssome$ with probability $S_{0}(\msome \mid
-\ssome;L_{\text{bound},\text{lack}}) \approx 1$. But the probability of producing $\msome$ in $\sall$ is $S_{0}(\msome \mid
-\sall;\Lbound) \approx 1$ for $\Lbound$ whereas it is still $S_{0}(\msome \mid \sall;\Llack) = .5$ for $\Llack$ because it semantically associates $\msome$ with both states.
+According to (\ref{h:level0}), a literal hearer's interpretation of a message depends on her
+lexicon and her prior over states, $pr \in \Delta(S)$, which is here assumed flat, for
+simplicity. Literal interpreters thereby choose an arbitrary true interpretation for each
+message. Pragmatic hearers, defined in (\ref{h:leveln}), use Bayes rule to weigh
+interpretations based on a conjecture about speaker behavior. Speaker behavior is regulated by
+a soft-max parameter $\lambda$, $\lambda \geq 0$ \citep{luce:1959,sutton+barto:1998}. As
+$\lambda$ increases, choices approximate strict maximization of expected utilities. Expected
+utility of a message $\messg$ in state $\state$ for a level $n+1$ speaker is here defined as
+$H_{n}(s|m;L)$, the probability that the hearer will assign to or choose the correct
+meaning. For literal speakers, utility only tracks truthfulness. Literal speakers choose any
+true message with equal probability but may send false messages as well with a probability
+dependent on $\lambda$.
 
-Pragmatic behavior of level $n+1$ is similar to its literal counterparts but bases linguistic choice in 
-interpretation or production on the expected behavior of a level-$n$ interlocutor instead of on lexical meaning:
-\begin{flalign}
-&H_{n+1}(s|m;L) \propto pr(s) S_{n}(m|s;L) \label{h:leveln}\\
-&S_{n+1}(m|s;L) \propto  \exp(\lambda \; H_{n}(s|m;L)) \label{s:leveln}
-\end{flalign}
+Here are some concrete examples. \mf{please double-check the numbers!} A literal interpreter with lexicon $\Lbound$ assigns $\ssome$
+a probability of $H_0(\ssome \mid \msome; \Lbound) = 1$ after hearing $\msome$, while a literal
+interpreter with $\Llack$ has $H_0(\ssome \mid \msome; \Llack) = 0.5$:
+\begin{align*}
+  H_0(\cdot \mid \cdot, \Lbound) & = \begin{blockarray}{lcc}
+    & \mygray{\ssome} & \mygray{\sall} \\
+    \begin{block}{l[cc]}
+      \mygray{\msome} & 1 & 0 \\
+      \mygray{\mall}  & 0 & 1 \\
+    \end{block}
+  \end{blockarray} &
+  H_0(\cdot \mid \cdot, \Llack) & = \begin{blockarray}{lcc}
+    & \mygray{\ssome} & \mygray{\sall} \\
+    \begin{block}{l[cc]}
+      \mygray{\msome} & .5 & .5 \\
+      \mygray{\mall}  & 0 & 1 \\
+    \end{block}
+  \end{blockarray} 
+\end{align*}
+If $\lambda = 1$ literal speaker behavior looks like this:
+\begin{align*}
+  S_0(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
+    & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[cc]}
+      \mygray{\ssome} & .73 & .27 \\
+      \mygray{\sall}  & .27 & .73 \\
+    \end{block}
+  \end{blockarray} &
+  S_0(\cdot \mid \cdot, \Llack) & \approx \begin{blockarray}{lcc}
+    & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[cc]}
+      \mygray{\ssome} & .73 & .27 \\
+      \mygray{\sall}  & .5 & .5 \\
+    \end{block}
+  \end{blockarray} 
+\end{align*}
+If $\lambda = 20$, literal speakers will choose with less slack:
+\begin{align*}
+  S_0(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
+    & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[cc]}
+      \mygray{\ssome} & 1 & 0 \\
+      \mygray{\sall}  & 0 & 1 \\
+    \end{block}
+  \end{blockarray} &
+  S_0(\cdot \mid \cdot, \Llack) & \approx \begin{blockarray}{lcc}
+    & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[cc]}
+      \mygray{\ssome} &  1 & 0 \\
+      \mygray{\sall}  & .5 & .5 \\
+    \end{block}
+  \end{blockarray} 
+\end{align*}
+Pragmatic hearers of level 1 have the following probabilistic interpretation behavior for
+$\lambda = 1$:
+\begin{align*}
+  H_1(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
+    & \mygray{\ssome} & \mygray{\sall} \\
+    \begin{block}{l[cc]}
+      \mygray{\msome} & .73 & .27 \\
+      \mygray{\mall}  & .27 & .73 \\
+    \end{block}
+  \end{blockarray} &
+  H_1(\cdot \mid \cdot, \Llack) & \approx \begin{blockarray}{lcc}
+    & \mygray{\ssome} & \mygray{\sall} \\
+    \begin{block}{l[cc]}
+      \mygray{\msome} & .59 & .41 \\
+      \mygray{\mall}  & 0.35 & 0.65 \\
+    \end{block}
+  \end{blockarray} 
+\end{align*}
+For $\lambda = 20$, there wil less slack again:
+Pragmatic listeners of level 1 have the following probabilistic interpretation behavior for
+$\lambda = 1$:
+\begin{align*}
+  H_1(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
+    & \mygray{\ssome} & \mygray{\sall} \\
+    \begin{block}{l[cc]}
+      \mygray{\msome} & 1 & 0 \\
+      \mygray{\mall}  & 0 & 1 \\
+    \end{block}
+  \end{blockarray} &
+  H_1(\cdot \mid \cdot, \Llack) & \approx \begin{blockarray}{lcc}
+    & \mygray{\ssome} & \mygray{\sall} \\
+    \begin{block}{l[cc]}
+      \mygray{\msome} & 0.67 & 0.33 \\
+      \mygray{\mall}  & 0 & 1 \\
+    \end{block}
+  \end{blockarray} 
+\end{align*}
+With $\lambda = 1$, pragmatic speakers of level 1 will have:
+\begin{align*}
+  S_1(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
+    & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[cc]}
+      \mygray{\ssome} & .73 & .37 \\
+      \mygray{\sall}  & .37 & .73 \\
+    \end{block}
+  \end{blockarray} &
+  S_1(\cdot \mid \cdot, \Llack) & \approx \begin{blockarray}{lcc}
+    & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[cc]}
+      \mygray{\ssome} & .62 & .38 \\
+      \mygray{\sall}  & .38 & .62 \\
+    \end{block}
+  \end{blockarray} 
+\end{align*}
+For high $\lambda = 20$, pragmatic speakers of level 1 give us:
+\begin{align*}
+  S_1(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
+    & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[cc]}
+      \mygray{\ssome} & 1 & 0 \\
+      \mygray{\sall}  & 0 & 1 \\
+    \end{block}
+  \end{blockarray} &
+  S_1(\cdot \mid \cdot, \Llack) & \approx \begin{blockarray}{lcc}
+    & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[cc]}
+      \mygray{\ssome} & 1 & 0 \\
+      \mygray{\sall}  & 0 & 1 \\
+    \end{block}
+  \end{blockarray} 
+\end{align*}
 
-Particularly important to our purpose is the fact non-literal interlocutors using $\Llack$ can {\em pragmatically} associate $\msome$ with $\ssome$ over $\sall$,  in contrast to their literal counterparts. Intuitively, this is so because hearers reason a speaker to convey $\sall$ with $\mall$, as this message has a higher chance of leading to mutual understanding than using underspecified $\msome$. Therefore they will expect $\msome$ to be more strongly associated with $\ssome$ than with $\sall$ as it is already possible to clearly convey the latter state $\mall$. The converse reasoning pattern holds for the speaker. In this way, two distinct lexical conventions such as $\Lbound$ and $\Llack$ can give rise to similar observable linguistic behavior. In this case, associating $\msome$ with $\ssome$ and $\mall$ with $\sall$.
+It is important to note that pragmatic agents of level 1 using $\Llack$ associate $\msome$
+preferentially with $\ssome$, in contrast to their literal counterparts of level 0. This
+association is not perfect, and usually less strong than what agents with a lexicalized upper
+bound in $\Lbound$ can achieve, even without pragmatic reasoning. Higher oder iteration of
+reasoning types leads to stronger associations of $\msome$ and $\ssome$ also for the
+hearer. Still, the case study presented in Section~\ref{sec:si-case-study} will consider
+speaker and hearer behavior at levels 0 and 1, as the latter are the simplest pragmatic
+reasoning types which show a tendency to communicatively attuned pragmatic enrichment. Using
+only level 1 reasoning types is therefore a conservative choice that works against the
+fitness-based selection of pragmatic language use for a notion of fitness based on
+communicative efficiency, which is introduced next.
 
-\subsection{Fitness \& fitness-based selection based on expressivity}\label{sec:expressivity}
+\subsubsection{Fitness \& fitness-based selection based on expressivity}\label{sec:expressivity}
 
-Most evolutionary dynamics assume that the proportion of type $i$ in a population will increase
-or decrease as a function of its relative fitness $f_i$. In the context of language evolution,
-fitness is frequently associated with expressivity, i.e., the ability to successfully
-communicate with other language users from the same population
+Under the replicator dynamic the proportion of type $i$ in a population will increase or
+decrease as a function of its relative fitness $f_i$. In the context of language evolution,
+fitness is usually associated with expressivity, i.e., the ability to successfully communicate
+with other language users from the same population
 \citep[e.g.,][]{nowak+krakauer:1999,nowak+etal:2000, nowak+etal:2002}. Under a biological
 interpretation the assumption is that organisms have a higher chance of survival and
 reproduction if they are able to share and receive useful information via communication with
 peers. Under a cultural interpretation the picture is that agents themselves strive towards
-communicative success and therefore occasionally adapt or revise their behavior to achieve a
+communicative success and therefore occasionally adapt or revise their behavior to achieve
 higher communicative success (see \citealt[\S3.3]{benz+etal:2005b} for discussion).
 
-The replicator equation gives us the means to make the ensuing dynamics precise, without
-necessarily committing to a biological or cultural interpretation. As above, the proportion of types in a
-given population is codified in a vector $\vec{x}$, where $x_i$ is type $i$'s proportion. The
-fitness of type $i$ is its average expected communicative success, or \emph{expected
-  utility} (EU), given the frequencies of types in the current population:
+The replicator equation gives us the means to make the ensuing dynamic precise, without
+necessarily committing to a biological or cultural interpretation. As above, the proportion of
+types in a given population is codified in a vector $\vec{x}$, where $x_i$ is the proportion of
+type $i$. The fitness of type $i$ is its average expected communicative success, or
+\emph{expected utility} (EU), given the frequencies of types in the current population:
 \begin{align*}
   f_i = \sum_j x_j \text{EU}(t_i,t_j)\,.
 \end{align*}
 The expected utility $\text{EU}(t_i,t_j)$ for type $i$ when communicating with type $j$ is the
-average success of $i$ when talking or listening to $j$. Assuming that agents are speakers half
-of the time, this yields:
+average success of $i$ when talking or listening to $j$. If agents are speakers half of the
+time, this yields:
 \begin{align*}
   \text{EU}(t_i,t_j) = \nicefrac{1}{2} \, \text{EU}_S(t_i,t_j) + \nicefrac{1}{2} \, \text{EU}_H(t_i,t_j)\,,
 \end{align*}
@@ -584,34 +710,36 @@ where $\text{EU}_S(t_i,t_j)$ and $\text{EU}_H(t_i,t_j)$ are the expected utiliti
 speaker and as a hearer when communicating with $j$, defined as follows, where $n_i$ and $n_j$
 are type $i$'s and type $j$'s pragmatic reasoning types and $L_i$ and $L_j$ are their lexica:
 \begin{flalign*}
-  & \text{EU}_S(t_i,t_j)  = \sum_s P(s)\sum_m S_{n_i}(m \mid s;L_i) \sum_{s'} R_{n_j}(s' \mid m;L_j)
-  \delta(s,s') \\
- & \text{EU}_H(t_i,t_j)  = \text{EU}_S(t_j,t_i)
+  & \text{EU}_S(t_i,t_j)  = \sum_s P(s)\sum_m S_{n_i}(m \mid s;L_i) \sum_{s'} H_{n_j}(s' \mid m;L_j)
+  \delta(s,s') \,, \\
+ & \text{EU}_H(t_i,t_j)  = \text{EU}_S(t_j,t_i)\,.
 \end{flalign*}
-As usual for cooperative communication, $\delta(s,s') = 1$ iff $s = s'$ and $0$ otherwise.
+As usual, $\delta(s,s') = 1$ iff $s = s'$ and $0$ otherwise.
 
-\subsection{Learnability}
+\subsubsection{Learnability}
 \label{sec:learnability}
 
 Languages are shaped not only by functionalist forces towards greater expressivity. Another
-important factor is the fidelity by which language is transmitted. Among others, linguistic
-production can be prone to errors, states or messages may be perceived incorrectly, and
-multiple languages may be compatible with the data learners are exposed to. These sources of
-uncertainty introduce variation in the transmission of linguistic knowledge from one generation to the next. In particular, learning biases in the iterated transmission process can influence language evolution
-substantially.
+important factor is the fidelity with which linguistic knowledge is transmitted. Among others,
+linguistic production can be prone to errors, states or messages may be perceived incorrectly,
+and multiple languages may be compatible with the data learners are exposed to. These sources
+of uncertainty introduce variation in the transmission of linguistic knowledge from one
+generation to the next. In particular, learning biases in the iterated transmission process can
+influence language evolution substantially.
 
 In biological evolution, where types are expressed genetically, transmission infidelity comes
-into the picture through infrequent and mostly random genetic mutations. However, an agent's lexicon
-and pragmatic reasoning behavior is not inherited genetically. They need to be learned from
-observation. Concretely, when agents of type $j$ want to adopt or imitate the linguistic
-behavior of type $i$, they observe the overt linguistic behavior of type $i$ and need to infer what
-their type is from that. Iterated learning is a process in which languages are learned repeatedly from the observation
-of linguistic behavior of agents who have acquired the language from observation and inference
-before as well. In the simplest case there is a single teacher and a single
-learner. After sufficient training the learner becomes a teacher and produces behavior that
-serves as input for a new learner. Due to the pressure towards learnability it exerts, iterated
-learning alone generally leads to simpler and more regular languages (see \citealt{kirby+etal:2014}
-and \citealt{tamariz+kirby:2016} for recent surveys). 
+into the picture through infrequent and mostly random genetic mutations. However, an agent's
+lexicon and pragmatic reasoning behavior is likely not inherited genetically. They need to be
+learned from observation. Concretely, when agents of type $j$ want to adopt or imitate the
+linguistic behavior of type $i$, they observe the overt linguistic behavior of type $i$ and
+need to infer the covert type that most likely produced the visible behavior. Iterated learning
+is a process in which languages are learned repeatedly from the observation of linguistic
+behavior of agents who have themselves acquired the language from observation and inference. In
+the simplest case there is a single teacher and a single learner. After sufficient training the
+learner becomes a teacher and produces behavior that serves as input for a new learner. Due to
+the pressure towards learnability it exerts, iterated learning alone generally leads to simpler
+and more regular languages (see \citealt{kirby+etal:2014} and \citealt{tamariz+kirby:2016} for
+recent surveys).
 
 Following \citet{griffiths+kalish:2007} we model language acquisition as a process of Bayesian
 inference in which learners combine the likelihood of a type producing the witnessed learning
@@ -622,24 +750,25 @@ $P \in \Delta(T)$, which reflects the amount of data a learner requires to faith
 the language of the teacher \citep[cf.][450]{griffiths+kalish:2007}. The extent of the prior's
 influence has been shown to heavily depend on the learning strategy assumed to underlie the
 inference process. On the one hand, early simulation results suggested that weak biases could
-be magnified by exposing learners to only small data samples \citep[e.g. in][]{brighton:2002}. On the other, \citeposs{griffiths+kalish:2007} mathematical
-characterization showed that iterated learning converged to the prior, i.e., that the resulting
-distribution over languages corresponds to the learners' prior distribution and is not
-influenced by the amount of input given to them. This difference in predictions can be traced
-back to differences in the selection of hypotheses from the posterior. Griffith \& Kalish's
-convergence to the prior holds for learners that sample from the posterior. More deterministic
-strategies such as the adoption of the type with the highest posterior probability, so-called
-{\it maximum a posterior estimation} (MAP), increase the influence of both the prior and the
-data \citep{griffiths+kalish:2007,kirby+etal:2007}. In the following, we use a parameter
-$l\ge1$ to modulate between posterior sampling and the MAP strategy. When $l = 1$ learners
-sample from the posterior. The learners' propensity to maximize the posterior grows as $l$
-increases.
+be magnified by exposing learners to only small data samples
+\citep[e.g. in][]{brighton:2002}. On the other, \citeposs{griffiths+kalish:2007} mathematical
+characterization showed that iterated learning converges to the prior in the limit, i.e., that
+the resulting distribution over languages corresponds to the learners' prior distribution and
+is not influenced by the amount of input given to them. This difference in predictions can be
+traced back to differences in the selection of hypotheses from the posterior. Griffith \&
+Kalish's convergence to the prior holds for learners that sample from the posterior. More
+deterministic strategies such as the adoption of the type with the highest posterior
+probability, so-called {\it maximum a posterior estimation} (MAP), increase the influence of
+both the prior and the data \citep{griffiths+kalish:2007,kirby+etal:2007}. In the following, we
+use a parameter $l\ge1$ to modulate between posterior sampling and the MAP strategy. When
+$l = 1$ learners sample from the posterior. The learners' propensity to maximize the posterior
+grows as $l$ increases.
 
 Let $D$ be the set of possible data that learners may be exposed to. This set $D$ contains all
 sequences of state-message pairs of length $k$, e.g.,
 $\tuple{\tuple{s_1,m_1},\dots , \tuple{s_k,m_k}}$. As $k$ increases, learners have more data to base their inference on and so tend to
 recover the true types that generated a given sequence with higher probability. The mutation
-matrix $Q$ of the replicator mutator dynamics in (\ref{eq:RMD_discrete}) can then be defined as
+matrix $Q$ of the replicator mutator dynamic in (\ref{eq:RMD_discrete}) can then be defined as
 follows: $Q_{ji}$ is the probability that a learner acquires type $i$ when learning from an
 agent of type $j$. The learner observes a length-$k$ sequence $d$ of state-message pairs, but
 the probability $P(d \mid t_j)$ with which sequence $d = \tuple{\tuple{s_1,m_1},\dots , \tuple{s_k,m_k}}$ is observed depends on type $j$'s
@@ -668,7 +797,7 @@ the data, which is calculated by Bayes' rule:
 Expressivity and learnability are central to the cultural evolution of language. These
 components can be modelled, respectively, as replication based on a measure of fitness in terms
 of communicative efficiency and iterated Bayesian learning. Their interaction is described by
-the discrete time replicator mutator dynamics in (\ref{eq:RMD_discrete}), repeated here:
+the discrete time replicator mutator dynamic in (\ref{eq:RMD_discrete}), repeated here:
 \begin{align*}
   x'_i = \sum_j Q_{ji} \frac{x_jf_j}{\sum_k x_k f_k}\,.
 \end{align*}
@@ -683,9 +812,26 @@ which it is inferred by new generations of learners. The learners' task is conse
 perform a joint inference over types of linguistic behavior and lexical meaning.
 
 
-\section{Scalar implicatures}\label{sec:si-case-study}
-%
-Scalar implicatures are a particularly well-studied type of conventional pragmatic inferences. They are licensed for groups of expressions ordered in terms of informativity, here understood as an entailment induced order. For instance, {\em some} is entailed by {\em all}. If it were true that ``Chris owns all of Johnny Cash's albums'', it would also be true that ``Chris owns some of Johnny Cash's albums''. However, while weaker expressions such as {\em some} are truth-conditionally compatible with stronger alternatives such as {\em all}, this is not what their use is normally taken to convey. Instead, the use of a less informative expression when a more informative one could have been used can license a defeasible inference that stronger alternatives do not hold (cf. \citealt{horn:1972,gazdar:1979}). That is, a hearer who assumes the speaker to be able and willing to provide all relevant information can infer that stronger alternatives do not hold because the speaker used a weaker alternative instead. In this way, ``Chris owns some of Johnny Cash's albums'' is strengthened to convey that he owns {\em some but not all} albums. A bound that rules out stronger alternatives is thusly not codified in the lexical meaning of weak alternatives but instead pragmatically supplied.
+\section{Scalar implicatures}
+\label{sec:si-case-study}
+
+
+
+Scalar implicatures are a particularly well-studied type of conventional pragmatic
+inferences. They are licensed for groups of expressions ordered in terms of informativity, here
+understood as an entailment induced order. For instance, {\em some} is entailed by {\em
+  all}. If it were true that ``Chris owns all of Johnny Cash's albums'', it would also be true
+that ``Chris owns some of Johnny Cash's albums''. However, while weaker expressions such as
+{\em some} are truth-conditionally compatible with stronger alternatives such as {\em all},
+this is not what their use is normally taken to convey. Instead, the use of a less informative
+expression when a more informative one could have been used can license a defeasible inference
+that stronger alternatives do not hold (cf. \citealt{horn:1972,gazdar:1979}). That is, a hearer
+who assumes the speaker to be able and willing to provide all relevant information can infer
+that stronger alternatives do not hold because the speaker used a weaker alternative
+instead. In this way, ``Chris owns some of Johnny Cash's albums'' is strengthened to convey
+that he owns {\em some but not all} albums. A bound that rules out stronger alternatives is
+thusly not codified in the lexical meaning of weak alternatives but instead pragmatically
+supplied.
 
 As noted earlier, this kind of strengthening is captured by the linguistic behavior of pragmatic types introduced in \S\ref{sec:languages+use}: A pragmatic hearer who reasons about the use of a message involving a weak scalar alternative will associate it more with a state in which stronger alternatives do not hold. This is so because a rational speaker would use a more informative message when in such a state. Conversely, a pragmatic speaker will reason about her interlocutor's expected interpretation and use the messages at her disposition accordingly as to maximize communicative success.
 
