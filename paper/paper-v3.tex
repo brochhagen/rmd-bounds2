@@ -24,6 +24,22 @@
 \pgfplotsset{compat=1.3}
 \usetikzlibrary{pgfplots.groupplots,decorations.markings}
 
+\newtheoremstyle{Satz}
+   {}                      %Space above
+   {1em}                   %Space below
+   {\normalfont}           %Body font
+   {}                      %Indent amount (empty = no indent,
+                           %\parindent = para indent)
+   {\normalfont}           %Thm head font
+   {.}                     %Punctuation after thm head
+   {.8em}                  %Space after thm head: " " = normal interword
+                           %space; \newline = linebreak
+   {\bfseries\thmname{#1}\thmnote{ (#3)}}
+                           %Thm head spec (can be left empty, meaning
+                           %`normal')
+
+\theoremstyle{Satz}
+\newtheorem{example}{Example}
 
 %\newcommand{\mvalueof}[1]{\llbracket#1\rrbracket}
 \newcommand{\citeposs}[2][]{\citeauthor{#2}'s (\citeyear[#1]{#2})}
@@ -80,7 +96,7 @@
 %-------------------
 
 
-\title{Tracing the cultural evolution of meaning at the semantics-pragmatics interface}
+\title{Co-evolution of lexical meaning \& pragmatic use}
 
 \author{%\bf NAME1 and NAME2\\
     ( -- draft \today --- )
@@ -104,11 +120,11 @@
   conventional semantic meaning and general pragmatic rules on language use. To investigate how
   cultural evolution of language plays out under this picture of the semantics-pragmatics
   interface, we present a game theoretic model of the competition between types of language
-  users, each endowed with her selection of lexical concepts and her own pragmatic dispositions
-  to act on them. Our model traces two evolutionary forces and their interaction: (i)
-  fitness-based pressure towards communicative efficiency and (ii) potential learning biases
-  during the transfer of linguistic knowledge. We illustrate the model based on a case study on
-  scalar implicatures. In this case study learning biases that favor simple semantic
+  users, each endowed with a selection of lexical concepts and a particular pragmatic
+  disposition to act on them. Our model traces two evolutionary forces and their interaction:
+  (i) fitness-based pressure towards communicative efficiency and (ii) potential learning
+  biases during the transfer of linguistic knowledge. We illustrate the model based on a case
+  study on scalar implicatures. In this case study learning biases that favor simple semantic
   representations can boost the evolution of more sophisticated pragmatic reasoning types and
   so prevent the lexicalization of scalar implicatures.
 \end{abstract}
@@ -156,13 +172,12 @@ combinatoriality
 but little attention has been paid to the interaction between conventional meaning and
 pragmatic use. What is more, many mathematical models explain evolved meaning as a regularity
 in the overt behavior of agents. In contrast, we will here look at language users with a richer
-cognitive make-up and their dispositions to act.
+cognitive make-up.
 
 
-Towards this end, we spell out a model of the co-evolution of conventional meaning and
-pragmatic reasoning types. The objects of replication and selection are pairs of lexical
-meanings and general types of pragmatic behavior, which we represent using probabilistic models
-of pragmatic language use
+We spell out a model of the co-evolution of conventional meaning and pragmatic reasoning
+types. The objects of replication and selection are pairs of lexical meanings and general types
+of pragmatic behavior, which we represent using probabilistic models of pragmatic language use
 \citep{frank+goodman:2012,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}. Replication
 and selection are described by the \emph{replicator mutator dynamic}, a general and established
 model of evolutionary change in large and homogeneous populations
@@ -217,7 +232,7 @@ in][]{martinet:1962, horn:1984,jaeger+vRooij:2007,jaeger:2007,
 reinforcement, favor more communicatively efficient types of behavior, languages are driven
 towards semantic expressivity \citep[e.g.,][]{nowak+krakauer:1999,Skyrms2010:Signals}. But
 pressure towards communicative efficiency is not the only force that shapes
-language. Learnability is another. As natural languages need to be learnable to survive their
+language. Learnability is another. Natural languages need to be learnable to survive their
 faithful transmission across generations. Even small learning biases implicit in acquisition
 can build up and have quite striking effects on an evolving language in a process of iterated
 learning
@@ -275,40 +290,48 @@ iteration of the transmission bias encoded in $Q$. In this way, the process in
 (\ref{eq:RMD_discrete}), equivalently (\ref{eq:RMD_discrete_recast}), contains a model of
 iterated learning \citep{griffiths+kalish:2007}. 
 
-Consider the example of a simple coordination game. Agents are of two types: positive and
-negative. If agents of different type play with each other, they obtain a payoff of 0. If
-negative meets negative, each receives a payoff of 1. If positive meets positive, they get a
-payoff of 2. A population state is completely characterized by the proportion $x$ of
-negatives. The fitness of negatives is $f_n(x) = x$, that of positives is $f_p(x) = 2-2x$. The
-average fitness is $\Phi(x) = x f_n(x) + (1-x) f_p(x) = 3x^2 - 4x + 2$. Without mutation, the
-replicator dynamic will then update $x$ to $RD(x) = \nicefrac{x^2}{\Phi(x)}$. The replicator
-step is plotted in Figure~\ref{fig:Updates_RMS} as the blue line. Rest points, for which
-$RD(x)=x$, are at $x=0$, $x=1$ and $x= \nicefrac{2}{3}$. The former are attractors as nearby
-points converge to them. Points near $x=\nicefrac{2}{3}$ move towards 0 or 1. This is
-schematically pictured in the topmost phase portrait in Figure~\ref{fig:Phase_RD}.
+\begin{example}
+  Consider a simple coordination game. Agents are of two types: positive and negative. If
+  agents of different type play with each other, they obtain a payoff of 0. If negative meets
+  negative, each receives a payoff of 1. If positive meets positive, they get a payoff of 2. A
+  population state is completely characterized by the proportion $x$ of negatives. The fitness
+  of negatives in population state $x$ is $f_n(x) = x$, that of positives is $f_p(x) = 2-2x$.
+  The average fitness is $\Phi(x) = x f_n(x) + (1-x) f_p(x) = 3x^2 - 4x + 2$. Without mutation,
+  the replicator dynamic will then update $x$ to $RD(x) = \nicefrac{x^2}{\Phi(x)}$. The update
+  function $RD(x)$ of the replicator step is plotted in Figure~\ref{fig:Updates_RMS} as the
+  blue line. Rest points, for which $RD(x)=x$, are at $x=0$, $x=1$ and $x= \nicefrac{2}{3}$.
+  The former are attractors as nearby points converge to them. Points near $x=\nicefrac{2}{3}$
+  move towards 0 or 1. This is schematically pictured in the topmost phase portrait in
+  Figure~\ref{fig:Phase_RD}.
 
-Adding mutation changes the dynamics and its rest points. Let's assume that $Q_{ji} = .9$ when
-$j=i$. The update effect of mutation alone is $M(x) = .9 x + .1 (1-x) = .8x + .1$ and is
-plotted as the linear green line in Figure~\ref{fig:Updates_RMS}. It has only one stable rest
-point at $x = 0.5$. If we first take the replicator dynamic update and then the mutation update
-in sequence, we obtain the replicator mutator dynamic $RMD(x) = M(RD(x)) = \nicefrac{.9x^2 -
-  .2x +.2}{3x^2 - 4x + 2}$, which is plotted in red in Figure~\ref{fig:Updates_RMS}. The rest
-points are at $x=.121$, $x=.903$ and $x=.609$. The former two are attractors (see bottom of
-Figure~\ref{fig:Phase_RD}). 
+  Adding mutation changes the dynamics and its rest points. Let's assume that $Q_{ji} = .9$
+  when $j=i$. The update effect of mutation alone is $M(x) = .9 x + .1 (1-x) = .8x + .1$ and is
+  plotted as the linear green line in Figure~\ref{fig:Updates_RMS}. It has only one stable rest
+  point at $x = 0.5$ (see Figure~\ref{fig:Phase_RD}). If we first take the replicator step and
+  then the mutation step in sequence, we obtain the replicator mutator dynamic
+  $RMD(x) = M(RD(x)) = \nicefrac{.9x^2 - .2x +.2}{3x^2 - 4x + 2}$, which is plotted in red in
+  Figure~\ref{fig:Updates_RMS}. The rest points are at $x=.121$, $x=.903$ and $x=.609$. The
+  former two are attractors (see Figure~\ref{fig:Phase_RD}).
+\end{example}
+
 
 
 \begin{figure}[t]
   \centering
 
+  %% notice that the figure is hacked, because somehow the curve does not come out right under
+  %% PGFplots; I don't know why!?!?
+  
+
     \begin{subfigure}[b]{0.45\textwidth}
       \centering
       \begin{tikzpicture}
       \begin{axis}[xlabel=$x$, ylabel = $x'$,
-                   grid=major, width=6.85cm, height = 5cm,
+                   grid=major, width=6.85cm, height = 5.5cm,
                    legend style = {legend pos = north west},
                    ymin=0,ymax=1, xmin=0,xmax=1]
 
-      \addplot[smooth, color=blue] {x^2 / (3*x^2 - 4*x + 2) + 0.01};
+      \addplot[smooth, color=blue] {x^2 / (3*x^2 - 4*x + 2) + 0.019 * x};
       \addplot[smooth, color=green] {.8*x + .1};
 
       \addplot[smooth, color=red] {(.9*x^2 - .2*x +.2)/(3*x^2 - 4*x + 2)};
@@ -353,7 +376,34 @@ Figure~\ref{fig:Phase_RD}).
 
     \end{tikzpicture}
     
-    \vspace*{1cm}
+    \vspace*{0.35cm}
+
+    \begin{tikzpicture}[x=120]
+
+      \node (0) at (-0.05,0) {};
+
+      \node (1) at (1.05,0) {};
+
+      \draw[-, thick] (0) -- (1);
+
+      \node[draw=black, circle, fill = black, minimum size = 0.25cm, thick]
+      (mid) at (0.5,0) {};
+
+      \node[]  (0.label) at (0,-0.3) {0};
+
+      \node[]  (1.label) at (1,-0.3) {1};
+
+      \node[]  (label) at (0.5,-0.5) {$x$};
+
+      \node[]  (label) at (0.5,0.55) {M};
+
+      \draw[->-=0.5,very thick] (0) -- (mid);
+
+      \draw[->-=0.5,very thick] (1) -- (mid);
+
+    \end{tikzpicture}
+
+    \vspace*{0.35cm}
 
     \begin{tikzpicture}[x=120]
 
@@ -392,7 +442,7 @@ Figure~\ref{fig:Phase_RD}).
         
 
 
-    \caption{Phase portraits for RD and RMD: unstable rest points are hollow, attractors are
+    \caption{Phase portraits for RD, M and RMD: unstable rest points are hollow, attractors are
       solid.}
         \label{fig:Phase_RD}
     \end{subfigure}
