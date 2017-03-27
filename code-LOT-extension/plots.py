@@ -114,7 +114,7 @@ def get_subfigs_replication(type_list,list1,list2):
 
     p1 = patches.Rectangle((0, 0), 1, 1, fc="green", alpha=al)
     p2 = patches.Rectangle((0, 0), 1, 1, fc="darkred",alpha=al)
-    ax1_large.legend([p1, p2], ['prag. L-lack','Other incumbent'],loc='best',prop={'size':14})
+    ax1_large.legend([p1, p2], ['prag. L-lack','Other majority'],loc='best',prop={'size':14})
 
     ax2_large.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
     ax2_large.tick_params(axis='both',which='major',labelsize=17)
@@ -206,13 +206,32 @@ def get_subfigs_mutation(type_list,list1,list2):
     Y_lbound = [0 for _ in xrange(len(priors)+white_space*3)]
     Y_all = [0 for _ in xrange(len(priors)+white_space*3)]
 
-    for t in xrange(len(targets)):
-        Y_target[t] = priors[targets[t]]
+#    for t in xrange(len(targets)):
+#        Y_target[t] = priors[targets[t]]
+    #To interspread white space (done manually for convenience)
 
-    for t in xrange(len(lbound)):
-        Y_lbound[len(targets)+white_space+t] = priors[lbound[t]]
-    for t in xrange(len(lall)):
-        Y_all[len(targets)+white_space+len(lbound)+white_space+t] = priors[lall[t]]
+    Y_target[0] = priors[targets[0]]
+    Y_target[2] = priors[targets[1]]
+    Y_target[4] = priors[targets[2]]
+    Y_target[6] = priors[targets[3]]
+    Y_target[8] = priors[targets[4]]
+    Y_target[10] = priors[targets[5]]
+
+
+#    for t in xrange(len(lbound)):
+#        Y_lbound[len(targets)+white_space+t] = priors[lbound[t]]
+    Y_lbound[6+17+0] = priors[lbound[0]]
+    Y_lbound[6+17+2] = priors[lbound[1]]
+    Y_lbound[6+17+4] = priors[lbound[2]]
+    Y_lbound[6+17+6] = priors[lbound[3]]
+    Y_lbound[6+17+8] = priors[lbound[4]]
+    Y_lbound[6+17+10] = priors[lbound[5]]
+
+#    for t in xrange(len(lall)):
+#        Y_all[len(targets)+white_space+len(lbound)+white_space+t] = priors[lall[t]]
+    Y_all[6+17+6+17+0] = priors[lall[0]]
+    Y_all[6+17+6+17+3] = priors[lall[1]]
+
 
     all_types = targets+lbound+lall
     all_types.sort()
@@ -235,10 +254,10 @@ def get_subfigs_mutation(type_list,list1,list2):
    
     ax_prior.grid(False)
     
-    X = np.arange(len(priors)+white_space*3) 
+    X = np.arange(len(priors)+white_space*3)
     ax_prior.barh(X,Y_target,color='green',alpha=al)
-    ax_prior.barh(X,Y_lbound,color='mediumorchid',alpha=al)
-    ax_prior.barh(X,Y_all,color='dimgrey',alpha=al)
+    ax_prior.barh(X,Y_lbound,color='crimson',alpha=al)
+    ax_prior.barh(X,Y_all,color='dimgrey',edgecolor='dimgrey')
     ax_prior.barh(X,Y_rest,color='royalblue',alpha=al)
 
 
@@ -258,7 +277,7 @@ def get_subfigs_mutation(type_list,list1,list2):
 
     p1 = patches.Rectangle((0, 0), 1, 1, fc="green", alpha=al)
     p2 = patches.Rectangle((0, 0), 1, 1, fc="darkred",alpha=al)
-    ax1_large.legend([p1, p2], ['prag. L-lack','Other incumbent'],loc='best',prop={'size':17})
+    ax1_large.legend([p1, p2], ['prag. L-lack','Other majority'],loc='best',prop={'size':17})
 
 
     ax2_large.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
@@ -276,7 +295,7 @@ def get_subfigs_mutation(type_list,list1,list2):
     ax_prior.set_ylabel('Types', fontsize=25)
     ax_prior.tick_params(axis='both', which='major', labelsize=17)
     ax_prior.annotate('L-lack',xy=(.0063236,450),color='green',fontweight='extra bold')
-    ax_prior.annotate('L-bound',xy=(0.0028603,428.5),color='mediumorchid',fontweight='extra bold')
+    ax_prior.annotate('L-bound',xy=(0.0028603,428.5),color='crimson',fontweight='extra bold')
     ax_prior.annotate('L-all',xy=(.0063236,419), color='dimgrey',fontweight='extra bold')
 
     ax_prior.set_ylim(0,465)
@@ -368,7 +387,7 @@ def get_subfigs_rmd(type_list,list1,list2):
             ax.set_ylim(0,0.8)
 #
         handles, labels = ax.get_legend_handles_labels()
-        labels = ['prag. L-lack' for _ in xrange(len(types))] + ['Other Incumbent']
+        labels = ['prag. L-lack' for _ in xrange(len(types))] + ['Other majority']
         display = (3,6)
 #
         ax.legend([handle for i,handle in enumerate(handles) if i in display], \
@@ -430,6 +449,47 @@ def get_heatmap_diff_incumbents(type_list,list1,list2,kind):
     plt.show()
 
 
+kind = 'rmd'
+type_list = [231,236,291,306,326,336]
+list1 = [x for x in xrange(1,21)]
+list2 = [x for x in xrange(1,16)]
+
+#def get_3d_diff_incumbents(type_list,list1,list2,kind):
+all_types = ['t_final'+str(z) for z in xrange(432)]
+target_types = ['t_final'+str(x) for x in type_list]
+other_types = [x for x in all_types if x not in target_types]
+seq_length = 5
+
+data = np.zeros((len(list1)+1, len(list2)+1))
+for i in xrange(len(list1)):
+    for j in xrange(len(list2)):
+        #To avoid errors when adding cols to slices of copies:
+        dt = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[i],seq_length,list2[j]))
+        do = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[i],seq_length,list2[j]))
+
+        data[0,j+1] = list2[j]
+        data[i+1,0] = list1[i]
+        
+        dt = dt[target_types] 
+        do = do[other_types]
+        dt['incumbent_t'] = dt.max(axis=1) #incumbent amongst types in d_t
+        do['incumbent_o'] = do.max(axis=1) #incumbent amongst types in d_o
+        best_of_targets = dt['incumbent_t'].mean()
+        best_of_others = do['incumbent_o'].mean()
+        data[i+1,j+1] = best_of_targets - best_of_others
+dPrime = data[1:,1:]
+
+#    sns.set(font_scale=2)
+#    ax = sns.heatmap(dPrime, cmap='YlGnBu', xticklabels=list2, yticklabels=list1, annot_kws={"size": 20})# xticklabels=axlabels)#, annot=True) 
+        
+#    ax.set_ylabel('rationality parameter ('+r'$\lambda$'+')',fontsize=30)#,fontsize=30)
+#    ax.set_xlabel('posterior parameter (l)',fontsize=30)#,fontsize=30)
+
+#    ax.invert_yaxis()
+#    plt.show()
+
+sys.exit()
+
 types = [231,236,291,306,326,336]
 
 
@@ -444,9 +504,9 @@ types = [231,236,291,306,326,336]
 #get_subfigs_mutation(types,list1,list2)
 
 ##Plot 3
-#list1 = [1,5,20]
-#list2 = [1,5,15]
-#get_subfigs_rmd(types,list1,list2)
+list1 = [1,5,20]
+list2 = [1,5,15]
+get_subfigs_rmd(types,list1,list2)
 
 ##Plot 4
 #kind = 'rmd'
@@ -458,8 +518,8 @@ types = [231,236,291,306,326,336]
 
 ##Who is the second largest beyond types?
 ##This gives the mean of lbound-types across parameter values but doesn't say much about how well they compare to other types
-lbound = [225, 235, 255, 270, 325, 330]
-lbound = lbound + [x-216 for x in lbound]
+#lbound = [225, 235, 255, 270, 325, 330]
+#lbound = lbound + [x-216 for x in lbound]
 #id_bound = ['t_final'+str(x) for x in lbound]
 #
 #for lam in [1,5,10,15,20]:
@@ -478,40 +538,40 @@ lbound = lbound + [x-216 for x in lbound]
 #        print '###'
         
 ##Going by kinds (bins) instead:
-from lexica import get_lexica,get_lexica_bins
-from rmd import get_type_bin
-
-lex = get_lexica(3,3,False)
-bins = get_lexica_bins(lex)
-
-for lam in [1,5,10,15,20,25]:
-    for l in [1,5,15]:
-        df = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('rmd',lam,5,l))
-        restrict_to_final = ['t_final'+str(z) for z in xrange(432)] #as to avoid the incumbent to come from other columns
-        df = df[restrict_to_final]
-        
-        binned_props = np.zeros(len(bins))
-
-        for row in xrange(len(df)):
-            for b in xrange(len(bins)):
-                b_ids = ['t_final'+str(x) for x in bins[b]]
-                binned_props[b] += sum([df.iloc[row][idb] for idb in b_ids])
-        
-        binned_props = binned_props / len(df)
-        print '###'
-        print 'lambda: ', lam, 'l: ', l
-        print 'Lbound types: '
-        print lbound
-        print 'prag Llack: '
-        print types
-        print 'Competitor bin: ' 
-        print binned_props[64]
-        print 'Sorted top 5 bin proportions: '
-        sorted_bins = binned_props.argsort()[::-1][:5]
-        print [binned_props[x] for x in sorted_bins]
-        print 'Which types are the bins of the top 3?'
-        print [bins[x] for x in sorted_bins[:3]]
-        print '... and where is the competitor ranked?'
-        print np.where(binned_props.argsort()[::-1] == 64)[0]
-        print '###'
-
+#from lexica import get_lexica,get_lexica_bins
+#from rmd import get_type_bin
+#
+#lex = get_lexica(3,3,False)
+#bins = get_lexica_bins(lex)
+#
+#for lam in [1,5,10,15,20,25]:
+#    for l in [1,5,15]:
+#        df = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('rmd',lam,5,l))
+#        restrict_to_final = ['t_final'+str(z) for z in xrange(432)] #as to avoid the incumbent to come from other columns
+#        df = df[restrict_to_final]
+#        
+#        binned_props = np.zeros(len(bins))
+#
+#        for row in xrange(len(df)):
+#            for b in xrange(len(bins)):
+#                b_ids = ['t_final'+str(x) for x in bins[b]]
+#                binned_props[b] += sum([df.iloc[row][idb] for idb in b_ids])
+#        
+#        binned_props = binned_props / len(df)
+#        print '###'
+#        print 'lambda: ', lam, 'l: ', l
+#        print 'Lbound types: '
+#        print lbound
+#        print 'prag Llack: '
+#        print types
+#        print 'Competitor bin: ' 
+#        print binned_props[64]
+#        print 'Sorted top 5 bin proportions: '
+#        sorted_bins = binned_props.argsort()[::-1][:5]
+#        print [binned_props[x] for x in sorted_bins]
+#        print 'Which types are the bins of the top 3?'
+#        print [bins[x] for x in sorted_bins[:3]]
+#        print '... and where is the competitor ranked?'
+#        print np.where(binned_props.argsort()[::-1] == 64)[0]
+#        print '###'
+#
