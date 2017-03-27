@@ -432,6 +432,7 @@ def get_heatmap_diff_incumbents(type_list,list1,list2,kind):
 
 types = [231,236,291,306,326,336]
 
+
 ##Plot 1
 #list1 = [1,20] #lambda
 #list2 = [5] #posterior parameter
@@ -443,9 +444,9 @@ types = [231,236,291,306,326,336]
 #get_subfigs_mutation(types,list1,list2)
 
 ##Plot 3
-list1 = [1,5,20]
-list2 = [1,5,15]
-get_subfigs_rmd(types,list1,list2)
+#list1 = [1,5,20]
+#list2 = [1,5,15]
+#get_subfigs_rmd(types,list1,list2)
 
 ##Plot 4
 #kind = 'rmd'
@@ -453,4 +454,64 @@ get_subfigs_rmd(types,list1,list2)
 #list1 = [x for x in xrange(1,21)]
 #list2 = [x for x in xrange(1,16)]
 #get_heatmap_diff_incumbents(type_list,list1,list2,kind)
+
+
+##Who is the second largest beyond types?
+##This gives the mean of lbound-types across parameter values but doesn't say much about how well they compare to other types
+lbound = [225, 235, 255, 270, 325, 330]
+lbound = lbound + [x-216 for x in lbound]
+#id_bound = ['t_final'+str(x) for x in lbound]
+#
+#for lam in [1,5,10,15,20]:
+#    for l in [1,5,15]:
+#        df = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('rmd',lam,5,l))
+#        restrict_to_final = ['t_final'+str(z) for z in xrange(432)] #as to avoid the incumbent to come from other columns
+#        df = df[restrict_to_final]
+#        
+#        prop_bounds = 0 
+#        for row in xrange(len(df)):
+#            prop_bounds += sum([df.iloc[row][idb] for idb in id_bound])
+#        prop_bounds = prop_bounds / len(df)
+#        print '###'
+#        print 'lambda: ', lam, 'l: ', l
+#        print 'Summed proportion of lbound: ', prop_bounds
+#        print '###'
+        
+##Going by kinds (bins) instead:
+from lexica import get_lexica,get_lexica_bins
+from rmd import get_type_bin
+
+lex = get_lexica(3,3,False)
+bins = get_lexica_bins(lex)
+
+for lam in [1,5,10,15,20,25]:
+    for l in [1,5,15]:
+        df = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('rmd',lam,5,l))
+        restrict_to_final = ['t_final'+str(z) for z in xrange(432)] #as to avoid the incumbent to come from other columns
+        df = df[restrict_to_final]
+        
+        binned_props = np.zeros(len(bins))
+
+        for row in xrange(len(df)):
+            for b in xrange(len(bins)):
+                b_ids = ['t_final'+str(x) for x in bins[b]]
+                binned_props[b] += sum([df.iloc[row][idb] for idb in b_ids])
+        
+        binned_props = binned_props / len(df)
+        print '###'
+        print 'lambda: ', lam, 'l: ', l
+        print 'Lbound types: '
+        print lbound
+        print 'prag Llack: '
+        print types
+        print 'Competitor bin: ' 
+        print binned_props[64]
+        print 'Sorted top 5 bin proportions: '
+        sorted_bins = binned_props.argsort()[::-1][:5]
+        print [binned_props[x] for x in sorted_bins]
+        print 'Which types are the bins of the top 3?'
+        print [bins[x] for x in sorted_bins[:3]]
+        print '... and where is the competitor ranked?'
+        print np.where(binned_props.argsort()[::-1] == 64)[0]
+        print '###'
 
