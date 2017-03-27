@@ -479,8 +479,27 @@ for i in xrange(len(list1)):
         data[i+1,j+1] = best_of_targets - best_of_others
 dPrime = data[1:,1:]
 
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+xx,yy= np.meshgrid(range(len(data[0,1:])),range(len(data[1:,0])))
+ax.plot_surface(xx,yy,dPrime,cmap='summer',alpha=0.8) #'PrGn', 'winter', 'autumn'
+sns.set(font_scale=2)
+
+ax.set_xticklabels([x for x in xrange(1,16)])
+ax.set_yticklabels([x for x in xrange(1,21)])
+ax.set_ylabel('rationality parameter ('+r'$\lambda$'+')',fontsize=15)
+ax.set_xlabel('posterior parameter (l)',fontsize=15)
+ax.set_zlabel('Difference',fontsize=15)
+
+plt.show()
+
+#for row in xrange(np.shape(dPrime)[0]):
+#    ax.bar(data[0,1:], dPrime[row], zs=int(data[1:,0][row]),zdir='y')
+
+
 #    sns.set(font_scale=2)
-#    ax = sns.heatmap(dPrime, cmap='YlGnBu', xticklabels=list2, yticklabels=list1, annot_kws={"size": 20})# xticklabels=axlabels)#, annot=True) 
         
 #    ax.set_ylabel('rationality parameter ('+r'$\lambda$'+')',fontsize=30)#,fontsize=30)
 #    ax.set_xlabel('posterior parameter (l)',fontsize=30)#,fontsize=30)
