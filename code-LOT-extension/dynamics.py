@@ -17,13 +17,25 @@ from rmd import run_dynamics
 #messages = 3 #number of messages
 #me = [False] #mutual exclusivity
 
+#for alpha in a:
+#    for lam in lamb:
+#        for k in seq_length:
+#            for sample_amount in samples:
+#                for learning_parameter in l:
+#                    for gens in g:
+#                        for runs in r:
+#                            for kind in dynamics:
+#                                for m_excl in me:
+#                                    run_dynamics(alpha,lam,k,sample_amount,gens,runs,states,messages,learning_parameter,kind,m_excl) 
+#
+#### This is all that is needed to run either replication only, mutation only or both together #####
 
-# More focused run:
+#### Parameters & setup #####
 a = [1] # rate to control difference between semantic and pragmatic violations
-lamb = [2,3,4,6,7,8,9,10,11,12,13,14,15,16,17,18,19] # soft-max parameter
+lamb = [16,17,18,19,20,21,22,23,24,25,26,27,28,29,30] # soft-max parameter
 seq_length = [5]  # length of observation sequences
 samples = [250] #amount of k-length samples for each production type
-l = [2,3,4,6,7,8,9,11,12,13,14] #prob-matching = 1, increments approach MAP
+l = [x for x in xrange(1,16)] #prob-matching = 1, increments approach MAP
 
 g = [50] #number of generations per simulation run
 r = [1000] #number of independent simulation runs
@@ -44,8 +56,6 @@ for alpha in a:
                             for kind in dynamics:
                                 for m_excl in me:
                                     run_dynamics(alpha,lam,k,sample_amount,gens,runs,states,messages,learning_parameter,kind,m_excl) 
-
-#### This is all that is needed to run either replication only, mutation only or both together #####
 
 
 

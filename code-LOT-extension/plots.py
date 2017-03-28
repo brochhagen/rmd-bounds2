@@ -413,8 +413,6 @@ def get_subfigs_rmd(type_list,list1,list2):
     plt.show()
 
 
-        
-
 def get_heatmap_diff_incumbents(type_list,list1,list2,kind):
     all_types = ['t_final'+str(z) for z in xrange(432)]
     target_types = ['t_final'+str(x) for x in type_list]
@@ -449,68 +447,61 @@ def get_heatmap_diff_incumbents(type_list,list1,list2,kind):
     plt.show()
 
 
-kind = 'rmd'
-type_list = [231,236,291,306,326,336]
-list1 = [x for x in xrange(1,21)]
-list2 = [x for x in xrange(1,16)]
+def get_3d_diff_incumbents(type_list,list1,list2,kind):
+    all_types = ['t_final'+str(z) for z in xrange(432)]
+    target_types = ['t_final'+str(x) for x in type_list]
+    other_types = [x for x in all_types if x not in target_types]
+    seq_length = 5
+    
+    #data = np.zeros((len(list1)+1, len(list2)+1))
+    #for i in xrange(len(list1)):
+    #    for j in xrange(len(list2)):
+    #        #To avoid errors when adding cols to slices of copies:
+    #        dt = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[i],seq_length,list2[j]))
+    #        do = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[i],seq_length,list2[j]))
+    #
+    #        data[0,j+1] = list2[j]
+    #        data[i+1,0] = list1[i]
+    #        
+    #        dt = dt[target_types] 
+    #        do = do[other_types]
+    #        dt['incumbent_t'] = dt.max(axis=1) #incumbent amongst types in d_t
+    #        do['incumbent_o'] = do.max(axis=1) #incumbent amongst types in d_o
+    #        best_of_targets = dt['incumbent_t'].mean()
+    #        best_of_others = do['incumbent_o'].mean()
+    #        data[i+1,j+1] = best_of_targets - best_of_others
 
-#def get_3d_diff_incumbents(type_list,list1,list2,kind):
-all_types = ['t_final'+str(z) for z in xrange(432)]
-target_types = ['t_final'+str(x) for x in type_list]
-other_types = [x for x in all_types if x not in target_types]
-seq_length = 5
-
-data = np.zeros((len(list1)+1, len(list2)+1))
-for i in xrange(len(list1)):
-    for j in xrange(len(list2)):
-        #To avoid errors when adding cols to slices of copies:
-        dt = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[i],seq_length,list2[j]))
-        do = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[i],seq_length,list2[j]))
-
-        data[0,j+1] = list2[j]
-        data[i+1,0] = list1[i]
-        
-        dt = dt[target_types] 
-        do = do[other_types]
-        dt['incumbent_t'] = dt.max(axis=1) #incumbent amongst types in d_t
-        do['incumbent_o'] = do.max(axis=1) #incumbent amongst types in d_o
-        best_of_targets = dt['incumbent_t'].mean()
-        best_of_others = do['incumbent_o'].mean()
-        data[i+1,j+1] = best_of_targets - best_of_others
-dPrime = data[1:,1:]
-
-from mpl_toolkits.mplot3d import Axes3D
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-
-xx,yy= np.meshgrid(range(len(data[0,1:])),range(len(data[1:,0])))
-ax.plot_surface(xx,yy,dPrime,cmap='summer',alpha=0.8) #'PrGn', 'winter', 'autumn'
-sns.set(font_scale=2)
-
-ax.set_xticklabels([x for x in xrange(1,16)])
-ax.set_yticklabels([x for x in xrange(1,21)])
-ax.set_ylabel('rationality parameter ('+r'$\lambda$'+')',fontsize=15)
-ax.set_xlabel('posterior parameter (l)',fontsize=15)
-ax.set_zlabel('Difference',fontsize=15)
-
-plt.show()
-
-#for row in xrange(np.shape(dPrime)[0]):
-#    ax.bar(data[0,1:], dPrime[row], zs=int(data[1:,0][row]),zdir='y')
-
-
-#    sns.set(font_scale=2)
-        
-#    ax.set_ylabel('rationality parameter ('+r'$\lambda$'+')',fontsize=30)#,fontsize=30)
-#    ax.set_xlabel('posterior parameter (l)',fontsize=30)#,fontsize=30)
-
-#    ax.invert_yaxis()
-#    plt.show()
-
-sys.exit()
+    data = np.genfromtxt('differences-data.csv',delimiter=',')
+    dPrime = data[1:,1:]
+    sns.set_style("whitegrid")
+    
+    from mpl_toolkits.mplot3d import Axes3D
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    
+    xx,yy= np.meshgrid(range(len(data[0,1:])),range(len(data[1:,0])))
+    ax.plot_surface(xx,yy,dPrime,cmap='summer',alpha=0.8) #'PrGn', 'winter', 'autumn'
+    sns.set(font_scale=2)
+    
+    ax.set_xticklabels([x for x in xrange(1,16)])
+    ax.set_yticklabels([x for x in xrange(1,21)])
+    ax.set_ylabel('Rationality parameter ('+r'$\lambda$'+')',fontsize=17)
+    ax.set_xlabel('Posterior parameter (l)',fontsize=17)
+    ax.set_zlabel('Difference in proportion',fontsize=17)
+    
+    ax.xaxis.labelpad = 12
+    ax.yaxis.labelpad = 12
+    ax.zaxis.labelpad = 10
+    
+    ylabels = [1,4,7,10,13,15,18,20]
+    xlabels = [1,3,5,7,9,11,13,15]
+    ax.set_xticklabels(xlabels)
+    ax.set_yticklabels(ylabels)
+    plt.tight_layout()
+    
+    plt.show()
 
 types = [231,236,291,306,326,336]
-
 
 ##Plot 1
 #list1 = [1,20] #lambda
@@ -523,9 +514,9 @@ types = [231,236,291,306,326,336]
 #get_subfigs_mutation(types,list1,list2)
 
 ##Plot 3
-list1 = [1,5,20]
-list2 = [1,5,15]
-get_subfigs_rmd(types,list1,list2)
+#list1 = [1,5,20]
+#list2 = [1,5,15]
+#get_subfigs_rmd(types,list1,list2)
 
 ##Plot 4
 #kind = 'rmd'
@@ -533,6 +524,15 @@ get_subfigs_rmd(types,list1,list2)
 #list1 = [x for x in xrange(1,21)]
 #list2 = [x for x in xrange(1,16)]
 #get_heatmap_diff_incumbents(type_list,list1,list2,kind)
+
+##Plot 4 in 3D:
+#kind = 'rmd'
+#type_list = [231,236,291,306,326,336]
+#list1 = [x for x in xrange(1,21)]
+#list2 = [x for x in xrange(1,16)]
+#get_3d_diff_incumbents(type_list,list1,list2,kind)
+
+
 
 
 ##Who is the second largest beyond types?
