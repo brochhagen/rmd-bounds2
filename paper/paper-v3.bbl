@@ -1,6 +1,13 @@
 \newcommand{\SortNoop}[1]{}
 \begin{thebibliography}{}
 
+\bibitem[\protect\citeauthoryear{{\SortNoop{Auwera}}{van der
+  Auwera}}{{\SortNoop{Auwera}}{van der Auwera}}{2010}]{vdAuwera:2010}
+{\SortNoop{Auwera}}{van der Auwera}, J. (2010).
+\newblock On the diachrony of negation.
+\newblock In {\em The Expression of Negation}, pp.\  73--110. Walter de Gruyter
+  {GmbH}.
+
 \bibitem[\protect\citeauthoryear{Baronchelli, Puglisi, and Loreto}{Baronchelli
   et~al.}{2008}]{BaronchelliPuglisi2008:Cultural-route-}
 Baronchelli, A., A.~Puglisi, and V.~Loreto (2008).
@@ -35,9 +42,9 @@ Bergen, L., N.~D. Goodman, and R.~Levy (2012).
 
 \bibitem[\protect\citeauthoryear{Bergen, Levy, and Goodman}{Bergen
   et~al.}{2016}]{bergen+etal:2016}
-Bergen, L., R.~Levy, and N.~D. Goodman (2016).
+Bergen, L., R.~Levy, and N.~Goodman (2016).
 \newblock Pragmatic reasoning through semantic inference.
-\newblock {\em Semantics and Pragmatics\/}.
+\newblock {\em Semantics and Pragmatics\/}~{\em 9}.
 
 \bibitem[\protect\citeauthoryear{Blume, Kim, and Sobel}{Blume
   et~al.}{1993}]{BlumeKim1993:Evolutionary-St}
@@ -514,6 +521,12 @@ Thompson, B., S.~Kirby, and K.~Smith (2016).
 \newblock Possibly all of that and then some: {S}calar implicatures are
   understood in two steps.
 \newblock {\em Journal of Memory and Language\/}~{\em 69\/}(1), 18--35.
+
+\bibitem[\protect\citeauthoryear{Traugott}{Traugott}{2004}]{traugott:2004}
+Traugott, E.~C. (2004).
+\newblock Historical pragmatics.
+\newblock In L.~R. Horn and G.~Wand (Eds.), {\em The Handbook of Pragmatics},
+  pp.\  538--561. Blackwell Publishing.
 
 \bibitem[\protect\citeauthoryear{Verhoef, Kirby, and de~Boer}{Verhoef
   et~al.}{2014}]{verhoef+etal:2014}

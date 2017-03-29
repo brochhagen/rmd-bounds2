@@ -3,56 +3,50 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: paper-v3.aux
 The style file: chicago.bst
 Database file #1: ./bounds-rmd.bib
-I was expecting a `,' or a `}'---line 1082 of file ./bounds-rmd.bib
- : 
- : @article{griffiths+kalish:2007,
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-Warning--no number and no volume in bergen+etal:2016
 Warning--page numbers missing in bergen+etal:2016
 Warning--page numbers missing in fay+etal:2013
 Warning--no number and no volume in franke+jaeger:2014
 Warning--no number and no volume in SpikeStadler2016:Minimal-Require
 Warning--page numbers missing in SpikeStadler2016:Minimal-Require
-You've used 86 entries,
+You've used 88 entries,
             2861 wiz_defined-function locations,
-            1161 strings with 19372 characters,
-and the built_in function-call counts, 58317 in all, are:
-= -- 4942
-> -- 4049
-< -- 7
-+ -- 1190
-- -- 1390
-* -- 5180
-:= -- 10631
-add.period$ -- 263
-call.type$ -- 86
-change.case$ -- 591
-chr.to.int$ -- 86
-cite$ -- 92
-duplicate$ -- 1611
-empty$ -- 3673
-format.name$ -- 1602
-if$ -- 10793
+            1175 strings with 19666 characters,
+and the built_in function-call counts, 59755 in all, are:
+= -- 5079
+> -- 4109
+< -- 9
++ -- 1204
+- -- 1412
+* -- 5271
+:= -- 10875
+add.period$ -- 271
+call.type$ -- 88
+change.case$ -- 603
+chr.to.int$ -- 88
+cite$ -- 93
+duplicate$ -- 1671
+empty$ -- 3786
+format.name$ -- 1624
+if$ -- 11088
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 98
-newline$ -- 433
-num.names$ -- 870
-pop$ -- 438
+missing$ -- 100
+newline$ -- 443
+num.names$ -- 892
+pop$ -- 452
 preamble$ -- 2
-purify$ -- 1122
+purify$ -- 1146
 quote$ -- 0
-skip$ -- 1665
+skip$ -- 1723
 stack$ -- 0
-substring$ -- 3353
-swap$ -- 527
-text.length$ -- 7
+substring$ -- 3452
+swap$ -- 553
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1580
-warning$ -- 6
-while$ -- 884
+type$ -- 1620
+warning$ -- 5
+while$ -- 911
 width$ -- 0
-write$ -- 1145
-(There was 1 error message)
+write$ -- 1175
+(There were 5 warnings)

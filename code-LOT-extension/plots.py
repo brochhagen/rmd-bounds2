@@ -201,7 +201,7 @@ def get_subfigs_mutation(type_list,list1,list2):
 
 
 
-    white_space = 10 #to separate from other priors
+    white_space = 17 #to separate from other priors
     Y_target = [0 for _ in xrange(len(priors)+white_space*3)]
     Y_lbound = [0 for _ in xrange(len(priors)+white_space*3)]
     Y_all = [0 for _ in xrange(len(priors)+white_space*3)]
@@ -217,20 +217,36 @@ def get_subfigs_mutation(type_list,list1,list2):
     Y_target[8] = priors[targets[4]]
     Y_target[10] = priors[targets[5]]
 
+    Y_target[12] = priors[targets[6]]
+    Y_target[14] = priors[targets[7]]
+    Y_target[16] = priors[targets[8]]
+    Y_target[18] = priors[targets[9]]
+    Y_target[20] = priors[targets[10]]
+    Y_target[22] = priors[targets[11]]
+   
+
 
 #    for t in xrange(len(lbound)):
 #        Y_lbound[len(targets)+white_space+t] = priors[lbound[t]]
-    Y_lbound[6+17+0] = priors[lbound[0]]
-    Y_lbound[6+17+2] = priors[lbound[1]]
-    Y_lbound[6+17+4] = priors[lbound[2]]
-    Y_lbound[6+17+6] = priors[lbound[3]]
-    Y_lbound[6+17+8] = priors[lbound[4]]
-    Y_lbound[6+17+10] = priors[lbound[5]]
+    Y_lbound[len(targets)+17+0] = priors[lbound[0]]
+    Y_lbound[len(targets)+17+2] = priors[lbound[1]]
+    Y_lbound[len(targets)+17+4] = priors[lbound[2]]
+    Y_lbound[len(targets)+17+6] = priors[lbound[3]]
+    Y_lbound[len(targets)+17+8] = priors[lbound[4]]
+    Y_lbound[len(targets)+17+10] = priors[lbound[5]]
+
+    Y_lbound[len(targets)+17+12] = priors[lbound[6]]
+    Y_lbound[len(targets)+17+14] = priors[lbound[7]]
+    Y_lbound[len(targets)+17+16] = priors[lbound[8]]
+    Y_lbound[len(targets)+17+18] = priors[lbound[9]]
+    Y_lbound[len(targets)+17+20] = priors[lbound[10]]
+    Y_lbound[len(targets)+17+22] = priors[lbound[11]]
+
 
 #    for t in xrange(len(lall)):
 #        Y_all[len(targets)+white_space+len(lbound)+white_space+t] = priors[lall[t]]
-    Y_all[6+17+6+17+0] = priors[lall[0]]
-    Y_all[6+17+6+17+3] = priors[lall[1]]
+    Y_all[len(targets)+17+len(lbound)+17+0] = priors[lall[0]]
+    Y_all[len(targets)+17+len(lbound)+17+3] = priors[lall[1]]
 
 
     all_types = targets+lbound+lall
@@ -294,11 +310,11 @@ def get_subfigs_mutation(type_list,list1,list2):
     ax_prior.xaxis.set_label_position('top')
     ax_prior.set_ylabel('Types', fontsize=25)
     ax_prior.tick_params(axis='both', which='major', labelsize=17)
-    ax_prior.annotate('L-lack',xy=(.0063236,450),color='green',fontweight='extra bold')
-    ax_prior.annotate('L-bound',xy=(0.0028603,428.5),color='crimson',fontweight='extra bold')
-    ax_prior.annotate('L-all',xy=(.0063236,419), color='dimgrey',fontweight='extra bold')
+    ax_prior.annotate('L-lack',xy=(.0063236,467),color='green',fontweight='extra bold')
+    ax_prior.annotate('L-bound',xy=(0.0028603,438.5),color='crimson',fontweight='extra bold')
+    ax_prior.annotate('L-all',xy=(.0063236,429), color='dimgrey',fontweight='extra bold')
 
-    ax_prior.set_ylim(0,465)
+    ax_prior.set_ylim(0,len(priors)+white_space*3+3)
     ylabels = [x for x in xrange(len(X))]
 
     #Hide all y-labels

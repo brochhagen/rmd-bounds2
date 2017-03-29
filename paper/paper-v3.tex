@@ -120,7 +120,7 @@
   conventional semantic meaning and general pragmatic rules on language use. To investigate how
   cultural evolution of language plays out under this picture of the semantics-pragmatics
   interface, we present a game theoretic model of the competition between types of language
-  users, each endowed with a selection of lexical concepts and a particular pragmatic
+  users, each endowed with a selection of lexical representations and a particular pragmatic
   disposition to act on them. Our model traces two evolutionary forces and their interaction:
   (i) fitness-based pressure towards communicative efficiency and (ii) potential learning
   biases during the transfer of linguistic knowledge. We illustrate the model based on a case
@@ -211,7 +211,7 @@ the assumptions that feed our model in Section~\ref{sec:discussion}.
 % the division of labor between semantics and pragmatics. Section~\ref{sec:discussion} elaborates
 % on these points.
 
-\section{A model of co-evolving lexical concepts and pragmatic behavior}
+\section{A model of co-evolving lexical representations and pragmatic behavior}
 \label{sec:model}
 
 \subsection{Communicative efficiency and learnability}
@@ -455,7 +455,7 @@ iterated learning \citep{griffiths+kalish:2007}.
 \label{sec:fitn--learn}
 
 Moving beyond an abstract example, our goal is to apply the RMD to investigate the co-evolution
-of lexical concepts and pragmatic behavior. To do so, we need to fix three things: (i) what the
+of lexical representations and pragmatic behavior. To do so, we need to fix three things: (i) what the
 relevant types are, (ii) how fitness derives from communicative success and (iii) how the
 mutation matrix $Q$ is computed. These issues are addressed, one by one, in the following.
 
@@ -469,7 +469,7 @@ they may be thought of as general properties of an agent that influences her fit
 being positive or negative in our previous example (whatever that means). For our present
 purposes, types are identified more concretely by specific assumptions about their cognitive
 make-up. Since we are interested in the evolutionary competition between different lexical
-concepts and ways of using them in communication, a type is here defined as a pair consisting
+representations and ways of using them in communication, a type is here defined as a pair consisting
 of a lexicon and a pragmatic strategy of language use.
 
 Agents play signaling games, in which the speaker wants to communicate a world state $s$ with a
@@ -668,11 +668,11 @@ It is particularly important to note that pragmatic agents of level 1 using $\Ll
 preferentially with $\ssome$, in contrast to their literal counterparts of level 0. This
 association is not perfect, and usually less strong than what agents with a lexicalized upper
 bound in $\Lbound$ can achieve, even without pragmatic reasoning. Higher order 
-reasoning types leads to stronger associations of $\msome$ and $\ssome$ also for the
+reasoning beyond level $1$ leads to stronger associations of $\msome$ and $\ssome$ also for the
 hearer. Still, the case study presented in Section~\ref{sec:si-case-study} will consider
 speaker and hearer behavior at levels 0 and 1, as the latter are the simplest pragmatic
 reasoning types which show a tendency to communicatively attuned pragmatic enrichment. Using
-only level 1 reasoning types is therefore a conservative choice that works against the
+only level 1 reasoning types and possibly small $\lambda$ is therefore a conservative choice that works against the
 fitness-based selection of pragmatic language use for a notion of fitness based on
 communicative success, which is introduced next.
 
@@ -740,9 +740,7 @@ recent surveys).
 
 Following \citet{griffiths+kalish:2007} we model language acquisition as a process of Bayesian
 inference in which learners combine the likelihood of a type producing the witnessed learning
-input with prior inductive biases. Experimental and mathematical results on iterated learning
-suggest that the outcome of this process reflects learners' inductive biases
-\citep[e.g.,][]{kirby+etal:2014}. In a Bayesian setting these biases can be codified in a prior
+input with prior inductive biases. In a Bayesian setting these biases can be codified in a prior
 $P \in \Delta(T)$, which reflects the amount of data a learner requires to faithfully acquire
 the language of the teacher \citep[cf.][450]{griffiths+kalish:2007}. The extent of the prior's
 influence has been shown to heavily depend on the learning strategy assumed to underlie the
@@ -819,7 +817,7 @@ lies on a spectrum from probability matching to choice of the most likely parent
 \label{sec:si-case-study}
 
 The model of the previous section formalizes the evolutionary competition between different
-pairs of lexical concepts and ways of using them. This section looks at a case study on scalar
+pairs of lexical representations and ways of using them. This section looks at a case study on scalar
 implicatures. It engages in a following formal thought experiment to address the question: if a
 population of language users could freely combine different lexica with different pragmatic
 strategies, what are conditions under which the majority view of scalar implicatures could have
@@ -854,30 +852,30 @@ and their results.
 
 To fill the model from Section~\ref{sec:model} with life, we need to specify the sets of
 states, messages and lexica (Section~\ref{sec:stat-mess-conc}). Additionally, we want to
-explore the effects of a learning bias in favor of simple lexical concepts. One way of
+explore the effects of a learning bias in favor of simple lexical representations. One way of
 motivating and formalizing such a bias is introduced below in
 Section~\ref{sec:an-induct-learn}.
 
 
-\subsubsection{States, messages, concepts and lexica} 
+\subsubsection{States, messages, lexical representations, and lexica} 
 \label{sec:stat-mess-conc}
 
 Consider a state space with three states $\States = \set{\snone, \ssome, \sall}$ and think of
 it as a partition of possible worlds into cells where none, some or all of the $A$s are $B$s,
-for some arbitrary fixed predicates $A$ and $B$. Eight concepts can be distinguished based on
+for some arbitrary fixed predicates $A$ and $B$. Eight lexical representations can be distinguished based on
 their truth or falsity in three world states, six of which are not contradictory or
 tautological (see Table~\ref{tab:concepts} below).
 
-A lexicon $L$ is a mapping $\Messgs \rightarrow C$ from messages to concepts. With three
-messages there are $6^3 = 216$ possible lexica. Some assign the same concept to more than one
-message and others lexicalize the same concepts but associate them with different messages. Out
+A lexicon $L$ is a mapping $\Messgs \rightarrow R$ from messages to representations. With three
+messages there are $6^3 = 216$ possible lexica. Some assign the same representations to more than one
+message and others lexicalize the same representations but associate them with different messages. Out
 of these possible lexica, three kinds are of particular relevance. First, lexica that assign
-the same concept to more than one message. Such lexica lack in expressivity but may be favored
+the same lexical representations to more than one message. Such lexica lack in expressivity but may be favored
 by particular learning biases nonetheless (see below). Second, lexica that conventionalize
 upper-bounds to realize a one-to-one mapping of messages to states. Finally, lexically that do
 not lexicalize an upper bound but allow it to be conveyed pragmatically due to the presence of
-a stronger lexical item. There are six lexica of the second kind and six of the third. The
-following three lexica exemplify each kind:
+a stronger lexical item. There are six lexica of the second kind and six of the third. 
+The following three lexica exemplify each kind:
 \begin{align*}
   \begin{blockarray}{lccc}
     & & \underline{\Lall} & \\
@@ -915,7 +913,7 @@ be equally likely for all types; no information about the observed world state w
 by its users. In contrast, users of $\Lbound$ can communicate world states perfectly, no matter
 whether they are literal or pragmatic users. Users of $\Llack$ can also communicate information
 about the actual world state but need pragmatic language use to approximate a one-to-one
-mapping between message use and states (see Section~\ref{sec:languages+use}).
+mapping between message use and states (see Section~\ref{sec:languages+use}).  
 
 Recall that types are a combination of a lexicon and a manner of language use. We analyze the
 model's predictions in populations of types with one of the two behaviors introduced earlier;
@@ -925,7 +923,11 @@ users with $\Llack$-like lexica. We refer to these as \emph{target types}, becau
 represent lexica and language use that conform to the majority view of scalar
 implicatures. Twelve types are either literal or pragmatic speakers with lexica of the
 $\Lbound$ kind. We refer to these as \emph{competitor types}, because they are expected to be
-the target types' main contenders in evolutionary competition.
+the target types' main contenders in evolutionary competition. Finally, note that while variants of a kind
+lexicalize the same representations and use them in the same way when paired with identical linguistic behavior,
+they map different states to different messages. More informally, they speak different languages
+that lexicalize the same concepts. Consequently, more often than not types of a kind fail to communicate with each other. 
+
 
 
 
@@ -936,11 +938,11 @@ There is a growing effort to develop empirically testable representational langu
 for the measure of semantic complexity. For instance, so-called {\em languages of thought}
 (LOTs) have been put to test in various rational probabilistic models that show encouraging
 results (see, e.g., \citealt{katz+etal:2008}, \citeauthor{piantadosi+etal:underreview} under review; 2012, and \citealt{piantadosi+jacobs:2016} for recent discussion). At its
-core, a LOT defines a set of operations and composition rules from which concepts can be
+core, a LOT defines a set of operations and composition rules from which lexical representations can be
 derived. As a first approximation and for the sake of concreteness, we follow this approach to
 motivate and formalize a preference of learners for simpler semantic representations
 (\citealt{feldman:2000, chater+vitanyi:2003, piantadosi+etal:2012a,kirby+etal:2015}, \citeauthor{piantadosi+etal:underreview} under review). 
-In a weighed generative LOT a concept's complexity is a function of its derivation cost.
+In a weighed generative LOT a representation's complexity is a function of its derivation cost.
 
 \begin{table}
   \centering
@@ -958,13 +960,13 @@ In a weighed generative LOT a concept's complexity is a function of its derivati
   \label{tab:grammar}
 \end{table}
 
-Our toy grammar of concepts is given in Table~\ref{tab:grammar}. This grammar uses basic
+Our toy grammar of lexical representations is given in Table~\ref{tab:grammar}. This grammar uses basic
 set-theoretic operations to form expressions which can be evaluated as true or false in states
 $\snone$, $\ssome$, or $\sall$ from above. Applications of generative rules have a cost attached
-to them. Here we simply assume that the formation of Boolean combinations of concepts incurs 2
+to them. Here we simply assume that the formation of Boolean combinations of representations incurs 2
 cost units, while all other rule applications incur only 1 cost unit. Table~\ref{tab:concepts}
-lists all six concepts relevant here, their truth conditions and the simplest formula that
-expresses this concept from the grammar in Table~\ref{tab:grammar}.
+lists all six lexical representations relevant here, their truth conditions and the simplest formula that
+expresses this representation from the grammar in Table~\ref{tab:grammar}.
 
 \begin{table}
   \centering
@@ -1023,14 +1025,14 @@ expresses this concept from the grammar in Table~\ref{tab:grammar}.
     \bottomrule
   \end{tabular}
 \end{center}
-\caption{Available concepts and their minimal derivation cost}
+\caption{Available lexical representations and their minimal derivation cost}
 \label{tab:concepts}
 \end{table}
 
-A complexity measure for lexical concepts from Table~\ref{tab:concepts} is used to define a
-learning bias that favors simpler concepts over more complex ones. The prior probability of a
+A complexity measure for lexical representations from Table~\ref{tab:concepts} is used to define a
+learning bias that favors simpler representations over more complex ones. The prior probability of a
 type is just the prior probability of its lexicon. The prior of a lexicon is a function of the
-complexity of the lexical representations in its image set. Lexica with simpler concepts accordingly have a
+complexity of the lexical representations in its image set. Lexica with simpler representations accordingly have a
 higher prior. One simple way of defining such priors over lexica (and thereby types) is:
 \begin{align*}
   P(L)  & \propto \prod_{c \in Im(L)} P(c)   \ \text{, with} & 
@@ -1038,7 +1040,7 @@ higher prior. One simple way of defining such priors over lexica (and thereby ty
 \end{align*}
 where $Compl(c)$ is the complexity of the minimal derivation cost of $c$ according to the
 LOT-grammar (see Table~\ref{tab:concepts}). Applied to our space of lexica, this construal assigns the highest probability 
-to a lexicon of type $\Lall$, which only uses the simplest concept ``all'' for
+to a lexicon of type $\Lall$, which only uses the simplest lexical representation ``all'' for
 all messages. Lexica of type $\Llack$ are less likely, but more likely than $\Lbound$. 
 
 There are many ways to define priors over lexica (see, e.g., \citealt{goodman+etal:2008,
@@ -1088,7 +1090,7 @@ each type's production probabilities.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth,height=8cm, keepaspectratio]{./plots/fig1-onlyr}
-\caption{Stacked proportion of target types and majority types, when other
+\caption{Stacked proportion of target types, in shades of green, and majority types, when other
   than target type, in $5$ independent populations after $50$ generations under only a
   pressure for communicative success. The right-most plots zoom in on only the proportion of target types.}
 \label{fig:only-R}
@@ -1118,8 +1120,8 @@ of about $.48$ taken together.
 \begin{figure}[t]
 \centering
 \includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/fig2-onlym-pr}
-\caption{Stacked proportion of target types and majority types, when other than target type, in $5$ independent populations after $50$ generations under only a pressure for learnability ($\lambda = 20, k = 5$). The types' prior is shown in
-  the right-most plot. The top-most groupings correspond to types with lexica of the kind of $\Llack$ (green), $\Lbound$ (magenta), and $\Lall$ (gray).}
+\caption{Stacked proportion of target types, in shades of green, and majority types, when other than target type, in $5$ independent populations after $50$ generations under only a pressure for learnability ($\lambda = 20, k = 5$). The types' prior is shown in
+  the right-most plot. The top-most groupings correspond to types, literal and pragmatic, with lexica of the kind of $\Llack$, $\Lbound$, and $\Lall$.}
 \label{fig:only-M}
 \end{figure}
 
@@ -1156,7 +1158,7 @@ of $1000$ independent populations had users of $\Lall$ as majority types.
 
 Pressure for communicative success or learnability are not sufficient on their own to have a
 single target type dominate the population. When pressured for communicative success, the slight
-communicative advantage of $\Lbound$ users leads to the its prevalence. When pressured for
+communicative advantage of $\Lbound$ users leads to the their prevalence. When pressured for
 learnability, pragmatic $\Llack$ is promoted over functionally similar but semantically more
 complex alternatives such as $\Lbound$. However, learnability alone does not foment the
 propagation of a single target type across the population.
@@ -1164,7 +1166,7 @@ propagation of a single target type across the population.
 \begin{figure}[t]
 \centering
 \includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/fig3-r+m}
-\caption{Stacked proportion of target types and majority types, when other than target type, in $5$ independent populations after $50$ generations under both pressures ($k = 5$).}
+\caption{Stacked proportion of target types, in shades of green, and majority types, when other than target type, in $5$ independent populations after $50$ generations under both pressures ($k = 5$).}
 \label{fig:rmd}
 \end{figure}
 
@@ -1238,8 +1240,8 @@ The main result of our case study is that types that correspond to the majority 
 implicatures (scalar readings are non-lexicalized pragmatic enrichments) can come to dominate a
 population. This can happen under the assumption that simpler semantic representations are more
 likely to be learned (cf. \citealt{chater+vitanyi:2003}). Pragmatic language use can be
-recruited indirectly by a preference for simpler lexical concepts. Under this view, semantics
-and pragmatics play a synergic role: pragmatic use allows maintenance of simpler concepts;
+recruited indirectly by a preference for simpler lexical representations. Under this view, semantics
+and pragmatics play a synergic role: pragmatic use allows maintenance of simpler representations;
 pressure towards representational simplicity indirectly promotes pragmatic over literal
 language use. As a consequence, iterated transmission and use of language lead to a
 regularization that may explain the lack of lexicalization of systematic pragmatic enrichments.
@@ -1256,7 +1258,7 @@ not. Interestingly, in our simulations when a target type is the majority type a
 proportion of the population uses compatible lexica with a lexicalized upper bound. Particularly in those parameter
 settings where the prior influences the outcome less. In other words, we do find a tendency toward a similar co-existence
 of semantic and pragmatic types. Whether this analogy has any further explanatory value is an interesting path for future
-exploration. \tb{While it is indeed true that $\Lbound$'s proportion is inflated relative to other types in the hypothesis space, it is never the second most prolific type (which is what the above hopefully is not taken to suggest, otherwise it should be changed). As is to be expected, $\Lbound$ fares best when $l$ is low and $\lambda$ is high. Even then, it usually ranks around $5$-th with a mean proportion of its kind of about $0.01 - 0.05$. As $l$ increases, it gets pushed back. Second or third place are usually instead literal $\Llack$ or types that lexicalize ``all'', ``not all'' and ``none''. In short; yes, there is a inflated proportion relative to the whole population, but other types are usually more prolific. This is very likely due to the strong prior disadvantage of $\Llack$. In light of this I'm uncertain whether we want to keep this paragraph as is. I currently tend towards `yes' but let me know if you think otherwise.}
+exploration. \tb{While it is indeed true that $\Lbound$'s proportion is inflated relative to other types in the hypothesis space, it is never the second most prolific type (which is what the above hopefully is not taken to suggest, otherwise it should be changed). As is to be expected, $\Lbound$ fares best when $l$ is low and $\lambda$ is high. Even then, it usually ranks around $5$-th with a mean proportion of its kind of about $0.01 - 0.05$. As $l$ increases, it gets pushed back. Second or third place are usually instead literal $\Llack$ or types that lexicalize ``all'', ``not all'' and ``none''. In short; yes, there is a inflated proportion relative to the whole population, but other types are usually more prolific. This is very likely due to the strong prior disadvantage of $\Llack$. In light of this I'm uncertain whether we want to keep this paragraph as is. I currently tend towards `yes' but let me know if you think otherwise. Robert would leave it in as well.}
 
 Another important issue that is not addressed in the model are potential costs associated with
 pragmatic reasoning. Here, we simply assumed that literal and pragmatic reasoning strategies
@@ -1267,14 +1269,14 @@ of the model presented here to include processing costs for pragmatic language u
 interesting future work. It seems plausible that effects of reasoning cost may trade off with
 the frequency with which a given scalar expression is used. It may be that frequently drawn
 scalar implicatures lexicalize to avoid cost, whereas infrequent ones are derived on-line to
-avoid more complex lexical concepts during acquisition. Such a prediction would lend itself to
+avoid more complex lexical representations during acquisition. Such a prediction would lend itself to
 empirical testing in line with a recent interest in differences between various scalar
 implicature triggers \citep{Tielvan-TielMiltenburgvan-Miltenburg2014:Scalar-Diversit}.
 
 
 Our case study could be criticized as follows: all it shows is that scalar implicatures do not
-lexicalize because upper bounds are dispreferred concepts. This criticism would be too
-superficial and highly unjust. Dispreferred lexical concepts can thrive under evolutionary
+lexicalize because upper bounds are dispreferred lexical representations. This criticism would be too
+superficial and highly unjust. Dispreferred lexical representations can thrive under evolutionary
 selection. Lexicalized upper-bounds can dominate a population because they may boost
 communicative success. But they do not have to. Moreover, even without selective pressure
 for communicative success, it is not the case that necessarily the types that are most
@@ -1283,23 +1285,23 @@ trivial. Iterated learning does not necessarily promote the \emph{a priori} more
 but tends to promote a type $t$ based on a gradient of how many other types might likely mutate
 into $t$, so to speak. Taken together, without an explicit model of the interaction between
 pressure for success and learnability, it is far from trivial to judge whether or when
-preferred or dispreferred concepts can be adaptive. This is why a major contribution of this
+preferred or dispreferred representations can be adaptive. This is why a major contribution of this
 paper is the arrangement of many different ingredients into a joined model of the co-evolution
 of lexical meaning and pragmatic use. 
 
 What is more, it is not that we just assumed a prior disadvantage of lexicalized upper
-bounds. We tried to motivate and formalize a general assumption about concepts' complexity
+bounds. We tried to motivate and formalize a general assumption about lexical representations' complexity
 with a concrete, albeit provisional proposal. The specification of a learning bias in terms of
-a ``grammar of concepts'' can and should be seen critically, however. Much depends on the
-primitives of such a grammar. For instance, the concept ``none or all'' is the most complex in
+a ``grammar of representations'' can and should be seen critically, however. Much depends on the
+primitives of such a grammar. For instance, the lexical representation ``none or all'' is the most complex in
 Table~\ref{tab:concepts}. But consider adding a primitive operation on sets $A \smile B$
 which is true if and only if $\neg(A \cap B \neq \emptyset \wedge A \neq \emptyset)$. The
-concept ``none or all'' would then be one of the simplest. Clearly, further research, empirical
+lexical representation ``none or all'' would then be one of the simplest. Clearly, further research, empirical
 and conceptual, into the role of representational complexity, processing costs and learning
 biases is needed. The model here makes a clear and important contribution nonetheless: it shows
-how simplicity of concepts can interact with use and evolutionary selection to show that
-without pragmatic language users we would not see simpler concepts emerge in what may be a
-natural way. Future work should also include the possibility that conceptual simplicity may
+how simplicity of representations can interact with use and evolutionary selection to show that
+without pragmatic language users we would not see simpler representations emerge in what may be a
+natural way. Future work should also include the possibility that representational simplicity may
 itself be a notion that is subject to evolutionary pressure
 \citep[cf.][]{ThompsonKirby2016:Culture-Shapes-}. 
 
@@ -1319,8 +1321,8 @@ explanation posits that scalar implicatures fail to lexicalize because, all else
 speakers prefer to communicate as economically as possible and pragmatic reasoning enables them
 to do so. What this alternative explanation does not explain is why functional pressure does
 not lead to the emergence of different, equally costly lexical items to express different
-knowledge states of the speaker. Looking at pressure from learnability might come in again. The
-present work made a first start and gave a framework for exploring exactly these issues
+knowledge states of the speaker (cf. \citealt[252-267]{horn:1984}, \citealt{horn:1972,traugott:2004,vdAuwera:2010}). For instance, two expressions for each weak scalar expression; one with and one lacking an upper-bound. 
+Looking at pressure from learnability might come in again. The present work made a first start and gave a framework for exploring exactly these issues
 systematically.
 
 \section{Conclusion}
