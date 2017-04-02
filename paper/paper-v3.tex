@@ -98,9 +98,9 @@
 
 \title{Co-evolution of lexical meaning \& pragmatic use}
 
-\author{%\bf NAME1 and NAME2\\
-    ( -- draft \today --- )
-}
+% \author{%\bf NAME1 and NAME2\\
+%     ( -- draft \today --- )
+% }
 
 
 \date{}
@@ -122,11 +122,11 @@
   interface, we present a game theoretic model of the competition between types of language
   users, each endowed with a selection of lexical representations and a particular pragmatic
   disposition to act on them. Our model traces two evolutionary forces and their interaction:
-  (i) fitness-based pressure towards communicative efficiency and (ii) potential learning
-  biases during the transfer of linguistic knowledge. We illustrate the model based on a case
-  study on scalar implicatures. In this case study learning biases that favor simple semantic
-  representations can foster the evolution of more sophisticated pragmatic reasoning types and
-  so prevent the lexicalization of scalar implicatures.
+  (i) pressure towards communicative efficiency and (ii) learning biases during the transfer of
+  linguistic knowledge. We illustrate the model based on a case study on scalar
+  implicatures. In this case study learning biases that favor simple semantic representations
+  can foster the evolution of more sophisticated pragmatic reasoning types and so prevent the
+  lexicalization of scalar implicatures.
 \end{abstract}
 
 \section{Introduction}\label{sec:introduction}
@@ -161,8 +161,8 @@ roots in pragmatics.
 
 If this majority view is correct, the question arises how such a division of labor between
 semantics and pragmatics could have evolved and why it would be so pervasive across natural
-languages. Models of language evolution abound. There are simulation-based models studying the
-evolution of language in populations of communicating agents
+languages. Models of language evolution abound. There are simulation-based models studying
+populations of communicating agents
 \citep{Hurford1989:Biological-Evol,Steels1995:A-Self-Organizi,LenaertsJansen2005:The-Evolutionar,SteelsBelpaeme2005:Coordinating-Pe,BaronchelliPuglisi2008:Cultural-route-,steels:2011,SpikeStadler2016:Minimal-Require}
 and there are mathematical models of language evolution, mostly coming from game theory
 \citep{lewis:1969,Warneryd1993:Cheap-Talk-Coor,BlumeKim1993:Evolutionary-St,nowak+krakauer:1999,Huttegger2007:Evolution-and-t,Skyrms2010:Signals}. Much
@@ -171,28 +171,30 @@ combinatoriality
 \citep[e.g.,][]{Batali1998:Computational-S,nowak+krakauer:1999,nowak+etal:2000,KirbyHurford2002:The-Emergence-o,kirby:2002,SmithKirby2003:Iterated-Learni,Gong2007:Language-Evolut,kirby+etal:2015,verhoef+etal:2014,Franke2015:Proto-Syntax},
 but little attention has been paid to the interaction between conventional meaning and
 pragmatic use. What is more, many mathematical models explain evolved meaning as a regularity
-in the overt behavior of agents, abstracting from complex interactions between semantic representations and pragmatic use. In contrast, we will here look at language users with a richer
-cognitive make-up.
+in the overt behavior of agents, abstracting from complex interactions between semantic
+representations and pragmatic use. In contrast, we will here look at language users with a
+richer cognitive make-up.
 
 
 We spell out a model of the co-evolution of conventional meaning and pragmatic reasoning
-types. The objects of replication and selection are pairs of lexical meanings and general types
-of pragmatic behavior, which we represent using probabilistic models of pragmatic language use
+types. The objects of replication and selection are pairs consisting of a set of lexical
+meanings and a manner of pragmatic behavior. The latter are represented using probabilistic
+models of pragmatic language use
 \citep{frank+goodman:2012,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}. Replication
 and selection are described by the \emph{replicator mutator dynamic}, a general and established
 model of evolutionary change in large and homogeneous populations
 \citep{Hofbauer1985:The-Selection-M,nowak+etal:2000,NowakKomarova2001:Evolution-of-Un,hofbauer+sigmund:2003,Nowak2006:Evolutionary-Dy}. This
-approach allows us to study the interaction between (i) evolutionary pressure towards
-communicative efficiency and (ii) possible infidelity in the transmission of linguistic
-knowledge, caused by factors such as inductive learning biases and sparse learning
-data. Considering transmission of linguistic knowledge is important because neither semantic
-meanings nor pragmatic usage patterns are directly observable. Instead, language learners have
-to infer these unobservables from the observable behavior in which they result. We formalize
-this process as a form of Bayesian inference. Our approach thereby contains a well-understood
-model of iterated Bayesian learning \citep{griffiths+kalish:2007} as a special case, but
-combines it with functional selection, here formalized as the most versatile dynamic from
-evolutionary game theory; the replicator dynamic
-\citep{TaylorJonker1978:Evolutionary-St}. Section~\ref{sec:model} introduces this model.
+approach allows us to study the interaction between (i) pressure towards communicative
+efficiency and (ii) infidelity in the transmission of linguistic knowledge, caused by factors
+such as inductive learning biases and sparse learning data. Considering transmission of
+linguistic knowledge is important because neither semantic meanings nor pragmatic usage
+patterns are directly observable. Instead, language learners have to infer these unobservables
+from the observable behavior in which they result. We formalize this process as a form of
+Bayesian inference. Our approach thereby contains as a special case a well-understood model of
+iterated Bayesian learning \citep{griffiths+kalish:2007}, but combines it with functional
+selection, here formalized as the most versatile dynamic from evolutionary game theory, the
+replicator dynamic \citep{TaylorJonker1978:Evolutionary-St}. Section~\ref{sec:model} introduces
+this model.
 
 Section~\ref{sec:si-case-study} applies this model to a case study on scalar implicatures. We
 discuss a setting in which the majority view of underspecified lexical meanings and pragmatic
@@ -510,8 +512,8 @@ in $\Llack$.
   \end{blockarray}
 \end{align*}
 
-Pragmatic types define dispositions to produce and interpret messages given a lexicon. We
-distinguish between two kinds of pragmatic types. {\em Literal interlocutors} produce and
+Pragmatic strategies define dispositions to produce and interpret messages given a lexicon. We
+distinguish between two kinds of pragmatic strategies. {\em Literal interlocutors} produce and
 interpret messages literally, being guided only by their lexica. {\em Pragmatic interlocutors}
 instead engage in mutual reasoning to inform their choices. Recent probabilistic models of
 rational language use
@@ -529,11 +531,11 @@ respect to level-$n$ behavior of their interlocutors, as in Equations~(\ref{h:le
 \end{alignat}
 
 According to (\ref{h:level0}), a literal hearer's interpretation of a message depends on her
-lexicon and her prior over states, $pr \in \Delta(S)$, which is here assumed flat, for
+lexicon and her prior over states, $pr \in \Delta(S)$, which is here assumed flat for
 simplicity. Literal interpreters thereby choose an arbitrary true interpretation for each
 message. Pragmatic hearers, defined in (\ref{h:leveln}), instead use Bayes' rule to weigh
 interpretations based on a conjecture about speaker behavior. Speaker behavior is regulated by
-a soft-max parameter $\lambda$, $\lambda \geq 0$ \citep{luce:1959,sutton+barto:1998}. As
+a soft-max parameter $\lambda \geq 0$ \citep{luce:1959,sutton+barto:1998}. As
 $\lambda$ increases, choices approximate strict maximization of expected utilities. Expected
 utility of a message $\messg$ in state $\state$ for a level $n+1$ speaker is here defined as
 $H_{n}(s|m;L)$, the probability that the hearer will assign to or choose the correct
@@ -664,17 +666,17 @@ For high $\lambda = 20$, pragmatic speakers of level 1 give us:
   \end{blockarray} 
 \end{align*}
 
-It is particularly important to note that pragmatic agents of level 1 using $\Llack$ associate $\msome$
-preferentially with $\ssome$, in contrast to their literal counterparts of level 0. This
-association is not perfect, and usually less strong than what agents with a lexicalized upper
-bound in $\Lbound$ can achieve, even without pragmatic reasoning. Higher order 
-reasoning beyond level $1$ leads to stronger associations of $\msome$ and $\ssome$ also for the
+It is particularly important to note that pragmatic agents of level 1 using $\Llack$ associate
+$\msome$ preferentially with $\ssome$, in contrast to their literal counterparts of level
+0. This association is not perfect, and usually less strong than what agents with a lexicalized
+upper bound in $\Lbound$ can achieve, even without pragmatic reasoning. Higher order reasoning
+beyond level $1$ leads to stronger associations of $\msome$ and $\ssome$ also for the
 hearer. Still, the case study presented in Section~\ref{sec:si-case-study} will consider
 speaker and hearer behavior at levels 0 and 1, as the latter are the simplest pragmatic
 reasoning types which show a tendency to communicatively attuned pragmatic enrichment. Using
-only level 1 reasoning types and possibly small $\lambda$ is therefore a conservative choice that works against the
-fitness-based selection of pragmatic language use for a notion of fitness based on
-communicative success, which is introduced next.
+only level 1 reasoning types and possibly small $\lambda$ is therefore a conservative choice
+that works against the fitness-based selection of pragmatic language use for a notion of
+fitness defined as communicative success, which is introduced next.
 
 \subsubsection{Fitness \& fitness-based selection based on communicative success}\label{sec:expressivity}
 
@@ -729,7 +731,7 @@ into the picture through infrequent and mostly random genetic mutations. However
 lexicon and pragmatic reasoning behavior is likely not inherited genetically. They need to be
 learned from observation. Concretely, when agents of type $j$ want to adopt or imitate the
 linguistic behavior of type $i$, they observe the overt linguistic behavior of type $i$ and
-need to infer the covert type that most likely produced the visible behavior. Iterated learning
+need to infer the covert type that most likely produced the observed behavior. Iterated learning
 is a process in which languages are learned repeatedly from the observation of linguistic
 behavior of agents who have themselves acquired the language from observation and inference. In
 the simplest case there is a single teacher and a single learner. After sufficient training the
@@ -808,22 +810,24 @@ consequently to perform a joint inference over types of linguistic behavior and 
 meaning.
 
 The model has three parameters: $\lambda$ regulates the degree to which pragmatic speakers
-choose messages that maximize the chance of communicative success; $k$ is length of
-observations for each language learner; $l$ regulates where the learners' inference behavior
-lies on a spectrum from probability matching to choice of the most likely parent type.
+choose messages that appear optimal from the point of view of the agent's own utility measure
+(which may be unrelated to the expected utility when communicating with a given population);
+$k$ is length of observations for each language learner; $l$ regulates where the learners'
+inference behavior lies on a spectrum from probability matching to choice of the most likely
+parent type.
 
 
 \section{Case study: scalar implicatures}
 \label{sec:si-case-study}
 
 The model of the previous section formalizes the evolutionary competition between different
-pairs of lexical representations and ways of using them. This section looks at a case study on scalar
-implicatures. It engages in a following formal thought experiment to address the question: if a
-population of language users could freely combine different lexica with different pragmatic
-strategies, what are conditions under which the majority view of scalar implicatures could have
-evolved?
+sets of lexical representations and ways of using them. This section looks at a case study on
+scalar implicatures. It engages in a formal thought experiment to address the
+question: if a population of language users could freely combine different lexica with
+different pragmatic strategies, what are conditions under which the majority view of scalar
+implicatures could have evolved?
 
-Recall that the majority view is that scalar implicatures are systematic non-lexicalized pragmatic
+Recall that the majority view is that scalar implicatures are non-lexicalized pragmatic
 enrichments. Scalar implicature triggers like \emph{some}, \emph{warm} or \emph{may} are
 semantically weak expressions for which logically stronger expressions are salient, e.g.,
 \emph{all}, \emph{hot} or \emph{must}. For instance, {\em some} is entailed by {\em all}. If
@@ -853,8 +857,7 @@ and their results.
 To fill the model from Section~\ref{sec:model} with life, we need to specify the sets of
 states, messages and lexica (Section~\ref{sec:stat-mess-conc}). Additionally, we want to
 explore the effects of a learning bias in favor of simple lexical representations. One way of
-motivating and formalizing such a bias is introduced below in
-Section~\ref{sec:an-induct-learn}.
+motivating and formalizing such a bias is introduced in Section~\ref{sec:an-induct-learn}.
 
 
 \subsubsection{States, messages, lexical representations, and lexica} 
@@ -867,15 +870,16 @@ their truth or falsity in three world states, six of which are not contradictory
 tautological (see Table~\ref{tab:concepts} below).
 
 A lexicon $L$ is a mapping $\Messgs \rightarrow R$ from messages to representations. With three
-messages there are $6^3 = 216$ possible lexica. Some assign the same representations to more than one
-message and others lexicalize the same representations but associate them with different messages. Out
-of these possible lexica, three kinds are of particular relevance. First, lexica that assign
-the same lexical representations to more than one message. Such lexica lack in expressivity but may be favored
-by particular learning biases nonetheless (see below). Second, lexica that conventionalize
-upper-bounds to realize a one-to-one mapping of messages to states. Finally, lexically that do
-not lexicalize an upper bound but allow it to be conveyed pragmatically due to the presence of
-a stronger lexical item. There are six lexica of the second kind and six of the third. 
-The following three lexica exemplify each kind:
+messages there are $6^3 = 216$ possible lexica. Some assign the same representations to more
+than one message and others lexicalize the same representations but associate them with
+different messages. Out of these possible lexica, three kinds are of particular
+relevance. First, lexica that assign the same lexical representations to more than one
+message. Such lexica lack in expressivity but may be favored by particular learning biases
+nonetheless (see below). Second, lexica that conventionalize upper-bounds to realize a
+one-to-one mapping of messages to states. Finally, lexically that do not lexicalize an upper
+bound but allow it to be conveyed pragmatically due to the presence of a stronger lexical
+item. There are six lexica of the second kind and six of the third.  The following three lexica
+exemplify each kind:
 \begin{align*}
   \begin{blockarray}{lccc}
     & & \underline{\Lall} & \\
@@ -923,10 +927,11 @@ users with $\Llack$-like lexica. We refer to these as \emph{target types}, becau
 represent lexica and language use that conform to the majority view of scalar
 implicatures. Twelve types are either literal or pragmatic speakers with lexica of the
 $\Lbound$ kind. We refer to these as \emph{competitor types}, because they are expected to be
-the target types' main contenders in evolutionary competition. Finally, note that while variants of a kind
-lexicalize the same representations and use them in the same way when paired with identical linguistic behavior,
-they map different states to different messages. More informally, they speak different languages
-that lexicalize the same concepts. Consequently, more often than not types of a kind fail to communicate with each other. 
+the target types' main contenders in evolutionary competition. Finally, note that while
+different types may lexicalize the same representations, they may nevertheless map different
+states to different overt messages. More informally, they speak different languages that
+lexicalize the same concepts. Consequently, more often than not different variants of the same
+kind may fail to communicate with each other.
 
 
 
@@ -1057,7 +1062,7 @@ particular instrumentalization is the single most plausible.
 
 Recall that there are three parameters: soft-max parameter $\lambda$ affects how strongly
 speakers favor messages that appear best from their subjective point of view; the
-bottleneck size $k$ influences how faithfully learners tend to identify their teacher type; $l$
+bottleneck size $k$ influences how faithfully learners can identify their teacher type; $l$
 defines the learners' disposition towards choosing the most likely teacher type from the
 posterior distribution. We expect that competitor types (types with lexica of the kind
 $\Lbound$) have a fitness advantage over target types (pragmatic agents with lexica of the kind
@@ -1066,7 +1071,7 @@ therefore not lead to prevalence of target types in the population. On the other
 of type $\Llack$ are simpler than those of type $\Lbound$ by the postulated measure from
 above. This may make them more likely to be adopted by learners, especially when $k$ is low so
 that different teacher types are relatively indistinguishable based on their behavior and when
-$l$ is high. Still, lexica of the kind $\Lall$ are in turn more likely \emph{a priori} than
+$l$ is high. Still, lexica of the kind $\Lall$ are in turn even more likely \emph{a priori} than
 lexica of the kind $\Llack$. Simulation results will shed light on the question whether target
 types can emerge, and for which parameter constellations.
 
@@ -1076,12 +1081,12 @@ isolation, and then in combination. All simulation runs are initialized with an 
 distribution over types, constituting a population's first generation. All reported results are
 the outcome of 50 update steps. These outcomes correspond to developmental plateaus in which
 change is, if not absent, then at least very slow. In other words, even if the resulting states
-do not correspond to an eventual attracting state, they characterize long almost stationary
-states in which the system remains for a very long time. As specified in
-\S\ref{sec:learnability}, the mutation matrix $Q$ can be obtained by considering all possible
-state-message sequences of length $k$. Given that this is intractable for large $k$, the sets
-of data learners are exposed to are approximated by sampling $250$ $k$-length sequences from
-each type's production probabilities.
+do not correspond to an eventual attracting state, they characterize almost stationary states
+in which the system remains for a very long time. As specified in \S\ref{sec:learnability}, the
+mutation matrix $Q$ can be obtained by considering all possible state-message sequences of
+length $k$. Given that this is intractable for large $k$, the sets of data which learners are
+exposed to are approximated by sampling $250$ $k$-length sequences from each type's production
+probabilities.
 
 
 \subsubsection{Replication only: selection based on communicative success} 
@@ -1091,28 +1096,29 @@ each type's production probabilities.
 \centering
 \includegraphics[width=\textwidth,height=8cm, keepaspectratio]{./plots/fig1-onlyr}
 \caption{Stacked proportion of target types, in shades of green, and majority types, when other
-  than target type, in $5$ independent populations after $50$ generations under only a
-  pressure for communicative success. The right-most plots zoom in on only the proportion of target types.}
+  than a target type, in $5$ independent populations after $50$ generations under only a
+  pressure for communicative success. The right-most plots zoom in on only the proportion of
+  target types.}
 \label{fig:only-R}
 \end{figure}
 
-As expected, selection based on communicative success is sensitive to $\lambda$ as it
+As expected, selection based on communicative success is sensitive to $\lambda$ since $\lambda$
 influences signaling behavior, which in turn determines communicative success. This is
 showcased in Figure \ref{fig:only-R}, which depicts the proportion of target types in $5$
 independent populations after $50$ replicator steps. The plot also shows the proportion of the
 \emph{majority type}, i.e., the type with the highest proportion in the final population. With
 low $\lambda$ many types have very similar behavior, so that evolutionary selection lacks grip
 and becomes very slow. The result is a very long transition with near stagnancy in a rather
-homogeneous population with many types. Conversely, higher $\lambda$ promotes more rational
-linguistic behavior, widening the gap in expressivity between types and promoting more
-homogeneous populations. As suggested by Figure \ref{fig:only-R}, the majority in most
-populations is not one of the six pragmatic $\Llack$-style types. That is, a pressure only for
-communicative success does not lead to a prevalence of target types under any $\lambda$-value. For
-instance, with $\lambda = 20$ $1000$ independent populations only had $11$ cases in which
-the target type was the majority type, corresponding to a mean proportion of $.003$ across
-populations. By contrast, in $913$ cases the majority types had $\Lbound$ with close to an even
-share between literal ($454$) and pragmatic types ($459$), corresponding to a mean proportion
-of about $.48$ taken together.
+homogeneous population with many types. Conversely, higher $\lambda$ promotes more
+less-stochastic pragmatic behavior, widening the gap in expressivity between types and
+promoting more homogeneous populations. As suggested by Figure \ref{fig:only-R}, the majority
+in most populations is not one of the six pragmatic $\Llack$-style types. That is, a pressure
+only for communicative success does not lead to a prevalence of target types under any
+$\lambda$-value. For instance, with $\lambda = 20$ $1000$ independent populations only had $11$
+cases in which the target type was the majority type, corresponding to a mean proportion of
+$.003$ across populations. By contrast, in $913$ cases the majority types had $\Lbound$ with
+close to an even share between literal ($454$) and pragmatic types ($459$), corresponding to a
+mean proportion of about $.48$ taken together.
 
 
 \subsubsection{Iterated learning only}
@@ -1120,8 +1126,11 @@ of about $.48$ taken together.
 \begin{figure}[t]
 \centering
 \includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/fig2-onlym-pr}
-\caption{Stacked proportion of target types, in shades of green, and majority types, when other than target type, in $5$ independent populations after $50$ generations under only a pressure for learnability ($\lambda = 20, k = 5$). The types' prior is shown in
-  the right-most plot. The top-most groupings correspond to types, literal and pragmatic, with lexica of the kind of $\Llack$, $\Lbound$, and $\Lall$.}
+\caption{Stacked proportion of target types, in shades of green, and majority types, when other
+  than a target type, in $5$ independent populations after $50$ generations under only a
+  pressure for learnability ($\lambda = 20, k = 5$). The types' prior is shown in the
+  right-most plot. The top-most groupings correspond to types, literal and pragmatic, with
+  lexica of the kind of $\Llack$, $\Lbound$, and $\Lall$.}
 \label{fig:only-M}
 \end{figure}
 
@@ -1156,9 +1165,9 @@ of $1000$ independent populations had users of $\Lall$ as majority types.
 
 \subsubsection{Combining pressures of communicative success and learnability}
 
-Pressure for communicative success or learnability are not sufficient on their own to have a
+Pressure for communicative success and learnability are not sufficient on their own to have a
 single target type dominate the population. When pressured for communicative success, the slight
-communicative advantage of $\Lbound$ users leads to the their prevalence. When pressured for
+communicative advantage of $\Lbound$ users leads to their prevalence. When pressured for
 learnability, pragmatic $\Llack$ is promoted over functionally similar but semantically more
 complex alternatives such as $\Lbound$. However, learnability alone does not foment the
 propagation of a single target type across the population.
@@ -1176,7 +1185,7 @@ semantics in tandem with functional pressure can lead to the selection of a sing
 type, and so to a division of labor between semantics and pragmatics.
 The proportion of a single majority target type increases with $\lambda$ and
 $l$. Pressure for communicative success magnifies the effects of iterated learning and dampens
-the proliferation of types of a kind that are equal in expressivity {\em and} learnability. A
+the proliferation of multiple types of a kind that are equal in expressivity {\em and} learnability. A
 pressure towards learnability favors the transmission of simpler semantics and thereby selects
 for pragmatic language use.
 
@@ -1189,15 +1198,16 @@ a single majority target type. This joint influence is summarized in Figure \ref
 \begin{figure}[t]
 \centering
 \includegraphics[width=1\textwidth,height=10cm,keepaspectratio]{./plots/fig4-3d-incumbents-difference} %alternatively without '-3d'
-\caption{Mean difference between proportion of highest target type and highest other type in $1000$ independent populations after $50$ generations under both pressures ($k = 5$). \tb{Note that this plot interpolates data, but I strongly doubt there's a hidden peak/valley that is not accounted for. Another option would be to make a more grid-like surface without interpolation, but the main point is to have a plot from which the trends that value combinations give rise to are easy to read off, which I hope this one does. Compare also with the alternative 1D heatmap in the appendix.}}
+\caption{Mean difference between proportion of highest target type and highest other type in
+  $1000$ independent populations after $50$ generations under both pressures ($k = 5$).}
 \label{fig:diff}
 \end{figure}
 
-As for the effect of the sequence length $k$ not mentioned so far, it influences populations in
-a predictable way: small values lead to more heterogeneous populations that reflect the
-learner's prior more faithfully. This is due to the fact that the likelihood that a small
-sequence was produced by any type is relatively uniform (modulo prior). By contrast, larger
-values increasingly allow learners to differentiate types with different signaling behaviors.
+Effects of manipulating the sequence length $k$ have not been addressed so far, but are rather
+predictable: small values lead to more heterogeneous populations that reflect the learner's
+prior more faithfully. This is due to the fact that the likelihood that a small sequence was
+produced by any type is relatively uniform (modulo prior). By contrast, larger values
+increasingly allow learners to differentiate types with different signaling behaviors.
 
 To recapitulate, other than the involvement of pressure on both communicative success and learnability,
 the resulting proportion of pragmatic $\Llack$ speakers primarily hinges on three
@@ -1228,13 +1238,21 @@ pragmatic behavior and lexical meaning, and (iii) the possibility to trace the c
 conventional semantics and pragmatic use.
 
 With respect to (i), \citet{kirby+etal:2015} propose a comparable model of the interaction
-between a lexicon's expressivity and its learnability. One of its main differences to our proposal lies in 
-the former force exerting pressure only in the production of learning data. The pressure towards communicative success 
-within a population central to replication is absent. Put differently, here we considered a pressure for mutual understanding 
-that may indirectly select for expressive types, i.e., those that can convey states unequivocally, whereas Kirby et al. only
-consider the bearing that the latter ability has on the production of learnable data. We see two main reasons
-for considering communicative success rather than just expressivity, and to only considering it in learning. First, learnability alone can 
-lead to the acquisition of functionally defective languages, as showcased by $\Lall$ (cf. \citealt{kirby+etal:2008,silvey+etal:2014}, and \citealt{fay+etal:2013} for review of laboratory results). Second and more importantly, types may be equally expressive but their performance as means of information transfer crucially depends not only on themselves but on the population they find themselves in (cf. the competition of target types in Figure \ref{fig:rmd} and their lack of competition in Figure \ref{fig:only-M}). That is, we contend that having an expressive lexicon that generates learnable data does not  in itself capture a type's arguably central communicative function of transferring information to peers. Acquiring a maximally expressive type is of little use when it fails to be understood in its population. 
+between a lexicon's expressivity and its learnability. A main difference is that here we
+considered a pressure for mutual understanding within a generation that may indirectly select
+for expressive types, i.e., those that can convey states unequivocally, whereas Kirby et
+al. only consider the bearing that the latter ability has on the production of learnable
+data. We see two main reasons for considering communicative success rather than just
+expressivity, and to only considering it in learning. First, learnability alone can lead to the
+acquisition of functionally defective languages, as showcased by $\Lall$
+(cf. \citealt{kirby+etal:2008,silvey+etal:2014}, and \citealt{fay+etal:2013} for review of
+laboratory results). Second and more importantly, types may be equally expressive but their
+performance as means of information transfer crucially depends not only on themselves but on
+the population they find themselves in (cf. the competition of target types in Figure
+\ref{fig:rmd} and their lack of competition in Figure \ref{fig:only-M}). That is, we contend
+that having an expressive lexicon that generates learnable data does not in itself capture a
+type's arguably central communicative function of transferring information to peers. Acquiring
+a maximally expressive type is of little use when it fails to be understood in its population.
 
 The main result of our case study is that types that correspond to the majority view of scalar
 implicatures (scalar readings are non-lexicalized pragmatic enrichments) can come to dominate a
@@ -1255,10 +1273,11 @@ be classified as either semantic or pragmatic users of, in particular, \emph{som
 \citep[e.g.][]{BottNoveck2004:Some-Utterances,NieuwlandDitman2010:On-the-incremen,DegenTanenhaus2012:Processing-Scal}. The
 former consistently accept \emph{some} where \emph{all} would be true as well, the latter do
 not. Interestingly, in our simulations when a target type is the majority type an inflated
-proportion of the population uses compatible lexica with a lexicalized upper bound. Particularly in those parameter
-settings where the prior influences the outcome less. In other words, we do find a tendency toward a similar co-existence
-of semantic and pragmatic types. Whether this analogy has any further explanatory value is an interesting path for future
-exploration. \tb{While it is indeed true that $\Lbound$'s proportion is inflated relative to other types in the hypothesis space, it is never the second most prolific type (which is what the above hopefully is not taken to suggest, otherwise it should be changed). As is to be expected, $\Lbound$ fares best when $l$ is low and $\lambda$ is high. Even then, it usually ranks around $5$-th with a mean proportion of its kind of about $0.01 - 0.05$. As $l$ increases, it gets pushed back. Second or third place are usually instead literal $\Llack$ or types that lexicalize ``all'', ``not all'' and ``none''. In short; yes, there is a inflated proportion relative to the whole population, but other types are usually more prolific. This is very likely due to the strong prior disadvantage of $\Llack$. In light of this I'm uncertain whether we want to keep this paragraph as is. I currently tend towards `yes' but let me know if you think otherwise. Robert would leave it in as well.}
+proportion of the population uses compatible lexica with a lexicalized upper
+bound. Particularly in those parameter settings where the prior influences the outcome less. In
+other words, we do find a tendency toward a similar co-existence of semantic and pragmatic
+types. Whether this analogy has any further explanatory value is an interesting path for future
+exploration.
 
 Another important issue that is not addressed in the model are potential costs associated with
 pragmatic reasoning. Here, we simply assumed that literal and pragmatic reasoning strategies
@@ -1279,7 +1298,7 @@ lexicalize because upper bounds are dispreferred lexical representations. This c
 superficial and highly unjust. Dispreferred lexical representations can thrive under evolutionary
 selection. Lexicalized upper-bounds can dominate a population because they may boost
 communicative success. But they do not have to. Moreover, even without selective pressure
-for communicative success, it is not the case that necessarily the types that are most
+for communicative success, it is not necessarily the case that the types that are most
 likely \emph{a priori} will dominate. The dynamics of iterated learning are not that
 trivial. Iterated learning does not necessarily promote the \emph{a priori} more likely type,
 but tends to promote a type $t$ based on a gradient of how many other types might likely mutate
@@ -1290,40 +1309,44 @@ paper is the arrangement of many different ingredients into a joined model of th
 of lexical meaning and pragmatic use. 
 
 What is more, it is not that we just assumed a prior disadvantage of lexicalized upper
-bounds. We tried to motivate and formalize a general assumption about lexical representations' complexity
-with a concrete, albeit provisional proposal. The specification of a learning bias in terms of
-a ``grammar of representations'' can and should be seen critically, however. Much depends on the
-primitives of such a grammar. For instance, the lexical representation ``none or all'' is the most complex in
-Table~\ref{tab:concepts}. But consider adding a primitive operation on sets $A \smile B$
-which is true if and only if $\neg(A \cap B \neq \emptyset \wedge A \neq \emptyset)$. The
-lexical representation ``none or all'' would then be one of the simplest. Clearly, further research, empirical
-and conceptual, into the role of representational complexity, processing costs and learning
-biases is needed. The model here makes a clear and important contribution nonetheless: it shows
-how simplicity of representations can interact with use and evolutionary selection to show that
-without pragmatic language users we would not see simpler representations emerge in what may be a
-natural way. Future work should also include the possibility that representational simplicity may
+bounds. We tried to motivate and formalize a general assumption about lexical representations'
+complexity with a concrete, albeit provisional proposal. The specification of a learning bias
+in terms of a ``grammar of representations'' can and should be seen critically, however. Much
+depends on the primitives of such a grammar. For instance, the lexical representation ``none or
+all'' is the most complex in Table~\ref{tab:concepts}. But consider adding a new primitive
+relation between sets $A \smile B$ which is true if and only if
+$\neg(A \cap B \neq \emptyset \wedge A \neq \emptyset)$. The lexical representation ``none or
+all'' would then be one of the simplest. Clearly, further research, empirical and conceptual,
+into the role of representational complexity, processing costs and learning biases is
+needed. The model here makes a clear and important contribution nonetheless: it demonstrates
+how simplicity of representations can interact with use and evolutionary selection and shows
+that for simple representations to emerge it may require pragmatic strategies to compensate
+their potential expressive deficiencies. Hence model of co-evolving semantics and pragmatics is
+needed. Future work should also include the possibility that representational simplicity may
 itself be a notion that is subject to evolutionary pressure
-\citep[cf.][]{ThompsonKirby2016:Culture-Shapes-}. 
+\citep[cf.][]{ThompsonKirby2016:Culture-Shapes-}.
 
 Finally, our case study should not be interpreted as a proposal for a definite explanation of
 how scalar implicatures evolved. Other factors should be considered eventually even if they
 will lead to much more complex modeling. One such factor is the observation that
 non-lexicalized upper bounds allow a broader range of applicability, e.g., when the speaker is
-not certain as to whether \emph{all} is true. This may suggest an alternative argument for why
-upper-bounded meanings do not conventionalize based on functional criteria only: should
-contextual cues provide enough information to the hearer to identify whether a bound is
-intended to be conveyed pragmatically, then this is preferred over expressing it overtly
-through longer expressions, e.g., by saying {\em some but not all} explicitly. Importantly,
-although morphosyntactic disambiguation may be dispreferred due to its relative length and
-complexity \citep{piantadosi+etal:2012b}, it allows speakers to enforce an upper-bound and
-override contextual cues that might otherwise mislead the hearer. In a nutshell, this
-explanation posits that scalar implicatures fail to lexicalize because, all else being equal,
-speakers prefer to communicate as economically as possible and pragmatic reasoning enables them
-to do so. What this alternative explanation does not explain is why functional pressure does
-not lead to the emergence of different, equally costly lexical items to express different
-knowledge states of the speaker (cf. \citealt[252-267]{horn:1984}, \citealt{horn:1972,traugott:2004,vdAuwera:2010}). For instance, two expressions for each weak scalar expression; one with and one lacking an upper-bound. 
-Looking at pressure from learnability might come in again. The present work made a first start and gave a framework for exploring exactly these issues
-systematically.
+not certain as to whether \emph{all} is true. This may suggest an alternative and purely
+functionalist argument for why upper-bounded meanings do not conventionalize: should contextual
+cues provide enough information to the hearer to identify whether a bound is intended to be
+conveyed pragmatically, then this is preferred over expressing it overtly through longer
+expressions, e.g., by saying {\em some but not all} explicitly. Importantly, although
+morphosyntactic disambiguation may be dispreferred due to its relative length and complexity
+\citep{piantadosi+etal:2012b}, it allows speakers to enforce an upper-bound and override
+contextual cues that might otherwise mislead the hearer. In a nutshell, this explanation posits
+that scalar implicatures fail to lexicalize because, all else being equal, speakers prefer to
+communicate as economically as possible and pragmatic reasoning enables them to do so. What
+this alternative argument does not explain is why functional pressure does not lead to the
+emergence of different, equally costly lexical items to express different knowledge states of
+the speaker (cf. \citealt[252-267]{horn:1984},
+\citealt{horn:1972,traugott:2004,vdAuwera:2010}). For instance, two expressions for each weak
+scalar expression; one with and one lacking an upper-bound.  Looking at pressure from
+learnability might come in again. The present work made a first start and gave a framework for
+exploring exactly these issues systematically.
 
 \section{Conclusion}
 The cultural evolution of meaning is influenced by intertwined pressures. We set out to
@@ -1331,55 +1354,31 @@ investigate this process by putting forward a model that combines a pressure tow
 information transfer with perturbations that may arise in the transmission of linguistic
 knowledge in acquisition. Its objects of selection and replication are pairs of lexical
 meanings and patterns of language use. This allows the model to trace the interaction between
-conventional meaning and pragmatic use. Additionally, it takes the challenge serious of neither
-semantics nor pragmatics being directly observable. Instead, learners need to infer these
-unobservables from overt data that results from their combination.  These components and their
-mutual influence were highlighted in a case study on the lack of lexical upper-bounds in weak
-scalar expressions that showed that, when pressured for learnability and communicative success, the
-former force drives for simpler semantic representations inasmuch as pragmatics can compensate
-for lack of expressivity in use. That is, the relative learning advantage of simpler semantics
-in combination with functional pressure in use may offer an answer to why natural languages
-fail to lexicalize systematic pragmatic inferences. And, more broadly, to a division of labor
-between semantics and pragmatics.
+conventional meaning and pragmatic use. Additionally, it takes the challenge seriously of
+neither semantics nor pragmatics being directly observable. Instead, learners need to infer
+these unobservables from overt data that results from their combination.  These components and
+their mutual influence were highlighted in a case study on the lack of lexical upper-bounds in
+weak scalar expressions that showed that, when pressured for learnability and communicative
+success, the former force drives for simpler semantic representations inasmuch as pragmatics
+can compensate for lack of expressivity in use. That is, the relative learning advantage of
+simpler semantics in combination with functional pressure in use may offer an answer to why
+natural languages fail to lexicalize systematic pragmatic inferences. And, more broadly, to a
+division of labor between semantics and pragmatics.
 
 \bibliographystyle{chicago}
 \bibliography{./bounds-rmd}
 
-\newpage
+% \newpage
 
-\appendix
+% \appendix
 
-
-\section{notes}
-
-\begin{itemize}
-\item \mf{The text frequently uses the term ``expressivity'' and ``pressure for/towards
-    expressivity''. I have mixed feelings about this. First of all, I don't know what
-    ``expressivity'' really is. It seems to relate to a lexicon: how much information can the
-    lexicon convey about the states. But we do not model selection of expressivity, but
-    selection of communicative success relative to the population state. The difference is very
-    pronounced: there can be several maximally expressive lexica with huge differences in their
-    communicatively success or expected utility for a given population state. We only
-    indirectly select for expressivity, and we don't necessarily select for expressivity of a
-    lexicon. \dots It may be that ``expressivity'' is very much Edinburgh terminology where
-    exactly the picture of communication success in the current population is missing. I might
-    be wrong though. Possibly, we should introduce this distinction (with this terminology) and
-    use it also in the general discussion to relate our work to those articles from the
-    iterated-learning community that bring in some pressure for ``expressivity'' but not
-    communicative efficiency (if that is what they do, I don't know?).}\\
-    \tb{That's a good point. I adjusted the terminology but I don't think it warrants an explicit (terminological) discussion. Otherwise I feel we should define expressivity explicitly (e.g., as conditional entropy) and then exemplify what we mean by comparing $\Llack$ and $\Lbound$. That's probably uninteresting to readers beyond the IL audience, who, I hope, can infer the difference from our stress on communicative success and the brief discussion on Kirby et al. 2015 in the discussion section. }
-\end{itemize}
-
-
-\tb{Alternative to Figure \ref{fig:diff}}:
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=1\textwidth,height=7.5cm,keepaspectratio]{./plots/fig4-incumbents-difference}
-\caption{Difference between mean proportion of highest pragmatic $\Llack$ type and highest
-  other type in $1000$ independent populations after $50$ generations under both pressures ($k
-  = 5$).}
-\end{figure}
+% \begin{figure}[h!]
+% \centering
+% \includegraphics[width=1\textwidth,height=7.5cm,keepaspectratio]{./plots/fig4-incumbents-difference}
+% \caption{Difference between mean proportion of highest pragmatic $\Llack$ type and highest
+%   other type in $1000$ independent populations after $50$ generations under both pressures ($k
+%   = 5$).}
+% \end{figure}
 
 
 \end{document}
