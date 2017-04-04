@@ -193,7 +193,7 @@ def get_subfigs_mutation(type_list,list1,list2):
 
     targets = [231,236,291,306,326,336]
     targets = targets + [x-216 for x in targets] #adding literal Llack
-
+    
     lbound = [225, 235, 255, 270, 325, 330]
     lbound = lbound + [x-216 for x in lbound]
 
@@ -610,3 +610,370 @@ types = [231,236,291,306,326,336]
 #        print np.where(binned_props.argsort()[::-1] == 64)[0]
 #        print '###'
 #
+
+def get_subfigs_hist_replication(type_list,list1,list2):
+    seq_length = 5
+    num_of_runs = 5
+     
+    types_to_plot = ['t_final'+str(x) for x in type_list]  
+    targets_to_plot = ['t_final'+str(x) for x in type_list[:6]]  
+
+    restrict_to_final = ['t_final'+str(z) for z in xrange(432)] #as to avoid the incumbent to come from other columns
+
+    df1 = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('r',list1[0],seq_length,list2[0]))
+    df2 = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('r',list1[1],seq_length,list2[0]))
+    df3 = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('r',list1[2],seq_length,list2[0]))
+   
+    df1 = df1[restrict_to_final]
+    df1_majority = df1.max(axis=1).iloc[num_of_runs]
+
+    df2 = df2[restrict_to_final]
+    df2_majority = df2.max(axis=1).iloc[num_of_runs]
+ 
+    df3 = df3[restrict_to_final]
+    df3_majority = df3.max(axis=1).iloc[num_of_runs]
+   
+    df1_large = df1[types_to_plot]# + ['incumbent']]
+    df1_large = df1_large.iloc[num_of_runs]
+    Y1_large = df1_large.values
+                 
+    df2_large = df2[types_to_plot]# + ['incumbent']]
+    df2_large = df2_large.iloc[num_of_runs]
+    Y2_large = df2_large.values
+
+    df3_large = df3[types_to_plot]# + ['incumbent']]
+    df3_large = df3_large.iloc[num_of_runs]
+    Y3_large = df3_large.values
+
+    colors = ('green','green','green','green','green','green','darkorange','darkorange','darkorange','darkorange','darkorange', 'darkorange', 'red')
+
+#    xlabels = [x for x in xrange(num_of_runs)] #runs
+
+    
+    X = np.arange(len(types_to_plot))
+    al = 0.6 #alpha
+    ax1_large = plt.subplot(1,3,1)
+    plt.bar(X,Y1_large,color=colors,alpha=al)
+    plt.axhline(y=df1_majority,linestyle='dashed')
+    plt.text(0.05,df1_majority-0.0015,'majority type',color='royalblue',fontweight='extra bold')
+
+    ax2_large = plt.subplot(1,3,2);
+    plt.bar(X,Y2_large,color=colors,alpha=al)
+    plt.axhline(y=df2_majority,linestyle='dashed')
+
+    ax3_large = plt.subplot(1,3,3);
+    plt.bar(X,Y3_large,color=colors,alpha=al)
+    plt.axhline(y=df3_majority,linestyle='dashed')#, color=sns.color_palette()[1],linestyle ='dashed', markevery=10)
+
+#
+    #Layout
+    ax1_large.set_xlabel(r'$\lambda$ = '+str(list1[0]),fontsize=25)
+    ax1_large.xaxis.set_label_position('top')
+#
+    for label in ax1_large.get_xticklabels():
+        label.set_visible(False)
+    for label in ax2_large.get_xticklabels():
+        label.set_visible(False)
+    for label in ax3_large.get_xticklabels():
+        label.set_visible(False)
+
+    p1 = patches.Rectangle((0, 0), 1, 1, fc="green", alpha=al)
+    p2 = patches.Rectangle((0, 0), 1, 1, fc="darkorange",alpha=al)
+    p3 = patches.Rectangle((0, 0), 1, 1, fc="red",alpha=al)
+
+    ax1_large.legend([p1, p2, p3], ['Target types','Competitor types','prag. L-all'],loc='best',prop={'size':14})
+
+    ax2_large.set_xlabel(r'$\lambda$ = '+str(list1[1]),fontsize=25)
+    ax2_large.xaxis.set_label_position('top')
+
+    ax3_large.set_xlabel(r'$\lambda$ = '+str(list1[2]),fontsize=25)
+    ax3_large.xaxis.set_label_position('top')
+
+    plt.tight_layout()
+    plt.show()
+
+def get_subfigs_hist_mutation(type_list,list1,list2):
+    seq_length = 5
+    num_of_runs = 5
+    
+    types_to_plot = ['t_final'+str(x) for x in type_list]  
+    restrict_to_final = ['t_final'+str(z) for z in xrange(432)] #as to avoid the incumbent to come from other columns
+
+    df1 = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('m',list1[0],seq_length,list2[0]))
+    df2 = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('m',list1[0],seq_length,list2[1]))
+    
+    df1 = df1[restrict_to_final]
+    df1_majority = df1.max(axis=1).iloc[num_of_runs]
+
+    df2 = df2[restrict_to_final]
+    df2_majority = df2.max(axis=1).iloc[num_of_runs]
+    
+    df1_large = df1[types_to_plot]
+    df1_large = df1_large.iloc[num_of_runs]
+    Y1_large = df1_large.values
+                 
+    df2_large = df2[types_to_plot]
+    df2_large = df2_large.iloc[num_of_runs]
+    Y2_large = df2_large.values
+
+    colors = ('green','green','green','green','green','green','darkorange','darkorange','darkorange','darkorange','darkorange', 'darkorange', 'red')
+
+    X = np.arange(len(types_to_plot))
+    al = 0.6 #alpha
+    ax1_large = plt.subplot(1,3,1)
+    plt.bar(X,Y1_large,color=colors,alpha=al)
+    plt.axhline(y=df1_majority,linestyle='dashed')
+    plt.text(0.05,df1_majority+0.0005,'majority type',color='royalblue',fontweight='extra bold')
+
+    ax2_large = plt.subplot(1,3,2);
+    plt.bar(X,Y2_large,color=colors,alpha=al)
+    plt.axhline(y=df2_majority,linestyle='dashed')
+
+
+
+    #Third subfigure is the prior
+    ax_prior = plt.subplot(1,3,3)
+
+    from lexica import get_prior,get_lexica
+    priors = get_prior(get_lexica(3,3,False))
+    priors = list(priors)
+
+    targets = [231,236,291,306,326,336]
+    targets = targets + [x-216 for x in targets] #adding literal Llack
+    
+    lbound = [225, 235, 255, 270, 325, 330]
+    lbound = lbound + [x-216 for x in lbound]
+
+    lall = [0,216]
+
+
+
+    white_space = 17 #to separate from other priors
+    Y_target = [0 for _ in xrange(len(priors)+white_space*3)]
+    Y_lbound = [0 for _ in xrange(len(priors)+white_space*3)]
+    Y_all = [0 for _ in xrange(len(priors)+white_space*3)]
+
+#    for t in xrange(len(targets)):
+#        Y_target[t] = priors[targets[t]]
+    #To interspread white space (done manually for convenience)
+
+    Y_target[0] = priors[targets[0]]
+    Y_target[2] = priors[targets[1]]
+    Y_target[4] = priors[targets[2]]
+    Y_target[6] = priors[targets[3]]
+    Y_target[8] = priors[targets[4]]
+    Y_target[10] = priors[targets[5]]
+
+    Y_target[12] = priors[targets[6]]
+    Y_target[14] = priors[targets[7]]
+    Y_target[16] = priors[targets[8]]
+    Y_target[18] = priors[targets[9]]
+    Y_target[20] = priors[targets[10]]
+    Y_target[22] = priors[targets[11]]
+   
+
+
+#    for t in xrange(len(lbound)):
+#        Y_lbound[len(targets)+white_space+t] = priors[lbound[t]]
+    Y_lbound[len(targets)+17+0] = priors[lbound[0]]
+    Y_lbound[len(targets)+17+2] = priors[lbound[1]]
+    Y_lbound[len(targets)+17+4] = priors[lbound[2]]
+    Y_lbound[len(targets)+17+6] = priors[lbound[3]]
+    Y_lbound[len(targets)+17+8] = priors[lbound[4]]
+    Y_lbound[len(targets)+17+10] = priors[lbound[5]]
+
+    Y_lbound[len(targets)+17+12] = priors[lbound[6]]
+    Y_lbound[len(targets)+17+14] = priors[lbound[7]]
+    Y_lbound[len(targets)+17+16] = priors[lbound[8]]
+    Y_lbound[len(targets)+17+18] = priors[lbound[9]]
+    Y_lbound[len(targets)+17+20] = priors[lbound[10]]
+    Y_lbound[len(targets)+17+22] = priors[lbound[11]]
+
+
+#    for t in xrange(len(lall)):
+#        Y_all[len(targets)+white_space+len(lbound)+white_space+t] = priors[lall[t]]
+    Y_all[len(targets)+17+len(lbound)+17+0] = priors[lall[0]]
+    Y_all[len(targets)+17+len(lbound)+17+3] = priors[lall[1]]
+
+
+    all_types = targets+lbound+lall
+    all_types.sort()
+
+    #reorder prior
+    for t in all_types:
+        priors.insert(0,priors.pop(t))
+    for t in xrange(len(all_types)):
+        priors[t] = 0
+
+   
+    Y_rest = priors[:len(targets)] + [0 for _ in xrange(white_space)] + priors[len(targets):len(targets)+len(lbound)] +\
+     [0 for _ in xrange(white_space)] + priors[len(targets)+len(lbound):len(all_types)] + [0 for _ in xrange(white_space)] + priors[len(all_types):]
+
+            
+    Y_target.reverse()
+    Y_rest.reverse()
+    Y_lbound.reverse()
+    Y_all.reverse()
+   
+    ax_prior.grid(False)
+    
+    X = np.arange(len(priors)+white_space*3)
+    ax_prior.barh(X,Y_target,color='green',alpha=al)
+    ax_prior.barh(X,Y_lbound,color='darkorange',alpha=al)
+    ax_prior.barh(X,Y_all,color='red',edgecolor='red')
+    ax_prior.barh(X,Y_rest,color='royalblue',alpha=al)
+
+
+
+    #Layout
+    from matplotlib.ticker import FormatStrFormatter
+    ax1_large.set_xlabel('l = '+str(list2[0]),fontsize=25)
+    ax1_large.xaxis.set_label_position('top')
+    ax1_large.set_ylim(0,np.max(Y1_large)+0.005)
+
+    for label in ax1_large.get_xticklabels():
+        label.set_visible(False)
+    for label in ax2_large.get_xticklabels():
+        label.set_visible(False)
+
+
+    p1 = patches.Rectangle((0, 0), 1, 1, fc="green", alpha=al)
+    p2 = patches.Rectangle((0, 0), 1, 1, fc="darkorange",alpha=al)
+    p3 = patches.Rectangle((0, 0), 1, 1, fc="red",alpha=al)
+
+    ax1_large.legend([p1, p2, p3], ['Target types','Competitor types','prag. L-all'],loc='best',prop={'size':14})
+
+    ax2_large.set_xlabel('l = '+str(list2[1]),fontsize=25)
+    ax2_large.xaxis.set_label_position('top')
+#    ax2_large.set_ylim(0,0.75)
+
+
+    ax_prior.set_xlabel('Prior',fontsize=25)
+    ax_prior.xaxis.set_label_position('top')
+    ax_prior.set_ylabel('Types', fontsize=25)
+    ax_prior.tick_params(axis='both', which='major', labelsize=17)
+    ax_prior.annotate('L-lack',xy=(.0063236,467),color='green',fontweight='extra bold')
+    ax_prior.annotate('L-bound',xy=(0.0028603,438.5),color='darkorange',fontweight='extra bold')
+    ax_prior.annotate('L-all',xy=(.0063236,429), color='red',fontweight='extra bold')
+
+    ax_prior.set_ylim(0,len(priors)+white_space*3+3)
+    ylabels = [x for x in xrange(len(X))]
+
+    #Hide all y-labels
+    for label in ax_prior.get_yticklabels():
+        label.set_visible(False)
+
+
+
+    plt.tight_layout()
+    plt.show()
+
+def get_subfigs_hist_rmd(type_list,list1,list2):
+    seq_length = 5
+    num_of_runs = 5 #now it's just the ID of the run to plot
+    
+    x_figs = len(list1)
+    y_figs = len(list2)
+    fig,axes = plt.subplots(nrows=y_figs,ncols=x_figs)
+
+    types_to_plot = ['t_final'+str(x) for x in type_list] 
+    colors = ('green','green','green','green','green','green','darkorange','darkorange','darkorange','darkorange','darkorange', 'darkorange', 'red')
+
+    majorities = []
+    for x in xrange(y_figs):
+        for y in xrange(x_figs):
+            df = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('rmd',list1[y],seq_length,list2[x]))
+            restrict_to_final = ['t_final'+str(z) for z in xrange(432)] #as to avoid the incumbent to come from other columns
+            df = df[restrict_to_final]
+            majorities.append(df.max(axis=1).iloc[num_of_runs])
+        
+            types_to_plot = ['t_final'+str(i) for i in type_list] 
+            
+            df = df[types_to_plot]
+            df = df.iloc[num_of_runs]
+            df.plot(ax=axes[x,y],kind='bar', alpha=0.5, color=colors, rot=0) 
+
+
+
+#    #Adding labels and modifying layout 
+    learning_labels = [x for x in list2]
+    list2.reverse()
+    al = 0.6
+    for idx in xrange(len(plt.gcf().axes)):
+        ax = plt.gcf().axes[idx]
+        ax.tick_params(axis='both', which='major', labelsize=17)
+        ax.axhline(y=majorities[idx],linestyle='dashed')
+        if idx == 0:
+            ax.text(0.05,majorities[idx]+0.0015,'majority type',color='royalblue',fontweight='extra bold')
+
+        #Only add top label to subplots that are on the first row
+        if idx - x_figs < 0:
+            print idx
+            x = idx 
+            ax.set_xlabel(r'$\lambda$ = '+str(list1[x]),fontsize=20)
+            ax.xaxis.set_label_position('top')
+
+        #Only add label to subplots that are on the left-most column
+        if idx % x_figs == 0:
+            ax.set_ylabel('l = '+str(list2[-1]),fontsize=20)
+            list2.pop()
+        elif y_figs == 1 and prior == False:
+            ax.set_ylabel('Proportion in population',fontsize=17)
+            list2.pop()
+
+        #Resize range of values on y to the maximal value in a row:
+        if idx in [0,1,2]:
+            ax.set_ylim(0,0.065)
+        elif idx in [3,4,5]:
+            ax.set_ylim(0,0.55)
+        elif idx in [6,7,8]:
+            ax.set_ylim(0,0.8)
+        
+
+        if idx == 0:
+            p1 = patches.Rectangle((0, 0), 1, 1, fc="green", alpha=al)
+            p2 = patches.Rectangle((0, 0), 1, 1, fc="darkorange",alpha=al)
+            p3 = patches.Rectangle((0, 0), 1, 1, fc="red",alpha=al)
+            ax.legend([p1, p2, p3], ['Target types','Competitor types','prag. L-all'],loc='best',prop={'size':14})
+
+#
+#        handles, labels = ax.get_legend_handles_labels()
+#        labels = ['prag. L-lack' for _ in xrange(len(types))] + ['Other majority']
+#        display = (3,6)
+##
+#        ax.legend([handle for i,handle in enumerate(handles) if i in display], \
+#                  [label for i,label in enumerate(labels) if i in display], loc='best',prop={'size': 20})
+#
+#        #Alternatively: Hide legend
+#        if not idx == display[0]:
+#            ax.legend().set_visible(False)
+
+        for label in ax.get_xticklabels():
+            label.set_visible(False)
+        
+        if not idx in [0,3,6]:
+            for label in ax.get_yticklabels():
+                label.set_visible(False)
+
+    plt.tight_layout()
+    plt.show()
+
+
+
+types = [231,236,291,306,326,336] + [225,235,255,270,325,330] + [216]
+
+#Plot 1
+#list1 = [1,5,20] #lambda
+#list2 = [5] #posterior parameter
+#get_subfigs_hist_replication(types,list1,list2)
+
+
+#Plot 2:
+#list1 = [20]
+#list2 = [1,15]
+#get_subfigs_hist_mutation(types,list1,list2)
+
+#Plot 3:
+list1 = [1,5,20]
+list2 = [1,5,15]
+get_subfigs_hist_rmd(types,list1,list2)

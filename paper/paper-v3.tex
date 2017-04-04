@@ -160,8 +160,8 @@ majority is that a scalar item like \emph{some} is underspecified to mean \emph{
 roots in pragmatics.
 
 If this majority view is correct, the question arises how such a division of labor between
-semantics and pragmatics could have evolved and why it would be so pervasive across natural
-languages. Models of language evolution abound. There are simulation-based models studying
+semantics and pragmatics could have evolved, why it would be so pervasive across natural
+languages and why it is that some expressions systematically draw from it while others semantically conventionalize. Models of language evolution abound. There are simulation-based models studying
 populations of communicating agents
 \citep{Hurford1989:Biological-Evol,Steels1995:A-Self-Organizi,LenaertsJansen2005:The-Evolutionar,SteelsBelpaeme2005:Coordinating-Pe,BaronchelliPuglisi2008:Cultural-route-,steels:2011,SpikeStadler2016:Minimal-Require}
 and there are mathematical models of language evolution, mostly coming from game theory
@@ -299,7 +299,7 @@ iterated learning \citep{griffiths+kalish:2007}.
   population state is completely characterized by the proportion $x$ of negatives. The fitness
   of negatives in population state $x$ is $f_n(x) = x$, that of positives is $f_p(x) = 2-2x$.
   The average fitness is $\Phi(x) = x f_n(x) + (1-x) f_p(x) = 3x^2 - 4x + 2$. Without mutation,
-  the replicator dynamic will then update $x$ to $RD(x) = \nicefrac{x^2}{\Phi(x)}$. The update
+  the replicator dynamic will then update $x$ to $RD(x) = \nicefrac{f(x)x}{\Phi(x)} = \nicefrac{x^2}{\Phi(x)}$. The update
   function $RD(x)$ of the replicator step is plotted in Figure~\ref{fig:Updates_RMS} as the
   blue line. Rest points, for which $RD(x)=x$, are at $x=0$, $x=1$ and $x= \nicefrac{2}{3}$.
   The former are attractors as nearby points converge to them. Points near $x=\nicefrac{2}{3}$
@@ -477,9 +477,9 @@ of a lexicon and a pragmatic strategy of language use.
 Agents play signaling games, in which the speaker wants to communicate a world state $s$ with a
 message $m$ to a hearer who receives $m$ but does not know $s$
 \citep[e.g.][]{lewis:1969,Skyrms2010:Signals}. A lexicon associates each message with a
-(possibly fuzzy) set of states. A pragmatic type maps a lexicon onto a probabilistic speaker
+(possibly fuzzy) set of states. A pragmatic type specifies a probabilistic speaker
 rule (a probabilistic choice of message for each state) and a probabilistic hearer rule (a
-probabilistic choice of state for each message). There are many ways of making these general
+probabilistic choice of state for each message) given a lexicon. There are many ways of making these general
 notions more concrete. Here is what we will assume in the remainder of this paper.
 
 Lexica codify the truth-conditions of expressions. A convenient way to represent lexica is by
@@ -524,8 +524,8 @@ level $0$, corresponds to literal language use, as in Equations~(\ref{h:level0})
 respect to level-$n$ behavior of their interlocutors, as in Equations~(\ref{h:leveln}) and
 (\ref{s:leveln}).
 \begin{alignat}{3}
-&H_{0}(s \mid m;L) &&\propto pr(s) L_{sm} \label{h:level0}\\
-&S_{0}(m \mid s;L) &&\propto \exp(\lambda \; L_{sm}) \label{s:level0}\\
+&H_{0}(s \mid m;L) &&\propto pr(s) L_{[s,m]} \label{h:level0}\\
+&S_{0}(m \mid s;L) &&\propto \exp(\lambda \; L_{[s,m]}) \label{s:level0}\\
 &H_{n+1}(s|m;L) &&\propto pr(s) S_{n}(m|s;L) \label{h:leveln}\\
 &S_{n+1}(m|s;L) &&\propto  \exp(\lambda \; H_{n}(s|m;L)) \label{s:leveln}
 \end{alignat}
@@ -533,7 +533,7 @@ respect to level-$n$ behavior of their interlocutors, as in Equations~(\ref{h:le
 According to (\ref{h:level0}), a literal hearer's interpretation of a message depends on her
 lexicon and her prior over states, $pr \in \Delta(S)$, which is here assumed flat for
 simplicity. Literal interpreters thereby choose an arbitrary true interpretation for each
-message. Pragmatic hearers, defined in (\ref{h:leveln}), instead use Bayes' rule to weigh
+message according to their lexicon. Pragmatic hearers, defined in (\ref{h:leveln}), instead use Bayes' rule to weigh
 interpretations based on a conjecture about speaker behavior. Speaker behavior is regulated by
 a soft-max parameter $\lambda \geq 0$ \citep{luce:1959,sutton+barto:1998}. As
 $\lambda$ increases, choices approximate strict maximization of expected utilities. Expected
@@ -562,42 +562,7 @@ interpreter with $\Llack$ has $H_0(\ssome \mid \msome; \Llack) = 0.5$:
     \end{block}
   \end{blockarray} 
 \end{align*}
-If $\lambda = 1$ literal speaker behavior is as follows:
-\begin{align*}
-  S_0(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
-    & \mygray{\msome} & \mygray{\mall} \\
-    \begin{block}{l[cc]}
-      \mygray{\ssome} & .73 & .27 \\
-      \mygray{\sall}  & .27 & .73 \\
-    \end{block}
-  \end{blockarray} &
-  S_0(\cdot \mid \cdot, \Llack) & \approx \begin{blockarray}{lcc}
-    & \mygray{\msome} & \mygray{\mall} \\
-    \begin{block}{l[cc]}
-      \mygray{\ssome} & .73 & .27 \\
-      \mygray{\sall}  & .5 & .5 \\
-    \end{block}
-  \end{blockarray} 
-\end{align*}
-If $\lambda = 20$, literal speakers will choose true utterances with less slack:
-\begin{align*}
-  S_0(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
-    & \mygray{\msome} & \mygray{\mall} \\
-    \begin{block}{l[cc]}
-      \mygray{\ssome} & 1 & 0 \\
-      \mygray{\sall}  & 0 & 1 \\
-    \end{block}
-  \end{blockarray} &
-  S_0(\cdot \mid \cdot, \Llack) & \approx \begin{blockarray}{lcc}
-    & \mygray{\msome} & \mygray{\mall} \\
-    \begin{block}{l[cc]}
-      \mygray{\ssome} &  1 & 0 \\
-      \mygray{\sall}  & .5 & .5 \\
-    \end{block}
-  \end{blockarray} 
-\end{align*}
-Pragmatic hearers of level 1 have the following probabilistic interpretation behavior for
-$\lambda = 1$:
+By contrast, pragmatic hearers of level 1 have the following interpretative behavior for $\lambda = 1$:
 \begin{align*}
   H_1(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
     & \mygray{\ssome} & \mygray{\sall} \\
@@ -614,7 +579,41 @@ $\lambda = 1$:
     \end{block}
   \end{blockarray} 
 \end{align*}
-For $\lambda = 20$, there will less slack again:
+This is the outcome of reasoning about their level-$0$ speaker counterparts with $\lambda = 1$:
+\begin{align*}
+  S_0(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
+    & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[cc]}
+      \mygray{\ssome} & .73 & .27 \\
+      \mygray{\sall}  & .27 & .73 \\
+    \end{block}
+  \end{blockarray} &
+  S_0(\cdot \mid \cdot, \Llack) & \approx \begin{blockarray}{lcc}
+    & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[cc]}
+      \mygray{\ssome} & .73 & .27 \\
+      \mygray{\sall}  & .5 & .5 \\
+    \end{block}
+  \end{blockarray} 
+\end{align*}
+With low $\lambda$ speakers choose true messages with more slack. Reasoning over this behavior therefore also results in a weaker association of messages with only true states in receivers, but also in a slightly stronger association of $\msome$ with $\ssome$ over $\sall$ for $\Llack$ users because $S_0(\msome | \ssome;\Llack) > S_0(\msome | \sall;\Llack)$. For $\lambda = 20$, there will be less slack in literal speaker behavior:
+\begin{align*}
+  S_0(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
+    & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[cc]}
+      \mygray{\ssome} & 1 & 0 \\
+      \mygray{\sall}  & 0 & 1 \\
+    \end{block}
+  \end{blockarray} &
+  S_0(\cdot \mid \cdot, \Llack) & \approx \begin{blockarray}{lcc}
+    & \mygray{\msome} & \mygray{\mall} \\
+    \begin{block}{l[cc]}
+      \mygray{\ssome} &  1 & 0 \\
+      \mygray{\sall}  & .5 & .5 \\
+    \end{block}
+  \end{blockarray} 
+\end{align*}
+And accordingly less slack in pragmatic interpretation:
 \begin{align*}
   H_1(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
     & \mygray{\ssome} & \mygray{\sall} \\
@@ -631,7 +630,7 @@ For $\lambda = 20$, there will less slack again:
     \end{block}
   \end{blockarray} 
 \end{align*}
-With $\lambda = 1$, pragmatic speakers of level 1 will have:
+Lastly, turning to types that have no bearing on hearer choices, with $\lambda = 1$ pragmatic speakers of level 1 have:
 \begin{align*}
   S_1(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
     & \mygray{\msome} & \mygray{\mall} \\
@@ -648,7 +647,7 @@ With $\lambda = 1$, pragmatic speakers of level 1 will have:
     \end{block}
   \end{blockarray} 
 \end{align*}
-For high $\lambda = 20$, pragmatic speakers of level 1 give us:
+For $\lambda = 20$, pragmatic speaker behavior of level 1 is as follows:
 \begin{align*}
   S_1(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
     & \mygray{\msome} & \mygray{\mall} \\
@@ -665,6 +664,12 @@ For high $\lambda = 20$, pragmatic speakers of level 1 give us:
     \end{block}
   \end{blockarray} 
 \end{align*}
+
+
+
+
+
+
 
 It is particularly important to note that pragmatic agents of level 1 using $\Llack$ associate
 $\msome$ preferentially with $\ssome$, in contrast to their literal counterparts of level
@@ -842,7 +847,7 @@ albums. According to the majority view, this is a pragmatic inference, not part 
 conventional meaning.
 
 In the following we consider a specific application of the model from Section~\ref{sec:model}
-which allows to address the question if or when scalar inferences might (not) lexicalize. We
+which allows us to address the question if or when scalar inferences might (not) lexicalize. We
 consider what is perhaps one of the simplest non-trivial setups that speak to this matter and
 reflect on its limitations in Section~\ref{sec:discussion}. The setup is introduced in
 Section~\ref{sec:setup:-stat-conc}. Section~\ref{sec:simulation-results} describes simulations
@@ -876,7 +881,7 @@ different messages. Out of these possible lexica, three kinds are of particular
 relevance. First, lexica that assign the same lexical representations to more than one
 message. Such lexica lack in expressivity but may be favored by particular learning biases
 nonetheless (see below). Second, lexica that conventionalize upper-bounds to realize a
-one-to-one mapping of messages to states. Finally, lexically that do not lexicalize an upper
+one-to-one mapping of messages to states. Finally, lexica that do not lexicalize an upper
 bound but allow it to be conveyed pragmatically due to the presence of a stronger lexical
 item. There are six lexica of the second kind and six of the third.  The following three lexica
 exemplify each kind:
@@ -1251,8 +1256,8 @@ performance as means of information transfer crucially depends not only on thems
 the population they find themselves in (cf. the competition of target types in Figure
 \ref{fig:rmd} and their lack of competition in Figure \ref{fig:only-M}). That is, we contend
 that having an expressive lexicon that generates learnable data does not in itself capture a
-type's arguably central communicative function of transferring information to peers. Acquiring
-a maximally expressive type is of little use when it fails to be understood in its population.
+type's arguably central communicative function of transferring information to peers. Taking communication
+into consideration in turn allows the model to be responsive to the task for which language is learned. 
 
 The main result of our case study is that types that correspond to the majority view of scalar
 implicatures (scalar readings are non-lexicalized pragmatic enrichments) can come to dominate a
@@ -1290,8 +1295,7 @@ the frequency with which a given scalar expression is used. It may be that frequ
 scalar implicatures lexicalize to avoid cost, whereas infrequent ones are derived on-line to
 avoid more complex lexical representations during acquisition. Such a prediction would lend itself to
 empirical testing in line with a recent interest in differences between various scalar
-implicature triggers \citep{Tielvan-TielMiltenburgvan-Miltenburg2014:Scalar-Diversit}.
-
+implicature triggers \citep{Tielvan-TielMiltenburgvan-Miltenburg2014:Scalar-Diversit}. 
 
 Our case study could be criticized as follows: all it shows is that scalar implicatures do not
 lexicalize because upper bounds are dispreferred lexical representations. This criticism would be too
@@ -1321,10 +1325,11 @@ into the role of representational complexity, processing costs and learning bias
 needed. The model here makes a clear and important contribution nonetheless: it demonstrates
 how simplicity of representations can interact with use and evolutionary selection and shows
 that for simple representations to emerge it may require pragmatic strategies to compensate
-their potential expressive deficiencies. Hence model of co-evolving semantics and pragmatics is
+their potential expressive deficiencies. Hence a model of co-evolving semantics and pragmatics is
 needed. Future work should also include the possibility that representational simplicity may
 itself be a notion that is subject to evolutionary pressure
-\citep[cf.][]{ThompsonKirby2016:Culture-Shapes-}.
+\citep[cf.][]{ThompsonKirby2016:Culture-Shapes-}, as well for the evolution of elements that define
+the agents' cognitive make-up; $\lambda$ and $l$.
 
 Finally, our case study should not be interpreted as a proposal for a definite explanation of
 how scalar implicatures evolved. Other factors should be considered eventually even if they
@@ -1345,8 +1350,12 @@ emergence of different, equally costly lexical items to express different knowle
 the speaker (cf. \citealt[252-267]{horn:1984},
 \citealt{horn:1972,traugott:2004,vdAuwera:2010}). For instance, two expressions for each weak
 scalar expression; one with and one lacking an upper-bound.  Looking at pressure from
-learnability might come in again. The present work made a first start and gave a framework for
+learnability might come in again. Beyond scalar implicatures, the model can generate predictions about
+likely lexicalization trajectories of pragmatic inferences, or a lack thereof. In this realm
+an interesting issue is whether proposed principles, such as the semantic conventionalization of once highly context-dependent inferences if they become regular enough \citep{levinson:2000,traugott:2004}, can be given
+a formal rationale and inform the postulated directionalities of change. The present work made a first start and gave a framework for
 exploring exactly these issues systematically.
+
 
 \section{Conclusion}
 The cultural evolution of meaning is influenced by intertwined pressures. We set out to
@@ -1370,7 +1379,37 @@ division of labor between semantics and pragmatics.
 
 % \newpage
 
-% \appendix
+ \appendix
+\newpage
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth,height=8cm, keepaspectratio]{./plots/alt-fig1-onlyr}
+\caption{Representative population after $50$ generations under only a
+  pressure for communicative success. The right-most plots zoom in on only the proportion of
+  target types.}
+\label{fig:only-R}
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/alt-fig2-onlym-pr}
+\caption{Representative population after $50$ generations under only a
+  pressure for learnability ($\lambda = 20, k = 5$). The types' prior is shown in the
+  right-most plot. The top-most groupings correspond to types, literal and pragmatic, with
+  lexica of the kind of $\Llack$, $\Lbound$, and $\Lall$.}
+\label{fig:only-M}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/alt-fig3-r+m}
+\caption{Representative population after $50$ generations under both pressures ($k = 5$).}
+\label{fig:rmd}
+\end{figure}
+
+
 
 % \begin{figure}[h!]
 % \centering

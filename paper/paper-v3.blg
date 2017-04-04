@@ -8,45 +8,45 @@ Warning--page numbers missing in fay+etal:2013
 Warning--no number and no volume in franke+jaeger:2014
 Warning--no number and no volume in SpikeStadler2016:Minimal-Require
 Warning--page numbers missing in SpikeStadler2016:Minimal-Require
-You've used 88 entries,
+You've used 89 entries,
             2861 wiz_defined-function locations,
-            1175 strings with 19666 characters,
-and the built_in function-call counts, 59755 in all, are:
-= -- 5079
-> -- 4109
+            1178 strings with 19772 characters,
+and the built_in function-call counts, 60223 in all, are:
+= -- 5111
+> -- 4135
 < -- 9
-+ -- 1204
-- -- 1412
-* -- 5271
-:= -- 10875
-add.period$ -- 271
-call.type$ -- 88
-change.case$ -- 603
-chr.to.int$ -- 88
-cite$ -- 93
-duplicate$ -- 1671
-empty$ -- 3786
-format.name$ -- 1624
-if$ -- 11088
++ -- 1210
+- -- 1422
+* -- 5301
+:= -- 10972
+add.period$ -- 274
+call.type$ -- 89
+change.case$ -- 608
+chr.to.int$ -- 89
+cite$ -- 94
+duplicate$ -- 1689
+empty$ -- 3822
+format.name$ -- 1634
+if$ -- 11168
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 100
-newline$ -- 443
-num.names$ -- 892
-pop$ -- 452
+missing$ -- 102
+newline$ -- 448
+num.names$ -- 902
+pop$ -- 459
 preamble$ -- 2
-purify$ -- 1146
+purify$ -- 1158
 quote$ -- 0
-skip$ -- 1723
+skip$ -- 1741
 stack$ -- 0
-substring$ -- 3452
-swap$ -- 553
+substring$ -- 3472
+swap$ -- 558
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1620
+type$ -- 1630
 warning$ -- 5
-while$ -- 911
+while$ -- 921
 width$ -- 0
-write$ -- 1175
+write$ -- 1188
 (There were 5 warnings)
