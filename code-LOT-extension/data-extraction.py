@@ -37,9 +37,9 @@ def get_data_to_csv_plot1(targets,competitors,lall,list1):
     seq_length = 5
     kind = 'r'
 
-    f = csv.writer(open('./data-plot1.csv','wb'))
+    f = csv.writer(open('./ordered-data-plot2.csv','wb'))
     f.writerow(['runID','lambda','1st target', '2nd target', '3rd target', '4th target', '5th target', '6th target']+\
-               ['1st competitor', '2nd competitor', '3rd competitor', '4th competitor', '5th competitor' + '6th competitor'] +\
+               ['1st competitor', '2nd competitor', '3rd competitor', '4th competitor', '5th competitor', '6th competitor'] +\
                ['lit lall', 'prag lall'] + ['other type'+str(z) for z in xrange(432-len(targets)-len(competitors)-len(lall))])
     for i in xrange(len(list1)):
         df = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[i],seq_length,5))
@@ -55,7 +55,7 @@ def get_data_to_csv_plot1(targets,competitors,lall,list1):
             ordered_competitors = [str(x) for x in ordered_competitors]
 
             ordered_lall = row[lall].values.tolist()
-            ordered_lall = [str(x) for x in lall]
+            ordered_lall = [str(x) for x in ordered_lall]
 
             ordered_other = row[other_types].values.tolist()
             ordered_other.sort(reverse=True)
@@ -76,9 +76,9 @@ def get_data_to_csv_plot2(targets,competitors,lall,list1,list2):
     seq_length = 5
     kind = 'm'
 
-    f = csv.writer(open('./data-plot2.csv','wb'))
+    f = csv.writer(open('./ordered-data-plot3.csv','wb'))
     f.writerow(['runID','lambda','l','1st target', '2nd target', '3rd target', '4th target', '5th target', '6th target']+\
-               ['1st competitor', '2nd competitor', '3rd competitor', '4th competitor', '5th competitor' + '6th competitor'] +\
+               ['1st competitor', '2nd competitor', '3rd competitor', '4th competitor', '5th competitor', '6th competitor'] +\
                ['lit lall', 'prag lall'] + ['other type'+str(z) for z in xrange(432-len(targets)-len(competitors)-len(lall))])
     for i in xrange(len(list1)):
         for j in xrange(len(list2)):
@@ -95,7 +95,7 @@ def get_data_to_csv_plot2(targets,competitors,lall,list1,list2):
                 ordered_competitors = [str(x) for x in ordered_competitors]
     
                 ordered_lall = row[lall].values.tolist()
-                ordered_lall = [str(x) for x in lall]
+                ordered_lall = [str(x) for x in ordered_lall]
     
                 ordered_other = row[other_types].values.tolist()
                 ordered_other.sort(reverse=True)
@@ -116,9 +116,9 @@ def get_data_to_csv_plot3(targets,competitors,lall,list1,list2):
     seq_length = 5
     kind = 'rmd'
 
-    f = csv.writer(open('./data-plot3.csv','wb'))
+    f = csv.writer(open('./ordered-data-plot4.csv','wb'))
     f.writerow(['runID','lambda','l','1st target', '2nd target', '3rd target', '4th target', '5th target', '6th target']+\
-               ['1st competitor', '2nd competitor', '3rd competitor', '4th competitor', '5th competitor' + '6th competitor'] +\
+               ['1st competitor', '2nd competitor', '3rd competitor', '4th competitor', '5th competitor','6th competitor'] +\
                ['lit lall', 'prag lall'] + ['other type'+str(z) for z in xrange(432-len(targets)-len(competitors)-len(lall))])
     for i in xrange(len(list1)):
         for j in xrange(len(list2)):
@@ -135,7 +135,7 @@ def get_data_to_csv_plot3(targets,competitors,lall,list1,list2):
                 ordered_competitors = [str(x) for x in ordered_competitors]
     
                 ordered_lall = row[lall].values.tolist()
-                ordered_lall = [str(x) for x in lall]
+                ordered_lall = [str(x) for x in ordered_lall]
     
                 ordered_other = row[other_types].values.tolist()
                 ordered_other.sort(reverse=True)
@@ -153,11 +153,11 @@ competitors = [225,235,255,270,325,330]
 lall = [0,216]
 list1 = [1,5,20]
 
-#get_data_to_csv_plot1(targets,competitors,lall,list1)
+get_data_to_csv_plot1(targets,competitors,lall,list1)
 
 list1 = [20]
 list2 = [1,15]
-#get_data_to_csv_plot2(targets,competitors,lall,list1,list2)
+get_data_to_csv_plot2(targets,competitors,lall,list1,list2)
 
 list1 = [1,5,20]
 list2 = [1,5,15]
