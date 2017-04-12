@@ -14,7 +14,7 @@ e$type = sapply(1:nrow(e), function(i) ifelse(strsplit(e$strategy[i], split = ".
                                               strsplit(e$strategy[i], split = ".", fixed = T)[[1]][2]))
                        
 
-f = e %>% filter(type != "other") %>% arrange(runID, lambda, type, - proportion) %>% group_by(runID, lambda, type) %>% mutate(rank = 1:n())
+f = e %>% filter(rank >= 6) %>% arrange(runID, lambda, type, - proportion) %>% group_by(runID, lambda, type) %>% mutate(rank = 1:n())
 
 plot.data = f %>% group_by(lambda, type, rank) %>%
   summarize(mean = mean(proportion),
@@ -25,6 +25,8 @@ plot.data = plot.data %>% mutate(strategy = paste0(type, rank))
 results.plot = ggplot(plot.data, aes(x = strategy, y = mean, fill = type)) + geom_bar(stat = "identity") +
   geom_errorbar(aes(ymin=bslo, ymax=bshi), width=0.5, position = "dodge") + facet_grid(. ~ lambda) + coord_flip()
 show(results.plot)
+ggsave("plots/results_summary_replication.pdf", results.plot, width = 10, height = 10)
+
 
 ## only mutation
 
@@ -35,7 +37,7 @@ e = melt(d, id.vars = c(1,2,3), variable.name = "strategy", value.name = "propor
 e$type = sapply(1:nrow(e), function(i) ifelse(strsplit(e$strategy[i], split = ".", fixed = T)[[1]][1] == "other", "other",
                                               strsplit(e$strategy[i], split = ".", fixed = T)[[1]][2]))
 
-f = e %>% filter(type != "other") %>% arrange(runID, lambda, l, type, - proportion) %>% 
+f = e %>% filter(rank >= 6) %>% arrange(runID, lambda, l, type, - proportion) %>% 
   group_by(runID, lambda, l, type) %>% mutate(rank = 1:n())
 
 plot.data = f %>% group_by(l, lambda, type, rank) %>%
@@ -47,6 +49,7 @@ plot.data = plot.data %>% mutate(strategy = paste0(type, rank))
 results.plot = ggplot(plot.data, aes(x = strategy, y = mean, fill = type)) + geom_bar(stat = "identity") +
   geom_errorbar(aes(ymin=bslo, ymax=bshi), width=0.5, position = "dodge") + facet_grid(l ~ lambda) + coord_flip()
 show(results.plot)
+ggsave("plots/results_summary_mutation.pdf", results.plot, width = 10, height = 10)
 
 ## mutation & replication
 
@@ -57,7 +60,7 @@ e = melt(d, id.vars = c(1,2,3), variable.name = "strategy", value.name = "propor
 e$type = sapply(1:nrow(e), function(i) ifelse(strsplit(e$strategy[i], split = ".", fixed = T)[[1]][1] == "other", "other",
                                               strsplit(e$strategy[i], split = ".", fixed = T)[[1]][2]))
 
-f = e %>% filter(type != "other") %>% arrange(runID, lambda, l, type, - proportion) %>% 
+f = e %>% filter(rank >= 6) %>% arrange(runID, lambda, l, type, - proportion) %>% 
   group_by(runID, lambda, l, type) %>% mutate(rank = 1:n())
 
 plot.data = f %>% group_by(l, lambda, type, rank) %>%
@@ -69,3 +72,4 @@ plot.data = plot.data %>% mutate(strategy = paste0(type, rank))
 results.plot = ggplot(plot.data, aes(x = strategy, y = mean, fill = type)) + geom_bar(stat = "identity") +
   geom_errorbar(aes(ymin=bslo, ymax=bshi), width=0.5, position = "dodge") + facet_grid(l ~ lambda) + coord_flip()
 show(results.plot)
+ggsave("plots/results_summary_combined.pdf", results.plot, width = 10, height = 10)
