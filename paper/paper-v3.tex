@@ -161,7 +161,7 @@ roots in pragmatics.
 
 If this majority view is correct, the question arises how such a division of labor between
 semantics and pragmatics could have evolved, why it would be so pervasive across natural
-languages and why it is that some expressions systematically draw from it while others semantically conventionalize. Models of language evolution abound. There are simulation-based models studying
+languages, and why it is that some expressions systematically draw from it while others semantically conventionalize. Models of language evolution abound. There are simulation-based models studying
 populations of communicating agents
 \citep{Hurford1989:Biological-Evol,Steels1995:A-Self-Organizi,LenaertsJansen2005:The-Evolutionar,SteelsBelpaeme2005:Coordinating-Pe,BaronchelliPuglisi2008:Cultural-route-,steels:2011,SpikeStadler2016:Minimal-Require}
 and there are mathematical models of language evolution, mostly coming from game theory
@@ -176,8 +176,8 @@ representations and pragmatic use. In contrast, we will here look at language us
 richer cognitive make-up.
 
 
-We spell out a model of the co-evolution of conventional meaning and pragmatic reasoning
-types. The objects of replication and selection are pairs consisting of a set of lexical
+We spell out a model of the co-evolution of conventional meaning and pragmatic reasoning.
+The objects of replication and selection are pairs consisting of a set of lexical
 meanings and a manner of pragmatic behavior. The latter are represented using probabilistic
 models of pragmatic language use
 \citep{frank+goodman:2012,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}. Replication
@@ -197,7 +197,7 @@ replicator dynamic \citep{TaylorJonker1978:Evolutionary-St}. Section~\ref{sec:mo
 this model.
 
 Section~\ref{sec:si-case-study} applies this model to a case study on scalar implicatures. We
-discuss a setting in which the majority view of underspecified lexical meanings and pragmatic
+discuss a setting in which the majority view of underspecified lexical meanings and systematic pragmatic
 enrichments emerges if selection and transmission infidelity are combined. In particular, we
 show that inductive learning biases of Bayesian learners that favor simpler lexical meanings
 can prevent the lexicalization of scalar inferences and lead to the emergence of Gricean-like
@@ -234,7 +234,7 @@ in][]{martinet:1962, horn:1984,jaeger+vRooij:2007,jaeger:2007,
 reinforcement, favor more communicatively efficient types of behavior, languages are driven
 towards semantic expressivity \citep[e.g.,][]{nowak+krakauer:1999,Skyrms2010:Signals}. But
 pressure towards communicative efficiency is not the only force that shapes
-language. Learnability is another as natural languages need to be learnable to survive their
+language. Learnability is another, as natural languages need to be learnable to survive their
 faithful transmission across generations. Furthermore, even small learning biases implicit in acquisition
 can build up and have quite striking effects on an evolving language in a process of iterated
 learning
@@ -293,7 +293,7 @@ iteration of the transmission bias encoded in $Q$. In this way, the process in
 iterated learning \citep{griffiths+kalish:2007}. 
 
 \begin{example}
-  Consider a simple coordination game. Agents are of two types: positive or negative. If
+  Consider a simple and abstract coordination game. Agents are of two types: positive or negative. If
   agents of different type play with each other, they obtain a payoff of 0. If negative meets
   negative, each receives a payoff of 1. If positive meets positive, they get a payoff of 2. A
   population state is completely characterized by the proportion $x$ of negatives. The fitness
@@ -477,7 +477,7 @@ of a lexicon and a pragmatic strategy of language use.
 Agents play signaling games, in which the speaker wants to communicate a world state $s$ with a
 message $m$ to a hearer who receives $m$ but does not know $s$
 \citep[e.g.][]{lewis:1969,Skyrms2010:Signals}. A lexicon associates each message with a
-(possibly fuzzy) set of states. A pragmatic type specifies a probabilistic speaker
+(possibly fuzzy) set of states. A pragmatic behavior specifies a probabilistic speaker
 rule (a probabilistic choice of message for each state) and a probabilistic hearer rule (a
 probabilistic choice of state for each message) given a lexicon. There are many ways of making these general
 notions more concrete. Here is what we will assume in the remainder of this paper.
@@ -575,7 +575,7 @@ By contrast, pragmatic hearers of level 1 have the following interpretative beha
     & \mygray{\ssome} & \mygray{\sall} \\
     \begin{block}{l[cc]}
       \mygray{\msome} & .59 & .41 \\
-      \mygray{\mall}  & 0.35 & 0.65 \\
+      \mygray{\mall}  & .35 & .65 \\
     \end{block}
   \end{blockarray} 
 \end{align*}
@@ -596,7 +596,7 @@ This is the outcome of reasoning about their level-$0$ speaker counterparts with
     \end{block}
   \end{blockarray} 
 \end{align*}
-With low $\lambda$ speakers choose true messages with more slack. Reasoning over this behavior therefore also results in a weaker association of messages with only true states in receivers, but also in a slightly stronger association of $\msome$ with $\ssome$ over $\sall$ for $\Llack$ users because $S_0(\msome | \ssome;\Llack) > S_0(\msome | \sall;\Llack)$. For $\lambda = 20$, there will be less slack in literal speaker behavior:
+With low $\lambda$ speakers choose true messages with more slack. Reasoning over this behavior therefore also results in a weaker association of messages with only true states in receivers, but also in a slightly stronger association of $\msome$ with $\ssome$ over $\sall$ for $\Llack$ users because they reason that $S_0(\msome | \ssome;\Llack) > S_0(\msome | \sall;\Llack)$. For $\lambda = 20$, there will be less slack in literal speaker behavior:
 \begin{align*}
   S_0(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
     & \mygray{\msome} & \mygray{\mall} \\
@@ -613,7 +613,7 @@ With low $\lambda$ speakers choose true messages with more slack. Reasoning over
     \end{block}
   \end{blockarray} 
 \end{align*}
-And accordingly less slack in pragmatic interpretation:
+And accordingly less slack in level $1$ pragmatic interpretation:
 \begin{align*}
   H_1(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
     & \mygray{\ssome} & \mygray{\sall} \\
@@ -647,7 +647,7 @@ Lastly, turning to types that have no bearing on the choices of hearers of level
     \end{block}
   \end{blockarray} 
 \end{align*}
-For $\lambda = 20$, pragmatic speaker behavior of level 1 is as follows:
+For $\lambda = 20$, pragmatic speaker behavior of level 1 is instead as follows:
 \begin{align*}
   S_1(\cdot \mid \cdot, \Lbound) & \approx \begin{blockarray}{lcc}
     & \mygray{\msome} & \mygray{\mall} \\
@@ -774,7 +774,7 @@ matrix $Q$ of the replicator mutator dynamic in (\ref{eq:RMD_discrete}) can then
 follows: $Q_{ji}$ is the probability that a learner acquires type $i$ when learning from an
 agent of type $j$. The learner observes a length-$k$ sequence $d$ of state-message pairs, but
 the probability $P(d \mid t_j)$ with which sequence $d = \tuple{\tuple{s_1,m_1},\dots , \tuple{s_k,m_k}}$ is observed depends on type $j$'s
-behavior:
+linguistic behavior:
 \begin{align*}
   P(d = \tuple{\tuple{s_1,m_1},\dots , \tuple{s_k,m_k}} \mid t_j) = \prod_{i = 1}^k S_{n_j}(m_i
   \mid s_i; L_{j})\,,
@@ -814,11 +814,11 @@ fidelity by which it is inferred by new generations of learners. The learners' t
 consequently to perform a joint inference over types of linguistic behavior and lexical
 meaning.
 
-The model has three parameters: $\lambda$ regulates the degree to which pragmatic speakers
+The model has three parameters: $\lambda$ regulates the degree to which speakers
 choose messages that appear optimal from the point of view of the agent's own utility measure
 (which may be unrelated to the expected utility when communicating with a given population);
 $k$ is length of observations for each language learner; $l$ regulates where the learners'
-inference behavior lies on a spectrum from probability matching to choice of the most likely
+inference behavior lies on a spectrum from probability matching to acquisition of the most likely
 parent type.
 
 

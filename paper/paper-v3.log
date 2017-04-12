@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.3)  12 APR 2017 16:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.3)  12 APR 2017 19:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -825,17 +825,7 @@ Overfull \hbox (5.48322pt too wide) in paragraph at lines 345--346
  [][] 
  []
 
-[5] [6] [7]
-Overfull \hbox (26.519pt too wide) in paragraph at lines 598--600
-\OT1/qtm/m/n/10.95 slightly stronger as-so-ci-a-tion of $\OML/cmm/m/it/10.95 m[
-]$ \OT1/qtm/m/n/10.95 with $\OML/cmm/m/it/10.95 s[]$ \OT1/qtm/m/n/10.95 over $\
-OML/cmm/m/it/10.95 s[]$ \OT1/qtm/m/n/10.95 for $\OML/cmm/m/it/10.95 L[]$ \OT1/q
-tm/m/n/10.95 users be-cause $\OML/cmm/m/it/10.95 S[]\OT1/cmr/m/n/10.95 (\OML/cm
-m/m/it/10.95 m[]\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 s[]\OT1/cmr/m/n/10.95 
-; \OML/cmm/m/it/10.95 L[]\OT1/cmr/m/n/10.95 ) \OML/cmm/m/it/10.95 >
- []
-
-[8]
+[5] [6] [7] [8]
 LaTeX Font Info:    Try loading font information for OMS+qtm on input line 697.
 
 LaTeX Font Info:    No file OMSqtm.fd. on input line 697.
@@ -885,7 +875,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  24855 strings out of 493089
  615230 string characters out of 6134843
- 759285 words of memory out of 5000000
+ 758204 words of memory out of 5000000
  27875 multiletter control sequences out of 15000+600000
  51048 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -905,7 +895,7 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/tex
 mf-dist/fonts/type1/public/tex-gyre/qtmb.pfb></usr/local/texlive/2015/texmf-dis
 t/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2015/texmf-dist/font
 s/type1/public/tex-gyre/qtmri.pfb>
-Output written on paper-v3.pdf (31 pages, 622811 bytes).
+Output written on paper-v3.pdf (31 pages, 622913 bytes).
 PDF statistics:
  174 PDF objects out of 1000 (max. 8388607)
  117 compressed objects within 2 object streams
