@@ -50,7 +50,7 @@ show(results.plot)
 
 ## mutation & replication
 
-d = read.csv('ordered-data-plot3.csv') 
+d = read.csv('ordered-data-plot4.csv') 
 e = melt(d, id.vars = c(1,2,3), variable.name = "strategy", value.name = "proportion") %>%
   mutate(strategy = as.character(strategy))
 
