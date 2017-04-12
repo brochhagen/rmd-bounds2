@@ -656,14 +656,19 @@ def get_subfigs_hist_replication(type_list,list1,list2):
     plt.bar(X,Y1_large,color=colors,alpha=al)
     plt.axhline(y=df1_majority,linestyle='dashed')
     plt.text(0.05,df1_majority-0.0015,'majority type',color='royalblue',fontweight='extra bold')
+    ax1_large.tick_params(axis='both', which='major', labelsize=17)
+
 
     ax2_large = plt.subplot(1,3,2);
     plt.bar(X,Y2_large,color=colors,alpha=al)
     plt.axhline(y=df2_majority,linestyle='dashed')
+    ax2_large.tick_params(axis='both', which='major', labelsize=17)
+
 
     ax3_large = plt.subplot(1,3,3);
     plt.bar(X,Y3_large,color=colors,alpha=al)
     plt.axhline(y=df3_majority,linestyle='dashed')#, color=sns.color_palette()[1],linestyle ='dashed', markevery=10)
+    ax3_large.tick_params(axis='both', which='major', labelsize=17)
 
 #
     #Layout
@@ -681,13 +686,17 @@ def get_subfigs_hist_replication(type_list,list1,list2):
     p2 = patches.Rectangle((0, 0), 1, 1, fc="darkorange",alpha=al)
     p3 = patches.Rectangle((0, 0), 1, 1, fc="red",alpha=al)
 
-    ax1_large.legend([p1, p2, p3], ['Target types','Competitor types','prag. L-all'],loc='best',prop={'size':14})
+    ax1_large.legend([p1, p2, p3], ['Target types','Competitor types','prag. L-all'],loc=(0.0340644,0.69441),prop={'size':14})
 
     ax2_large.set_xlabel(r'$\lambda$ = '+str(list1[1]),fontsize=25)
     ax2_large.xaxis.set_label_position('top')
+#    ax2_large.text(5,-0.015,'Types',fontsize=20)
 
     ax3_large.set_xlabel(r'$\lambda$ = '+str(list1[2]),fontsize=25)
     ax3_large.xaxis.set_label_position('top')
+
+
+
 
     plt.tight_layout()
     plt.show()
@@ -842,9 +851,13 @@ def get_subfigs_hist_mutation(type_list,list1,list2):
     p3 = patches.Rectangle((0, 0), 1, 1, fc="red",alpha=al)
 
     ax1_large.legend([p1, p2, p3], ['Target types','Competitor types','prag. L-all'],loc='best',prop={'size':14})
+    ax1_large.tick_params(axis='both', which='major', labelsize=17)
+
 
     ax2_large.set_xlabel('l = '+str(list2[1]),fontsize=25)
     ax2_large.xaxis.set_label_position('top')
+    ax2_large.tick_params(axis='both', which='major', labelsize=17)
+
 #    ax2_large.set_ylim(0,0.75)
 
 
@@ -969,11 +982,11 @@ types = [231,236,291,306,326,336] + [225,235,255,270,325,330] + [216]
 
 
 #Plot 2:
-#list1 = [20]
-#list2 = [1,15]
-#get_subfigs_hist_mutation(types,list1,list2)
+list1 = [20]
+list2 = [1,15]
+get_subfigs_hist_mutation(types,list1,list2)
 
 #Plot 3:
-list1 = [1,5,20]
-list2 = [1,5,15]
-get_subfigs_hist_rmd(types,list1,list2)
+#list1 = [1,5,20]
+#list2 = [1,5,15]
+#get_subfigs_hist_rmd(types,list1,list2)

@@ -1099,18 +1099,15 @@ probabilities.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth,height=8cm, keepaspectratio]{./plots/fig1-onlyr}
-\caption{Stacked proportion of target types, in shades of green, and majority types, when other
-  than a target type, in $5$ independent populations after $50$ generations under only a
-  pressure for communicative success. The right-most plots zoom in on only the proportion of
-  target types.}
+\includegraphics[width=\textwidth,height=8cm, keepaspectratio]{./plots/alt-fig1-onlyr}
+\caption{Proportion of target types, pragmatic competitor types, pragmatic $\Lall$, and the population's majority type, in representative populations after $50$ generations under only a
+  pressure for communicative success.}
 \label{fig:only-R}
 \end{figure}
 
 As expected, selection based on communicative success is sensitive to $\lambda$ since $\lambda$
 influences signaling behavior, which in turn determines communicative success. This is
-showcased in Figure \ref{fig:only-R}, which depicts the proportion of target types in $5$
-independent populations after $50$ replicator steps. The plot also shows the proportion of the
+showcased in Figure \ref{fig:only-R}, which shows the proportion of target types, pragmatic competitor types and pragmatic $\Lall$ in a representative population after $50$ replicator steps. The plot also indicates the proportion of the
 \emph{majority type}, i.e., the type with the highest proportion in the final population. With
 low $\lambda$ many types have very similar behavior, so that evolutionary selection lacks grip
 and becomes very slow. The result is a very long transition with near stagnancy in a rather
@@ -1130,9 +1127,8 @@ mean proportion of about $.48$ taken together.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/fig2-onlym-pr}
-\caption{Stacked proportion of target types, in shades of green, and majority types, when other
-  than a target type, in $5$ independent populations after $50$ generations under only a
+\includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/alt-fig2-onlym-pr}
+\caption{Proportion of target types, pragmatic competitor types, pragmatic $\Lall$, and population's majority type in representative populations after $50$ generations under only a
   pressure for learnability ($\lambda = 20, k = 5$). The types' prior is shown in the
   right-most plot. The top-most groupings correspond to types, literal and pragmatic, with
   lexica of the kind of $\Llack$, $\Lbound$, and $\Lall$.}
@@ -1179,8 +1175,8 @@ propagation of a single target type across the population.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/fig3-r+m}
-\caption{Stacked proportion of target types, in shades of green, and majority types, when other than target type, in $5$ independent populations after $50$ generations under both pressures ($k = 5$).}
+\includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/alt-fig3-r+m}
+\caption{Proportion of target types, pragmatic competitor types, pragmatic $\Lall$, and the population's majority type in representative populations after $50$ generations under both pressures ($k = 5$).}
 \label{fig:rmd}
 \end{figure}
 
@@ -1198,7 +1194,7 @@ As before, low $\lambda$ and $l$ lead to the prevalence of communicatively subop
 that are a priori favored, such as $\Lall$. An increase in $\lambda$ leads to the selection of
 target types but does not lead to monomorphic populations if learners sample from the
 posterior. Finally, a combination of high $\lambda$ and $l$ leads to increasing proportions of
-a single majority target type. This joint influence is summarized in Figure \ref{fig:diff}, which shows the mean difference between the highest target type and the highest proportion of a type of a different kind in $1000$ independent populations across $\lambda$ and $l$ values. Higher values of $\lambda$ and $l$ increase the prevalence of a single target type, whereas lower values lead to less pronounced differences with a valley resulting from low $\lambda$ and high $l$ (cf. Figure \ref{fig:rmd} with $\lambda = 1$ and $l=15$). 
+a single majority target type. This joint influence is summarized in Figure \ref{fig:diff}, which shows the mean difference between the highest target type and the highest proportion of a type of a different kind in $1000$ independent populations across $\lambda$ and $l$ values. Higher values of $\lambda$ and $l$ increase the prevalence of a single target type, whereas lower values lead to less pronounced differences, with a valley resulting from low $\lambda$ and high $l$ (cf. Figure \ref{fig:rmd} with $\lambda = 1$ and $l=15$). 
 
 \begin{figure}[t]
 \centering
@@ -1377,47 +1373,7 @@ division of labor between semantics and pragmatics.
 \bibliographystyle{chicago}
 \bibliography{./bounds-rmd}
 
-% \newpage
 
- \appendix
-\newpage
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\textwidth,height=8cm, keepaspectratio]{./plots/alt-fig1-onlyr}
-\caption{Representative population after $50$ generations under only a
-  pressure for communicative success. The right-most plots zoom in on only the proportion of
-  target types.}
-\label{fig:only-R}
-\end{figure}
-
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/alt-fig2-onlym-pr}
-\caption{Representative population after $50$ generations under only a
-  pressure for learnability ($\lambda = 20, k = 5$). The types' prior is shown in the
-  right-most plot. The top-most groupings correspond to types, literal and pragmatic, with
-  lexica of the kind of $\Llack$, $\Lbound$, and $\Lall$.}
-\label{fig:only-M}
-\end{figure}
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=1\textwidth,height=8cm,keepaspectratio]{./plots/alt-fig3-r+m}
-\caption{Representative population after $50$ generations under both pressures ($k = 5$).}
-\label{fig:rmd}
-\end{figure}
-
-
-
-% \begin{figure}[h!]
-% \centering
-% \includegraphics[width=1\textwidth,height=7.5cm,keepaspectratio]{./plots/fig4-incumbents-difference}
-% \caption{Difference between mean proportion of highest pragmatic $\Llack$ type and highest
-%   other type in $1000$ independent populations after $50$ generations under both pressures ($k
-%   = 5$).}
-% \end{figure}
 
 
 \end{document}
