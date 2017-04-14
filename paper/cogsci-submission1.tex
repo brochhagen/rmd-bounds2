@@ -1,6 +1,6 @@
 \documentclass[a4paper, 11pt]{article}
 
-\usepackage{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{natbib}
 \bibpunct[:]{(}{)}{,}{a}{}{;}
 
@@ -90,8 +90,8 @@
 
 %--------------------
 %
-%\usepackage{setspace}
-%\onehalfspacing
+\usepackage{setspace}
+\doublespacing
 %
 %-------------------
 
@@ -292,32 +292,6 @@ iteration of the transmission bias encoded in $Q$. In this way, the process in
 (\ref{eq:RMD_discrete}), equivalently (\ref{eq:RMD_discrete_recast}), contains a model of
 iterated learning \citep{griffiths+kalish:2007}. 
 
-\begin{example}
-  Consider a simple and abstract coordination game. Agents are of two types: positive or negative. If
-  agents of different type play with each other, they obtain a payoff of 0. If negative meets
-  negative, each receives a payoff of 1. If positive meets positive, they get a payoff of 2. A
-  population state is completely characterized by the proportion $x$ of negatives. The fitness
-  of negatives in population state $x$ is $f_n(x) = x$, that of positives is $f_p(x) = 2-2x$.
-  The average fitness is $\Phi(x) = x f_n(x) + (1-x) f_p(x) = 3x^2 - 4x + 2$. Without mutation,
-  the replicator dynamic will then update $x$ to $RD(x) = \nicefrac{f(x)x}{\Phi(x)} = \nicefrac{x^2}{\Phi(x)}$. The update
-  function $RD(x)$ of the replicator step is plotted in Figure~\ref{fig:Updates_RMS} as the
-  blue line. Rest points, for which $RD(x)=x$, are at $x=0$, $x=1$ and $x= \nicefrac{2}{3}$.
-  The former are attractors as nearby points converge to them. Points near $x=\nicefrac{2}{3}$
-  move towards 0 or 1. This is schematically pictured in the topmost phase portrait in
-  Figure~\ref{fig:Phase_RD}.
-
-  Adding mutation changes the dynamic and its rest points. Let us assume that $Q_{ji} = .9$
-  when $j=i$. The update effect of mutation alone is $M(x) = .9 x + .1 (1-x) = .8x + .1$ and is
-  plotted as the linear green line in Figure~\ref{fig:Updates_RMS}. It has only one stable rest
-  point at $x = 0.5$ (see Figure~\ref{fig:Phase_RD}). If we first take the replicator step and
-  then the mutation step in sequence, we obtain the replicator mutator dynamic
-  $RMD(x) = M(RD(x)) = \nicefrac{.9x^2 - .2x +.2}{3x^2 - 4x + 2}$, which is plotted in red in
-  Figure~\ref{fig:Updates_RMS}. The rest points are at $x=.121$, $x=.903$ and $x=.609$. The
-  former two are attractors (see Figure~\ref{fig:Phase_RD}).
-\end{example}
-
-
-
 \begin{figure}[t]
   \centering
   %% notice that the figure is hacked, because somehow the curve does not come out right under
@@ -452,9 +426,36 @@ iterated learning \citep{griffiths+kalish:2007}.
   \label{fig:Example_RMD}
 \end{figure}
 
+\begin{example}
+  Consider a simple and abstract coordination game. Agents are of two types: positive or negative. If
+  agents of different type play with each other, they obtain a payoff of 0. If negative meets
+  negative, each receives a payoff of 1. If positive meets positive, they get a payoff of 2. A
+  population state is completely characterized by the proportion $x$ of negatives. The fitness
+  of negatives in population state $x$ is $f_n(x) = x$, that of positives is $f_p(x) = 2-2x$.
+  The average fitness is $\Phi(x) = x f_n(x) + (1-x) f_p(x) = 3x^2 - 4x + 2$. Without mutation,
+  the replicator dynamic will then update $x$ to $RD(x) = \nicefrac{f(x)x}{\Phi(x)} = \nicefrac{x^2}{\Phi(x)}$. The update
+  function $RD(x)$ of the replicator step is plotted in Fig.~\ref{fig:Updates_RMS} as the
+  blue line. Rest points, for which $RD(x)=x$, are at $x=0$, $x=1$ and $x= \nicefrac{2}{3}$.
+  The former are attractors as nearby points converge to them. Points near $x=\nicefrac{2}{3}$
+  move towards 0 or 1. This is schematically pictured in the topmost phase portrait in
+  Fig.~\ref{fig:Phase_RD}.
+
+  Adding mutation changes the dynamic and its rest points. Let us assume that $Q_{ji} = .9$
+  when $j=i$. The update effect of mutation alone is $M(x) = .9 x + .1 (1-x) = .8x + .1$ and is
+  plotted as the linear green line in Fig.~\ref{fig:Updates_RMS}. It has only one stable rest
+  point at $x = 0.5$ (see Fig.~\ref{fig:Phase_RD}). If we first take the replicator step and
+  then the mutation step in sequence, we obtain the replicator mutator dynamic
+  $RMD(x) = M(RD(x)) = \nicefrac{.9x^2 - .2x +.2}{3x^2 - 4x + 2}$, which is plotted in red in
+  Fig.~\ref{fig:Updates_RMS}. The rest points are at $x=.121$, $x=.903$ and $x=.609$. The
+  former two are attractors (see Fig.~\ref{fig:Phase_RD}).
+\end{example}
+
+
+
 
 \subsection{Fitness \& learnability of lexical meanings \& pragmatic strategies}
 \label{sec:fitn--learn}
+
 
 Moving beyond an abstract example, our goal is to apply the RMD to investigate the co-evolution
 of lexical representations and pragmatic behavior. To do so, we need to fix three things: (i) what the
@@ -1107,13 +1108,13 @@ probabilities.
 
 Selection based on communicative success is sensitive to $\lambda$ since $\lambda$
 influences signaling behavior, which in turn determines communicative success. This is
-showcased in Figure \ref{fig:only-R}, which shows the proportion of target types, pragmatic competitor types and pragmatic $\Lall$ in a representative population after $50$ replicator steps. The plot also indicates the proportion of the
+showcased in Fig. \ref{fig:only-R}, which shows the proportion of target types, pragmatic competitor types and pragmatic $\Lall$ in a representative population after $50$ replicator steps. The plot also indicates the proportion of the
 \emph{majority type}, i.e., the type with the highest proportion in the final population. With
 low $\lambda$ many types have very similar behavior, so that evolutionary selection lacks grip
 and becomes very slow. The result is a very long transition with near stagnancy in a rather
 homogeneous population with many types. Conversely, higher $\lambda$ promotes 
 less-stochastic pragmatic behavior, widening the gap in expressivity between types and
-promoting more homogeneous populations. As suggested by Figure \ref{fig:only-R}, the majority
+promoting more homogeneous populations. As suggested by Fig. \ref{fig:only-R}, the majority
 in most populations is not one of the six pragmatic $\Llack$-style types. That is, a pressure
 only for communicative success does not lead to a prevalence of target types under any
 $\lambda$-value. For instance, with $\lambda = 20$ $1000$ independent populations only had $11$
@@ -1137,7 +1138,7 @@ mean proportion of about $.48$ taken together.
 
 The effect of iterated learning without a pressure for communicative success using either posterior
 sampling ($l = 1$) or a stronger tendency towards posterior maximization ($l = 15$) is shown in
-Figure \ref{fig:only-M} together with the prior over types. The prior shows that while users of
+Fig.\ref{fig:only-M} together with the prior over types. The prior shows that while users of
 $\Llack$ are not the most favored by the inductive bias (compared, e.g., to $\Lall$) they are
 nevertheless more advantaged than others, such as $\Lbound$, in virtue of the relatively simple
 semantics they conventionalize (see Section~\ref{sec:an-induct-learn}). Crucially, $\Llack$
@@ -1151,7 +1152,7 @@ form-meaning mapping. As a consequence, a stronger propensity to maximize the po
 increases their proportion in the population.
 
 However, in contrast to a pressure only for communicative success with high $\lambda$ (see
-Figure~\ref{fig:only-R}), learnability alone does not succeed in selecting for a single
+Fig.~\ref{fig:only-R}), learnability alone does not succeed in selecting for a single
 prevalent type. Indeed, all six target types tend to coexist at roughly equal proportion. Each
 is passed on to the next generation with the same faithfulness and, differently from a pressure
 for communicative success, they do not stand in competition with each other. In $1000$
@@ -1180,7 +1181,7 @@ propagation of a single target type across the population.
 \label{fig:rmd}
 \end{figure}
 
-Figure \ref{fig:rmd} illustrates the combined effects of both pressures for a sample of
+Fig. \ref{fig:rmd} illustrates the combined effects of both pressures for a sample of
 $\lambda$ and $l$ values. These results show that an inductive learning bias for simpler
 semantics in tandem with functional pressure can lead to the selection of a single target
 type, and so to a division of labor between semantics and pragmatics.
@@ -1194,7 +1195,7 @@ As before, low $\lambda$ and $l$ lead to the prevalence of communicatively subop
 that are a priori favored, such as $\Lall$. An increase in $\lambda$ leads to the selection of
 target types but does not lead to monomorphic populations if learners sample from the
 posterior. Finally, a combination of high $\lambda$ and $l$ leads to increasing proportions of
-a single majority target type. This joint influence is summarized in Figure \ref{fig:diff}, which shows the mean difference between the highest target type and the highest proportion of a type of a different kind in $1000$ independent populations across $\lambda$ and $l$ values. Higher values of $\lambda$ and $l$ increase the prevalence of a single target type, whereas lower values lead to less pronounced differences, with a valley resulting from low $\lambda$ and high $l$ (cf. Figure \ref{fig:rmd} with $\lambda = 1$ and $l=15$). 
+a single majority target type. This joint influence is summarized in Fig. \ref{fig:diff}, which shows the mean difference between the highest target type and the highest proportion of a type of a different kind in $1000$ independent populations across $\lambda$ and $l$ values. Higher values of $\lambda$ and $l$ increase the prevalence of a single target type, whereas lower values lead to less pronounced differences, with a valley resulting from low $\lambda$ and high $l$ (cf. Fig. \ref{fig:rmd} with $\lambda = 1$ and $l=15$). 
 
 \begin{figure}[t]
 \centering
@@ -1249,8 +1250,8 @@ acquisition of functionally defective languages, as showcased by $\Lall$
 (cf. \citealt{kirby+etal:2008,silvey+etal:2014}, and see \citealt{fay+etal:2013} for review of
 laboratory results). Second and more importantly, types may be equally expressive but their
 performance as means of information transfer crucially depends not only on themselves but on
-the population they find themselves in (cf. the competition of target types in Figure
-\ref{fig:rmd} and their lack of competition in Figure \ref{fig:only-M}). That is, we contend
+the population they find themselves in (cf. the competition of target types in Fig. 
+\ref{fig:rmd} and their lack of competition in Fig. \ref{fig:only-M}). That is, we contend
 that having an expressive lexicon that generates learnable data does not in itself capture a
 type's arguably central communicative function of transferring information to peers. Taking communication
 into consideration in turn allows the model to be responsive to the task for which language is learned. 

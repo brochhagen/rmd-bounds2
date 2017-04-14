@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.3)  13 APR 2017 12:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.3)  14 APR 2017 13:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**paper-v3.tex
-(./paper-v3.tex
+**cogsci-submission1.tex
+(./cogsci-submission1.tex
 LaTeX2e <2015/01/01>
 Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
@@ -700,8 +700,16 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 ))))
-(./paper-v3.aux)
-\openout1 = `paper-v3.aux'.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+LaTeX Font Info:    Try loading font information for OT1+qtm on input line 94.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tex-gyre/ot1qtm.fd
+File: ot1qtm.fd 2009/09/25 v1.2 font definition file for OT1/qtm
+)
+(./cogsci-submission1.aux)
+\openout1 = `cogsci-submission1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
 LaTeX Font Info:    ... okay on input line 108.
@@ -715,12 +723,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 108.
 LaTeX Font Info:    ... okay on input line 108.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 108.
 LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Try loading font information for OT1+qtm on input line 108.
 
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/tex-gyre/ot1qtm.fd
-File: ot1qtm.fd 2009/09/25 v1.2 font definition file for OT1/qtm
-)
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -729,15 +732,15 @@ File: ot1qtm.fd 2009/09/25 v1.2 font definition file for OT1/qtm
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(89.62709pt, 418.25368pt, 89.6271pt)
-* v-part:(T,H,B)=(101.40665pt, 591.5302pt, 152.11pt)
+* h-part:(L,W,R)=(72.26999pt, 452.9679pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 700.50687pt, 72.26999pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=418.25368pt
-* \textheight=591.5302pt
-* \oddsidemargin=17.3571pt
-* \evensidemargin=17.3571pt
-* \topmargin=-7.86334pt
+* \textwidth=452.9679pt
+* \textheight=700.50687pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=11.0pt
@@ -820,66 +823,72 @@ LaTeX Warning: No \author given.
 [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2] [3] [4]
-Overfull \hbox (5.48322pt too wide) in paragraph at lines 345--346
- [][] 
+[2] [3] [4] [5]
+Overfull \hbox (17.37108pt too wide) in paragraph at lines 486--498
+[]\OT1/qtm/m/n/10.95 Lexica cod-ify the truth-conditions of ex-pres-sions. A co
+n-ve-nient way to rep-re-sent lex-ica is by $\OT1/cmr/m/n/10.95 ([] \OML/cmm/m/
+it/10.95 ; []\OT1/cmr/m/n/10.95 )$\OT1/qtm/m/n/10.95 -
  []
 
-[5] [6] [7] [8]
-LaTeX Font Info:    Try loading font information for OMS+qtm on input line 697.
+[6] [7] [8]
+LaTeX Font Info:    Try loading font information for OMS+qtm on input line 698.
 
-LaTeX Font Info:    No file OMSqtm.fd. on input line 697.
+LaTeX Font Info:    No file OMSqtm.fd. on input line 698.
 
 
 LaTeX Font Warning: Font shape `OMS/qtm/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textsection' on input line 697.
+(Font)              for symbol `textsection' on input line 698.
 
-[9] [10] [11] [12] [13] [14] [15]
-<./plots/alt-fig1-onlyr.png, id=67, 1037.7972pt x 591.8913pt>
+[9] [10] [11] [12] [13] [14] [15] [16]
+<./plots/alt-fig1-onlyr.png, id=70, 1037.7972pt x 591.8913pt>
 File: ./plots/alt-fig1-onlyr.png Graphic file (type png)
 
 <use ./plots/alt-fig1-onlyr.png>
-Package pdftex.def Info: ./plots/alt-fig1-onlyr.png used on input line 1102.
+Package pdftex.def Info: ./plots/alt-fig1-onlyr.png used on input line 1103.
 (pdftex.def)             Requested size: 399.10184pt x 227.62144pt.
- [16]
-<./plots/alt-fig2-onlym-pr.png, id=72, 1037.7972pt x 591.8913pt>
+ [17 <./plots/alt-fig1-onlyr.png>]
+<./plots/alt-fig2-onlym-pr.png, id=76, 1037.7972pt x 591.8913pt>
 File: ./plots/alt-fig2-onlym-pr.png Graphic file (type png)
 
 <use ./plots/alt-fig2-onlym-pr.png>
-Package pdftex.def Info: ./plots/alt-fig2-onlym-pr.png used on input line 1130.
+Package pdftex.def Info: ./plots/alt-fig2-onlym-pr.png used on input line 1131.
 
 (pdftex.def)             Requested size: 399.10184pt x 227.62144pt.
- [17 <./plots/alt-fig1-onlyr.png>] [18 <./plots/alt-fig2-onlym-pr.png>]
+ [18 <./plots/alt-fig2-onlym-pr.png>]
 <./plots/alt-fig3-r+m.png, id=81, 925.056pt x 698.1282pt>
 File: ./plots/alt-fig3-r+m.png Graphic file (type png)
 
 <use ./plots/alt-fig3-r+m.png>
-Package pdftex.def Info: ./plots/alt-fig3-r+m.png used on input line 1178.
+Package pdftex.def Info: ./plots/alt-fig3-r+m.png used on input line 1179.
 (pdftex.def)             Requested size: 301.59947pt x 227.61334pt.
- [19 <./plots/alt-fig3-r+m.png>]
-<./plots/fig4-3d-incumbents-difference.png, id=87, 925.056pt x 698.1282pt>
+ [19]
+<./plots/fig4-3d-incumbents-difference.png, id=86, 925.056pt x 698.1282pt>
 File: ./plots/fig4-3d-incumbents-difference.png Graphic file (type png)
 
 <use ./plots/fig4-3d-incumbents-difference.png>
 Package pdftex.def Info: ./plots/fig4-3d-incumbents-difference.png used on inpu
-t line 1201.
+t line 1202.
 (pdftex.def)             Requested size: 377.00287pt x 284.51935pt.
- [20 <./plots/fig4-3d-incumbents-difference.png>] [21] [22] [23] (./paper-v3.bb
-l [24] [25] [26] [27] [28]
-[29] [30]) [31] (./paper-v3.aux)
+ [20 <./plots/alt-fig3-r+m.png>] [21 <./plots/fig4-3d-incumbents-difference.png
+>] [22] [23] [24]
+(./cogsci-submission1.bbl [25] [26] [27] [28] [29] [30]) [31]
+(./cogsci-submission1.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 24855 strings out of 493089
- 615230 string characters out of 6134843
- 758204 words of memory out of 5000000
- 27875 multiletter control sequences out of 15000+600000
+ 24885 strings out of 493089
+ 615896 string characters out of 6134843
+ 757521 words of memory out of 5000000
+ 27901 multiletter control sequences out of 15000+600000
  51048 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,21n,77p,846b,2264s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,21n,77p,856b,2264s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/tex-gyre/q-rm.enc}</usr/l
 ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/lo
 cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/loc
@@ -895,7 +904,7 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/tex
 mf-dist/fonts/type1/public/tex-gyre/qtmb.pfb></usr/local/texlive/2015/texmf-dis
 t/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2015/texmf-dist/font
 s/type1/public/tex-gyre/qtmri.pfb>
-Output written on paper-v3.pdf (31 pages, 622792 bytes).
+Output written on cogsci-submission1.pdf (31 pages, 623332 bytes).
 PDF statistics:
  174 PDF objects out of 1000 (max. 8388607)
  117 compressed objects within 2 object streams
