@@ -5,7 +5,7 @@ from player import LiteralPlayer, GriceanPlayer
 import numpy as np
 import matplotlib.pyplot as plt
 from itertools import product, combinations
-import seaborn as sns
+#import seaborn as sns
 
 lexica = [np.array([[1.,0.],[0.,1.]]),np.array([[1.,0.],[1.,1.]])]
 
@@ -394,7 +394,7 @@ def plot_phase_portraits(lam,bias_para,post_para,k):
     plt.show()
 
 
-#plot_phase_portraits(1,2,1,5)
+#plot_phase_portraits(20,2,10,5)
 
 def simple_plot(lam,bias_para,post_para,k):
     typeList = [LiteralPlayer(lam,lex) for lex in lexica] + [GriceanPlayer(1,lam,lex) for lex in lexica]
@@ -480,7 +480,7 @@ def simple_plot(lam,bias_para,post_para,k):
     plt.tight_layout()
     plt.show()
 
-#simple_plot(20,2,10,5)
+simple_plot(1,2,1,5)
 
 
         

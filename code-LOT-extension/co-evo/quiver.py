@@ -6,14 +6,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 from itertools import product, combinations
 
-lam = 20
-bias_para = 2
-k = 5
-post_para = 10
+#lam = 20
+#bias_para = 2
+#k = 5
+#post_para = 10
 
 
-lexica = [np.array([[1.,0.],[0.,1.]]),np.array([[1.,0.],[1.,1.]])]
-types = [LiteralPlayer(lam,lex) for lex in lexica] + [GriceanPlayer(1,lam,lex) for lex in lexica]
 
 def normalize(m):
     return m / m.sum(axis=1)[:, np.newaxis]
@@ -43,7 +41,7 @@ def get_likelihood(obs,likelihoods):
     return out
 
 
-def get_q(lexica_prior,learning_parameter,k):
+def get_q(lexica_prior,learning_parameter,k,types):
     likelihoods = [i.sender_matrix for i in types]
     atomic_obs = [0,1,2,3] #0,1 upper-row; 2,3 are lower row
     D = list(product(atomic_obs,repeat=k))  
@@ -66,12 +64,12 @@ def learning_prior(types,c):
             out[i] = 1*c
     return out / np.sum(out)
 
-def rmd(p,u,q):
+def rmd(p,u,q,types):
     pPrime = p * [np.sum(u[t,] * p)  for t in xrange(len(types))]
     pPrime = pPrime / np.sum(pPrime)
     return np.dot(pPrime, q)
 #
-def rep(p,u):
+def rep(p,u,types):
     pPrime = p * [np.sum(u[t,] * p) for t in xrange(len(types))]
     return pPrime / np.sum(pPrime)
 
@@ -80,9 +78,7 @@ def mut(p,q):
 
 
 
-lexica_prior = learning_prior(types,bias_para)
-q = get_q(lexica_prior,post_para,k)
-u = get_u(types)
+
 
 
 def coords_x1(edge,pops):
@@ -118,91 +114,126 @@ def coords_y2(edge,pops):
     return [u,v]
 
 
-#def quiver_plot(lam,bias_para,post_para,k):
-fig,axs = plt.subplots(ncols=2,nrows=2,sharex=True,sharey=True)#,sharey=True,sharex=True)
+def quiver_plot(lam,bias_para,post_para,k):
+    lexica = [np.array([[1.,0.],[0.,1.]]),np.array([[1.,0.],[1.,1.]])]
+    types = [LiteralPlayer(lam,lex) for lex in lexica] + [GriceanPlayer(1,lam,lex) for lex in lexica]
+    lexica_prior = learning_prior(types,bias_para)
+    q = get_q(lexica_prior,post_para,k,types)
+    u = get_u(types)
 
-edge_x1 = np.linspace(0,1,22)
-edge_x2 = np.linspace(0,1,22)
-edge_y1 = np.linspace(0,1,22)
-edge_y2 = np.linspace(0,1,22)
-
-rep_x1,rep_x2,rep_y1,rep_y2 = [], [],[],[]
-mut_x1,mut_x2,mut_y1,mut_y2 = [], [],[],[]
-rmd_x1,rmd_x2,rmd_y1,rmd_y2 = [], [],[],[]
-
-for i in xrange(len(edge_x1)):
-    pop_x1 = np.zeros(4)
-    pop_x1[2], pop_x1[0] = edge_x1[i], 1-edge_x1[i]
-    rep_x1.append(rep(pop_x1,u))
-    mut_x1.append(mut(pop_x1,q))
-    rmd_x1.append(rmd(pop_x1,u,q))
-    rep_tip, mut_tip, rmd_tip = coords_x1(edge_x1,rep_x1), coords_x1(edge_x1,mut_x1), coords_x1(edge_x1,rmd_x1)
-    rep_x1_u, rep_x1_v = rep_tip[0], rep_tip[1]
-    mut_x1_u, mut_x1_v = mut_tip[0], mut_tip[1]
-    rmd_x1_u, rmd_x1_v = rmd_tip[0], rmd_tip[1]
+    fig,axs = plt.subplots(ncols=2,nrows=2,sharex=True,sharey=True)#,sharey=True,sharex=True)
     
-    pop_x2 = np.zeros(4)
-    pop_x2[3], pop_x2[1] = edge_x1[i], 1-edge_x1[i]
-    rep_x2.append(rep(pop_x2,u))
-    mut_x2.append(mut(pop_x2,q))
-    rmd_x2.append(rmd(pop_x2,u,q))
-    rep_tip, mut_tip, rmd_tip = coords_x2(edge_x2,rep_x2), coords_x2(edge_x2,mut_x2), coords_x2(edge_x2,rmd_x2)
-    rep_x2_u, rep_x2_v = rep_tip[0], rep_tip[1]
-    mut_x2_u, mut_x2_v = mut_tip[0], mut_tip[1]
-    rmd_x2_u, rmd_x2_v = rmd_tip[0], rmd_tip[1]
+    edge_x1 = np.linspace(0,1,22)
+    edge_x2 = np.linspace(0,1,22)
+    edge_y1 = np.linspace(0,1,22)
+    edge_y2 = np.linspace(0,1,22)
+    
+    rep_x1,rep_x2,rep_y1,rep_y2 = [], [],[],[]
+    mut_x1,mut_x2,mut_y1,mut_y2 = [], [],[],[]
+    rmd_x1,rmd_x2,rmd_y1,rmd_y2 = [], [],[],[]
+    
+    for i in xrange(len(edge_x1)):
+        pop_x1 = np.zeros(4)
+        pop_x1[2], pop_x1[0] = edge_x1[i], 1-edge_x1[i]
+        rep_x1.append(rep(pop_x1,u,types))
+        mut_x1.append(mut(pop_x1,q))
+        rmd_x1.append(rmd(pop_x1,u,q,types))
+        rep_tip, mut_tip, rmd_tip = coords_x1(edge_x1,rep_x1), coords_x1(edge_x1,mut_x1), coords_x1(edge_x1,rmd_x1)
+        rep_x1_u, rep_x1_v = rep_tip[0], rep_tip[1]
+        mut_x1_u, mut_x1_v = mut_tip[0], mut_tip[1]
+        rmd_x1_u, rmd_x1_v = rmd_tip[0], rmd_tip[1]
+        
+        pop_x2 = np.zeros(4)
+        pop_x2[3], pop_x2[1] = edge_x1[i], 1-edge_x1[i]
+        rep_x2.append(rep(pop_x2,u,types))
+        mut_x2.append(mut(pop_x2,q))
+        rmd_x2.append(rmd(pop_x2,u,q,types))
+        rep_tip, mut_tip, rmd_tip = coords_x2(edge_x2,rep_x2), coords_x2(edge_x2,mut_x2), coords_x2(edge_x2,rmd_x2)
+        rep_x2_u, rep_x2_v = rep_tip[0], rep_tip[1]
+        mut_x2_u, mut_x2_v = mut_tip[0], mut_tip[1]
+        rmd_x2_u, rmd_x2_v = rmd_tip[0], rmd_tip[1]
+    
+        
+        pop_y1 = np.zeros(4)
+        pop_y1[1], pop_y1[0] = edge_x1[i], 1-edge_x1[i]
+        rep_y1.append(rep(pop_y1,u,types))
+        mut_y1.append(mut(pop_y1,q))
+        rmd_y1.append(rmd(pop_y1,u,q,types))
+        rep_tip, mut_tip, rmd_tip = coords_y1(edge_y1,rep_y1), coords_y1(edge_y1,mut_y1), coords_y1(edge_y1,rmd_y1)
+        rep_y1_u, rep_y1_v = rep_tip[0], rep_tip[1]
+        mut_y1_u, mut_y1_v = mut_tip[0], mut_tip[1]
+        rmd_y1_u, rmd_y1_v = rmd_tip[0], rmd_tip[1]
+    
+        
+        pop_y2 = np.zeros(4)
+        pop_y2[3], pop_y2[2] = edge_x1[i], 1-edge_x1[i]
+        rep_y2.append(rep(pop_y2,u,types))
+        mut_y2.append(mut(pop_y2,q))
+        rmd_y2.append(rmd(pop_y2,u,q,types))
+        rep_tip, mut_tip, rmd_tip = coords_y2(edge_y2,rep_y2), coords_y2(edge_y2,mut_y2), coords_y2(edge_y2,rmd_y2)
+        rep_y2_u, rep_y2_v = rep_tip[0], rep_tip[1]
+        mut_y2_u, mut_y2_v = mut_tip[0], mut_tip[1]
+        rmd_y2_u, rmd_y2_v = rmd_tip[0], rmd_tip[1]
+    
+    scaling = 1
+    axs[0,0].quiver(edge_x1,np.zeros(len(edge_x1)), rep_x1_u, rep_x1_v , scale=1./100)#, units='xy', angles='xy', scale=1/ scaling)
+    axs[0,0].quiver(edge_x2,np.ones(len(edge_x2)),  rep_x2_u, rep_x2_v )#, units='xy', angles='xy', scale=1/  scaling)
+    axs[0,0].quiver(np.zeros(len(edge_y1)),edge_y1, rep_y1_u, rep_y1_v )#, units='xy', angles='xy', scale=1/ scaling)
+    axs[0,0].quiver(np.ones(len(edge_y2)),edge_y2,  rep_y2_u, rep_y2_v )#, units='xy', angles='xy', scale=1/  scaling)
+    axs[0,0].set_xlim(-0.1,1.1)
+    axs[0,0].set_ylim(-0.1,1.1)
+    axs[0,0].annotate('Lit.', xy=(-0.05,-0.1), xycoords='data')
+    axs[0,0].annotate('Prag.', xy=(0.95,-0.1), xycoords='data')
+    axs[0,0].annotate(r'$L_{b}$', xy=(-0.1,0.05), xycoords='data',fontsize=12)
+    axs[0,0].annotate(r'$L_{l}$', xy=(-0.1,0.95), xycoords='data', fontsize=12)
+    axs[0,0].annotate('RD', xy=(0.45,0.5), xycoords='data',fontsize=12)
+
+    axs[0,0].axis('off')
 
     
-    pop_y1 = np.zeros(4)
-    pop_y1[1], pop_y1[0] = edge_x1[i], 1-edge_x1[i]
-    rep_y1.append(rep(pop_y1,u))
-    mut_y1.append(mut(pop_y1,q))
-    rmd_y1.append(rmd(pop_y1,u,q))
-    rep_tip, mut_tip, rmd_tip = coords_y1(edge_y1,rep_y1), coords_y1(edge_y1,mut_y1), coords_y1(edge_y1,rmd_y1)
-    rep_y1_u, rep_y1_v = rep_tip[0], rep_tip[1]
-    mut_y1_u, mut_y1_v = mut_tip[0], mut_tip[1]
-    rmd_y1_u, rmd_y1_v = rmd_tip[0], rmd_tip[1]
+    scaling=0.2
+    
+    axs[0,1].quiver(edge_x1,np.zeros(len(edge_x1)), mut_x1_u, mut_x1_v )#, units='xy', angles='xy', scale=1/scaling)
+    axs[0,1].quiver(edge_x2,np.ones(len(edge_x2)), mut_x2_u, mut_x2_v  )#, units='xy', angles='xy', scale=1/ scaling)
+    axs[0,1].quiver(np.zeros(len(edge_y1)),edge_y1, mut_y1_u, mut_y1_v )#, units='xy', angles='xy', scale=1/scaling)
+    axs[0,1].quiver(np.ones(len(edge_y2)),edge_y2, mut_y2_u, mut_y2_v  )#, units='xy', angles='xy', scale=1/ scaling)
+    axs[0,1].set_xlim(-0.1,1.1)
+    axs[0,1].set_ylim(-0.1,1.1)
+    axs[0,1].annotate('Lit.', xy=(-0.05,-0.1), xycoords='data')
+    axs[0,1].annotate('Prag.', xy=(0.95,-0.1), xycoords='data')
+    axs[0,1].annotate(r'$L_{b}$', xy=(-0.1,0.05), xycoords='data',fontsize=12)
+    axs[0,1].annotate(r'$L_{l}$', xy=(-0.1,0.95), xycoords='data', fontsize=12)
+    axs[0,1].annotate('M', xy=(0.45,0.5), xycoords='data',fontsize=12)
+
+    axs[0,1].axis('off')
 
     
-    pop_y2 = np.zeros(4)
-    pop_y2[3], pop_y2[2] = edge_x1[i], 1-edge_x1[i]
-    rep_y2.append(rep(pop_y2,u))
-    mut_y2.append(mut(pop_y2,q))
-    rmd_y2.append(rmd(pop_y2,u,q))
-    rep_tip, mut_tip, rmd_tip = coords_y2(edge_y2,rep_y2), coords_y2(edge_y2,mut_y2), coords_y2(edge_y2,rmd_y2)
-    rep_y2_u, rep_y2_v = rep_tip[0], rep_tip[1]
-    mut_y2_u, mut_y2_v = mut_tip[0], mut_tip[1]
-    rmd_y2_u, rmd_y2_v = rmd_tip[0], rmd_tip[1]
+    
+    
+    axs[1,0].quiver(edge_x1,np.zeros(len(edge_x1)), rmd_x1_u, rmd_x1_v )#, units='xy', angles='xy', scale=1/scaling)
+    axs[1,0].quiver(edge_x2,np.ones(len(edge_x2)), rmd_x2_u, rmd_x2_v  )#, units='xy', angles='xy', scale=1/ scaling)
+    axs[1,0].quiver(np.zeros(len(edge_y1)),edge_y1, rmd_y1_u, rmd_y1_v )#, units='xy', angles='xy', scale=1/scaling)
+    axs[1,0].quiver(np.ones(len(edge_y2)),edge_y2, rmd_y2_u, rmd_y2_v  )#, units='xy', angles='xy', scale=1/ scaling)
+    axs[1,0].set_xlim(-0.1,1.1)
+    axs[1,0].set_ylim(-0.1,1.1)
+    axs[1,0].annotate('Lit.', xy=(-0.05,-0.1), xycoords='data')
+    axs[1,0].annotate('Prag.', xy=(0.95,-0.1), xycoords='data')
+    axs[1,0].annotate(r'$L_{b}$', xy=(-0.1,0.05), xycoords='data',fontsize=12)
+    axs[1,0].annotate(r'$L_{l}$', xy=(-0.1,0.95), xycoords='data', fontsize=12)
+    axs[1,0].annotate('RMD', xy=(0.45,0.5), xycoords='data',fontsize=12)
+    axs[1,0].axis('off')
 
-scaling = 1
-axs[0,0].quiver(edge_x1,np.zeros(len(edge_x1)), rep_x1_u, rep_x1_v , scale=1./100)#, units='xy', angles='xy', scale=1/ scaling)
-axs[0,0].quiver(edge_x2,np.ones(len(edge_x2)),  rep_x2_u, rep_x2_v )#, units='xy', angles='xy', scale=1/  scaling)
-axs[0,0].quiver(np.zeros(len(edge_y1)),edge_y1, rep_y1_u, rep_y1_v )#, units='xy', angles='xy', scale=1/ scaling)
-axs[0,0].quiver(np.ones(len(edge_y2)),edge_y2,  rep_y2_u, rep_y2_v )#, units='xy', angles='xy', scale=1/  scaling)
-axs[0,0].set_xlim(-0.1,1.1)
-axs[0,0].set_ylim(-0.1,1.1)
+    
+    axs[1,1].annotate(r'$\lambda$ = %d, bias = %d, l = %d, k = %d' % (lam,bias_para,post_para,k), xy=(0.0,0.5), xycoords='data', fontsize=12)
 
-scaling=0.2
+    axs[1,1].axis('off')
+    
+    plt.savefig('quiver-lam%d-c%d-k%d-l%d.png' %(lam,bias_para,k,post_para))
 
-axs[0,1].quiver(edge_x1,np.zeros(len(edge_x1)), mut_x1_u, mut_x1_v )#, units='xy', angles='xy', scale=1/scaling)
-axs[0,1].quiver(edge_x2,np.ones(len(edge_x2)), mut_x2_u, mut_x2_v  )#, units='xy', angles='xy', scale=1/ scaling)
-axs[0,1].quiver(np.zeros(len(edge_y1)),edge_y1, mut_y1_u, mut_y1_v )#, units='xy', angles='xy', scale=1/scaling)
-axs[0,1].quiver(np.ones(len(edge_y2)),edge_y2, mut_y2_u, mut_y2_v  )#, units='xy', angles='xy', scale=1/ scaling)
-axs[0,1].set_xlim(-0.1,1.1)
-axs[0,1].set_ylim(-0.1,1.1)
+    plt.tight_layout()
+    plt.show()
 
-
-
-axs[1,0].quiver(edge_x1,np.zeros(len(edge_x1)), rmd_x1_u, rmd_x1_v )#, units='xy', angles='xy', scale=1/scaling)
-axs[1,0].quiver(edge_x2,np.ones(len(edge_x2)), rmd_x2_u, rmd_x2_v  )#, units='xy', angles='xy', scale=1/ scaling)
-axs[1,0].quiver(np.zeros(len(edge_y1)),edge_y1, rmd_y1_u, rmd_y1_v )#, units='xy', angles='xy', scale=1/scaling)
-axs[1,0].quiver(np.ones(len(edge_y2)),edge_y2, rmd_y2_u, rmd_y2_v  )#, units='xy', angles='xy', scale=1/ scaling)
-axs[1,0].set_xlim(-0.1,1.1)
-axs[1,0].set_ylim(-0.1,1.1)
-
-
-plt.tight_layout()
-plt.show()
-
+quiver_plot(20,3,10,5)
 
 
 
