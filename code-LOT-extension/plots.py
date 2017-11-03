@@ -972,13 +972,14 @@ def get_subfigs_hist_rmd(type_list,list1,list2):
     plt.show()
 
 
-
-types = [231,236,291,306,326,336] + [225,235,255,270,325,330] + [216]
+#Total types = 432
+types = [231,236,291,306,326,336] + [9,  19,  39,  54, 109, 114] + [216]
+#types = [231,236,291,306,326,336] + [225,235,255,270,325,330] + [216]
 
 #Plot 1
-#list1 = [1,5,20] #lambda
-#list2 = [5] #posterior parameter
-#get_subfigs_hist_replication(types,list1,list2)
+list1 = [1,5,20] #lambda
+list2 = [5] #posterior parameter
+get_subfigs_hist_replication(types,list1,list2)
 
 
 #Plot 2:
@@ -987,6 +988,6 @@ list2 = [1,15]
 get_subfigs_hist_mutation(types,list1,list2)
 
 #Plot 3:
-#list1 = [1,5,20]
-#list2 = [1,5,15]
-#get_subfigs_hist_rmd(types,list1,list2)
+list1 = [1,5,20]
+list2 = [1,5,15]
+get_subfigs_hist_rmd(types,list1,list2)
