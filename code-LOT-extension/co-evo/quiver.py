@@ -114,6 +114,92 @@ def coords_y2(edge,pops):
     return [u,v]
 
 
+#def quiver_filled(lam,bias_para,post_para,k):
+lam = 20
+bias_para = 2
+post_para = 10
+k = 8
+
+lexica = [np.array([[1.,0.],[0.,1.]]),np.array([[1.,0.],[1.,1.]])]
+types = [LiteralPlayer(lam,lex) for lex in lexica] + [GriceanPlayer(1,lam,lex) for lex in lexica]
+lexica_prior = learning_prior(types,bias_para)
+Q = get_q(lexica_prior,post_para,k,types)
+U = get_u(types)
+
+fig,axs = plt.subplots(ncols=2,nrows=2,sharex=True,sharey=True)#,sharey=True,sharex=True)
+
+ax_n = [[0,0],[0,1],[1,0],[1,1]]
+
+x = np.linspace(0,1,20)
+y = np.linspace(0,1,20)
+#(X,Y) = np.meshgrid(x,y)
+#u,v = [], []
+
+for i in xrange(len(ax_n)-1):
+    u,v = np.zeros((len(x),len(y))), np.zeros((len(x),len(y)))
+    for tx in x:
+        for ty in y:
+            p = np.zeros(len(types))
+            p[0] = (1-tx) * (1-ty)
+            p[1] = (1-tx) * ty
+            p[2] = tx * (1-ty)
+            p[3] = tx * ty
+            if i == 0:
+                r = rep(p,U,types)
+                lbl = 'RD'
+            elif i == 1:
+                r = mut(p,Q)
+                lbl = 'MD'
+            else:
+                rmd(p,U,Q,types)
+                lbl = 'RMD'
+    
+            change_along_x =  r[2] + r[3] - tx #prag types
+            change_along_y =  r[1] + r[3] - ty #lack types
+            #u.append(change_along_x)
+            #v.append(change_along_y)
+            txidx = np.argwhere(x == tx)[0][0]
+            tyidx = np.argwhere(y == ty)[0][0]
+            u[tyidx,txidx] = change_along_x
+            v[tyidx,txidx] = change_along_y
+    
+    if i == 0:
+        axs[ax_n[i][0],ax_n[i][1]].quiver(x,y,u,v)#,scale=1./2.)
+        axs[ax_n[i][0],ax_n[i][1]].set_xlim(-0.1,1.1)
+        axs[ax_n[i][0],ax_n[i][1]].set_ylim(-0.1,1.1)
+        axs[ax_n[i][0],ax_n[i][1]].annotate('Lit.', xy=(-0.05,-0.1), xycoords='data')
+        axs[ax_n[i][0],ax_n[i][1]].annotate('Prag.', xy=(0.95,-0.1), xycoords='data')
+        axs[ax_n[i][0],ax_n[i][1]].annotate(r'$L_{b}$', xy=(-0.1,0.05), xycoords='data',fontsize=12)
+        axs[ax_n[i][0],ax_n[i][1]].annotate(r'$L_{l}$', xy=(-0.1,0.95), xycoords='data', fontsize=12)
+        axs[ax_n[i][0],ax_n[i][1]].annotate(lbl, xy=(0.45,1.1), xycoords='data',fontsize=12)
+        axs[ax_n[i][0],ax_n[i][1]].axis('off')
+
+
+    else:
+        axs[ax_n[i][0],ax_n[i][1]].quiver(x,y,u,v)
+        axs[ax_n[i][0],ax_n[i][1]].set_xlim(-0.1,1.1)
+        axs[ax_n[i][0],ax_n[i][1]].set_ylim(-0.1,1.1)
+        axs[ax_n[i][0],ax_n[i][1]].annotate('Lit.', xy=(-0.05,-0.1), xycoords='data')
+        axs[ax_n[i][0],ax_n[i][1]].annotate('Prag.', xy=(0.95,-0.1), xycoords='data')
+        axs[ax_n[i][0],ax_n[i][1]].annotate(r'$L_{b}$', xy=(-0.1,0.05), xycoords='data',fontsize=12)
+        axs[ax_n[i][0],ax_n[i][1]].annotate(r'$L_{l}$', xy=(-0.1,0.95), xycoords='data', fontsize=12)
+        axs[ax_n[i][0],ax_n[i][1]].annotate(lbl, xy=(0.45,1.1), xycoords='data',fontsize=12)
+        axs[ax_n[i][0],ax_n[i][1]].axis('off')
+
+axs[1,1].annotate(r'$\lambda$ = %d, bias = %.2f, l = %d, k = %d' % (lam,bias_para,post_para,k), xy=(0.0,0.5), xycoords='data', fontsize=10)
+
+axs[1,1].axis('off')
+
+plt.savefig('quiver-lam%d-c%d-k%d-l%d.png' %(lam,bias_para*100,k,post_para))
+
+plt.tight_layout()
+plt.show()
+
+
+
+sys.exit()
+
+
 def quiver_plot(lam,bias_para,post_para,k):
     lexica = [np.array([[1.,0.],[0.,1.]]),np.array([[1.,0.],[1.,1.]])]
     types = [LiteralPlayer(lam,lex) for lex in lexica] + [GriceanPlayer(1,lam,lex) for lex in lexica]
