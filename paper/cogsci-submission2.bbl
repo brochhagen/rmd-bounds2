@@ -26,11 +26,24 @@ Beggs, A. (2005).
 \newblock On the convergence of reinforcement learning.
 \newblock {\em Journal of Economic Theory\/}~{\em 122\/}(1), 1--36.
 
+\bibitem[\protect\citeauthoryear{Benz}{Benz}{2006}]{benz:2006}
+Benz, A. (2006).
+\newblock Utility and relevance of answers.
+\newblock In A.~Benz, G.~J{\"a}ger, and R.~{van Rooij} (Eds.), {\em Game Theory
+  and Pragmatics}, pp.\  195--219. Palgrave Macmillan.
+
 \bibitem[\protect\citeauthoryear{Benz, J{\"a}ger, and {van Rooij}}{Benz
   et~al.}{2005}]{benz+etal:2005b}
 Benz, A., G.~J{\"a}ger, and R.~{van Rooij} (2005).
 \newblock {\em An Introduction to Game Theory for Linguists}, pp.\  1--82.
 \newblock Palgrave.
+
+\bibitem[\protect\citeauthoryear{Benz and van Rooij}{Benz and van
+  Rooij}{2007}]{benz+vRooij:2007}
+Benz, A. and R.~van Rooij (2007).
+\newblock Optimal assertions, and what they implicate. {A} uniform game
+  theoretic approach.
+\newblock {\em Topoi\/}~{\em 26\/}(1), 63--78.
 
 \bibitem[\protect\citeauthoryear{Bergen, Goodman, and Levy}{Bergen
   et~al.}{2012}]{bergen+etal:2012}
@@ -78,6 +91,14 @@ Brighton, H. (2002).
 \newblock Compositional syntax from cultural transmission.
 \newblock {\em Artificial Life\/}~{\em 8\/}(1), 25--54.
 
+\bibitem[\protect\citeauthoryear{Burkett and Griffiths}{Burkett and
+  Griffiths}{2010}]{burkett+griffiths:2010}
+Burkett, D. and T.~L. Griffiths (2010).
+\newblock Iterated learning of multiple languages from multiple teachers.
+\newblock In A.~Smith, M.~Schouwstra, B.~de~Boer, and K.~Smith (Eds.), {\em The
+  Evolution of Language: Proceedings of the 8th international conference}, pp.\
+   58--65. World Scientific.
+
 \bibitem[\protect\citeauthoryear{Chater and Vit{\'{a}}nyi}{Chater and
   Vit{\'{a}}nyi}{2003}]{chater+vitanyi:2003}
 Chater, N. and P.~Vit{\'{a}}nyi (2003).
@@ -91,6 +112,12 @@ Chierchia, G., D.~Fox, and B.~Spector (2012).
 \newblock In C.~Maienborn, K.~{\SortNoop{Heusinger}}von~Heusinger, and
   P.~Portner (Eds.), {\em Semantics. {A}n International Handbook of Natural
   Language Meaning}, pp.\  2297--2332. Berlin: de Gruyter.
+
+\bibitem[\protect\citeauthoryear{Christiansen and Chater}{Christiansen and
+  Chater}{2008}]{christiansen+chater:2008}
+Christiansen, M.~H. and N.~Chater (2008).
+\newblock Language as shaped by the brain.
+\newblock {\em Behavioral and Brain Sciences\/}~{\em 31\/}(05).
 
 \bibitem[\protect\citeauthoryear{Degen and Tanenhaus}{Degen and
   Tanenhaus}{2015}]{DegenTanenhaus2012:Processing-Scal}
@@ -166,8 +193,15 @@ Goodman, N.~D. and M.~C. Frank (2016).
 \newblock {\em Trends in Cognitive Sciences\/}~{\em 20\/}(11), 818--829.
 
 \bibitem[\protect\citeauthoryear{Goodman and Stuhlm\"{u}ller}{Goodman and
-  Stuhlm\"{u}ller}{2013}]{GoodmanStuhlmuller2013:Knowledge-and-I}
-Goodman, N.~D. and A.~Stuhlm\"{u}ller (2013).
+  Stuhlm\"{u}ller}{2013a}]{GoodmanStuhlmuller2013:Knowledge-and-I}
+Goodman, N.~D. and A.~Stuhlm\"{u}ller (2013a).
+\newblock Knowledge and implicature: {M}odeling language understanding as
+  social cognition.
+\newblock {\em Topics in Cognitive Science\/}~{\em 5}, 173--184.
+
+\bibitem[\protect\citeauthoryear{Goodman and Stuhlm\"{u}ller}{Goodman and
+  Stuhlm\"{u}ller}{2013b}]{goodman+stuhlmueller:2013}
+Goodman, N.~D. and A.~Stuhlm\"{u}ller (2013b).
 \newblock Knowledge and implicature: {M}odeling language understanding as
   social cognition.
 \newblock {\em Topics in Cognitive Science\/}~{\em 5}, 173--184.
@@ -177,6 +211,14 @@ Grice, P. (1975).
 \newblock Logic and conversation.
 \newblock In {\em Studies in the Ways of Words}, Chapter~2, pp.\  22--40.
   Cambridge, MA: Harvard University Press.
+
+\bibitem[\protect\citeauthoryear{Griffiths and Kalish}{Griffiths and
+  Kalish}{2005}]{griffiths+kalish:2005}
+Griffiths, T.~L. and M.~L. Kalish (2005).
+\newblock A {Bayesian} view of language evolution by iterated learning.
+\newblock In B.~G. Bara, L.~Barsalou, and M.~Bucciarelli (Eds.), {\em
+  Proceedings of the 27th Annual Conference of the Cognitive Science Society},
+  pp.\  827--832. Cognitive Science Society.
 
 \bibitem[\protect\citeauthoryear{Griffiths and Kalish}{Griffiths and
   Kalish}{2007}]{griffiths+kalish:2007}
@@ -244,10 +286,16 @@ Huttegger, S.~M. (2007).
 \newblock Evolution and the explanation of meaning.
 \newblock {\em Philosophy of Science\/}~{\em 74}, 1--27.
 
-\bibitem[\protect\citeauthoryear{J\"ager}{J\"ager}{2007}]{jaeger:2007}
-J\"ager, G. (2007).
+\bibitem[\protect\citeauthoryear{J\"ager}{J\"ager}{2007a}]{jaeger:2007}
+J\"ager, G. (2007a).
 \newblock Evolutionary game theory and typology: A case study.
 \newblock {\em Language\/}~{\em 83\/}(1), 74--109.
+
+\bibitem[\protect\citeauthoryear{J\"ager}{J\"ager}{2007b}]{jaeger:2007b}
+J\"ager, G. (2007b).
+\newblock Game dynamics connects semantics and pragmatics.
+\newblock In A.-V. Pietarinen (Ed.), {\em Game Theory and Linguistic Meaning},
+  pp.\  89--102. Elsevier.
 
 \bibitem[\protect\citeauthoryear{J\"ager and van Rooij}{J\"ager and van
   Rooij}{2007}]{jaeger+vRooij:2007}
@@ -269,6 +317,18 @@ Kemp, C. and T.~Regier (2012).
   principles.
 \newblock {\em Science\/}~{\em 336\/}(6084), 1049--1054.
 
+\bibitem[\protect\citeauthoryear{Kimura}{Kimura}{1983}]{kimura:1983}
+Kimura, M. (1983).
+\newblock {\em The Neutral Theory of Molecular Evolution}.
+\newblock Cambridge University Press.
+
+\bibitem[\protect\citeauthoryear{Kirby}{Kirby}{2001}]{kirby:2001}
+Kirby, S. (2001).
+\newblock Spontaneous evolution of linguistic structure - an iterated learning
+  model of the emergence of regularity and irregularity.
+\newblock {\em {IEEE} Transactions on Evolutionary Computation\/}~{\em 5\/}(2),
+  102--110.
+
 \bibitem[\protect\citeauthoryear{Kirby}{Kirby}{2002}]{kirby:2002}
 Kirby, S. (2002).
 \newblock Learning, bottlenecks and the evolution of recursive syntax.
@@ -289,6 +349,12 @@ Kirby, S., M.~Dowman, and T.~L. Griffiths (2007).
 \newblock Innateness and culture in the evolution of language.
 \newblock {\em Proceedings of the National Academy of Sciences\/}~{\em
   104\/}(12), 5241--5245.
+
+\bibitem[\protect\citeauthoryear{Kirby, Griffith, and Smith}{Kirby
+  et~al.}{2014}]{KirbyGriffith2014:Iterated-Learni}
+Kirby, S., T.~Griffith, and K.~Smith (2014).
+\newblock Iterated learning and the evolution of language.
+\newblock {\em Current Opinion in Neurobiology\/}~{\em 28}, 108--114.
 
 \bibitem[\protect\citeauthoryear{Kirby, Griffiths, and Smith}{Kirby
   et~al.}{2014}]{kirby+etal:2014}
@@ -356,7 +422,7 @@ Nieuwland, M.~S., T.~Ditman, and G.~R. Kuperberg (2010).
   of informativeness and pragmatic abilities.
 \newblock {\em Journal of Memory and Language\/}~{\em 63\/}(3), 324--346.
 
-\bibitem[\protect\citeauthoryear{Nowak}{Nowak}{2006}]{Nowak2006:Evolutionary-Dy}
+\bibitem[\protect\citeauthoryear{Nowak}{Nowak}{2006}]{nowak:2006}
 Nowak, M.~A. (2006).
 \newblock {\em Evolutionary Dynamics: {E}xploring the Equations of Life}.
 \newblock Harvard University Press.
@@ -422,6 +488,14 @@ Piantadosi, S.~T., J.~B. Tenenbaum, and N.~D. Goodman ({under review}).
 Piantadosi, S.~T., H.~Tily, and E.~Gibson (2012).
 \newblock The communicative function of ambiguity in language.
 \newblock {\em Cognition\/}~{\em 122\/}(3), 280--291.
+
+\bibitem[\protect\citeauthoryear{Qing and Franke}{Qing and
+  Franke}{2015}]{qing+franke:2015}
+Qing, C. and M.~Franke (2015).
+\newblock Variations on a {Bayesian} theme: Comparing {Bayesian} models of
+  referential reasoning.
+\newblock In {\em Bayesian Natural Language Semantics and Pragmatics}, pp.\
+  201--220. Springer International Publishing.
 
 \bibitem[\protect\citeauthoryear{{\SortNoop{Rooy}}van~Rooij and
   {\SortNoop{Jager}}de~Jager}{{\SortNoop{Rooy}}van~Rooij and
