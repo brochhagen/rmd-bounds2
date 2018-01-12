@@ -431,7 +431,7 @@ $ \left ( \text{RD}(\vec{x}) \right )_i = x_i$. In words, no difference in fitne
   The former are attractors as nearby points converge to them. Points near $x=\nicefrac{2}{3}$
   also move towards 0 or 1. This is schematically pictured in the topmost phase portrait in
   Fig.~\ref{fig:Phase_RD}. Adding mutation changes the dynamic and its rest points. Let us assume that $Q_{ji} = .9$
-  when $j=i$. This is the proportion of types that are replicated faithfully. Conversely, a proportion of $.1$ will change their type from positive to negative, and vice-versa. The update effect of mutation on its own are described by $\text{M}(x) = .9 x + .1 (1-x) = .8x + .1$, plotted as the linear green line in Fig.~\ref{fig:Updates_RMS}. As shown in Figure \ref{fig:Phase_RD}, in this example mutation alone has only one stable rest point. It is located at $x = .5$. If we first take the replicator step and
+  when $j=i$. This is the proportion of types that are replicated faithfully. Conversely, a proportion of $.1$ will change their type from positive to negative, and vice-versa. The update effect of mutation on its own are described by $\text{M}(x) = .9 x + .1 (1-x) = .8x + .1$, plotted as the linear green line in Fig.~\ref{fig:Updates_RMS}. As shown in Fig.~\ref{fig:Phase_RD}, in this example mutation alone has only one stable rest point. It is located at $x = .5$. If we first take the replicator step and
   then the mutation step in sequence, we obtain the replicator mutator dynamic
   $\text{RMD}(x) = \text{M}(\text{RD}(x)) = \nicefrac{.9x^2 - .2x +.2}{3x^2 - 4x + 2}$, which is plotted in red in
   Fig.~\ref{fig:Updates_RMS}. The rest points are at $x=.121$, $x=.903$ and $x=.609$. The
@@ -765,7 +765,7 @@ $Q$ is a stochastic $n \times n$ matrix, with $n$ equal to the amount of types. 
   & P(t_i \mid d) \propto P(t_i) P(d \mid t_i)\,.
 \end{flalign*}
 
-\subsection{Example}
+\subsection{Example}\label{subsec:example}
 Section~\ref{sec:si-case-study} shows how these components and their interaction can shed light on the evolution of scalar implicatures. Before moving on, we will illustrate the model's workings in a constrained type space in order to showcase the effect that pressure for communicative success and learnability have on types. To this end, we focus only on the four types from Section~\ref{sec:languages+use}. These types are made up of a combination of either lexicon $\Llack$ or $\Lbound$ and either literal (level-$0$) or pragmatic (level-$1$) behavior. 
 
 \begin{figure}
@@ -802,12 +802,12 @@ Section~\ref{sec:si-case-study} shows how these components and their interaction
 \end{figure}
 
 
-A population will be made up of frequencies of these four types. We may think about such a population as a point in a two-dimensional space. In Figure \ref{fig:sketch} this space is outlined by the grey dotted square. The first dimension determines the proportion of types that lexicalize ambiguous $\msome$ (the $x$-axis in Figure \ref{fig:sketch}). That is, the proportion of types with $\Llack$. The second dimension determines the proportion of pragmatic language users (the $y$-axis in Figure \ref{fig:sketch}). Populations at the either corner of this space are monomorphic, consisting purely of a single type. If we move from away from edges toward the center of the space, then this two-dimensional representation underspecifies the proportion of types found in a population. The space's center, for instance, could be composed 50\% of pragmatic $\Llack$ and of an equal proportion of literal $\Lbound$; but it could equally well be a population that has each type with the same frequency. This will be sufficient for our purposes, as we are only interested in showcasing the rough trajectories of populations through this space after replicator or mutator steps. 
+A population will be made up of frequencies of these four types. We may think about such a population as a point in a two-dimensional space. In Fig.~\ref{fig:sketch} this space is outlined by the grey dotted square. The first dimension determines the proportion of types that lexicalize ambiguous $\msome$ (the $x$-axis in Fig.~\ref{fig:sketch}). That is, the proportion of types with $\Llack$. The second dimension determines the proportion of pragmatic language users (the $y$-axis in Fig.~\ref{fig:sketch}). Populations at the either corner of this space are monomorphic, consisting purely of a single type. If we move from away from edges toward the center of the space, then this two-dimensional representation underspecifies the proportion of types found in a population. The space's center, for instance, could be composed 50\% of pragmatic $\Llack$ and of an equal proportion of literal $\Lbound$; but it could equally well be a population that has each type with the same frequency. This will be sufficient for our purposes, as we are only interested in showcasing the rough trajectories of populations through this space after replicator or mutator steps. 
 %The space's corners (and edges) are unequivocal: the lower-left corner corresponds to an population of only literal $\Lbound$ users; the lower-right corner to all pragmatic $\Lbound$ users; the upper-left to literal $\Llack$ users only; and the upper-right corner to the majority all pragmatic $\Llack$ users. 
 
-From Section~\ref{sec:languages+use}, we already know some things about this type space. When it comes to communicative success, types with $\Lbound$ have a functional advantage over $\Llack$; literal $\Lbound$ has a slight advantage over pragmatic $\Lbound$; all have a sizable advantage over literal $\Llack$. The red arrows in Figure \ref{fig:sketch} sketch out these relationships. They depict the rough trajectories we may expect if there is only pressure for communicative success. How much each replicator step moves a population ultimately depends on the rationality parameter $\lambda$. In particular, functional differences decrease as $\lambda$ increases: if $\lambda$ is sufficiently high, all types except for literal $\Llack$ speakers will show a strong tendency to associate $\ssome$ with $\msome$ and $\sall$ with $\mall$. As a consequence, when it comes to learnability and transmission fidelity, the likelihood that any of the three remaining types produces a given datum $d$ will be approximately equal. In other words, the likelihood offers little differentiation for learners if $\lambda$ is high. We can therefore expect that, if the prior is flat, no type is passed on very faithfully. This would lead populations to gravitate toward the space's center after mutator steps. This is sketched by the blue dash-dotted arrows in Figure~\ref{fig:sketch}. Neither prior nor posterior alone, but their combination, are what determines the effects of (iterated) Bayesian learning. If, instead of a flat prior, there is a prior that favors, say, $\Llack$ over $\Lbound$ we can expect mutator steps to be skewed toward the upper-half of the space. This is suggested by the purple arrows in Figure~\ref{fig:sketch}. Taking stock, the effects of iterated learning will depend not only on $\lambda$, affecting the likelihood, but also on the prior, how strong the bias is, and the degree to which learners tend to maximize the posterior, controlled by parameter $l$. 
+From Section~\ref{sec:languages+use}, we already know some things about this type space. When it comes to communicative success, types with $\Lbound$ have a functional advantage over $\Llack$; literal $\Lbound$ has a slight advantage over pragmatic $\Lbound$; all have a sizable advantage over literal $\Llack$. The red arrows in Fig.~\ref{fig:sketch} sketch out these relationships. They depict the rough trajectories we may expect if there is only pressure for communicative success. How much each replicator step moves a population ultimately depends on the rationality parameter $\lambda$. In particular, functional differences decrease as $\lambda$ increases: if $\lambda$ is sufficiently high, all types except for literal $\Llack$ speakers will show a strong tendency to associate $\ssome$ with $\msome$ and $\sall$ with $\mall$. As a consequence, when it comes to learnability and transmission fidelity, the likelihood that any of the three remaining types produces a given datum $d$ will be approximately equal. In other words, the likelihood offers little differentiation for learners if $\lambda$ is high. We can therefore expect that, if the prior is flat, no type is passed on very faithfully. This would lead populations to gravitate toward the space's center after mutator steps. This is sketched by the blue dash-dotted arrows in Fig.~\ref{fig:sketch}. Neither prior nor posterior alone, but their combination, are what determines the effects of (iterated) Bayesian learning. If, instead of a flat prior, there is a prior that favors, say, $\Llack$ over $\Lbound$ we can expect mutator steps to be skewed toward the upper-half of the space. This is suggested by the purple arrows in Fig.~\ref{fig:sketch}. Taking stock, the effects of iterated learning will depend not only on $\lambda$, affecting the likelihood, but also on the prior, how strong the bias is, and the degree to which learners tend to maximize the posterior, controlled by parameter $l$. 
 
-Figure \ref{fig:quiver} shows actual trajectories, showcasing how they are modulated by parameter values. The replicator steps make the functional disadvantage of $\Llack$ against $\Lbound$ apparent, particularly for literal types and/or low $\lambda$. They also highlight that the functional difference between literal and pragmatic $\Lbound$ is small. Under functional pressure only, populations move toward the lower part of the square but the steps become small as the edge, representing populations of only $\Llack$, are reached. As for the mutator diagrams, there are two main things to note. As expected, a small bias for a type will lead to larger proportions to adopt it provided that likelihood offers little to no differentiation between types. This is the situation the right-most space in Figure \ref{fig:quiver} depicts. However, the bias is far from absolute. If, instead, certain types are more likely to be recovered based on the linguistic input they produce, they will be passed on more faithfully. This is why, for instance, populations move toward a majority of $\Llack$-types for $\lambda = 5$ and $l = 10$.
+Fig.~\ref{fig:quiver} shows actual trajectories, showcasing how they are modulated by parameter values. The replicator steps make the functional disadvantage of $\Llack$ against $\Lbound$ apparent, particularly for literal types and/or low $\lambda$. They also highlight that the functional difference between literal and pragmatic $\Lbound$ is small. Under functional pressure only, populations move toward the lower part of the square but the steps become small as the edge, representing populations of only $\Llack$, are reached. As for the mutator diagrams, there are two main things to note. As expected, a small bias for a type will lead to larger proportions to adopt it provided that likelihood offers little to no differentiation between types. This is the situation the right-most space in Fig.~\ref{fig:quiver} depicts. However, the bias is far from absolute. If, instead, certain types are more likely to be recovered based on the linguistic input they produce, they will be passed on more faithfully. This is why, for instance, populations move toward a majority of $\Llack$-types for $\lambda = 5$ and $l = 10$.
 
 \begin{figure}[t]
 \centering
@@ -817,7 +817,7 @@ Figure \ref{fig:quiver} shows actual trajectories, showcasing how they are modul
 \label{fig:quiver}
 \end{figure}
 
-Figures \ref{fig:sketch} and \ref{fig:quiver} depict replicator and mutator steps in isolation to better showcase their effects. Their combination will expectedly yield different outcomes, which we now turn to in a case study on scalar implicatures. 
+Fig.~\ref{fig:sketch} and \ref{fig:quiver} depict replicator and mutator steps in isolation to better showcase their effects. Their combination will expectedly yield different outcomes, which we now turn to in a case study on scalar implicatures. 
 
 \subsection{Model summary}
 
@@ -857,7 +857,7 @@ The model of the previous section formalizes the evolutionary competition betwee
 sets of lexical representations and ways of using them. This section looks at a case study on
 scalar implicatures. It engages in a formal thought experiment to address the
 question: if a population of language users could freely combine different lexica with
-different pragmatic strategies, what are conditions under which the majority view of scalar
+different dispositions to act on them, what are conditions under which the majority view of scalar
 implicatures could have evolved?
 
 Recall that the majority view is that scalar implicatures are non-lexicalized pragmatic
@@ -895,11 +895,10 @@ motivating and formalizing such a bias is introduced in Section~\ref{sec:an-indu
 \subsubsection{States, messages, lexical representations, and lexica} 
 \label{sec:stat-mess-conc}
 
+
 Consider a state space with three states $\States = \set{\snone, \ssome, \sall}$ and think of
 it as a partition of possible worlds into cells where none, some or all of the $A$s are $B$s,
-for some arbitrary fixed predicates $A$ and $B$. Eight lexical representations can be distinguished based on
-their truth or falsity in three world states, six of which are not contradictory or
-tautological (see Table~\ref{tab:concepts} below).
+for some arbitrary fixed predicates $A$ and $B$. Enlarging the setup from Section~\ref{sec:languages+use} by another state will enable us to discern the difference between three kinds of lexica we will use to unravel the model's dynamics (see below). Eight lexical representations can be distinguished based on their truth or falsity in three world states, six of which are not contradictory or tautological (see Table~\ref{tab:concepts} below).
 
 A lexicon $L$ is a mapping $\Messgs \rightarrow R$ from messages to representations. With three
 messages there are $6^3 = 216$ possible lexica. Some assign the same representations to more
@@ -952,12 +951,11 @@ about the actual world state but need pragmatic language use to approximate a on
 mapping between message use and states (see Section~\ref{sec:languages+use}).  
 
 Recall that types are a combination of a lexicon and a manner of language use. We analyze the
-model's predictions in populations of types with one of the two behaviors introduced earlier;
-literal or pragmatic. The former correspond to level $0$ reasoners and the latter to level
-$1$. Accordingly, we consider a total of $432$ types. Six are variants of pragmatic language
-users with $\Llack$-like lexica. We refer to these as \emph{target types}, because they
+model's predictions in populations of types with one of the two behaviors introduced earlier:
+literal or pragmatic. The former correspond to level-$0$ reasoners and the latter to level $1$. Accordingly, there is a total of $432$ types. Six types are variants of pragmatic language
+users with $\Llack$-like lexica. We refer to these as \emph{target types} because they
 represent lexica and language use that conform to the majority view of scalar
-implicatures. Twelve types are either literal or pragmatic speakers with lexica of the
+implicatures. Twelve types are either literal or pragmatic users of lexica of the
 $\Lbound$ kind. We refer to these as \emph{competitor types}, because they are expected to be
 the target types' main contenders in evolutionary competition. Finally, note that while
 different types may lexicalize the same representations, they may nevertheless map different
@@ -971,16 +969,6 @@ kind fail to understand each other.
 \subsubsection{An inductive learning bias for semantic simplicity}
 \label{sec:an-induct-learn}
 
-\hl{The discussion on derivation costs is not very satisfying on my opinion. For instance, the condition of "simple representations being favored over more complex ones" is compatible with many more cost specifications.}
-
-\hl{We do not believe that, ultimately, we should assume the non-parsimonious view that there are different complexity measures for different structures. However, with previous work in iterated learning tradition, we do assume that (i) inductive learning biases can play a role in shaping culturally transmitted knowledge and that, as the reviewer notes, (ii) biases can be of manifold nature; another well-studied example being the mutual exclusivity bias, which could be expected to work against targets and in favor of competitors.}
-
-\hl{At present, it is impossible to disentangle the complex interaction of multiple biases. We therefore focus on the effects of a single plausible contributing factor to a preference of target lexica over competitors: a well-motivated bias favoring simplicity \citep{feldman:2000,chater+vitanyi:2003, piantadosi+etal:2012a,kirby+etal:2015,piantadosi+etal:underreview}. By assumption, this translates to a preference not to lexicalize linguistic material over lexicalizing it; simpler formulae over complex ones. As mentioned in Section 3.1.2, we acknowledge that the complexity measure that the prior is based on  is just a convenient operationalization of this particular hypothesis.}
-
-\hl{Lastly, we should stress that, just as models of iterated learning make different predictions under the assumption of different inductive biases, so does our model. The assumption and operationalization of a particular bias should, of course, always be seen critically (Section 4).}
-
-
-
 There is a growing effort to develop empirically testable representational languages that allow
 for the measure of semantic complexity. For instance, so-called {\em languages of thought}
 (LOTs) have been put to test in various rational probabilistic models that show encouraging
@@ -989,7 +977,7 @@ core, a LOT defines a set of operations and composition rules from which lexical
 derived. As a first approximation and for the sake of concreteness, we follow this approach to
 motivate and formalize a preference of learners for simpler semantic representations
 (\citealt{feldman:2000, chater+vitanyi:2003, piantadosi+etal:2012a,kirby+etal:2015}, \citeauthor{piantadosi+etal:underreview} under review). 
-In a weighed generative LOT a representation's complexity is a function of its derivation cost.
+In a weighted generative LOT a representation's complexity is a function of its derivation cost.
 
 \begin{table}
   \centering
@@ -1090,13 +1078,7 @@ LOT-grammar (see Table~\ref{tab:concepts}). Applied to our space of lexica, this
 to a lexicon of type $\Lall$, which only uses the simplest lexical representation ``all'' for
 all messages. Lexica of type $\Llack$ are less likely, but more likely than $\Lbound$. 
 
-There are many ways to define priors over lexica (see, e.g., \citealt{goodman+etal:2008,
-  piantadosi+etal:2012a}) but the key assumption here, common to all of them, is that simple
-representational expressions should be favored over more complex ones. We should stress that
-these details -- from the generative grammar to its complexity measure -- are to be regarded as
-one convenient operationalization of one general approach to explicating learning biases; this
-is not a commitment that this general approach is necessarily superior or that, within it, this
-particular instrumentalization is the single most plausible.
+The menu of inductive biases argued to shape language acquisition is steadily being refined. Apart from simplicity, prominent examples include mutual exclusivity \citep{merriman+bowman:1989,clark:2009}, regularization \citep{hudson+etal:2005}, and generalization \citep{smith:2011}. Even viewed in isolation, there are still many ways to define priors over lexica (see, e.g., \citealt{goodman+etal:2008, piantadosi+etal:2012a, kirby+etal:2015}). The key assumption here, common to all ways to define simplicity-biased priors, is that simple representational expressions should be favored over more complex ones. However, in view of the menu of possible operationalizations, other biases and their potential interplay, we should stress that these details -- from the generative grammar to its complexity measure -- are to be regarded as one convenient operationalization of one general approach to explicating learning biases; this is not a commitment that this general approach is necessarily superior or that, within it, this particular instrumentalization is the single most plausible. We return to this issue in relation to our results in Section~\ref{sec:an-induct-learn}.
 
 
 \subsection{Simulation results}
@@ -1105,25 +1087,19 @@ particular instrumentalization is the single most plausible.
 
 \hl{The figures (especially Figure 4, but the others as well) are difficult to read, because of the changing scales. I would recommend finding a way to share the same scale between subfigures, or make it visually clearer that the subfigures cannot be directly compared.}
 
-
-\hl{Mention that they have the same $k$, $\lambda$ and $l$: They do not have to but they do in our case study. Variation across parameter values would mean that we would have many more types: one for each combination of possible lexicon, pragmatic strategy, $\lambda$-, $l$- and $k$-value. This would allow us to trace the evolutionary trajectory (and competition) of not only lexica and pragmatic strategies, which is our goal here, but of all these factors combined. As our focus is not to show that, say, a particular $\lambda$ value leads to a particular evolutionary outcome we restrict our attention to a homogeneous population where all agents have the same parameter values. We discuss this issue in Section~3.2. Maybe take this from thesis.}
-
 \hl{We have thoroughly revised the article to make the contrast between these three predictions clearer, as well as the predictions themselves. Concretely, This should be the new figure as well as a clearer contrast when discussing the simulation outcomes. THe questions are: Why do learnability pressures not have the same effect in the joint learnability/fitness model, as they do in the lesioned model? Why is high speaker optimality necessary for scalar implicatures to evolve, when it does not have this effect in the fitness-only model?}
 
 
-Recall that there are three parameters: soft-max parameter $\lambda$ affects how strongly
+Recall that there are three parameters, which we hold constant across types: soft-max parameter $\lambda$ affects how strongly
 speakers favor messages that appear best from their subjective point of view; the
 bottleneck size $k$ influences how faithfully learners can identify their teacher type; $l$
 defines the learners' disposition towards choosing the most likely teacher type from the
 posterior distribution. We expect that competitor types (types with lexica of the kind
-$\Lbound$) have a fitness advantage over target types (pragmatic agents with lexica of the kind
-$\Llack$), especially for very low levels of $\lambda$. Selection based on fitness alone may
+$\Lbound$) have a fitness advantage over target types (pragmatic types with lexica of the kind
+$\Llack$), especially for very low levels of $\lambda$ (see Fig~\ref{fig:sketch}). Selection based on fitness alone may
 therefore not lead to prevalence of target types in the population. On the other hand, lexica
 of type $\Llack$ are simpler than those of type $\Lbound$ by the postulated measure from
-above. This may make them more likely to be adopted by learners, especially when $k$ is low so
-that different teacher types are relatively indistinguishable based on their behavior and when
-$l$ is high. Still, lexica of the kind $\Lall$ are in turn even more likely \emph{a priori} than
-lexica of the kind $\Llack$. Simulation results will shed light on the question whether target
+above. This may make them more likely to be adopted by learners, especially when $l$ is high. Still, lexica of the kind $\Lall$ are in turn even more likely \emph{a priori} than lexica of the kind $\Llack$. As showcased in Section~\ref{subsec:example}, the prior is not all that counts for learnability. Simulation results will shed light on the question whether target
 types can emerge, and for which parameter constellations.
 
 To better understand the workings of a pressure towards communicative efficiency and a pressure
@@ -1132,8 +1108,7 @@ isolation, and then in combination. All simulation runs are initialized with an 
 distribution over types, constituting a population's first generation. All reported results are
 the outcome of 50 update steps. These outcomes correspond to developmental plateaus in which
 change is, if not absent, then at least very slow. In other words, even if the resulting states
-do not correspond to an eventual attracting state, they characterize almost stationary states
-in which the system remains for a very long time. As specified in \S\ref{sec:learnability}, the
+do not correspond to an eventual attracting state, they characterize population states in which the system remains for a long time. As specified in Section~\ref{sec:learnability}, the
 mutation matrix $Q$ can be obtained by considering all possible state-message sequences of
 length $k$. Given that this is intractable for large $k$, the sets of data which learners are
 exposed to are approximated by sampling $250$ $k$-length sequences from each type's production
@@ -1142,23 +1117,22 @@ probabilities.
 
 \subsubsection{Replication only: selection based on communicative success} 
 
-
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth,height=8cm, keepaspectratio]{./plots/alt-fig1-onlyr}
-\caption{Proportion of target types, pragmatic competitor types, pragmatic $\Lall$, and the population's majority type, in representative populations after $50$ generations under only a
-  pressure for communicative success.}
+\caption{Proportion of target types, \hl{pragmatic} competitor types, \hl{pragmatic} $\Lall$, and the population's majority type, in representative populations after $50$ generations under only a
+  pressure for communicative success. \hl{Flip plots, change plot generation to show the highest 6 Lbound users and the highest Lall, irrespective of ling. behavior, change text surrounding these things}}
 \label{fig:only-R}
 \end{figure}
 
 Selection based on communicative success is sensitive to $\lambda$ since $\lambda$
 influences signaling behavior, which in turn determines communicative success. This is
-showcased in Fig. \ref{fig:only-R}, which shows the proportion of target types, pragmatic competitor types and pragmatic $\Lall$ in a representative population after $50$ replicator steps. The plot also indicates the proportion of the
+showcased in Fig. \ref{fig:only-R}, which shows the proportion of target types, \hl{pragmatic} competitor types and \hl{pragmatic} $\Lall$ in a representative population after $50$ replicator steps. The plot also indicates the proportion of the
 \emph{majority type}: the type with the highest proportion in the final population. With
 low $\lambda$ many types have very similar behavior, so that evolutionary selection lacks grip
 and becomes very slow. The result is a very long transition with near stagnancy in a rather
 homogeneous population with many types. Conversely, higher $\lambda$ promotes 
-less-stochastic pragmatic behavior, widening the gap in expressivity between types and
+less-stochastic linguistic behavior, widening the gap in expressivity between some types and
 promoting more homogeneous populations. As suggested by Fig. \ref{fig:only-R}, the majority
 in most populations is not one of the six pragmatic $\Llack$-style types. That is, a pressure
 only for communicative success does not lead to a prevalence of target types under any
@@ -1183,7 +1157,7 @@ mean proportion of about $.48$ taken together.
 
 The effect of iterated learning without a pressure for communicative success using either posterior
 sampling ($l = 1$) or a stronger tendency towards posterior maximization ($l = 15$) is shown in
-Fig.\ref{fig:only-M} together with the prior over types. The prior shows that while users of
+Fig.~\ref{fig:only-M} together with the prior over types. The prior shows that while users of
 $\Llack$ are not the most favored by the inductive bias (compared, e.g., to $\Lall$) they are
 nevertheless more advantaged than others, such as $\Lbound$, in virtue of the relatively simple
 semantics they conventionalize (see Section~\ref{sec:an-induct-learn}). Crucially, $\Llack$
@@ -1241,7 +1215,7 @@ for pragmatic language use.
 As before, low $\lambda$ and $l$ lead to the prevalence of communicatively suboptimal types
 that are a priori favored, such as $\Lall$. An increase in $\lambda$ leads to the selection of
 target types but does not lead to monomorphic populations if learners sample from the
-posterior (see the uppermost row in Figure \ref{fig:rmd}). Finally, a combination of high $\lambda$ and $l$ leads to increasing proportions of
+posterior (see the uppermost row in Fig.~\ref{fig:rmd}). Finally, a combination of high $\lambda$ and $l$ leads to increasing proportions of
 a single majority target type. This joint influence is summarized in Fig. \ref{fig:diff}, which shows the mean difference between the highest target type and the highest proportion of a type of a different kind in $1000$ independent populations across $\lambda$ and $l$ values. Higher values of $\lambda$ and $l$ increase the prevalence of a single target type, whereas lower values lead to less pronounced differences, with a valley resulting from low $\lambda$ and high $l$ (cf. Fig. \ref{fig:rmd} with $\lambda = 1$ and $l=15$). 
 
 \begin{figure}[t]
@@ -1276,7 +1250,16 @@ acquisition of the type that best explains the learning data.
 
 \section{General discussion}\label{sec:discussion}
 
+\hl{We do not believe that, ultimately, we should assume the non-parsimonious view that there are different complexity measures for different structures. However, with previous work in iterated learning tradition, we do assume that (i) inductive learning biases can play a role in shaping culturally transmitted knowledge and that, as the reviewer notes, (ii) biases can be of manifold nature; another well-studied example being the mutual exclusivity bias, which could be expected to work against targets and in favor of competitors.}
+
+\hl{At present, it is impossible to disentangle the complex interaction of multiple biases. We therefore focus on the effects of a single plausible contributing factor to a preference of target lexica over competitors: a well-motivated bias favoring simplicity \citep{feldman:2000,chater+vitanyi:2003, piantadosi+etal:2012a,kirby+etal:2015,piantadosi+etal:underreview}. By assumption, this translates to a preference not to lexicalize linguistic material over lexicalizing it; simpler formulae over complex ones. As mentioned in Section 3.1.2, we acknowledge that the complexity measure that the prior is based on  is just a convenient operationalization of this particular hypothesis.}
+
+\hl{Lastly, we should stress that, just as models of iterated learning make different predictions under the assumption of different inductive biases, so does our model. The assumption and operationalization of a particular bias should, of course, always be seen critically (Section 4).}
+
+
 \hl{As now made explicit in \hl{Section~xx.xx}, we chose three messages for illustrative purposes mainly. In particular, we wanted to inspect a type space where targets are not the most likely {\em a priori} as this may mislead readers into thinking that learnability alone, in particular the prior alone, drives the outcome. This is related to our answer to reviewer 2, comment 7. The reason why we did not go beyond $n>2$ is for computational tractability, as calculating $Q$, even if approximated, is expensive. The question whether increasing the type space will decrease the frequency to which we expect to see pragmatic {\em some} users is interesting. It now figures in Section~X.X. At present, we have no answer. }
+
+\hl{Mention that they have the same $k$, $\lambda$ and $l$: They do not have to but they do in our case study. Variation across parameter values would mean that we would have many more types: one for each combination of possible lexicon, pragmatic strategy, $\lambda$-, $l$- and $k$-value. This would allow us to trace the evolutionary trajectory (and competition) of not only lexica and pragmatic strategies, which is our goal here, but of all these factors combined. As our focus is not to show that, say, a particular $\lambda$ value leads to a particular evolutionary outcome we restrict our attention to a homogeneous population where all agents have the same parameter values. We discuss this issue in Section~3.2. Maybe take this from thesis.}
 
 
 The approach introduced here combines game-theoretic models of functional pressure towards
