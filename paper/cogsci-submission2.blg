@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: cogsci-submission2.aux
+The style file: chicago.bst
+Database file #1: ./bounds-rmd.bib
+Warning--page numbers missing in bergen+etal:2016
+Warning--page numbers missing in christiansen+chater:2008
+Warning--page numbers missing in fay+etal:2013
+Warning--no number and no volume in franke+jaeger:2014
+Warning--page numbers missing in merriman+bowman:1989
+Warning--no number and no volume in SpikeStadler2016:Minimal-Require
+Warning--page numbers missing in SpikeStadler2016:Minimal-Require
+You've used 104 entries,
+            2861 wiz_defined-function locations,
+            1254 strings with 22153 characters,
+and the built_in function-call counts, 70904 in all, are:
+= -- 6077
+> -- 4797
+< -- 15
++ -- 1408
+- -- 1666
+* -- 6149
+:= -- 12861
+add.period$ -- 325
+call.type$ -- 104
+change.case$ -- 707
+chr.to.int$ -- 102
+cite$ -- 111
+duplicate$ -- 2027
+empty$ -- 4522
+format.name$ -- 1913
+if$ -- 13219
+int.to.chr$ -- 3
+int.to.str$ -- 0
+missing$ -- 118
+newline$ -- 523
+num.names$ -- 1058
+pop$ -- 544
+preamble$ -- 2
+purify$ -- 1344
+quote$ -- 0
+skip$ -- 2100
+stack$ -- 0
+substring$ -- 4095
+swap$ -- 687
+text.length$ -- 15
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 1912
+warning$ -- 7
+while$ -- 1098
+width$ -- 0
+write$ -- 1395
+(There were 7 warnings)

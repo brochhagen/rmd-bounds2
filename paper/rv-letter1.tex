@@ -38,9 +38,9 @@
 	\maketitle
 \normalsize
 
-We would like to thank the reviewers for their helpful comments and suggestions. They are very welcome and have certainly helped improve the article. 
+We would like to thank the reviewers for their helpful comments and suggestions. They are very welcome and have certainly helped improve the manuscript. 
 
-In general terms, we have taken care to make the exposition of the model clearer, to clarify the  motivations underlying the modeling choices we make in the case study, and to clarify how the components of the model lead to the results they do. In what follows we address the reviewers' content-related comments and questions one by one, with pointers to respective changes effected on the manuscript. 
+We have taken care to improve the exposition of the model; to clarify the  motivations underlying the modeling choices we make in the case study, and to make more precise and explicit how the components of the model lead to the results they do. In what follows we address the reviewers' main comments and questions one by one, with pointers to respective changes effected on the manuscript. 
 
 
 \vspace{1cm}
@@ -52,13 +52,11 @@ In general terms, we have taken care to make the exposition of the model clearer
 \stepcounter{reviewerCommentCounter} %increase counter
 
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25,frametitle= Reviewer \thereviewerCounter~comment \thereviewerCommentCounter \hfill ~~({\it co-evolution})]
-the co-evolutionary dynamic mentioned in the title could be better justified [...] In co-evolutionary dynamics, the evolution of one factor (here, the lexicon) should have an impact on the evolution of another (here, pragmatic strategy), and vice versa; the paper does not show evolutionary dynamics (change over time) for either of these factors, not does it show how evolution of a single factor favours the evolution of the other. The model looks more like adaptation of a kind of linguistic type (a lexicon + a pragmatic strategy) to selection pressures for communication and for learnability than co-evolution.  Please justify your characterization of the process modeled as co-evolution or change to adaptation.
+the co-evolutionary dynamic mentioned in the title could be better justified [...] In co-evolutionary dynamics, the evolution of one factor (here, the lexicon) should have an impact on the evolution of another (here, pragmatic strategy), and vice versa; the paper does not show evolutionary dynamics (change over time) for either of these factors, not does it show how evolution of a single factor favours the evolution of the other. [...] Please justify your characterization of the process modeled as co-evolution or change to adaptation.
 
 \end{mdframed}
 
-\hl{DL. TO DO AFTER FIGURE RMD} This is an important point that we now stress and highlight more throughout the paper. Particularly in \hl{here, here, and here}. The discussion surrounding Figure \hl{xxx} further illustrates how one factor has an impact on the evolution of another. 
-
-In a nutshell: a pragmatic strategy (level-$1$ reasoning) favors the evolution of underspecified semantics of the target kind ($L_{\text{lack}}$) as it allows for the maintenance of simpler lexical representations that are easier to learn without functional disadvantages otherwise incurred in communication (e.g., by level-$0$ reasoners). In the other direction, underspecified semantics of the target kind favor the evolution of a pragmatic disposition to act on them. When paired with other semantics, pragmatic refinement can instead be (close to a) neutral trait (e.g., $L_{\text{bound}}$ paired with high $\lambda$) or it can even lead to  functional disadvantages when compared with level-$0$ reasoning (e.g., $L_{\text{bound}}$ with low $\lambda$). Both cases are depicted in Figure \hl{xx.xx}.
+This is an important point that we now stress and highlight more throughout the paper. In particular the discussion surrounding Figure $2$ and $3$ in the new Section~2.4 makes precise how one factor has an impact on the evolution of the other. In a nutshell: a pragmatic strategy (level-$1$ reasoning) favors the evolution of underspecified semantics of the target kind ($L_{\text{lack}}$) as it allows for the maintenance of simpler lexical representations that are easier to learn without functional disadvantages otherwise incurred in communication (e.g., by level-$0$ reasoners). In the other direction, underspecified semantics of the target kind favor the evolution of a pragmatic disposition to act on them. When paired with other semantics, pragmatic refinement can instead be (close to a) neutral trait (e.g., $L_{\text{bound}}$ paired with high $\lambda$) or it can even lead to  functional disadvantages when compared with level-$0$ reasoning (e.g., $L_{\text{bound}}$ with low $\lambda$). 
 
 %
 
@@ -70,7 +68,7 @@ In a nutshell: a pragmatic strategy (level-$1$ reasoning) favors the evolution o
 the mapping between the model and the example of choice (scalar implicatures) could be better motivated
 \end{mdframed}
 
-As we discuss in Section~1, our case study focuses on scalar implicatures because they are well-studied systematic pragmatic inferences that have received much attention, both theoretically and experimentally. This makes them particularly suitable candidates for the study of the evolution of regular pragmatic inferences because there are many findings that can guide the application and evaluation of our model to the study of these inferences. This ties in with our particular choices to model pragmatic language use of scalar expressions. As we now make more explicit \hl{in \S 2.3.1}, these draw from a growing game-theoretic and Bayesian tradition \citep[e.g.,][]{franke:2009,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}. More generally, we have added further background and motivation to our modelling choices throughout the article.
+As we discuss in Section~1, our case study focuses on scalar implicatures because they are well-studied systematic pragmatic inferences that have received much attention, both theoretically and experimentally. This makes them suitable candidates for the study of the evolution of regular pragmatic inferences because there are many findings that can guide the application and evaluation of our model to the study of these inferences. This ties in with our particular choices to model pragmatic language use of scalar expressions. As we now make more explicit in \S 2.3.1, these draw from a growing game-theoretic and Bayesian tradition \citep[e.g.,][]{franke:2009,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}. 
 
 %
 \vspace{.75cm}
@@ -78,7 +76,7 @@ As we discuss in Section~1, our case study focuses on scalar implicatures becaus
 \vspace{.1cm}
 
 \stepcounter{reviewerCommentCounter} %increase counter
-Reviewer \thereviewerCounter~asks for a clearer description of the model. As noted earlier, we have taken care to make the exposition more accessible and to guide the reader more through the technical details of Section 2. \hl{In particular, Section 2.xx is new and should clarify much}. We took the reviewer's questions, briefly answered below, as guidance for the changes made in Section~2.
+\noindent Reviewer \thereviewerCounter~asks for a clearer description of the model. As noted earlier, we have taken care to make the exposition more accessible and to guide the reader more through the technical details of Section 2. In particular, the newly added Section 2.4 should help unravel the model. We took the following questions, briefly answered below, as guidance for changes made in Section~2.
 
 \vspace{.5cm}
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
@@ -90,25 +88,25 @@ As it is unlikely that lexical representations and/or pragmatic reasoning are in
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
 Do agents in a population die little by little and are replaced by new agents? Or all at once?
 \end{mdframed}
-\hl{As now made more explicit in \S2.2}, steps of the discrete-time replicator mutator dynamic correspond to generational turn-overs of the entire population (definitions (1) and (2)). That is to say, all agents die at once, being replaced by the following generation in a single swoop. 
+As now made more explicit in \S2.2, steps of the discrete-time replicator mutator dynamic correspond to generational turn-overs of the entire population (definitions (1) and (2)). That is to say, all agents die at once, being replaced by the following generation in a single swoop. 
 
 \vspace{.5cm}
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
 Do the models consider just a single teacher and a single learner at a time (I don't think this is the case, since the results refer speak of ``majority type, i.e., the type with the highest proportion in the final population'')?
 \end{mdframed}
-The parenthetical remark is correct. The amount of teachers of a given type is proportional to the frequency of this type in the population after the replicator step. More generally, the population is infinite so there are infinite learners/teachers. This was implicit in the definitions of the replicator mutator dynamic in (1) and (2) before, and is now explicitly stated in Section~2.2 in the prose that motivates and explicates these definitions.
+The parenthetical remark is correct. The amount of teachers of a given type is proportional to the frequency of this type in the population after the replicator step. The population is infinite so there are infinite learners/teachers. This was implicit in the definitions of the replicator mutator dynamic in (1) and (2), and is now explicitly stated in Section~2.2 in the prose that motivates and explicates these definitions.
 
 \vspace{.5cm}
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
  How many agents were there per population? And per generation?
 \end{mdframed}
-The prose surrounding definitions (1) and (2) in Section 2.2 now makes explicit that the population is infinite. This allows us to track change that does not depend on varying population sizes nor their growth rate. This is why we speak of proportions of agents of a type, rather than of there being a particular number of agents of a type. 
+The prose surrounding definitions (1) and (2) in Section 2.2 now makes explicit that the population is infinite. This allows us to track change that does not depend on varying population sizes nor their growth rate. This is why we speak of proportions of a type, rather than of there being a particular number of agents of a type. 
 
 \vspace{.5cm}
   \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
 Within one run of the model, do all agents in a population have the same lambda, l and k? If so, please this homogeneous population, and discuss the possible consequences of variation in the population in these parameters.
 \end{mdframed}
-While our model is well-compatible with the assumption that every agent comes with her own parameter values, the reviewer is correct in pointing out that we assume they all to have the same values. Variation across agents would mean many more types: one for each combination of a possible lexicon, pragmatic strategy, $\lambda$-, $l$- and $k$-value. This would allow us to trace the evolutionary trajectory of not only lexica and pragmatic strategies, which is our goal here, but of all these factors combined. As our focus is not to show that, say, a particular $\lambda$ value leads to a particular evolutionary outcome we restrict our attention to a homogeneous population where all agents have the same parameter values. \hl{We discuss this issue in Section~3.2}. 
+While our model is well-compatible with the assumption that every agent comes with her own parameter values, the reviewer is correct in pointing out that we assume they all to have the same values (explicit in \S3.2). Variation across agents would mean many more types: one for each combination of a possible lexicon, pragmatic strategy, $\lambda$-, $l$- and $k$-value. This would allow us to trace the evolutionary trajectory of not only lexica and pragmatic strategies, which is our goal here, but of all these factors combined. As mentioned in Section~$4$, this would be interesting future research.
 
 \vspace{.5cm}
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
@@ -116,21 +114,19 @@ Does the model assume that learners observe not only the behaviour (the message,
 \end{mdframed}
 Learners witness sequences of data $d$. Such a sequence is composed of message-state pairings. In other words, learners do witness the true state of the world (Section~2.3.3, {\em learnability}).
 
-The probability of the learner receiving learning input $d$ depends only on the likelihood of the teacher producing it. This is determined by the teacher's production probabilities; the speaker behavior of her type. Put differently, communicative success does not come into play, only speaker behavior. It would certainly be possible to let learners witness proficient users communicate and to have them infer types from such interactions instead. However, we wanted to keep our assumptions close to the well-studied assumptions standardly made in the iterated (Bayesian) learning tradition. Iterated learning only considers production, rather than production and comprehension (\hl{see discussion that should make this explicit in the discussion section - maybe draw from thesis}). Details on how learners infer types are given in Section~2.3.3.
+The probability of the learner receiving learning input $d$ depends only on the likelihood of the teacher producing it. This is determined by the teacher's production probabilities; the speaker behavior of her type. Communicative success accordingly does not come into play, only speaker behavior. It would certainly be possible to let learners witness proficient users communicate and to have them infer types from such interactions instead. However, we wanted to keep our assumptions close to the well-studied assumptions standardly made in the iterated (Bayesian) learning tradition. Iterated learning only considers production, rather than production and comprehension. Details on how learners infer types are given in Section~2.3.3.
 
 \vspace{.5cm}
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
 How exactly are pragmatic strategies inherited/inferred by learners?    I think all of this may be in the formulas, but it would be useful if it was expressed in prose too.
 \end{mdframed}
-As with the other questions, we agree and have made these matters more explicit. This matter is particularly important. We now stress it throughout the article.
-
-In short, a type is a combination of a lexicon and a pragmatic disposition to act on it. Together, both ingredients define an agent's linguistic behavior. A learner faced with input $d$ (see above) calculates $P(\tau \mid d)$, the probability that a type $\tau$ produced input $d$. Crucially, neither pragmatic strategies nor lexical meanings are directly observable, so they can only be faithfully recovered insofar as the behavior evidenced by a type is (in tendency) attributable to only one pairing of a lexicon and a pragmatic strategy.
+In short, a type is a combination of a lexicon and a disposition to act on it. Together, both ingredients define an agent's linguistic behavior. A learner faced with input $d$ (see above) calculates $P(\tau \mid d)$, the probability that a type $\tau$ produced input $d$. Crucially, neither pragmatic strategies nor lexical meanings are directly observable, so they can only be faithfully recovered inasmuch as the {\em overt} behavior evidenced by a type is (in tendency) attributable to only one, {\em covert}, pairing of a lexicon and a pragmatic strategy.
 
 \vspace{.5cm}
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
 Could you express in prose how literal and pragmatic use work in practice? I am not sure I understand why you call the strategies `pragmatic', given that pragmatics depends on the context, and there is no context here. I would like to see the use of the term `pragmatic' justified further in the paper.
 \end{mdframed}
-We follow the Gricean tradition of viewing pragmatic inference as effected by mutual reasoning about rational language use (Section~1). This may involve the recruitment of contextual information, as the reviewer notes, but can also involve pragmatic enrichments that result purely from reasoning about linguistic alternatives (``why did the speaker say {\em some} instead of {\em all}''). It is in the latter sense that reasoning beyond level $0$ is pragmatic. Classically, theoretical analyses of scalar implicatures put their emphasis on reasoning about linguistic choice rather than on contextual information \citep[e.g.,][]{horn:1972,gazdar:1979, franke:2009, GoodmanStuhlmuller2013:Knowledge-and-I} and we chose to do the same.
+We follow the Gricean tradition of viewing pragmatic inference as effected by mutual reasoning about rational language use (Section~1). This may involve the recruitment of contextual information, as the reviewer notes, but can also involve pragmatic enrichments that result purely from reasoning about linguistic alternatives (``why did the speaker say {\em some} instead of {\em all}''). It is in the latter sense that reasoning beyond level $0$ is pragmatic (see \S2.31.). Classically, theoretical analyses of scalar implicatures put their emphasis on reasoning about linguistic choice rather than on contextual information \citep[e.g.,][]{horn:1972,gazdar:1979, franke:2009, GoodmanStuhlmuller2013:Knowledge-and-I}. We chose to do the same.
 
 \vspace{.5cm}
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
@@ -143,7 +139,7 @@ This parameter regulates the linguistic production behavior of types, i.e., spea
 Also [in the Subsection {\em learnability only}], why isn't the proportion of Lall highest, given that it has the lowest complexity (highest prior)?
 \end{mdframed}
 %
-Due to their stochastic speaker behavior, the data produced by $L_{\text{all}}$-teachers tends to be compatible with the behavior of many other types. Intuitively, the data such teachers produce are all over the place and do not do a good job in setting them apart from other types. Consequently, even if the prior favors $L_{\text{all}}$, this type is not transmitted very faithfully; learners reason that it could also come from other types and may adopt those instead. If there are types that are transmitted more faithfully, the population will, over time, transition to these types rather than to $L_{\text{all}}$. As we put it in Section~4, iterated learning does not necessarily promote the {\em a priori} more likely type, but tends to promote a type $t$ based on a gradient of how many other types might likely mutate into $t$, so to speak. We stress this in Section~3.2.2 and Section~4.
+Due to their stochastic speaker behavior, the data produced by $L_{\text{all}}$-teachers tends to be compatible with the behavior of many other types. Intuitively, the data such teachers produce are all over the place and do not do a good job in setting them apart from other types. Consequently, even if the prior favors $L_{\text{all}}$, this type is not transmitted very faithfully; learners reason that the input they get from $L_{\text{all}}$-teachers could also come from other types and may adopt those instead. If there are types that are transmitted more faithfully, the population will, over time, transition to these types rather than to $L_{\text{all}}$. As we put it in Section~4, iterated learning does not necessarily promote the {\em a priori} more likely type, but tends to promote a type $t$ based on a gradient of how many other types might likely mutate into $t$, so to speak. We stress this in Section~3.2.2 and Section~4.
 
 \vspace{1cm}
 \noindent\rule{\textwidth}{1pt}
@@ -193,9 +189,7 @@ We understand transmission fidelity as the transition probability of acquiring t
 The results are interesting, though somewhat difficult to interpret. First, pragmatic language use does not evolve in the absence of learnability pressures, due to its slightly lower fitness. Second, pragmatic language use can arise from learnability pressures alone, though only for sufficiently ``rational'' learners. Third, pragmatic language use can evolve given both fitness and learnability pressures, though only if both learners and language speakers are both sufficiently optimal. The first two results are fairly straightforward, but the third (which is the most important in the paper) is more puzzling. Why do learnability pressures not have the same effect in the joint learnability/fitness model, as they do in the lesioned model? Why is high speaker optimality necessary for scalar implicatures to evolve, when it does not have this effect in the fitness-only model?
 \end{mdframed}
 
-We have thoroughly revised the article to make the contrast between these three predictions clearer, as well as the predictions themselves. Concretely, \hl{say where this is more explicit now. This should be the new figure as well as a clearer contrast when discussing the simulation outcomes}.
-
-These questions tie in with Reviewer $1$'s request for a clearer exposition and the explanation of why we speak of co-evolution in this case (reviewer 1, comment 1). In a nutshell, pressure for learnability alone does not put the types found in a population in competition. Instead, the population comes to be inhabited by types that are faithfully transmitted -- of which there might be many (e.g., all variants of a kind are equally learnable; if there are many variants of a type that is, in tendency, faithfully transmitted the population will stay polymorphic). What fitness-relative selection adds to this process is the competition that learnability alone lacks, independent of the type space we look at. Now, in the case of our type space we have a slight (modulo $\lambda$) communicative disadvantage for targets  when in direct competition with competitors, for instance. However, the fact that targets are inferred more faithfully by na\"ive learners leads (i) to the gradual existence of less competitors, counteracting this, if slight, functional disadvantage, as well as (ii) to the existence of less variants of a kind (contra the {\em learning alone} dynamic).
+We have thoroughly revised the article to make the contrast between these three predictions clearer (see Section~3.2, particularly 3.2.3; but also Section~2.4, which illustrates how the dynamics behave in a smaller type space). These questions tie in with Reviewer $1$'s request for a clearer exposition and the explanation of why we speak of co-evolution in this case (reviewer 1, comment 1). In a nutshell, pressure for learnability alone does not put the types found in a population in competition. Instead, the population comes to be inhabited by types that are faithfully transmitted -- of which there might be many (e.g., all variants of a kind are equally learnable; if there are many variants of a type that is, in tendency, faithfully transmitted the population will stay polymorphic). What fitness-relative selection adds to this process is the competition that learnability alone lacks, independent of the type space we look at. Now, in the case of our type space we have a slight (modulo $\lambda$) communicative disadvantage for targets  when in direct competition with competitors, for instance. However, the fact that targets are inferred more faithfully by na\"ive learners leads (i) to the gradual existence of less competitors, counteracting this functional disadvantage, as well as (ii) to the existence of less variants of a kind (contra the {\em learning alone} dynamic).
 %
 
 \vspace{0.5cm}
@@ -221,7 +215,7 @@ As noted above, we have expanded our analysis of the model and put much more emp
 It makes sense for agents to acquire their grammar/lexicon by learning, as these are social conventions. I believe, however, that the paper also assumes that an agent's pragmatic type (i.e. whether they are literal or pragmatic speakers) is also determined by learning. This is more difficult to interpret. It is reasonable for an agent to learn whether the other agents in a population are behaving pragmatically. Even if the other agents are not behaving pragmatically, however, it will be rational for the learner to behave pragmatically. This is a property of the recursive definition of the pragmatics model. The pragmatic speaker is defined so as to select utterances that will be correctly interpreted by the literal listener. If an agent learns that their interlocutors are all literal agents, then it would be rational for them to pragmatically reason about these literal agents. It is therefore not clear why the agents should, as currently proposed, copy the inferred pragmatic type of their interlocutor.
 \end{mdframed}
 
-It is not necessarily true that it will always be rational for agents to behave pragmatically.  \hl{We now make explicit in Section~2}, but the main thing to note is that a pragmatic level-$1$ hearer using lexicon $L_{\text{bound}}$ will reason over the behavior of a {\em soft-maximizing} level-$0$ speaker of $L_{\text{bound}}$. The lower $\lambda$, the more the stochasticity percolates to level-$1$ pragmatic interpretation. By contrast, literal level-$0$ hearers of $L_{\text{bound}}$ have a one-to-one form-meaning mapping from the get go. Put differently, pragmatic reasoning can actually encumber some hearers, depending on their lexicon. Particularly if $\lambda$ is low.
+It is not necessarily true that it will always be rational for agents to behave pragmatically (see the end of Section~2.3.1 but also the discussion surrounding Figure~3a).  The main thing to note is that a pragmatic level-$1$ hearer using lexicon $L_{\text{bound}}$ will reason about the behavior of a {\em soft-maximizing} level-$0$ speaker of $L_{\text{bound}}$. The lower $\lambda$, the more the stochasticity percolates to level-$1$ pragmatic interpretation. By contrast, literal level-$0$ hearers of $L_{\text{bound}}$ have a one-to-one form-meaning mapping from the get go. Put differently, pragmatic reasoning can actually encumber some hearers, depending on their lexicon. Particularly if $\lambda$ is low.
 
 
 %
@@ -237,7 +231,7 @@ The paper assumes that the speaker (and listener) know the type of the player th
 %
 \end{mdframed}
 
-As we now clarify in \hl{Section~n} and stress a couple of times throughout the article, we assume very little sophistication from our agents. In particular, they do {\em not} know the type of the player that the are playing against. They simply behave according to their subjective point of view in a boundedly rational fashion. For example, the linguistic choices of a level-$1$ speaker of lexicon $L_{\text{some}}$ do not change depending on whom she interacts with; they are always defined as (boundedly) rational choice relative to the interpretative behavior of a level-$0$ user of $L_{\text{some}}$ (\hl{point to definitions of behavior in section 2}).
+As we now clarify in Section~2.3.1 and stress a couple of times throughout the article, we assume very little sophistication from our agents. In particular, they do not know the type of the player that the are playing against. They simply behave according to their subjective point of view in a boundedly rational fashion. For example, the linguistic choices of a level-$1$ speaker of lexicon $L_{\text{some}}$ do not change depending on whom she interacts with. They are always defined as (boundedly) rational choice relative to the interpretative behavior of a level-$0$ user of $L_{\text{some}}$ (see (3) --(6) in \S2.3.1).
 %
 
 \vspace{0.5cm}
@@ -284,7 +278,8 @@ Throughout, the paper mostly equates the learnability of a grammar with its comp
 %
 \end{mdframed}
 
-This is true. We are grateful that this was pointed out, as our previous rendering could lead to confusion, e.g., as to why $L_{\text{all}}$, being the {\em a priori} more likely type to be inferred, did not come out strongly even when considering learnability alone. \hl{Throughout the article, we now stress more that what matters is the posterior -- and discuss the role of the prior mainly when contrasting targets and competitor, who crucially differ mostly in this respect.}
+This is an important point. We agree that some fragments of our previous manuscript could lead to confusion, e.g., as to why $L_{\text{all}}$, being the {\em a priori} more likely type to be inferred, did not come out strongly even when considering learnability alone. Throughout the article, we now stress more that what matters is the posterior and explain the role of the likelihood more.
+
 
 %
 
@@ -300,9 +295,7 @@ what would be the impact of assuming that fitness is not contributed equally by 
 %
 \end{mdframed}
 
-This is a standard assumption in the literature lacking reasons to believe that there is an asymmetry in how often, on average, agents use and hear a type of expression. In the case of scalar implicatures, we see no reason to assume such an asymmetric contribution to fitness. 
-
-As for concrete impact: The main contrast that we are interested in, i.e., competition between targets and competitors, does not hinge on agents being speakers half of the time. However, the contrast between pragmatic and literal competitor types does, because their receiver behaviors differ. Assuming that successful receiver behavior contributes differently than sender behavior would therefore modulate differences between these types.
+This is a standard assumption in the literature (lacking reasons to believe that there is an asymmetry in how often, on average, agents use and hear a type of expression.) In the case of scalar implicatures, we see no reason to assume such an asymmetric contribution to fitness. As for concrete impact: The main contrast that we are interested in (competition between targets and competitors) does not hinge on agents being speakers half of the time. However, e.g., the contrast between pragmatic and literal competitor types does as they differ only in their receiver behaviors. Assuming that receiver behavior contributes differently than sender behavior would therefore modulate differences between these types.
 
 %
 \noindent\rule{\textwidth}{1pt}
@@ -315,7 +308,7 @@ what motivates modelling just three messages and not just two (``some'' and ``al
 %
 \end{mdframed}
 
-As now made explicit in \hl{Section~xx.xx}, we chose three messages for illustrative purposes mainly. In particular, we wanted to inspect a type space where targets are not the most likely {\em a priori} as this may mislead readers into thinking that learnability alone, in particular the prior alone, drives the outcome. This is related to our answer to reviewer 2, comment 7. The reason why we did not go beyond $n>2$ is for computational tractability, as calculating $Q$, even if approximated, is expensive. The question whether increasing the type space will decrease the frequency to which we expect to see pragmatic {\em some} users is interesting. It now figures in \hl{Section~X.X}. At present, we have no answer. 
+As now made explicit in Section~3.1, we chose three messages for illustrative purposes mainly. In particular, we wanted to inspect a type space where targets are not the most likely {\em a priori} as this may mislead readers into thinking that learnability alone, in particular the prior alone, drives the outcome. This is related to our answer to reviewer 2, comment 7. The reason why we did not go beyond $n>2$ is for computational tractability, as calculating $Q$, even if approximated, is expensive. The question whether increasing the type space will decrease the frequency to which we expect to see pragmatic {\em some} users is interesting. It now figures in \hl{Section~X.X}. At present, we have no answer. 
 
 
 
