@@ -469,24 +469,6 @@ def get_3d_diff_incumbents(type_list,list1,list2,kind):
     other_types = [x for x in all_types if x not in target_types]
     seq_length = 5
     
-    #data = np.zeros((len(list1)+1, len(list2)+1))
-    #for i in xrange(len(list1)):
-    #    for j in xrange(len(list2)):
-    #        #To avoid errors when adding cols to slices of copies:
-    #        dt = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[i],seq_length,list2[j]))
-    #        do = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % (kind,list1[i],seq_length,list2[j]))
-    #
-    #        data[0,j+1] = list2[j]
-    #        data[i+1,0] = list1[i]
-    #        
-    #        dt = dt[target_types] 
-    #        do = do[other_types]
-    #        dt['incumbent_t'] = dt.max(axis=1) #incumbent amongst types in d_t
-    #        do['incumbent_o'] = do.max(axis=1) #incumbent amongst types in d_o
-    #        best_of_targets = dt['incumbent_t'].mean()
-    #        best_of_others = do['incumbent_o'].mean()
-    #        data[i+1,j+1] = best_of_targets - best_of_others
-
     data = np.genfromtxt('differences-data.csv',delimiter=',')
     dPrime = data[1:,1:]
     sns.set_style("whitegrid")
@@ -614,10 +596,7 @@ types = [231,236,291,306,326,336]
 def get_subfigs_hist_replication(type_list,list1,list2):
     seq_length = 5
     num_of_runs = 5
-     
-    types_to_plot = ['t_final'+str(x) for x in type_list]  
-    targets_to_plot = ['t_final'+str(x) for x in type_list[:6]]  
-
+    
     restrict_to_final = ['t_final'+str(z) for z in xrange(432)] #as to avoid the incumbent to come from other columns
 
     df1 = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('r',list1[0],seq_length,list2[0]))
@@ -632,70 +611,132 @@ def get_subfigs_hist_replication(type_list,list1,list2):
  
     df3 = df3[restrict_to_final]
     df3_majority = df3.max(axis=1).iloc[num_of_runs]
-   
-    df1_large = df1[types_to_plot]# + ['incumbent']]
-    df1_large = df1_large.iloc[num_of_runs]
-    Y1_large = df1_large.values
-                 
-    df2_large = df2[types_to_plot]# + ['incumbent']]
-    df2_large = df2_large.iloc[num_of_runs]
-    Y2_large = df2_large.values
 
-    df3_large = df3[types_to_plot]# + ['incumbent']]
-    df3_large = df3_large.iloc[num_of_runs]
-    Y3_large = df3_large.values
+    #old code to just return plots based on the inputed typelist:
+    #types_to_plot = ['t_final'+str(x) for x in type_list]  
+    #targets_to_plot = ['t_final'+str(x) for x in type_list[:6]]   
+
+    #df1_large = df1[types_to_plot]# + ['incumbent']]
+    #df1_large = df1_large.iloc[num_of_runs]
+    #Y1_large = df1_large.values
+    #             
+    #df2_large = df2[types_to_plot]# + ['incumbent']]
+    #df2_large = df2_large.iloc[num_of_runs]
+    #Y2_large = df2_large.values
+    #                                                 
+    #df3_large = df3[types_to_plot]# + ['incumbent']]
+    #df3_large = df3_large.iloc[num_of_runs]
+    #Y3_large = df3_large.values
+
+
+    competitor_lst = [9,  19,  39,  54, 109, 114] + [225,235,255,270,325,330]
+    competitors = ['t_final'+str(z) for z in competitor_lst]
+    highest_6_competitors = df1[competitors].iloc[num_of_runs].sort_values(ascending=False)[:6].values
+    highest_6_competitors = np.random.permutation(highest_6_competitors)
+    
+    lall = ['t_final'+str(z) for z in [0,216]]
+    highest_lall = df1[lall].iloc[num_of_runs].sort_values(ascending=False)[:1].values
+
+    targets = ['t_final'+str(z) for z in [231,236,291,306,326,336]]
+    t_vals = df1[targets].iloc[num_of_runs].values
+    
+    Y1_large = np.concatenate((t_vals,np.concatenate((highest_6_competitors,highest_lall))))
+
+    highest_6_competitors = df2[competitors].iloc[num_of_runs].sort_values(ascending=False)[:6].values
+    highest_6_competitors = np.random.permutation(highest_6_competitors)
+    highest_lall = df2[lall].iloc[num_of_runs].sort_values(ascending=False)[:1].values
+    t_vals = df2[targets].iloc[num_of_runs].values
+    Y2_large = np.concatenate((t_vals,np.concatenate((highest_6_competitors,highest_lall))))
+
+    highest_6_competitors = df3[competitors].iloc[num_of_runs].sort_values(ascending=False)[:6].values
+    highest_6_competitors = np.random.permutation(highest_6_competitors)
+    highest_lall = df3[lall].iloc[num_of_runs].sort_values(ascending=False)[:1].values
+    t_vals = df3[targets].iloc[num_of_runs].values
+    Y3_large = np.concatenate((t_vals,np.concatenate((highest_6_competitors,highest_lall))))
+
 
     colors = ('green','green','green','green','green','green','darkorange','darkorange','darkorange','darkorange','darkorange', 'darkorange', 'red')
 
 #    xlabels = [x for x in xrange(num_of_runs)] #runs
 
-    
-    X = np.arange(len(types_to_plot))
+    fig,ax = plt.subplots(nrows=1,ncols=3) 
+    X = np.arange(len(Y1_large))
     al = 0.6 #alpha
     ax1_large = plt.subplot(1,3,1)
-    plt.bar(X,Y1_large,color=colors,alpha=al)
-    plt.axhline(y=df1_majority,linestyle='dashed')
-    plt.text(0.05,df1_majority-0.0015,'majority type',color='royalblue',fontweight='extra bold')
-    ax1_large.tick_params(axis='both', which='major', labelsize=17)
+###old code with horizontal bars:
+#    plt.bar(X,Y1_large,color=colors,alpha=al)
+#    plt.axhline(y=df1_majority,linestyle='dashed')
+#    plt.text(0.05,df1_majority-0.0015,'majority type',color='royalblue',fontweight='extra bold')
+#    ax1_large.tick_params(axis='both', which='major', labelsize=17)
 
+#    ax2_large = plt.subplot(1,3,2);
+#    plt.bar(X,Y2_large,color=colors,alpha=al)
+#    plt.axhline(y=df2_majority,linestyle='dashed')
+#    ax2_large.tick_params(axis='both', which='major', labelsize=17)
+#
+#
+#    ax3_large = plt.subplot(1,3,3);
+#    plt.bar(X,Y3_large,color=colors,alpha=al)
+#    plt.axhline(y=df3_majority,linestyle='dashed')#, color=sns.color_palette()[1],linestyle ='dashed', markevery=10)
+#    ax3_large.tick_params(axis='both', which='major', labelsize=17)
+
+###New code with barh
+    plt.barh(X,Y1_large,color=colors,alpha=al)
+    plt.gca().invert_yaxis()
+    plt.axvline(x=df1_majority,linestyle='dashed')
+    plt.text(df1_majority-0.004,10,'majority type',color='royalblue',fontweight='extra bold',rotation=90)
 
     ax2_large = plt.subplot(1,3,2);
-    plt.bar(X,Y2_large,color=colors,alpha=al)
-    plt.axhline(y=df2_majority,linestyle='dashed')
-    ax2_large.tick_params(axis='both', which='major', labelsize=17)
-
+    plt.barh(X,Y2_large,color=colors,alpha=al)
+    plt.gca().invert_yaxis()
+    plt.axvline(x=df2_majority,linestyle='dashed')
 
     ax3_large = plt.subplot(1,3,3);
-    plt.bar(X,Y3_large,color=colors,alpha=al)
-    plt.axhline(y=df3_majority,linestyle='dashed')#, color=sns.color_palette()[1],linestyle ='dashed', markevery=10)
-    ax3_large.tick_params(axis='both', which='major', labelsize=17)
+    plt.barh(X,Y3_large,color=colors,alpha=al)
+    plt.gca().invert_yaxis()
+    plt.axvline(x=df3_majority,linestyle='dashed')
 
-#
     #Layout
     ax1_large.set_xlabel(r'$\lambda$ = '+str(list1[0]),fontsize=25)
     ax1_large.xaxis.set_label_position('top')
-#
-    for label in ax1_large.get_xticklabels():
-        label.set_visible(False)
-    for label in ax2_large.get_xticklabels():
-        label.set_visible(False)
-    for label in ax3_large.get_xticklabels():
-        label.set_visible(False)
-
-    p1 = patches.Rectangle((0, 0), 1, 1, fc="green", alpha=al)
-    p2 = patches.Rectangle((0, 0), 1, 1, fc="darkorange",alpha=al)
-    p3 = patches.Rectangle((0, 0), 1, 1, fc="red",alpha=al)
-
-    ax1_large.legend([p1, p2, p3], ['Target types','Competitor types','prag. L-all'],loc=(0.0340644,0.69441),prop={'size':14})
-
     ax2_large.set_xlabel(r'$\lambda$ = '+str(list1[1]),fontsize=25)
     ax2_large.xaxis.set_label_position('top')
-#    ax2_large.text(5,-0.015,'Types',fontsize=20)
-
     ax3_large.set_xlabel(r'$\lambda$ = '+str(list1[2]),fontsize=25)
     ax3_large.xaxis.set_label_position('top')
 
+    fig.text(0.5, 0.02, 'Proportion', ha='center',fontsize=20)
+    fig.text(0.02, 0.5, 'Types', va='center', rotation='vertical',fontsize=20)
 
+###Old version:
+#    for label in ax1_large.get_xticklabels():
+#        label.set_visible(False)
+#    for label in ax2_large.get_xticklabels():
+#        label.set_visible(False)
+#    for label in ax3_large.get_xticklabels():
+#        label.set_visible(False)
+
+#    p1 = patches.Rectangle((0, 0), 1, 1, fc="green", alpha=al)
+#    p2 = patches.Rectangle((0, 0), 1, 1, fc="darkorange",alpha=al)
+#    p3 = patches.Rectangle((0, 0), 1, 1, fc="red",alpha=al)
+#
+#    ax1_large.legend([p1, p2, p3], ['Target types','Competitor types','L-all'],loc=(0.0340644,0.69441),prop={'size':14})
+
+
+
+    for label in ax1_large.get_yticklabels():
+        label.set_visible(False)
+    for label in ax2_large.get_yticklabels():
+        label.set_visible(False)
+    for label in ax3_large.get_yticklabels():
+        label.set_visible(False)
+    p1 = patches.Rectangle((0, 0), 1, 1, fc="green", alpha=al)
+    p2 = patches.Rectangle((0, 0), 1, 1, fc="darkorange",alpha=al)
+    p3 = patches.Rectangle((0, 0), 1, 1, fc="red",alpha=al)
+    ax2_large.legend([p1, p2, p3], ['Target types','Competitor types','L-all'],loc=(0.2,0.69441),prop={'size':14},frameon=True)
+
+    ax1_large.tick_params(axis='both', which='major', labelsize=15)
+    ax2_large.tick_params(axis='both', which='major', labelsize=15)
+    ax3_large.tick_params(axis='both', which='major', labelsize=15)
 
 
     plt.tight_layout()
@@ -705,39 +746,71 @@ def get_subfigs_hist_mutation(type_list,list1,list2):
     seq_length = 5
     num_of_runs = 5
     
-    types_to_plot = ['t_final'+str(x) for x in type_list]  
+#    types_to_plot = ['t_final'+str(x) for x in type_list]  
     restrict_to_final = ['t_final'+str(z) for z in xrange(432)] #as to avoid the incumbent to come from other columns
 
     df1 = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('m',list1[0],seq_length,list2[0]))
     df2 = pd.read_csv('./results/%s-s3-m3-lam%d-a1-k%d-samples250-l%d-g50-meFalse.csv' % ('m',list1[0],seq_length,list2[1]))
-    
+
     df1 = df1[restrict_to_final]
     df1_majority = df1.max(axis=1).iloc[num_of_runs]
 
     df2 = df2[restrict_to_final]
     df2_majority = df2.max(axis=1).iloc[num_of_runs]
+
+##Old code:
+#    df1_large = df1[types_to_plot]
+#    df1_large = df1_large.iloc[num_of_runs]
+#    Y1_large = df1_large.values
+#                 
+#    df2_large = df2[types_to_plot]
+#    df2_large = df2_large.iloc[num_of_runs]
+#    Y2_large = df2_large.values
+    competitor_lst = [9,  19,  39,  54, 109, 114] + [225,235,255,270,325,330]
+    competitors = ['t_final'+str(z) for z in competitor_lst]
+    highest_6_competitors = df1[competitors].iloc[num_of_runs].sort_values(ascending=False)[:6].values
+    highest_6_competitors = np.random.permutation(highest_6_competitors)
     
-    df1_large = df1[types_to_plot]
-    df1_large = df1_large.iloc[num_of_runs]
-    Y1_large = df1_large.values
-                 
-    df2_large = df2[types_to_plot]
-    df2_large = df2_large.iloc[num_of_runs]
-    Y2_large = df2_large.values
+    lall = ['t_final'+str(z) for z in [0,216]]
+    highest_lall = df1[lall].iloc[num_of_runs].sort_values(ascending=False)[:1].values
+
+    targets = ['t_final'+str(z) for z in [231,236,291,306,326,336]]
+    t_vals = df1[targets].iloc[num_of_runs].values
+    
+    Y1_large = np.concatenate((t_vals,np.concatenate((highest_6_competitors,highest_lall))))
+
+    highest_6_competitors = df2[competitors].iloc[num_of_runs].sort_values(ascending=False)[:6].values
+    highest_6_competitors = np.random.permutation(highest_6_competitors)
+    highest_lall = df2[lall].iloc[num_of_runs].sort_values(ascending=False)[:1].values
+    t_vals = df2[targets].iloc[num_of_runs].values
+    Y2_large = np.concatenate((t_vals,np.concatenate((highest_6_competitors,highest_lall))))
 
     colors = ('green','green','green','green','green','green','darkorange','darkorange','darkorange','darkorange','darkorange', 'darkorange', 'red')
 
-    X = np.arange(len(types_to_plot))
+    fig,ax = plt.subplots(nrows=1,ncols=3)
+    X = np.arange(len(Y1_large))
     al = 0.6 #alpha
     ax1_large = plt.subplot(1,3,1)
-    plt.bar(X,Y1_large,color=colors,alpha=al)
-    plt.axhline(y=df1_majority,linestyle='dashed')
-    plt.text(0.05,df1_majority+0.0005,'majority type',color='royalblue',fontweight='extra bold')
+
+##Old code with horizontal bars:
+#    plt.bar(X,Y1_large,color=colors,alpha=al)
+#    plt.axhline(y=df1_majority,linestyle='dashed')
+#    plt.text(0.05,df1_majority+0.0005,'majority type',color='royalblue',fontweight='extra bold')
+#
+#    ax2_large = plt.subplot(1,3,2);
+#    plt.bar(X,Y2_large,color=colors,alpha=al)
+#    plt.axhline(y=df2_majority,linestyle='dashed')
+    print X
+    print Y1_large
+    plt.barh(X,Y1_large,color=colors,alpha=al)
+    plt.gca().invert_yaxis()
+    plt.axvline(x=df1_majority,linestyle='dashed')
+    plt.text(df1_majority-0.004,10,'majority type',color='royalblue',fontweight='extra bold',rotation=90)
 
     ax2_large = plt.subplot(1,3,2);
-    plt.bar(X,Y2_large,color=colors,alpha=al)
-    plt.axhline(y=df2_majority,linestyle='dashed')
-
+    plt.barh(X,Y2_large,color=colors,alpha=al)
+    plt.gca().invert_yaxis()
+    plt.axvline(x=df2_majority,linestyle='dashed')
 
 
     #Third subfigure is the prior
@@ -756,15 +829,10 @@ def get_subfigs_hist_mutation(type_list,list1,list2):
     lall = [0,216]
 
 
-
     white_space = 17 #to separate from other priors
     Y_target = [0 for _ in xrange(len(priors)+white_space*3)]
     Y_lbound = [0 for _ in xrange(len(priors)+white_space*3)]
     Y_all = [0 for _ in xrange(len(priors)+white_space*3)]
-
-#    for t in xrange(len(targets)):
-#        Y_target[t] = priors[targets[t]]
-    #To interspread white space (done manually for convenience)
 
     Y_target[0] = priors[targets[0]]
     Y_target[2] = priors[targets[1]]
@@ -781,9 +849,6 @@ def get_subfigs_hist_mutation(type_list,list1,list2):
     Y_target[22] = priors[targets[11]]
    
 
-
-#    for t in xrange(len(lbound)):
-#        Y_lbound[len(targets)+white_space+t] = priors[lbound[t]]
     Y_lbound[len(targets)+17+0] = priors[lbound[0]]
     Y_lbound[len(targets)+17+2] = priors[lbound[1]]
     Y_lbound[len(targets)+17+4] = priors[lbound[2]]
@@ -798,9 +863,6 @@ def get_subfigs_hist_mutation(type_list,list1,list2):
     Y_lbound[len(targets)+17+20] = priors[lbound[10]]
     Y_lbound[len(targets)+17+22] = priors[lbound[11]]
 
-
-#    for t in xrange(len(lall)):
-#        Y_all[len(targets)+white_space+len(lbound)+white_space+t] = priors[lall[t]]
     Y_all[len(targets)+17+len(lbound)+17+0] = priors[lall[0]]
     Y_all[len(targets)+17+len(lbound)+17+3] = priors[lall[1]]
 
@@ -833,24 +895,30 @@ def get_subfigs_hist_mutation(type_list,list1,list2):
     ax_prior.barh(X,Y_rest,color='royalblue',alpha=al)
 
 
-
     #Layout
     from matplotlib.ticker import FormatStrFormatter
     ax1_large.set_xlabel('l = '+str(list2[0]),fontsize=25)
     ax1_large.xaxis.set_label_position('top')
-    ax1_large.set_ylim(0,np.max(Y1_large)+0.005)
+#    ax1_large.set_ylim(0,np.max(Y1_large)+0.005)
 
-    for label in ax1_large.get_xticklabels():
-        label.set_visible(False)
-    for label in ax2_large.get_xticklabels():
-        label.set_visible(False)
+    fig.text(0.02, 0.5, 'Types', va='center', rotation='vertical',fontsize=25)
 
+
+#    for label in ax1_large.get_xticklabels():
+#        label.set_visible(False)
+#    for label in ax2_large.get_xticklabels():
+#        label.set_visible(False)
+
+    for label in ax1_large.get_yticklabels():
+        label.set_visible(False)
+    for label in ax2_large.get_yticklabels():
+        label.set_visible(False)
 
     p1 = patches.Rectangle((0, 0), 1, 1, fc="green", alpha=al)
     p2 = patches.Rectangle((0, 0), 1, 1, fc="darkorange",alpha=al)
     p3 = patches.Rectangle((0, 0), 1, 1, fc="red",alpha=al)
 
-    ax1_large.legend([p1, p2, p3], ['Target types','Competitor types','prag. L-all'],loc='best',prop={'size':14})
+    ax2_large.legend([p1, p2, p3], ['Target types','Competitor types','L-all'],loc='best',prop={'size':14},frameon=True)
     ax1_large.tick_params(axis='both', which='major', labelsize=17)
 
 
@@ -858,12 +926,11 @@ def get_subfigs_hist_mutation(type_list,list1,list2):
     ax2_large.xaxis.set_label_position('top')
     ax2_large.tick_params(axis='both', which='major', labelsize=17)
 
-#    ax2_large.set_ylim(0,0.75)
 
 
     ax_prior.set_xlabel('Prior',fontsize=25)
     ax_prior.xaxis.set_label_position('top')
-    ax_prior.set_ylabel('Types', fontsize=25)
+#    ax_prior.set_ylabel('Types', fontsize=25)
     ax_prior.tick_params(axis='both', which='major', labelsize=17)
     ax_prior.annotate('L-lack',xy=(.0063236,467),color='green',fontweight='extra bold')
     ax_prior.annotate('L-bound',xy=(0.0028603,438.5),color='darkorange',fontweight='extra bold')
@@ -873,8 +940,8 @@ def get_subfigs_hist_mutation(type_list,list1,list2):
     ylabels = [x for x in xrange(len(X))]
 
     #Hide all y-labels
-    for label in ax_prior.get_yticklabels():
-        label.set_visible(False)
+#    for label in ax_prior.get_yticklabels():
+#        label.set_visible(False)
 
 
 
@@ -949,18 +1016,6 @@ def get_subfigs_hist_rmd(type_list,list1,list2):
             p3 = patches.Rectangle((0, 0), 1, 1, fc="red",alpha=al)
             ax.legend([p1, p2, p3], ['Target types','Competitor types','prag. L-all'],loc='best',prop={'size':14})
 
-#
-#        handles, labels = ax.get_legend_handles_labels()
-#        labels = ['prag. L-lack' for _ in xrange(len(types))] + ['Other majority']
-#        display = (3,6)
-##
-#        ax.legend([handle for i,handle in enumerate(handles) if i in display], \
-#                  [label for i,label in enumerate(labels) if i in display], loc='best',prop={'size': 20})
-#
-#        #Alternatively: Hide legend
-#        if not idx == display[0]:
-#            ax.legend().set_visible(False)
-
         for label in ax.get_xticklabels():
             label.set_visible(False)
         
@@ -979,13 +1034,13 @@ types = [231,236,291,306,326,336] + [9,  19,  39,  54, 109, 114] + [216]
 #Plot 1
 list1 = [1,5,20] #lambda
 list2 = [5] #posterior parameter
-get_subfigs_hist_replication(types,list1,list2)
+#get_subfigs_hist_replication(types,list1,list2)
 
 
 #Plot 2:
 list1 = [20]
 list2 = [1,15]
-get_subfigs_hist_mutation(types,list1,list2)
+#get_subfigs_hist_mutation(types,list1,list2)
 
 #Plot 3:
 list1 = [1,5,20]
