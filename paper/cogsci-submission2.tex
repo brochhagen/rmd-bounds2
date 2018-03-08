@@ -152,7 +152,7 @@ implicatures
 \citep{horn:1984,Hirschberg1985:A-Theory-of-Sca,LevinsonPragmatics1983,Geurts2010:Quantity-Implic}. Usually,
 the utterance of a sentence like ``I own some of Johnny Cash's albums'' will be taken to mean
 that the speaker does not own all of them. This is because, if the speaker instead owned them all, she
-could have used the word \emph{all} instead of \emph{some} in his utterance, thereby making a
+could have used the word \emph{all} instead of \emph{some} in her utterance, thereby making a
 more informative statement. Scalar implicatures, especially the inference from \emph{some} to
 \emph{some but not all}, have been studied extensively, both theoretically
 \citep[e.g.,][]{Sauerland2004:Scalar-Implicat,ChierchiaFox2008:The-Grammatical,Rooyvan-RooijJagerde-Jager2012:Explaining-Quan}
@@ -244,12 +244,20 @@ that lexicalizes distinct forms for a large number of different meanings may be 
 but challenging to acquire.
 
 \subsection{The replicator mutator dynamic}
-An elegant formal approach to capture the interaction between communicative efficiency and learnability is
-the \emph{replicator mutator dynamic}
-\citep{Hofbauer1985:The-Selection-M,nowak+etal:2000,NowakKomarova2001:Evolution-of-Un,hofbauer+sigmund:2003,nowak:2006}. The RMD is a population dynamic, which is to say that it describes change in the composition of a community made up of different types of agents. The population vector $\vec{x}$ codifies proportions or frequencies of types in a population, with $x_i$ being the frequency of type $i$. This population is infinite; its carrying capacity is held constant, $\sum\nolimits_i x_i = 1$. This allows us to track change that does not depend on varying population sizes nor their growth rates (but see, e.g., \citealt{nowak:2006} and \citealt[\S 5]{Skyrms2010:Signals} for alternatives that consider, among others, population size and growth). In its simplest, discrete-time formulation, the RMD defines the frequency $x'_i$ of each type $i$ in a population at the next time step as a function of: (i) the frequency $x_i$ of each type
-$i$ before the update step, (ii) the fitness $f_i$ of each type $i$ before the update, and
-(iii) the probability $Q_{ji}$ that an agent who observes the behavior of 
-an agent with type $j$ ends up acquiring type $i$:
+An elegant formal approach to capture the interaction between communicative efficiency and
+learnability is the \emph{replicator mutator dynamic}
+\citep{Hofbauer1985:The-Selection-M,nowak+etal:2000,NowakKomarova2001:Evolution-of-Un,hofbauer+sigmund:2003,nowak:2006}. The
+RMD is a population dynamic, which is to say that it describes change in the composition of a
+community made up of different types of agents. The population vector $\vec{x}$ codifies
+relative frequencies of types in a population, where $x_i$ is the relative frequency of type
+$i$ and $\sum\nolimits_i x_i = 1$. The dynamic assumes a virtually infinite population, so that
+it is able to abstract away from what individual agents do and how they change their behavior
+over time. The result is an abstract description of the most probable trajectory of change in
+$\vec{x}$. In its simplest, discrete-time formulation, the RMD defines the frequency $x'_i$ of
+each type $i$ in a population at the next time step as a function of: (i) the frequency $x_i$
+of each type $i$ before the update step, (ii) the fitness $f_i$ of each type $i$ before the
+update, and (iii) the probability $Q_{ji}$ that an agent who observes the behavior of an agent
+with type $j$ ends up acquiring type $i$:
 \begin{align}
   \label{eq:RMD_discrete}
   x'_i = \sum_j Q_{ji} \frac{x_jf_j}{\sum_h x_h f_h}\,.
@@ -763,33 +771,33 @@ The case study in Section~\ref{sec:si-case-study} shows how these components and
 
 \begin{figure}
 \centering
-    \begin{tikzpicture}
+    % \begin{tikzpicture}
 
-    \draw[-,dashed,gray] (0,0) -- (5,0) -- (5,5) -- (0,5) -- (0,0);
+  %   \draw[-,dashed,gray] (0,0) -- (5,0) -- (5,5) -- (0,5) -- (0,0);
     
-    \draw (0,0) node[fill,circle,gray,inner sep=1mm,scale=0.6,label={[gray,align=left,label distance=0.1mm]west:{\tiny 100\%} \\[-0.25cm] {\tiny lit. $\Lbound$}}] {};
-    \draw (5,0) node[fill,circle,gray,inner sep=1mm,scale=0.6,label={[gray,align=left,label distance=0.1mm]east:{\tiny 100\%} \\[-0.25cm] {\tiny prag. $\Lbound$}}] {};
-    \draw (5,5) node[fill,circle,gray,inner sep=1mm,scale=0.6,label={[gray,align=left,label distance=0.1mm]east:{\tiny 100\%} \\[-0.25cm] {\tiny prag. $\Llack$}}] {};
-    \draw (0,5) node[fill,circle,gray,inner sep=1mm,scale=0.6,label={[gray,align=left,label distance=0.1mm]west:{\tiny 100\%} \\[-0.25cm] {\tiny lit. $\Llack$}}] {};
+  %   \draw (0,0) node[fill,circle,gray,inner sep=1mm,scale=0.6,label={[gray,align=left,label distance=0.1mm]west:{\tiny 100\%} \\[-0.25cm] {\tiny lit. $\Lbound$}}] {};
+  %   \draw (5,0) node[fill,circle,gray,inner sep=1mm,scale=0.6,label={[gray,align=left,label distance=0.1mm]east:{\tiny 100\%} \\[-0.25cm] {\tiny prag. $\Lbound$}}] {};
+  %   \draw (5,5) node[fill,circle,gray,inner sep=1mm,scale=0.6,label={[gray,align=left,label distance=0.1mm]east:{\tiny 100\%} \\[-0.25cm] {\tiny prag. $\Llack$}}] {};
+  %   \draw (0,5) node[fill,circle,gray,inner sep=1mm,scale=0.6,label={[gray,align=left,label distance=0.1mm]west:{\tiny 100\%} \\[-0.25cm] {\tiny lit. $\Llack$}}] {};
     
-    \draw[<-, thick, indianred] (0.75,0.25) -- (4.25,0.25) node[midway, above] {\footnotesize functional};
-    \draw[->, thick, indianred] (0.75,4.75) -- (4.25,4.75) node[midway, below] {\footnotesize functional};
-    \draw[->, thick, indianred] (0.25,4.25) -- (0.25,0.75) node[midway, below, rotate=90] {\footnotesize functional};
-    \draw[->, thick, indianred] (4.75,4.25) -- (4.75,0.75) node[midway, above, rotate=90] {\footnotesize functional};
+  %   \draw[<-, thick, indianred] (0.75,0.25) -- (4.25,0.25) node[midway, above] {\footnotesize functional};
+  %   \draw[->, thick, indianred] (0.75,4.75) -- (4.25,4.75) node[midway, below] {\footnotesize functional};
+  %   \draw[->, thick, indianred] (0.25,4.25) -- (0.25,0.75) node[midway, below, rotate=90] {\footnotesize functional};
+  %   \draw[->, thick, indianred] (4.75,4.25) -- (4.75,0.75) node[midway, above, rotate=90] {\footnotesize functional};
 
-  \path[->, thick, densely dashdotted, Steelblue] (0.75,0.75) edge [bend left] node[sloped,below] {\footnotesize learning\textsubscript{flat}} (2.25,2.45);
-  \path[->, thick, densely dashdotted, Steelblue] (4.25,0.75) edge [bend right] node[sloped,below] {\footnotesize leaning\textsubscript{flat}} (2.75,2.45);
-  \path[->, thick, densely dashdotted, Steelblue] (0.75,4.25) edge [bend right] node[sloped,above] {\footnotesize leaning\textsubscript{flat}} (2.25,2.75);
-  \path[->, thick, densely dashdotted, Steelblue] (4.25,4.25) edge [bend left] node[sloped,above] {\footnotesize leaning\textsubscript{flat}} (2.75,2.75);
+  % \path[->, thick, densely dashdotted, Steelblue] (0.75,0.75) edge [bend left] node[sloped,below] {\footnotesize learning\textsubscript{flat}} (2.25,2.45);
+  % \path[->, thick, densely dashdotted, Steelblue] (4.25,0.75) edge [bend right] node[sloped,below] {\footnotesize leaning\textsubscript{flat}} (2.75,2.45);
+  % \path[->, thick, densely dashdotted, Steelblue] (0.75,4.25) edge [bend right] node[sloped,above] {\footnotesize leaning\textsubscript{flat}} (2.25,2.75);
+  % \path[->, thick, densely dashdotted, Steelblue] (4.25,4.25) edge [bend left] node[sloped,above] {\footnotesize leaning\textsubscript{flat}} (2.75,2.75);
 
 
-    \draw[->, thick, goldish] (0.75,-0.25) -- (2.25,-0.25) node[midway, below] {\footnotesize learning\textsubscript{biased}};
-    \draw[<-, thick, goldish] (2.75,-0.25) -- (4.25,-0.25) node[midway, below] {\footnotesize learning\textsubscript{biased}};
-    \draw[->, thick, goldish] (-0.25,0.75) -- (-0.25,4.25) node[midway, above,rotate=90] {\footnotesize learning\textsubscript{biased}};
-    \draw[->, thick, goldish] (5.25,0.75) -- (5.25,4.25) node[midway, below,rotate=90] {\footnotesize learning\textsubscript{bias}};
-    \draw[->, thick, goldish] (0.75,5.25) -- (4.25,5.25) node[midway, above] {\footnotesize learning\textsubscript{biased}};
+  %   \draw[->, thick, goldish] (0.75,-0.25) -- (2.25,-0.25) node[midway, below] {\footnotesize learning\textsubscript{biased}};
+  %   \draw[<-, thick, goldish] (2.75,-0.25) -- (4.25,-0.25) node[midway, below] {\footnotesize learning\textsubscript{biased}};
+  %   \draw[->, thick, goldish] (-0.25,0.75) -- (-0.25,4.25) node[midway, above,rotate=90] {\footnotesize learning\textsubscript{biased}};
+  %   \draw[->, thick, goldish] (5.25,0.75) -- (5.25,4.25) node[midway, below,rotate=90] {\footnotesize learning\textsubscript{bias}};
+  %   \draw[->, thick, goldish] (0.75,5.25) -- (4.25,5.25) node[midway, above] {\footnotesize learning\textsubscript{biased}};
 
-    \end{tikzpicture}
+  %   \end{tikzpicture}
 \caption{Sketch of dynamics on a two-dimensional type space with four types. The $x$-axis represents the proportion of types with $\Llack$; the $y$-axis that of pragmatic ones. Arrows sketch population trajectories under functional pressure (replicator steps) and learnability pressure (mutator steps) with either a flat prior or one that favors $\Llack$.}
 \label{fig:sketch}
 \end{figure}
