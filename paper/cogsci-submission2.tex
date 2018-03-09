@@ -247,24 +247,29 @@ but challenging to acquire.
 An elegant formal approach to capture the interaction between communicative efficiency and
 learnability is the \emph{replicator mutator dynamic}
 \citep{Hofbauer1985:The-Selection-M,nowak+etal:2000,NowakKomarova2001:Evolution-of-Un,hofbauer+sigmund:2003,nowak:2006}. The
-RMD is a population dynamic, which is to say that it describes change in the composition of a
-community made up of different types of agents. The dynamic assumes a virtually infinite
-population, so that it is able to abstract away from what individual agents do and how they
-change their individual behavior over time. The result is an abstract description of the most
-probable trajectory of change in the population vector $\vec{x}$, which codifies relative
-frequencies of types, so that $x_i$ is the relative frequency of type $i$ and
-$\sum\nolimits_i x_i = 1$. In its simplest, discrete-time formulation, the RMD defines the
-frequency $x'_i$ of each type $i$ in the population at the next time step as a function of: (i)
-the frequency $x_i$ of each type $i$ before the update step, (ii) the fitness $f_i$ of each
-type $i$ before the update, and (iii) the probability $Q_{ji}$ that an agent who observes the
-behavior of an agent with type $j$ ends up acquiring type $i$:
+RMD is a population dynamic. It describes the average change in the composition of a community
+of agents of different types. The dynamic assumes a virtually infinite population, so that it
+is able to abstract away from what individual agents do and how they change their individual
+behavior over time. The result is an abstract description of the most probable trajectory of
+change in the population vector $\vec{x}$, which codifies relative frequencies of types, so
+that $x_i$ is the relative frequency of type $i$ and $\sum\nolimits_i x_i = 1$. In its
+simplest discrete-time formulation, the RMD defines the frequency $x'_i$ of each type $i$ in
+the population at the next time step as a function of: (i) the frequency $x_i$ of each type $i$
+before the update step, (ii) the fitness $f_i$ of each type $i$ before the update, and (iii)
+the probability $Q_{ji}$ that an agent who observes the behavior of an agent with type $j$ ends
+up acquiring type $i$:
 \begin{align}
   \label{eq:RMD_discrete}
-  x'_i = \sum_j Q_{ji} \frac{x_jf_j}{\sum_h x_h f_h}\,.
+  x'_i = \sum_j \frac{x_jf_j Q_{ji}}{\Phi}\,,
 \end{align}
-The RMD consists of two components: fitness-based selection and transmission biases encoded in the so-called mutation matrix $Q$. This
-becomes most transparent when we consider an equivalent formulation in terms of a step-wise
-application of the discrete-time replicator dynamic \citep{TaylorJonker1978:Evolutionary-St} on the initial population vector $\vec{x}$ and its subsequent multiplication with the mutation matrix $Q$:
+where $\Phi = \sum_k x_k f_k$ is the average fitness in the population.  
+
+
+The RMD consists of two components: fitness-based selection and transmission biases encoded in
+the so-called mutation matrix $Q$. This becomes most transparent when we consider an equivalent
+formulation in terms of a step-wise application of the discrete-time replicator dynamic
+\citep{TaylorJonker1978:Evolutionary-St} on the initial population vector $\vec{x}$ and its
+subsequent multiplication with the mutation matrix $Q$:
 \begin{align}
   \label{eq:RMD_discrete_recast}
   x'_i & = (\text{M}(\text{RD}(\vec{x})))_i\,,
@@ -272,26 +277,30 @@ application of the discrete-time replicator dynamic \citep{TaylorJonker1978:Evol
 where
 \begin{align*}
       \left ( \text{RD}(\vec{x}) \right )_i 
-         = \frac{x_i f_i}{\sum_k x_k f_k}
+         = \frac{x_i f_i}{\Phi}
  \ \ \ \ \text{and} \ \ \ \ 
   (\text{M}(\vec{x}))_i = (\vec{x} \cdot Q)_i = \left ( \sum_j
           x_j Q_{ji} \right)_i\,.
 \end{align*}
 %
-
 If there is no mutation, so that types are always replicated faithfully with $Q_{ji}=1$
-whenever $j=i$, the dynamic reduces to the replicator dynamic. If fitness
-$f_i$ is the same for all types $i$, the replicator step is the identity map
-$ \left ( \text{RD}(\vec{x}) \right )_i = x_i$ and the replicator mutator dynamics reduces to a
-process of iterated mutation. Let us have a look at each component in isolation: first
-replication, then mutation.
+whenever $j=i$, the dynamic reduces to the replicator dynamic. If fitness is the same for all
+types, $f_i = f_j$ for all $i$ and $j$, the dynamics reduces to a process of iterated
+mutation. Appendix~\ref{sec:minim-example-repl} provides an abstract minimal example of how the
+replicator mutator dynamic works.
+
+\subsection{Interpreting the replicator mutator dynamic}
+
+The replicator mutator dynamic is an abstract description of population-level changes. It
+abstracts away from specific assumptions about how agents interact. To understand this better,
+the following looks at each component in isolation: first replication, then mutation.
 
 According to the replicator dynamic the relative frequency $x_i$ of type $i$ increases
 proportional to its average fitness in the population. This dynamic is popular and versatile
 because it can be derived from many abstract processes of biological and cultural transmission
 and selection \citep[for overview and several derivations
 see][]{Sandholm2010:Population-Game}. Under a biological interpretation, the model describes
-population-level changes when the number of offspring in single-parent replication is
+population-level changes when the number of offspring under single-parent preproduction is
 proportional to the parent's fitness. Under a cultural interpretation, examples of concrete
 agent-level processes that lead to population-level changes as described by the replicator
 dynamic include conditional imitation
@@ -300,197 +309,41 @@ learning \citep[e.g.,][]{BorgersSarin997:Learning-Throug,Beggs2005:On-the-Conver
 conditional imitation, for instance, each agent carries a fixed type $i$ which it may change to
 a type $j$ when it happens to observe another agent using type $j$. Imitation occurs with a
 probability that is a monotonic function of how well $j$ fares against the population: the
-better the behavior $j$, the more likely it is to be imitated.
+better the behavior $j$, the more likely it is to be imitated.\footnote{A crucial assumption in
+  all of the derivations of the replicator dynamic as a biological or cultural process of
+  evolution is that agents themselves are rather limited in their strategic capacities. They
+  are, for example, not able to innovate a strategy, i.e., to just choose a type, that is
+  optimal given the current population state. They are also not able to strategically adapt
+  their behavior to any particular agent they are interacting with on some given occasion. Such
+  minimalism about the strategic capacities of agents is a conservative methodological
+  choice. It allows us to study ---as the formal thought experiment that any such model is---
+  how fitness-based selection changes a population in the absence of optimal agent-level
+  reasoning and it abstracts away from specific assumptions about how fitness-based selection
+  might be realized concretely.}
 
-A crucial assumption in all of the derivations of the replicator dynamic as a biological or
-cultural process of evolution is that agents themselves are rather limited in their strategic
-capacities. They are, for example, not able to innovate a strategy, i.e., to just choose a
-type, that is optimal given the current population state. They are also not able to
-strategically adapt their behavior to any particular agent they are interacting with on some
-given occasion. Such minimalism about the strategic capacities of agents is a conservative
-methodological choice. It allows us to study ---as the formal thought experiment that any such
-model is--- whether whatever we would like to explain could have evolved also in the absence of
-specific strategic or optimal agent-level reasoning. In other words, given its versatile
-interpretability, the replicator dynamic is an abstract, austere and maximally neutral
-description of how many specific kinds of global fitness-based selection play out in large
-populations of agents who are not themselves optimizing their behavior strategically.
-
-If all types have equal fitness no matter what there is no functional pressure and the
-replicator mutator dynamic reduces to a process of iterated mutation, the bias of which is
-encoded in mutation matrix $Q$. Mutation can be interpreted as biological or cultural as
+If all types have equal fitness at all times, the replicator mutator dynamic reduces to a
+process of iterated mutation. Mutation can be interpreted as biological or cultural as
 well. Under a biological interpretation where types are genetically encoded behavioral traits,
-$Q_{ij}$ is the probability by which offspring of type $i$ genetically mutates into type
-$j$. Under a cultural interpretation where types are transmitted by observation or learning,
-such as in conditional imitation, $Q_{ij}$ is the probability that an agent trying to learn,
-adopt or imitate the behavior of an agent with type $i$ acquires type $j$. As detailed below,
+$Q_{ji}$ is the probability by which offspring of type $j$ genetically mutates into type
+$i$. Under a cultural interpretation where types are transmitted by observation or learning,
+such as in conditional imitation, $Q_{ji}$ is the probability that an agent trying to learn,
+adopt or imitate the behavior of an agent with type $j$ acquires type $i$. As detailed below,
 in this way, the process in (\ref{eq:RMD_discrete}), and its equivalent in
 (\ref{eq:RMD_discrete_recast}), can contain a model of iterated learning
 \citep{griffiths+kalish:2005,griffiths+kalish:2007}.
 
-A biological or cultural interpretation with either of the replicator or mutator component need
-not necessarily imply the same kind of interpretation for the other. In the applications to
-language evolution here, we clearly prefer a cultural interpretation of the mutator component
-as the perturbation induces by learnability of linguistic traits. Nothing much hinges on
-whether the replicator component is interpreted as a biological process or a cultural
-process. Fitness-based selection may either be thought of as the outcome of actual reproductive
-success (increased number of offspring which learn a language from their single parent), or, as
-we slightly prefer here, as a process of cultural evolution, such as conditional imitation for
-instance.
-
-\begin{figure}[t]
-  \centering
-  %% notice that the figure is hacked, because somehow the curve does not come out right under
-  %% PGFplots; I don't know why!?!?
-  
-
-    \begin{subfigure}[b]{0.45\textwidth}
-      \centering
-      \begin{tikzpicture}
-      \begin{axis}[xlabel=$x$, ylabel = $x'$,
-                   grid=major, width=6.85cm, height = 5.5cm,
-                   legend style = {legend pos = north west},
-                   ymin=0,ymax=1, xmin=0,xmax=1]
-
-      \addplot[smooth, color=blue] {x^2 / (3*x^2 - 4*x + 2) + 0.019 * x};
-      \addplot[smooth, color=green] {.8*x + .1};
-
-      \addplot[smooth, color=red] {(.9*x^2 - .2*x +.2)/(3*x^2 - 4*x + 2)};
-
-      \addplot[smooth, color=gray] {x};
-
-      \legend{RD, M, RMD}
-
-      \end{axis}
-    \end{tikzpicture}
-
-
-        \caption{Update functions: the population state $x$ is mapped onto $x'$ in one update step.}
-        \label{fig:Updates_RMS}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.5\textwidth}    
-      \centering
-    \begin{tikzpicture}[x=120]
-      \node[draw=black, circle, fill = black, minimum size = 0.25cm]
-      (0) at (0,0) {};
-
-      \node[draw=black, circle, fill = black, minimum size = 0.25cm]
-      (1) at (1,0) {};
-
-      \draw[-, thick] (0) -- (1);
-
-      \node[draw=black, circle, fill = white, minimum size = 0.25cm, thick]
-      (mid) at (2/3,0) {};
-
-      \node[]  (0.label) at (0,-0.5) {0};
-
-      \node[]  (1.label) at (1,-0.5) {1};
-
-      \node[]  (label) at (0.5,-0.5) {$x$};
-
-      \node[]  (label) at (0.5,0.55) {RD};
-
-      \draw[->-=0.8,very thick] (mid) -- (0);
-
-      \draw[->-=0.8,very thick] (mid) -- (1);
-
-    \end{tikzpicture}
-    
-    \vspace*{0.35cm}
-
-    \begin{tikzpicture}[x=120]
-
-      \node (0) at (-0.05,0) {};
-
-      \node (1) at (1.05,0) {};
-
-      \draw[-, thick] (0) -- (1);
-
-      \node[draw=black, circle, fill = black, minimum size = 0.25cm, thick]
-      (mid) at (0.5,0) {};
-
-      \node[]  (0.label) at (0,-0.3) {0};
-
-      \node[]  (1.label) at (1,-0.3) {1};
-
-      \node[]  (label) at (0.5,-0.5) {$x$};
-
-      \node[]  (label) at (0.5,0.55) {M};
-
-      \draw[->-=0.5,very thick] (0) -- (mid);
-
-      \draw[->-=0.5,very thick] (1) -- (mid);
-
-    \end{tikzpicture}
-
-    \vspace*{0.35cm}
-
-    \begin{tikzpicture}[x=120]
-
-      \node (0) at (-0.05,0) {};
-
-      \node (1) at (1.05,0) {};
-
-      \node[draw=black, circle, fill = black, minimum size = 0.25cm]
-      (S0) at (0.121,0) {};
-
-      \node[draw=black, circle, fill = black, minimum size = 0.25cm]
-      (S1) at (0.903,0) {};
-
-      \draw[-, thick] (0) -- (1);
-
-      \node[draw=black, circle, fill = white, minimum size = 0.25cm, thick]
-      (mid) at (0.609,0) {};
-
-      \node[]  (0.label) at (0,-0.3) {0};
-
-      \node[]  (1.label) at (1,-0.3) {1};
-
-      \node[]  (label) at (0.5,-0.5) {$x$};
-
-      \node[]  (label) at (0.5,0.55) {RMD};
-
-      \draw[->-=0.5,very thick] (mid) -- (S0);
-
-      \draw[->-=0.5,very thick] (mid) -- (S1);
-
-      \draw[->-=0.5,very thick] (0) -- (S0);
-
-      \draw[->-=0.5,very thick] (1) -- (S1);
-
-    \end{tikzpicture}
-        
-
-
-    \caption{Phase portraits for RD, M and RMD: unstable rest points are hollow, attractors are
-      solid.}
-        \label{fig:Phase_RD}
-    \end{subfigure}
-
-  \caption{Example.}
-  \label{fig:Example_RMD}
-\end{figure}
-
-\begin{example}
-  Consider a simple and abstract coordination game. Agents are of two types: positive or negative. If
-  agents of different type interact with each other, they obtain a payoff of $0$. If negative meets
-  negative, each receives a payoff of $1$. If positive meets positive, they get a payoff of $2$.  A population state is completely characterized by the proportion $x$ of negatives. The fitness
-  of negatives in population state $x$ is $f_n(x) = x$, that of positives is $f_p(x) = 2-2x$.
-  The average fitness is $\Phi(x) = x f_n(x) + (1-x) f_p(x) = 3x^2 - 4x + 2$. Without mutation,
-  the replicator dynamic will update $x$ to $\text{RD}(x) = \nicefrac{f(x)x}{\Phi(x)} = \nicefrac{x^2}{\Phi(x)}$. The update
-  function $\text{RD}(x)$ of the replicator step is plotted in Fig.~\ref{fig:Updates_RMS} as the
-  blue line. Rest points, for which $\text{RD}(x)=x$, are at $x=0$, $x=1$ and $x= \nicefrac{2}{3}$.
-  The former are attractors; nearby points converge to them. Points near $x=\nicefrac{2}{3}$
-  also move towards 0 or 1. This is schematically pictured in the topmost phase portrait in
-  Fig.~\ref{fig:Phase_RD}. Adding mutation changes the dynamic and its rest points. Let us assume that $Q_{ji} = .9$
-  when $j=i$. This is the proportion of types that are replicated faithfully. Conversely, a proportion of $.1$ will change their type from positive to negative, and vice-versa. The update effect of mutation on its own are described by $\text{M}(x) = .9 x + .1 (1-x) = .8x + .1$, plotted as the linear green line in Fig.~\ref{fig:Updates_RMS}. As shown in Fig.~\ref{fig:Phase_RD}, in this example mutation alone has only one stable rest point. It is located at $x = .5$. If we first take the replicator step and
-  then the mutation step in sequence, we obtain the replicator mutator dynamic
-  $\text{RMD}(x) = \text{M}(\text{RD}(x)) = \nicefrac{.9x^2 - .2x +.2}{3x^2 - 4x + 2}$, which is plotted in red in
-  Fig.~\ref{fig:Updates_RMS}. The rest points are at $x=.121$, $x=.903$ and $x=.609$. The
-  former two are attractors (see Fig.~\ref{fig:Phase_RD}).
-\end{example}
-
-
+In the following application to language evolution, we prefer a cultural interpretation of the
+mutator component as the perturbation induced by how easy different linguistic traits are
+learnable from observation of language use. Nothing much hinges on whether the replicator
+component is interpreted as a biological process or a cultural process. Fitness-based selection
+may either be thought of as the outcome of actual reproductive success (increased number of
+offspring which learn a language from their single parent), or as a process of cultural
+evolution, such as conditional imitation for instance. We believe that this flexibility of
+interpretation is an asset. It abstracts away from specific assumptions and focuses on a
+general, albeit abstract description of fitness-based selection in general. Still, to have
+something concrete in mind when interpreting the following application, it is also important to
+be concrete. Appendix~\ref{sec:deriv-repl-mutat} therefore derives the replicator mutator
+dynamic from a specific scheme of agent-level conditional imitation.
 
 
 \subsection{Fitness \& learnability of lexical meanings \& pragmatic strategies}
@@ -1412,10 +1265,231 @@ simpler semantics in combination with functional pressure in use may offer an an
 natural languages fail to lexicalize systematic pragmatic inferences. And, more broadly, lead to a
 division of labor between semantics and pragmatics.
 
+\appendix
+
+\section{A minimal example of the replicator mutator dynamic}
+\label{sec:minim-example-repl}
+
+\begin{figure}[t]
+  \centering
+  %% notice that the figure is hacked, because somehow the curve does not come out right under
+  %% PGFplots; I don't know why!?!?
+  
+
+    \begin{subfigure}[b]{0.45\textwidth}
+      \centering
+      \begin{tikzpicture}
+      \begin{axis}[xlabel=$x$, ylabel = $x'$,
+                   grid=major, width=6.85cm, height = 5.5cm,
+                   legend style = {legend pos = north west},
+                   ymin=0,ymax=1, xmin=0,xmax=1]
+
+      \addplot[smooth, color=blue] {x^2 / (3*x^2 - 4*x + 2) + 0.019 * x};
+      \addplot[smooth, color=green] {.8*x + .1};
+
+      \addplot[smooth, color=red] {(.9*x^2 - .2*x +.2)/(3*x^2 - 4*x + 2)};
+
+      \addplot[smooth, color=gray] {x};
+
+      \legend{RD, M, RMD}
+
+      \end{axis}
+    \end{tikzpicture}
+
+
+        \caption{Update functions: the population state $x$ is mapped onto $x'$ in one update step.}
+        \label{fig:Updates_RMS}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.5\textwidth}    
+      \centering
+    \begin{tikzpicture}[x=120]
+      \node[draw=black, circle, fill = black, minimum size = 0.25cm]
+      (0) at (0,0) {};
+
+      \node[draw=black, circle, fill = black, minimum size = 0.25cm]
+      (1) at (1,0) {};
+
+      \draw[-, thick] (0) -- (1);
+
+      \node[draw=black, circle, fill = white, minimum size = 0.25cm, thick]
+      (mid) at (2/3,0) {};
+
+      \node[]  (0.label) at (0,-0.5) {0};
+
+      \node[]  (1.label) at (1,-0.5) {1};
+
+      \node[]  (label) at (0.5,-0.5) {$x$};
+
+      \node[]  (label) at (0.5,0.55) {RD};
+
+      \draw[->-=0.8,very thick] (mid) -- (0);
+
+      \draw[->-=0.8,very thick] (mid) -- (1);
+
+    \end{tikzpicture}
+    
+    \vspace*{0.35cm}
+
+    \begin{tikzpicture}[x=120]
+
+      \node (0) at (-0.05,0) {};
+
+      \node (1) at (1.05,0) {};
+
+      \draw[-, thick] (0) -- (1);
+
+      \node[draw=black, circle, fill = black, minimum size = 0.25cm, thick]
+      (mid) at (0.5,0) {};
+
+      \node[]  (0.label) at (0,-0.3) {0};
+
+      \node[]  (1.label) at (1,-0.3) {1};
+
+      \node[]  (label) at (0.5,-0.5) {$x$};
+
+      \node[]  (label) at (0.5,0.55) {M};
+
+      \draw[->-=0.5,very thick] (0) -- (mid);
+
+      \draw[->-=0.5,very thick] (1) -- (mid);
+
+    \end{tikzpicture}
+
+    \vspace*{0.35cm}
+
+    \begin{tikzpicture}[x=120]
+
+      \node (0) at (-0.05,0) {};
+
+      \node (1) at (1.05,0) {};
+
+      \node[draw=black, circle, fill = black, minimum size = 0.25cm]
+      (S0) at (0.121,0) {};
+
+      \node[draw=black, circle, fill = black, minimum size = 0.25cm]
+      (S1) at (0.903,0) {};
+
+      \draw[-, thick] (0) -- (1);
+
+      \node[draw=black, circle, fill = white, minimum size = 0.25cm, thick]
+      (mid) at (0.609,0) {};
+
+      \node[]  (0.label) at (0,-0.3) {0};
+
+      \node[]  (1.label) at (1,-0.3) {1};
+
+      \node[]  (label) at (0.5,-0.5) {$x$};
+
+      \node[]  (label) at (0.5,0.55) {RMD};
+
+      \draw[->-=0.5,very thick] (mid) -- (S0);
+
+      \draw[->-=0.5,very thick] (mid) -- (S1);
+
+      \draw[->-=0.5,very thick] (0) -- (S0);
+
+      \draw[->-=0.5,very thick] (1) -- (S1);
+
+    \end{tikzpicture}
+        
+
+
+    \caption{Phase portraits for RD, M and RMD: unstable rest points are hollow, attractors are
+      solid.}
+        \label{fig:Phase_RD}
+    \end{subfigure}
+
+  \caption{Example.}
+  \label{fig:Example_RMD}
+\end{figure}
+
+
+Consider a simple and abstract coordination game. Agents are of two types: positive or
+negative. If agents of different type interact with each other, they obtain a payoff of $0$. If
+negative meets negative, each receives a payoff of $1$. If positive meets positive, they get a
+payoff of $2$.  A population state is completely characterized by the proportion $x$ of
+negatives. The fitness of negatives in population state $x$ is $f_n(x) = x$, that of positives
+is $f_p(x) = 2-2x$.  The average fitness is
+$\Phi(x) = x f_n(x) + (1-x) f_p(x) = 3x^2 - 4x + 2$. Without mutation, the replicator dynamic
+will update $x$ to $\text{RD}(x) = \nicefrac{f(x)x}{\Phi(x)} = \nicefrac{x^2}{\Phi(x)}$. The
+update function $\text{RD}(x)$ of the replicator step is plotted in Fig.~\ref{fig:Updates_RMS}
+as the blue line. Rest points, for which $\text{RD}(x)=x$, are at $x=0$, $x=1$ and
+$x= \nicefrac{2}{3}$.  The former are attractors; nearby points converge to them. Points near
+$x=\nicefrac{2}{3}$ also move towards 0 or 1. This is schematically pictured in the topmost
+phase portrait in Fig.~\ref{fig:Phase_RD}. Adding mutation changes the dynamic and its rest
+points. Let us assume that $Q_{ji} = .9$ when $j=i$. This is the proportion of types that are
+replicated faithfully. Conversely, a proportion of $.1$ will change their type from positive to
+negative, and vice-versa. The update effect of mutation on its own are described by
+$\text{M}(x) = .9 x + .1 (1-x) = .8x + .1$, plotted as the linear green line in
+Fig.~\ref{fig:Updates_RMS}. As shown in Fig.~\ref{fig:Phase_RD}, in this example mutation alone
+has only one stable rest point. It is located at $x = .5$. If we first take the replicator step
+and then the mutation step in sequence, we obtain the replicator mutator dynamic
+$\text{RMD}(x) = \text{M}(\text{RD}(x)) = \nicefrac{.9x^2 - .2x +.2}{3x^2 - 4x + 2}$, which is
+plotted in red in Fig.~\ref{fig:Updates_RMS}. The rest points are at $x=.121$, $x=.903$ and
+$x=.609$. The former two are attractors (see Fig.~\ref{fig:Phase_RD}).
+
+\section{Deriving the replicator mutator dynamic from conditional imitation}
+\label{sec:deriv-repl-mutat}
+
+Consider a huge, virtually infinite population of agents. At any point in time each agent has a
+fixed type $i$ which determines its fitness $f_i$ at that moment in time when playing with an
+arbitrary member of the population. The relative frequency of type $i$ is $x_i$ with
+$\sum_i x_i = 1$. The average population fitness is $\Phi = \sum_k x_k f_k$. The mutation
+probability from $j$ to $i$ is $Q_{ji}$, with $\sum_k Q_{jk} = 1$. The proportion of type $i$
+at the next time step $x'_i$ is given by the discrete time replicator dynamic:
+\begin{align}
+  \label{eq:RMD_discrete_repeated}
+  x'_i = \sum_j \frac{x_jf_j Q_{ji}}{\Phi}\,,
+\end{align}
+We will derive this dynamic from an agent-level update scheme of conditional imitation. There
+are many variants on this derivation. Our choice is to be as simple as
+possible. \citet{Sandholm2010:Population-Game} provides much more detail and discusses many
+interesting variants.
+
+A simple conditional imitation dynamic runs as follows. Every now and then an random agent is
+selected at random from the population and given a chance to possibly change its behavior. Call
+this agent (perhaps slightly misleadingly) \emph{learner} $L$. The learner chooses a random
+agent from the population to possibly imitate. Call this agent (somewhat more misleadingly)
+\emph{teacher} $T$. Whether $L$ actually chooses to imitate the behavior of $T$ depends on how
+good $T$'s behavior is at the moment. For simplicity, we simply assume that $L$ adopts $T$'s
+type with a probability given by $f_j$, where $j$ is the type of $T$.\footnote{We assume here
+  that $f_i \in [0;1]$ for all $i$. This is actually the case for the definition of fitness as
+  communicative success from Section~\ref{sec:fitn--learn}. See
+  \citet{Sandholm2010:Population-Game} for more complex alternative conditional update rules
+  that still derive the same population dynamic.} 
+If $L$ chooses to imitate $T$'s behavior, it may not be able to directly observe $T$'s actual
+type. Rather it may have to infer $T$'s latent type from its overt behavior. The probability
+that $L$ then actually acquires type $k$ when it chose to imitate a teacher of type $j$ is
+$Q_{jk}$. In sum, we assume that learners have (at least roughly) an estimate of how good
+another agent's behavior is, decide to imitate that behavior conditionally on how good it
+actually is and the adopt whatever mechanism (type) they infer may cause the observable
+behavior. 
+
+This model of occasional conditional imitation gives rise to expected changes in relative
+frequencies in the population. Given a huge population, the expected probability
+$P(k \rightarrow i)$ that some agent of type $k$ switches by conditional imitation to type $i$
+is the product of probabilities for the following four events:
+\begin{enumerate}
+\item a learner $L$ of type $k$ is sampled, which happens with probability $x_k$
+\item a teacher $T$ of type $j$ is sampled, which happens with probability $x_j$
+\item $L$ chooses to imitate $T$, which happens with probability $f_j$
+\item $L$ infers $T$'s type to be $i$, which happens with probability $Q_{ji}$
+\end{enumerate}
+The average expected change $\dot{x}_i$ in proportion of type $i$ is then:
+\begin{align*}
+  \dot{x}_i & = \sum_k P(k \rightarrow i) - \sum_k P(i \rightarrow k) \\ 
+  & = \sum_k x_k \sum_j x_j f_j Q_{ji} -   \sum_k x_i \sum_j x_j f_j Q_{jk} \\
+  & = \sum_j x_j f_j Q_{ji} -   x_i \sum_j x_j f_j \\
+  & =   (x'_i - x_i) \Phi
+\end{align*}
+In this way, the discrete-time replicator mutator equation in (\ref{eq:RMD_discrete_repeated})
+captures the expected difference in relative frequency of type $i$ from one discrete time step
+to the next (relative to current baseline fitness $\Phi$, which is constant for all types, and
+so only governs the absolute speed of change).
+
 \bibliographystyle{chicago}
 \bibliography{./bounds-rmd}
-
-
 
 
 \end{document}
