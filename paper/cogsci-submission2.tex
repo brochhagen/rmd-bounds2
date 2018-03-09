@@ -248,16 +248,16 @@ An elegant formal approach to capture the interaction between communicative effi
 learnability is the \emph{replicator mutator dynamic}
 \citep{Hofbauer1985:The-Selection-M,nowak+etal:2000,NowakKomarova2001:Evolution-of-Un,hofbauer+sigmund:2003,nowak:2006}. The
 RMD is a population dynamic, which is to say that it describes change in the composition of a
-community made up of different types of agents. The population vector $\vec{x}$ codifies
-relative frequencies of types in a population, where $x_i$ is the relative frequency of type
-$i$ and $\sum\nolimits_i x_i = 1$. The dynamic assumes a virtually infinite population, so that
-it is able to abstract away from what individual agents do and how they change their behavior
-over time. The result is an abstract description of the most probable trajectory of change in
-$\vec{x}$. In its simplest, discrete-time formulation, the RMD defines the frequency $x'_i$ of
-each type $i$ in a population at the next time step as a function of: (i) the frequency $x_i$
-of each type $i$ before the update step, (ii) the fitness $f_i$ of each type $i$ before the
-update, and (iii) the probability $Q_{ji}$ that an agent who observes the behavior of an agent
-with type $j$ ends up acquiring type $i$:
+community made up of different types of agents. The dynamic assumes a virtually infinite
+population, so that it is able to abstract away from what individual agents do and how they
+change their individual behavior over time. The result is an abstract description of the most
+probable trajectory of change in the population vector $\vec{x}$, which codifies relative
+frequencies of types, so that $x_i$ is the relative frequency of type $i$ and
+$\sum\nolimits_i x_i = 1$. In its simplest, discrete-time formulation, the RMD defines the
+frequency $x'_i$ of each type $i$ in the population at the next time step as a function of: (i)
+the frequency $x_i$ of each type $i$ before the update step, (ii) the fitness $f_i$ of each
+type $i$ before the update, and (iii) the probability $Q_{ji}$ that an agent who observes the
+behavior of an agent with type $j$ ends up acquiring type $i$:
 \begin{align}
   \label{eq:RMD_discrete}
   x'_i = \sum_j Q_{ji} \frac{x_jf_j}{\sum_h x_h f_h}\,.
@@ -279,14 +279,65 @@ where
 \end{align*}
 %
 
-If the transmission matrix $Q$ is trivial in the sense that $Q_{ji}=1$ whenever $j=i$, the
-dynamic reduces to the replicator dynamic. This situation is one where types are always replicated faithfully. The replicator dynamic is a model of fitness-based selection in which the relative frequency of type $i$ will increase with a gradient proportional to its average fitness in the population. In other words, selection comes into play whenever two or more types replicate at different rates due to differences in their fitness. This dynamic is popular and versatile because it can be derived from many abstract processes of biological and cultural
-transmission and selection \citep[for overview and several derivations
-see][]{Sandholm2010:Population-Game}, including conditional imitation
-\citep[e.g.,][]{Helbing1996:A-Stochastic-Be,Schlag1998:Why-Imitate-and} or reinforcement
-learning \citep[e.g.,][]{BorgersSarin997:Learning-Throug,Beggs2005:On-the-Converge}. If fitness
+If there is no mutation, so that types are always replicated faithfully with $Q_{ji}=1$
+whenever $j=i$, the dynamic reduces to the replicator dynamic. If fitness
 $f_i$ is the same for all types $i$, the replicator step is the identity map
-$ \left ( \text{RD}(\vec{x}) \right )_i = x_i$. In words, no difference in fitness translates into a lack of functional pressure: the population's type composition stays the same after the replicator step. In such cases the dynamic reduces to a process of iteration of the transmission bias encoded in $Q$: the rate by which one type changes into another after a generational turnover. As detailed below, in this way, the process in (\ref{eq:RMD_discrete}), and its equivalent in (\ref{eq:RMD_discrete_recast}), can contain a model of iterated learning \citep{griffiths+kalish:2005,griffiths+kalish:2007}. 
+$ \left ( \text{RD}(\vec{x}) \right )_i = x_i$ and the replicator mutator dynamics reduces to a
+process of iterated mutation. Let us have a look at each component in isolation: first
+replication, then mutation.
+
+According to the replicator dynamic the relative frequency $x_i$ of type $i$ increases
+proportional to its average fitness in the population. This dynamic is popular and versatile
+because it can be derived from many abstract processes of biological and cultural transmission
+and selection \citep[for overview and several derivations
+see][]{Sandholm2010:Population-Game}. Under a biological interpretation, the model describes
+population-level changes when the number of offspring in single-parent replication is
+proportional to the parent's fitness. Under a cultural interpretation, examples of concrete
+agent-level processes that lead to population-level changes as described by the replicator
+dynamic include conditional imitation
+\citep[e.g.,][]{Helbing1996:A-Stochastic-Be,Schlag1998:Why-Imitate-and} or reinforcement
+learning \citep[e.g.,][]{BorgersSarin997:Learning-Throug,Beggs2005:On-the-Converge}. In
+conditional imitation, for instance, each agent carries a fixed type $i$ which it may change to
+a type $j$ when it happens to observe another agent using type $j$. Imitation occurs with a
+probability that is a monotonic function of how well $j$ fares against the population: the
+better the behavior $j$, the more likely it is to be imitated.
+
+A crucial assumption in all of the derivations of the replicator dynamic as a biological or
+cultural process of evolution is that agents themselves are rather limited in their strategic
+capacities. They are, for example, not able to innovate a strategy, i.e., to just choose a
+type, that is optimal given the current population state. They are also not able to
+strategically adapt their behavior to any particular agent they are interacting with on some
+given occasion. Such minimalism about the strategic capacities of agents is a conservative
+methodological choice. It allows us to study ---as the formal thought experiment that any such
+model is--- whether whatever we would like to explain could have evolved also in the absence of
+specific strategic or optimal agent-level reasoning. In other words, given its versatile
+interpretability, the replicator dynamic is an abstract, austere and maximally neutral
+description of how many specific kinds of global fitness-based selection play out in large
+populations of agents who are not themselves optimizing their behavior strategically.
+
+If all types have equal fitness no matter what there is no functional pressure and the
+replicator mutator dynamic reduces to a process of iterated mutation, the bias of which is
+encoded in mutation matrix $Q$. Mutation can be interpreted as biological or cultural as
+well. Under a biological interpretation where types are genetically encoded behavioral traits,
+$Q_{ij}$ is the probability by which offspring of type $i$ genetically mutates into type
+$j$. Under a cultural interpretation where types are transmitted by observation or learning,
+such as in conditional imitation, $Q_{ij}$ is the probability that an agent trying to learn,
+adopt or imitate the behavior of an agent with type $i$ acquires type $j$. As detailed below,
+in this way, the process in (\ref{eq:RMD_discrete}), and its equivalent in
+(\ref{eq:RMD_discrete_recast}), can contain a model of iterated learning
+\citep{griffiths+kalish:2005,griffiths+kalish:2007}.
+
+A biological or cultural interpretation with either of the replicator or mutator component need
+not necessarily imply the same kind of interpretation for the other. In the applications to
+language evolution here, we clearly prefer a cultural interpretation of the mutator component
+as the perturbation induces by learnability of linguistic traits. Nothing much hinges on
+whether the replicator component is interpreted as a biological process or a cultural
+process. Fitness-based selection may either be thought of as the outcome of actual reproductive
+success (increased number of offspring which learn a language from their single parent), or, as
+we slightly prefer here, as a process of cultural evolution, such as conditional imitation for
+instance.
+
+we prefer the 
 
 \begin{figure}[t]
   \centering
