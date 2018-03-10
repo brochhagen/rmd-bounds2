@@ -224,16 +224,16 @@ of a process of cultural evolution
 \citep{Pagel2009:Human-Language-,ThompsonKirby2016:Culture-Shapes-}.
 
 The idea that language is an adaptation to serve a communicative function is fundamental to
-many synchronic and diachronic analyses, at least since \citeposs{zipf:1949} explanation of word
-frequency rankings as a result of competing hearer and speaker preferences \citep[e.g.,
+many synchronic and diachronic analyses, at least since \citeposs{zipf:1949} explanation of
+word frequency rankings as a result of competing hearer and speaker preferences \citep[e.g.,
 in][]{martinet:1962, horn:1984,jaeger+vRooij:2007,jaeger:2007,
   piantadosi:2014,kirby+etal:2015}. If processes of selection, such as conditional imitation or
 reinforcement, favor more communicatively efficient types of behavior, languages are driven
 towards semantic expressivity \citep[e.g.,][]{nowak+krakauer:1999,Skyrms2010:Signals}. But
 pressure towards communicative efficiency is not the only force that shapes
 language. Learnability is another, as natural languages need to be learnable to survive their
-faithful transmission across generations. Furthermore, the effects of even small learning biases implicit in acquisition can build up and have quite striking impact on an evolving language in a process of iterated
-learning
+faithful transmission across generations. Furthermore, the effects of even small learning
+biases can have striking effects on an evolving language in a process of iterated learning
 \citep{KirbyHurford2002:The-Emergence-o,SmithKirby2003:Iterated-Learni,kirby+etal:2014}.
 
 While natural languages are pressured for both communicative efficiency and learnability, these forces may
@@ -244,20 +244,19 @@ that lexicalizes distinct forms for a large number of different meanings may be 
 but challenging to acquire.
 
 \subsection{The replicator mutator dynamic}
-An elegant formal approach to capture the interaction between communicative efficiency and
-learnability is the \emph{replicator mutator dynamic}
+An elegant formal approach to capture the interaction between selection gor communicative
+efficiency and learnability is the \emph{replicator mutator dynamic}
 \citep{Hofbauer1985:The-Selection-M,nowak+etal:2000,NowakKomarova2001:Evolution-of-Un,hofbauer+sigmund:2003,nowak:2006}. The
 RMD is a population dynamic. It describes the average change in the composition of a community
 of agents of different types. The dynamic assumes a virtually infinite population, so that it
-is able to abstract away from what individual agents do and how they change their individual
-behavior over time. The result is an abstract description of the most probable trajectory of
-change in the population vector $\vec{x}$, which codifies relative frequencies of types, so
-that $x_i$ is the relative frequency of type $i$ and $\sum\nolimits_i x_i = 1$. In its
-simplest discrete-time formulation, the RMD defines the frequency $x'_i$ of each type $i$ in
-the population at the next time step as a function of: (i) the frequency $x_i$ of each type $i$
-before the update step, (ii) the fitness $f_i$ of each type $i$ before the update, and (iii)
-the probability $Q_{ji}$ that an agent who observes the behavior of an agent with type $j$ ends
-up acquiring type $i$:
+is able to abstract away from what individual agents do. The result is an abstract description
+of the most probable trajectory of change in the population vector $\vec{x}$, which codifies
+relative frequencies of types, so that $x_i$ is the relative frequency of type $i$ and
+$\sum\nolimits_i x_i = 1$. In its simplest discrete-time formulation, the RMD defines the
+frequency $x'_i$ of each type $i$ in the population at the next time step as a function of: (i)
+the frequency $x_i$ of each type $i$ before the update step, (ii) the fitness $f_i$ of each
+type $i$ before the update, and (iii) the probability $Q_{ji}$ that an agent who observes the
+behavior of an agent with type $j$ ends up acquiring type $i$:
 \begin{align}
   \label{eq:RMD_discrete}
   x'_i = \sum_j \frac{x_jf_j Q_{ji}}{\Phi}\,,
@@ -268,7 +267,7 @@ where $\Phi = \sum_k x_k f_k$ is the average fitness in the population.
 The RMD consists of two components: fitness-based selection and transmission biases encoded in
 the so-called mutation matrix $Q$. This becomes most transparent when we consider an equivalent
 formulation in terms of a step-wise application of the discrete-time replicator dynamic
-\citep{TaylorJonker1978:Evolutionary-St} on the initial population vector $\vec{x}$ and its
+\citep{TaylorJonker1978:Evolutionary-St} on the initial population vector $\vec{x}$ and a
 subsequent multiplication with the mutation matrix $Q$:
 \begin{align}
   \label{eq:RMD_discrete_recast}
@@ -284,8 +283,8 @@ where
 \end{align*}
 %
 If there is no mutation, so that types are always replicated faithfully with $Q_{ji}=1$
-whenever $j=i$, the dynamic reduces to the replicator dynamic. If fitness is the same for all
-types, $f_i = f_j$ for all $i$ and $j$, the dynamics reduces to a process of iterated
+whenever $j=i$, the RMD reduces to the replicator dynamic. If fitness is the same for all
+types, $f_i = f_j$ for all $i$ and $j$, the RMD reduces to a process of iterated
 mutation. Appendix~\ref{sec:minim-example-repl} provides an abstract minimal example of how the
 replicator mutator dynamic works.
 
@@ -297,8 +296,8 @@ component in isolation: first replication, then mutation.
 
 According to the replicator dynamic the relative frequency $x_i$ of type $i$ increases
 proportional to its average fitness in the population. This dynamic is popular and versatile
-because it can be derived from many abstract processes of biological and cultural transmission
-and selection \citep[for overview and several derivations
+because it can be derived from many processes of biological and cultural transmission and
+selection \citep[for overview and several derivations
 see][]{Sandholm2010:Population-Game}. Under a biological interpretation, the model describes
 population-level changes when the number of offspring under single-parent preproduction is
 proportional to the parent's fitness. Under a cultural interpretation, examples of concrete
@@ -337,10 +336,10 @@ mutator component as the perturbation induced by how easy different linguistic t
 learnable from observation of language use. Nothing of current relevance hinges on whether the
 replicator component is interpreted as a biological process or a cultural process. We believe
 that this flexibility of interpretation is an asset. It abstracts away from specific
-assumptions and focuses on a general, albeit abstract description of fitness-based selection in
-general. Still, to have something concrete in mind when interpreting the following application,
-it is also important to be concrete. Appendix~\ref{sec:deriv-repl-mutat} therefore derives the
-RMD from a specific scheme of agent-level conditional imitation.
+assumptions and focuses on a general and versatile description of fitness-based
+selection. Still, to have something concrete in mind when interpreting the following
+application, Appendix~\ref{sec:deriv-repl-mutat} derives the RMD from a specific scheme of
+agent-level conditional imitation.
 
 
 \subsection{Fitness \& learnability of lexical meanings \& pragmatic strategies}
@@ -581,13 +580,11 @@ sender and receiver behavior at levels 0 and 1, as the latter are the simplest p
 
 \subsubsection{Fitness \& fitness-based selection based on communicative success}\label{sec:expressivity}
 
-Under the replicator dynamic the proportion of type $i$ in a population will increase or
-decrease as a function of its relative fitness $f_i$. In the context of language evolution,
-fitness is usually associated with the ability to successfully communicate with other language
-users from the same population \citep[e.g.,][]{nowak+krakauer:1999,nowak+etal:2000,
-  nowak+etal:2002}. Concretely, the fitness of type $i$ is its average expected communicative
-success, or \emph{expected utility} (EU), given the relative frequencies $x_j$ of types $j$ in
-the current population:
+n the context of language evolution, fitness is usually associated with the ability to
+successfully communicate with other language users from the same population
+\citep[e.g.,][]{nowak+krakauer:1999,nowak+etal:2000, nowak+etal:2002}. Concretely, the fitness
+of type $i$ is its average expected communicative success, or \emph{expected utility} (EU),
+given the relative frequencies $x_j$ of types $j$ in the current population:
 \begin{align*}
   f_i = \sum_j x_j \text{EU}(t_i,t_j)\,.
 \end{align*}
@@ -700,14 +697,12 @@ the discrete time replicator mutator dynamic in (\ref{eq:RMD_discrete}), repeate
 \end{align*}
 This equation defines the frequency $x'_i$ of type $i$ at the next time step, based on its
 frequency $x_i$ before the step, its fitness $f_i$, and the probability that a learner infers
-$i$ when observing the behavior of a type-$j$ agent. Fitness-based selection is here thought of
-not as biological (fitness as expected relative number of offspring) but cultural (fitness as
-likelihood of being imitated or repeated) evolution, since the types that the dynamic operates
-on are pairs consisting of a lexicon and a pragmatic use pattern. A type's communicative success depends
-on how well it communicates within a population while its learnability depends on the
-fidelity by which it is inferred by new generations of learners. The learners' task is
-consequently to perform a joint inference over types of linguistic behavior and lexical
-meaning.
+$i$ when observing the behavior of a type-$j$ agent. Fitness-based can be thought of as
+biological (fitness as expected relative number of offspring) or cultural evolution (fitness as
+likelihood of being imitated or repeated). A type's communicative success depends on how well
+it communicates within a population while its learnability depends on the fidelity by which it
+is inferred by new generations of learners. The learners' task is consequently to perform a
+joint inference over types of linguistic behavior and lexical meaning.
 
 The model has three parameters: $\lambda$ regulates the degree to which speakers
 choose messages that appear optimal from the point of view of the agent's own utility measure
@@ -723,39 +718,32 @@ teacher type.
 \section{Case study: scalar implicatures}
 \label{sec:si-case-study}
 
-The model of the previous section formalizes the evolutionary competition between different
-sets of lexical representations and ways of using them. This section looks at a case study on
-scalar implicatures. It engages in a formal thought experiment to address the
-question: if a population of language users could freely combine different lexica with
-different dispositions to act on them, what are conditions under which the majority view of scalar
-implicatures could have evolved?
+This section engages in a formal thought experiment to address the question: if a population of
+language users could freely combine different lexica with different dispositions to act on
+them, what are conditions under which the majority view of scalar implicatures could have
+evolved?
 
 Recall that the majority view is that scalar implicatures are non-lexicalized pragmatic
 enrichments. Scalar implicature triggers like \emph{some}, \emph{warm} or \emph{may} are
 semantically weak expressions for which logically stronger expressions are salient, e.g.,
-\emph{all}, \emph{hot} or \emph{must}. For instance, {\em some} is entailed by {\em all}. If
-the sentence ``Chris owns all of Johnny Cash's albums'' is true, then ``Chris owns some of
-Johnny Cash's albums'' is also true. However, while weaker expressions such as {\em some} are
-truth-conditionally compatible with stronger alternatives such as {\em all}, this is not what
-their use is normally taken to convey. Instead, the use of a less informative expression when a
-more informative one could have been used can license a defeasible inference that stronger
-alternatives do not hold (cf. \citealt{horn:1972,gazdar:1979}). In this way, ``Chris owns some
-of Johnny Cash's albums'' is strengthened to convey that she owns {\em some but not all}
-albums. According to the majority view, this is a pragmatic inference, not part of the
-conventional meaning.
+\emph{all}, \emph{hot} or \emph{must}. For instance, {\em some} is entailed by {\em
+  all}. Still, the use of a less informative expression (\emph{some}) when a more informative
+one (\emph{all}) could have been used can license a defeasible inference (\emph{some but not
+  all}) that stronger alternative is false (cf. \citealt{horn:1972,gazdar:1979}). According to
+the majority view, this is a pragmatic inference, not part of the conventional meaning.
 
 In the following we consider a specific application of the model from Section~\ref{sec:model}
 which allows us to address the question if or when scalar inferences might (not) lexicalize. We
-consider what is perhaps one of the simplest non-trivial setups that speak to this matter and
-reflect on their limitations in Section~\ref{sec:discussion}. Section
-\ref{sec:setup:-stat-conc} first considers a minimal example intended to isolate effects of
-replication and mutation and to gain insights into the sense in which semantic meaning and
-pragmatic use can be said to co-evolve. We then turn to a larger and more realistic setup in
+consider what are perhaps two of the simplest non-trivial setups that speak to this matter and
+reflect on their limitations in Section~\ref{sec:discussion}. Section \ref{subsec:example}
+first considers a minimal example intended to isolate effects of replication and mutation and
+to gain insights into the sense in which semantic meaning and pragmatic use can be said to
+co-evolve. We then turn to a larger and more realistic setup in
 Section~\ref{sec:setup:-stat-conc}. Section~\ref{sec:simulation-results} describes simulations
 for this case and their results.
 
 
-\section{Co-evolution of semantics \& pragmatics in a restricted type space}
+\subsection{Co-evolution of semantics \& pragmatics in a restricted type space}
 \label{subsec:example}
 
 This section illustrates how replication and mutation act on the evolution of semantic meaning
@@ -799,11 +787,6 @@ about the sense in which semantics and pragmatics might be said to co-evolve.
 \label{fig:sketch}
 \end{figure}
 
-We focus only on the four types from Section~\ref{sec:languages+use}. Recall that these types
-are made up of a combination of either lexicon $\Llack$ or $\Lbound$ and either literal
-(level-$0$) or pragmatic (level-$1$) behavior.
-
-
 The population under consideration consists of only the four types from
 Section~\ref{sec:languages+use}. Recall that these types are made up of a combination of either
 lexicon $\Llack$ or $\Lbound$ and either literal (level-$0$) or pragmatic (level-$1$)
@@ -822,15 +805,15 @@ types.\footnote{This two-dimensional representation underspecifies the exact pro
   rough trajectories after replicator or mutator steps.}
 
 From Section~\ref{sec:languages+use}, we already know some things about this type space. When
-it comes to communicative success: types with $\Lbound$ have a functional advantage over
+it comes to communicative success, types with $\Lbound$ have a functional advantage over
 $\Llack$; literal $\Lbound$ has a slight advantage over pragmatic $\Lbound$; all have a sizable
 advantage over literal $\Llack$. The red arrows in Fig.~\ref{fig:sketch} sketch out these
 relationships. They depict the rough trajectories we can expect if there is only pressure for
 communicative success. How much each replicator step moves a population through this space
-ultimately depends on the rationality parameter $\lambda$. In particular, note that functional
-differences decrease as $\lambda$ increases: if $\lambda$ is sufficiently high, all types
-except for literal $\Llack$ speakers will show a strong tendency to associate $\ssome$ with
-$\msome$ and $\sall$ with $\mall$. 
+ultimately depends on the rationality parameter $\lambda$. Functional differences decrease as
+$\lambda$ increases: if $\lambda$ is sufficiently high, all types except for literal $\Llack$
+speakers will show a strong tendency to associate $\ssome$ with $\msome$ and $\sall$ with
+$\mall$.
 
 As a consequence, when it comes to learnability and transmission fidelity, the likelihood that
 any of these three types produces a given datum $d$ will be approximately equal. We can
@@ -840,10 +823,11 @@ steps. This is sketched by the blue dash-dotted arrows in Fig.~\ref{fig:sketch}.
 nor likelihood alone, but their combination, are what determines the effects of (iterated)
 Bayesian learning. If, instead of a flat prior, there is a prior that favors, say, $\Llack$
 over $\Lbound$ we can expect mutator steps to be skewed toward the upper-half of the
-space. This is suggested by the solid purple arrows in Fig.~\ref{fig:sketch}. Taking stock, the
-effects of iterated learning will depend not only on $\lambda$, affecting the likelihood, but
-also on the prior (how strong of a bias there is) and the degree to which learners tend to
-maximize the posterior (controlled by parameter $l$).
+space. This is suggested by the solid purple arrows in Fig.~\ref{fig:sketch}. \mf{Should we
+  include here a sentence on why the top-most arrow for biased learning points to pragmatic
+  L-lack?} Taking stock, the effects of iterated learning will depend not only on $\lambda$,
+affecting the likelihood, but also on the prior (how strong of a bias there is) and the degree
+to which learners tend to maximize the posterior (controlled by parameter $l$).
 
 \begin{figure}[t]
 \centering
@@ -878,9 +862,20 @@ populations move toward a majority of $\Llack$-types for $\lambda = 5$ and $l = 
 
 
 Fig.~\ref{fig:sketch} and \ref{fig:quiver} depict replicator and mutator steps in isolation to
-better showcase their effects. Their combination will yield different outcomes, which we now
-turn to in a case study with a larger type space and more motivation for particular assumptions
-about learning biases.
+better showcase their effects. How exactly these forces shape a population over time also
+hinges on which types are present. Especially the effects of learning biases affected by
+this. If, hypothetically, we add many functionally dispreferred types which all happen to
+mutate with a high probability to the same type, this can strongly bias the dynamics in favor
+of this type. \mf{maybe a sentence here about the top-most arrow in Figure 1?} For this reason,
+we turn to a larger setup next with a larger and more realistic set of types and a suggestion
+for how to formalize potential learning biases in lexical inferences.
+
+Despite its simplicity, the diagram in Figure~\ref{fig:sketch} makes clear the sense in which
+semantics and pragmatics might co-evolve. Pragmatic language use will not evolve under a strong
+and fully expressive semantics (bottom part of Figure~\ref{fig:sketch}). A weak semantic
+convention will not evolve without disposition towards pragmatic enrichments (left part of
+Figure~\ref{fig:sketch}). But together a weak semantics and a pragmatic disposition for
+enrichment can co-evolve.
 
 
 \subsection{Setup}
@@ -1535,7 +1530,7 @@ fixed type $i$ which determines its fitness $f_i$ at that moment in time when pl
 arbitrary member of the population. The relative frequency of type $i$ is $x_i$ with
 $\sum_i x_i = 1$. The average population fitness is $\Phi = \sum_k x_k f_k$. The mutation
 probability from $j$ to $i$ is $Q_{ji}$, with $\sum_k Q_{jk} = 1$. The proportion of type $i$
-at the next time step $x'_i$ is given by the discrete time replicator dynamic:
+at the next time step $x'_i$ is given by the discrete-time replicator mutator dynamic:
 \begin{align}
   \label{eq:RMD_discrete_repeated}
   x'_i = \sum_j \frac{x_jf_j Q_{ji}}{\Phi}\,,
@@ -1543,26 +1538,24 @@ at the next time step $x'_i$ is given by the discrete time replicator dynamic:
 We will derive this dynamic from an agent-level update scheme of conditional imitation. There
 are many variants on this derivation. Our choice is to be as simple as
 possible. \citet{Sandholm2010:Population-Game} provides much more detail and discusses many
-interesting variants.
+further interesting derivations of similar evolutionary dynamics.
 
-A simple conditional imitation dynamic runs as follows. Every now and then an random agent is
-selected at random from the population and given a chance to possibly change its behavior. Call
-this agent (perhaps slightly misleadingly) \emph{learner} $L$. The learner chooses a random
-agent from the population to possibly imitate. Call this agent (somewhat more misleadingly)
+A simple conditional imitation dynamic runs as follows. Every now and then an agent is selected
+at random from the population and given a chance to possibly change its behavior. Call this
+agent (perhaps slightly misleadingly) \emph{learner} $L$. The learner chooses a random agent
+from the population to possibly imitate. Call this agent (somewhat more misleadingly)
 \emph{teacher} $T$. Whether $L$ actually chooses to imitate the behavior of $T$ depends on how
-good $T$'s behavior is at the moment. For simplicity, we simply assume that $L$ adopts $T$'s
-type with a probability given by $f_j$, where $j$ is the type of $T$.\footnote{We assume here
-  that $f_i \in [0;1]$ for all $i$. This is actually the case for the definition of fitness as
-  communicative success from Section~\ref{sec:fitn--learn}. See
-  \citet{Sandholm2010:Population-Game} for more complex alternative conditional update rules
-  that still derive the same population dynamic.} 
-If $L$ chooses to imitate $T$'s behavior, it may not be able to directly observe $T$'s actual
+good $T$'s behavior is at the moment. For simplicity, we assume that $L$ adopts $T$'s type with
+probability $f_j$, where $j$ is the type of $T$.\footnote{We assume here that $f_i \in [0;1]$
+  for all $i$. This is actually the case for the definition of fitness as communicative success
+  from Section~\ref{sec:fitn--learn}. See \citet{Sandholm2010:Population-Game} for more complex
+  alternative conditional update rules that still derive the same population dynamic.}  If $L$
+chooses to imitate $T$'s behavior, it may not be able to directly observe $T$'s actual
 type. Rather it may have to infer $T$'s latent type from its overt behavior. The probability
-that $L$ then actually acquires type $k$ when it chose to imitate a teacher of type $j$ is
+that $L$ actually acquires type $k$ when it chose to imitate a teacher of type $j$ is
 $Q_{jk}$. In sum, we assume that learners have (at least roughly) an estimate of how good
-another agent's behavior is, decide to imitate that behavior conditionally on how good it
-actually is and the adopt whatever mechanism (type) they infer may cause the observable
-behavior. 
+another agent's behavior is, decide to imitate that behavior conditionally on how good it is
+and the adopt whatever mechanism (type) they infer may cause the observed behavior.
 
 This model of occasional conditional imitation gives rise to expected changes in relative
 frequencies in the population. Given a huge population, the expected probability
