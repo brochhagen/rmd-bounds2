@@ -121,15 +121,18 @@
 \maketitle
 
 \begin{abstract}
- According to standard linguistic theory, the meaning of an utterance is the product of
+  According to standard linguistic theory, the meaning of an utterance is the product of
   conventional semantic meaning and general pragmatic rules on language use. To investigate how
   cultural evolution of language plays out under this picture of the semantics-pragmatics
   interface, we present a game-theoretic model of the competition between types of language
-  users, each endowed with a selection of lexical representations and a particular pragmatic
+  users, each endowed with certain lexical representations and a particular pragmatic
   disposition to act on them. Our model traces two evolutionary forces and their interaction:
-  (i) pressure towards communicative efficiency and (ii) transmission perturbations during the acquisition of
-  linguistic knowledge. We illustrate the model based on a case study on scalar
-  implicatures, which suggests the relationship between underspecified semantics and pragmatic inference to be one of co-evolution. The maintenance of underspecified semantics depends on pragmatic reasoning for their enrichment. In the opposite direction, complex semantics that can do away with mutual reasoning may not foster pragmatic reasoning, and may even be encumbered by it.
+  (i) pressure towards communicative efficiency and (ii) transmission perturbations during the
+  acquisition of linguistic knowledge. We illustrate the model based on a case study on scalar
+  implicatures, which suggests that the relationship between underspecified semantics and
+  pragmatic inference is one of co-evolution. The evolution of underspecified semantics
+  requires pragmatic reasoning, while pragmatic reasoning may not evolve if lexical meanings do
+  not require pragmatic enrichment.
 \end{abstract}
 
 \section{Introduction}\label{sec:introduction}
@@ -151,21 +154,22 @@ A particularly productive and well studied class of systematic pragmatic enrichm
 implicatures
 \citep{horn:1984,Hirschberg1985:A-Theory-of-Sca,LevinsonPragmatics1983,Geurts2010:Quantity-Implic}. Usually,
 the utterance of a sentence like ``I own some of Johnny Cash's albums'' will be taken to mean
-that the speaker does not own all of them. This is because, if the speaker instead owned them all, she
-could have used the word \emph{all} instead of \emph{some} in her utterance, thereby making a
-more informative statement. Scalar implicatures, especially the inference from \emph{some} to
-\emph{some but not all}, have been studied extensively, both theoretically
+that the speaker does not own all of them. This is because, if the speaker instead owned them
+all, she could have used the word \emph{all} instead of \emph{some} in her utterance, thereby
+making a more informative statement. Scalar implicatures, especially the inference from
+\emph{some} to \emph{some but not all}, have been studied extensively, both theoretically
 \citep[e.g.,][]{Sauerland2004:Scalar-Implicat,ChierchiaFox2008:The-Grammatical,Rooyvan-RooijJagerde-Jager2012:Explaining-Quan}
 as well as experimentally
-\citep[e.g.,][]{BottNoveck2004:Some-Utterances,huang+snedeker:2009,GrodnerKlein2010:Some-and-Possib,GoodmanStuhlmuller2013:Knowledge-and-I,DegenTanenhaus2012:Processing-Scal}. This makes them particularly suitable candidates for the study of the evolution of regular pragmatic inferences.  While there is much dispute in this domain about many details, a position endorsed by a clear majority is that a scalar item like \emph{some} is underspecified to mean \emph{some and maybe all} and that the enrichment to \emph{some but not all} is part of some regular process with
-roots in pragmatics.
+\citep[e.g.,][]{BottNoveck2004:Some-Utterances,huang+snedeker:2009,GrodnerKlein2010:Some-and-Possib,GoodmanStuhlmuller2013:Knowledge-and-I,DegenTanenhaus2012:Processing-Scal}. This
+makes them particularly suitable candidates for the study of the evolution of regular pragmatic
+inferences.  While there is much dispute in this domain about many details, a position endorsed
+by a clear majority is that a scalar item like \emph{some} is underspecified to mean \emph{some
+  and maybe all} and that the enrichment to \emph{some but not all} is part of some regular
+process with roots in pragmatics. If this majority view is correct, the question arises how
+such a division of labor between semantics and pragmatics could have evolved.
 
-If this majority view is correct, the question arises how such a division of labor between
-semantics and pragmatics could have evolved; why it would be so pervasive across natural
-languages; and why it is that some expressions systematically draw from it while others semantically conventionalize. 
-
-Models of language evolution abound. There are simulation-based models studying
-populations of communicating agents
+Models of language evolution abound. There are simulation-based models studying populations of
+communicating agents
 \citep{Hurford1989:Biological-Evol,Steels1995:A-Self-Organizi,LenaertsJansen2005:The-Evolutionar,SteelsBelpaeme2005:Coordinating-Pe,BaronchelliPuglisi2008:Cultural-route-,steels:2011,SpikeStadler2016:Minimal-Require}
 and there are mathematical models of language evolution, many coming from game theory
 \citep{Warneryd1993:Cheap-Talk-Coor,BlumeKim1993:Evolutionary-St,nowak+krakauer:1999,nowak:2006,Huttegger2007:Evolution-and-t,Skyrms2010:Signals}. Much
@@ -175,31 +179,36 @@ combinatoriality
 but little attention has been paid to the interaction between conventional meaning and
 pragmatic use. What is more, many mathematical models explain evolved meaning as a regularity
 in the overt behavior of agents, abstracting from complex interactions between semantic
-representations and pragmatic use. In contrast, we will here look at language users with a
-richer linguistic make-up. More precisely, we spell out a model of the evolution of conventional meaning and pragmatic reasoning.
-The objects of replication and selection are pairs consisting of a set of lexical
-meanings and a manner of pragmatic behavior, which together define agents' linguistic choices. Pragmatic behaviors are represented using probabilistic models of pragmatic language use \citep{frank+goodman:2012,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}. Replication
+representations and pragmatic use. 
+
+In contrast, we will here look at language users with a richer linguistic make-up. The objects
+of replication and selection in our model are pairs consisting of a set of lexical meanings and
+a manner of pragmatic behavior, which together define an agent's linguistic choices. Types of
+pragmatic behavior are represented using probabilistic models of pragmatic language use
+\citep{frank+goodman:2012,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}. Replication
 and selection are described by the \emph{replicator mutator dynamic}, a general and established
 model of evolutionary change in large and homogeneous populations
 \citep{Hofbauer1985:The-Selection-M,nowak+etal:2000,NowakKomarova2001:Evolution-of-Un,hofbauer+sigmund:2003,nowak:2006}. This
 approach allows us to study the interaction between (i) pressure towards communicative
 efficiency and (ii) infidelity in the transmission of linguistic knowledge, caused by factors
-such as inductive learning biases and sparse learning data \citep{KirbyHurford2002:The-Emergence-o,SmithKirby2003:Iterated-Learni,KirbyGriffith2014:Iterated-Learni}. Considering the effects that the transmission of
-linguistic knowledge through (iterated) learning have is important because neither semantic meaning nor pragmatic usage
-patterns are directly observable. Instead, language learners have to infer these unobservables from the observable behavior in which they result. We formalize this process as a form of
-Bayesian inference. Our approach thereby contains a well-understood model of
-iterated Bayesian learning \citep{griffiths+kalish:2005,griffiths+kalish:2007}, but combines it with functional
-selection, here formalized as the most versatile dynamic from evolutionary game theory, the
-replicator dynamic \citep{TaylorJonker1978:Evolutionary-St}. Section~\ref{sec:model} introduces
-this model.
+such as inductive learning biases and sparse learning data
+\citep{KirbyHurford2002:The-Emergence-o,SmithKirby2003:Iterated-Learni,KirbyGriffith2014:Iterated-Learni}. Considering
+the effects that the transmission of linguistic knowledge through (iterated) learning have is
+important because neither semantic meaning nor pragmatic usage patterns are directly
+observable. Instead, language learners have to infer these unobservables from the observable
+behavior in which they result. We formalize this process as a form of Bayesian inference. Our
+approach thereby contains a well-understood model of iterated Bayesian learning
+\citep{griffiths+kalish:2005,griffiths+kalish:2007}, but combines it with functional selection,
+here formalized as the most versatile dynamic from evolutionary game theory, the replicator
+dynamic \citep{TaylorJonker1978:Evolutionary-St}. Section~\ref{sec:model} introduces this
+model.
 
-Section~\ref{sec:si-case-study} applies this model to a case study on scalar implicatures. We
-discuss a setting in which the majority view of underspecified lexical meanings and systematic pragmatic
-enrichments emerges if selection and transmission infidelity are combined. In particular, we
-show that inductive learning biases of Bayesian learners that favor simpler lexical meanings
-may play a role in preventing the lexicalization of scalar inferences and thereby lead to the emergence of Gricean-like
-pragmatic reasoning types. The results of this study are critically assessed in the light of
-the assumptions that feed our model in Section~\ref{sec:discussion}.
+Section~\ref{sec:si-case-study} applies this model to a case study on scalar implicatures. It
+shows that inductive learning biases of Bayesian learners that favor simpler lexical meanings
+may play a role in preventing the lexicalization of scalar inferences and thereby lead to the
+emergence of Gricean-like pragmatic reasoning types, but only if there is selective pressure
+for communicative efficiency and learnability. The results of this study are critically
+assessed in the light of the assumptions that feed our model in Section~\ref{sec:discussion}.
 
 % We see the main contribution of this work as conceptual and technical, not as a definite answer
 % to the question why scalar implicatures emerge. It rather demonstrates how current
@@ -244,19 +253,19 @@ that lexicalizes distinct forms for a large number of different meanings may be 
 but challenging to acquire.
 
 \subsection{The replicator mutator dynamic}
-An elegant formal approach to capture the interaction between selection gor communicative
+An elegant formal approach to capture the interaction between selection for communicative
 efficiency and learnability is the \emph{replicator mutator dynamic}
 \citep{Hofbauer1985:The-Selection-M,nowak+etal:2000,NowakKomarova2001:Evolution-of-Un,hofbauer+sigmund:2003,nowak:2006}. The
-RMD is a population dynamic. It describes the average change in the composition of a community
-of agents of different types. The dynamic assumes a virtually infinite population, so that it
-is able to abstract away from what individual agents do. The result is an abstract description
-of the most probable trajectory of change in the population vector $\vec{x}$, which codifies
-relative frequencies of types, so that $x_i$ is the relative frequency of type $i$ and
-$\sum\nolimits_i x_i = 1$. In its simplest discrete-time formulation, the RMD defines the
-frequency $x'_i$ of each type $i$ in the population at the next time step as a function of: (i)
-the frequency $x_i$ of each type $i$ before the update step, (ii) the fitness $f_i$ of each
-type $i$ before the update, and (iii) the probability $Q_{ji}$ that an agent who observes the
-behavior of an agent with type $j$ ends up acquiring type $i$:
+RMD is a population dynamic which describes the average change in the composition of a
+community of agents of different types. The dynamic assumes a virtually infinite population, so
+that it is able to abstract away from what individual agents do. It describes the most probable
+trajectory of change in the population vector $\vec{x}$, which codifies relative frequencies of
+types, so that $x_i$ is the relative frequency of type $i$ and $\sum\nolimits_i x_i = 1$. In
+its simplest discrete-time formulation, the RMD defines the frequency $x'_i$ of each type $i$
+in the population at the next time step as a function of: (i) the frequency $x_i$ of each type
+$i$ before the update step, (ii) the fitness $f_i$ of each type $i$ before the update, and
+(iii) the probability $Q_{ji}$ that an agent who observes the behavior of an agent with type
+$j$ ends up acquiring type $i$ (with $\sum_k Q_{jk} = 1$ for all $j$):
 \begin{align}
   \label{eq:RMD_discrete}
   x'_i = \sum_j \frac{x_jf_j Q_{ji}}{\Phi}\,,
@@ -285,21 +294,21 @@ where
 If there is no mutation, so that types are always replicated faithfully with $Q_{ji}=1$
 whenever $j=i$, the RMD reduces to the replicator dynamic. If fitness is the same for all
 types, $f_i = f_j$ for all $i$ and $j$, the RMD reduces to a process of iterated
-mutation. Appendix~\ref{sec:minim-example-repl} provides an abstract minimal example of how the
-replicator mutator dynamic works.
+mutation. Appendix~\ref{sec:minim-example-repl} provides an abstract minimal example.
 
 \subsection{Interpreting the replicator mutator dynamic}
 
 The RMD is an abstract description of population-level changes. It abstracts away from specific
-assumptions about how agents interact. To understand this better, the following looks at each
-component in isolation: first replication, then mutation.
+assumptions about how agents interact and what causes selection and mutation. To understand
+this better, the following looks at each component in isolation: first replication, then
+mutation.
 
 According to the replicator dynamic the relative frequency $x_i$ of type $i$ increases
 proportional to its average fitness in the population. This dynamic is popular and versatile
 because it can be derived from many processes of biological and cultural transmission and
 selection \citep[for overview and several derivations
 see][]{Sandholm2010:Population-Game}. Under a biological interpretation, the model describes
-population-level changes when the number of offspring under single-parent preproduction is
+population-level changes when the number of offspring under single-parent reproduction is
 proportional to the parent's fitness. Under a cultural interpretation, examples of concrete
 agent-level processes that lead to population-level changes as described by the replicator
 dynamic include conditional imitation
@@ -307,18 +316,18 @@ dynamic include conditional imitation
 learning \citep[e.g.,][]{BorgersSarin997:Learning-Throug,Beggs2005:On-the-Converge}. In
 conditional imitation, for instance, each agent carries a fixed type $i$ which it may change to
 a type $j$ when it happens to observe another agent using type $j$. Imitation occurs with a
-probability that is a monotonic function of how well $j$ fares against the population: the
-better the behavior $j$, the more likely it is to be imitated.\footnote{A crucial assumption in
-  all of the derivations of the replicator dynamic as a biological or cultural process of
-  evolution is that agents themselves are rather limited in their strategic capacities. They
-  are, for example, not able to innovate a strategy, i.e., to just choose a type, that is
-  optimal given the current population state. They are also not able to strategically adapt
-  their behavior to any particular agent they are interacting with on some given occasion. Such
-  minimalism about the strategic capacities of agents is a conservative methodological
-  choice. It allows us to study ---as the formal thought experiment that any such model is---
-  how fitness-based selection changes a population in the absence of optimal agent-level
-  reasoning and it abstracts away from specific assumptions about how fitness-based selection
-  might be realized concretely.}
+probability that is a monotonic function of $f_j$, i.e., of how well $j$ fares against the
+population: the better the behavior $j$, the more likely it is to be imitated.\footnote{A
+  crucial assumption in all of the derivations of the replicator dynamic as a biological or
+  cultural process of evolution is that agents themselves are rather limited in their strategic
+  capacities. They are, for example, not able to innovate a strategy, i.e., to just choose a
+  type, that is optimal given the current population state. They are also not able to
+  strategically adapt their behavior to any particular agent they are interacting with on some
+  given occasion. Such minimalism about the strategic capacities of agents is a conservative
+  methodological choice. It allows us to study ---as the formal thought experiment that any
+  such model is--- how fitness-based selection changes a population in the absence of optimal
+  agent-level reasoning and it abstracts away from specific assumptions about how fitness-based
+  selection might be realized concretely.}
 
 If all types have equal fitness at all times, the replicator mutator dynamic reduces to a
 process of iterated mutation. Mutation can be interpreted as biological or cultural as
@@ -353,29 +362,22 @@ is computed. These issues are addressed, one by one, in the following.
 
 \subsubsection{Types: Lexica and pragmatic strategies}
 \label{sec:languages+use}
-Types are what evolution operates on. They define an agent's fitness, usually through a payoff
-accrued in single interactions with other agents. Often types can be identified as the possible
-acts in a game, e.g., either cooperating or defecting in a prisoner's dilemma. In other cases,
-they may be thought of as general properties of an agent that influence her fitness, such as
-being positive or negative in our previous example (whatever that means). Since we are
-interested in the evolutionary competition between different lexical representations and ways
-of deploying them in communication, a type is here defined as a pair consisting of a lexicon
-and a linguistic strategy of language use.
+Types are what evolution operates on. A type is what determines an agent's behavior and thereby
+an agent's fitness, so that it makes sense to speak of the fitness of a type itself. To study
+the joint evolution of semantic meaning and pragmatic use, types are pairs consisting of a
+lexicon and a linguistic strategy of language use.
 
 Agents play signaling games, in which the speaker wants to communicate a world state $s$ with a
 message $m$ to a hearer who receives $m$ but does not know $s$
-\citep[e.g.][]{lewis:1969,Skyrms2010:Signals}. A lexicon associates each message with a
-(possibly fuzzy) set of states. A linguistic behavior specifies a probabilistic speaker rule (a
-probabilistic choice of message for each state) and a probabilistic hearer rule (a
-probabilistic choice of state for each message) given a lexicon. There are many ways of making
-these general notions concrete. Since our main emphasis is on how different kinds of language
-can be embedded within the replicator mutator dynamic, we focus here on a general formulation
-of speaker and listener behavior which is as simple as possible but still in line with both a
-game-theoretic tradition
+\citep[e.g.][]{lewis:1969,Skyrms2010:Signals}. A lexicon associates each message with a set of
+states. A linguistic behavior specifies a probabilistic speaker rule (a probabilistic choice of
+message for each state) and a probabilistic hearer rule (a probabilistic choice of state for
+each message) given a lexicon. There are many ways of making these general notions
+concrete. In the following we aim at a general formulation of speaker and listener
+behavior which is as simple as possible but still in line with both a game-theoretic tradition
 \citep[e.g.,][]{benz:2006,benz+vRooij:2007,jaeger:2007b,franke+jaeger:2014} and a Bayesian
 tradition
-\citep[e.g.,][]{frank+goodman:2012,goodman+stuhlmueller:2013,GoodmanFrank2016:Pragmatic-Langu}. Here
-is what we will assume in the remainder of this paper.
+\citep[e.g.,][]{frank+goodman:2012,goodman+stuhlmueller:2013,GoodmanFrank2016:Pragmatic-Langu}. 
 
 Lexica codify the truth-conditions of expressions. A convenient way to represent lexica is by
 $(\card{\States}, \card{\Messgs})$-Boolean matrices, where $\States$ is a set of states
@@ -384,12 +386,11 @@ that there are two relevant world states $\States = \set{\ssome, \sall}$. In sta
 Chris owns some but not all of Johnny Cash's albums while in $\sall$ Chris owns them
 all. Suppose that there are two messages $\Messgs = \set{\msome, \mall}$ where $\msome$ is
 short for a sentence like \emph{Chris owns some of Johnny Cash's albums} and $\mall$ for the
-same sentence with \emph{some} replaced by \emph{all}.  Lexica for this case would assign a
-Boolean truth value, either $0$ for false or $1$ for true, to each state-message pair. The
-following two lexica are minimal examples for the distinction between a lexicalized upper-bound
-for \emph{some}, in $\Lbound$, and the widely assumed logical semantics with only a lower-bound,
-in $\Llack$.
-
+same sentence with \emph{some} replaced by \emph{all}.  Lexica then assign a Boolean truth
+value, either $0$ for false or $1$ for true, to each state-message pair. The following two
+lexica are minimal examples for the distinction between a lexicalized upper-bound for
+\emph{some}, in $\Lbound$, and the widely assumed logical semantics with only a lower-bound, in
+$\Llack$.
 \begin{align*}
   \Lbound & = \begin{blockarray}{lcc}
     & \mygray{\msome} & \mygray{\mall} \\
@@ -428,15 +429,26 @@ respect to level-$n$ behavior of their interlocutors, as in Equations~(\ref{h:le
 According to (\ref{h:level0}), a literal hearer's interpretation of a message depends on her
 lexicon and her prior over states, $pr \in \Delta(S)$, which is here assumed flat for
 simplicity. Literal interpreters thereby choose an arbitrary true interpretation for each
-message according to their lexicon. Pragmatic hearers, defined in (\ref{h:leveln}), instead use Bayes' rule to weigh
-interpretations based on a conjecture about speaker behavior. Speaker behavior is regulated by
-a soft-max parameter $\lambda \geq 0$ \citep{luce:1959,sutton+barto:1998}. As
-$\lambda$ increases, choices approximate strict maximization of expected utilities. Expected
-utility of a message $\messg$ in state $\state$ for a level $n+1$ speaker is here defined as
-$H_{n}(s|m;L)$, the probability that the hearer will assign to or choose the correct
-meaning. For literal speakers, utility only tracks truthfulness. Literal speakers choose any
-true message with equal probability but may send false messages as well with a probability
-dependent on $\lambda$.
+message according to their lexicon. Pragmatic hearers, defined in (\ref{h:leveln}), instead use
+Bayes' rule to weigh interpretations based on a conjecture about speaker behavior. Speaker
+behavior is regulated by a soft-max parameter $\lambda \geq 0$
+\citep{luce:1959,sutton+barto:1998}. As $\lambda$ increases, choices approximate strict
+maximization of expected utilities. Expected utility of a message $\messg$ in state $\state$
+for a level $n+1$ speaker is here defined as $H_{n}(s|m;L)$, the probability that the hearer
+will assign to or choose the correct meaning.\footnote{An alternative choice for the speaker's
+  utility function is $\log H_{n}(s|m;L)$. Conceptually, the difference is that without the
+  logarithm, utilities are derived from action choices, while with the logarithm utilities are
+  derived from how closely the listener's beliefs (after hearing an utterance) align with the
+  speaker's, as measure by Kullback-Leibler divergence
+  \cite{frank+goodman:2012,qing+franke:2015}. In an evolutionary context, where fitness comes
+  from actual interactions with the environment, not just beliefs held about it, the
+  formulation without the logarithm may be slightly more appealing. Moreover, log-based speaker
+  utilities cause the speaker never to use false utterances. Since we aim here for a situation
+  in which any type has a reasonable chance to be mistaken for any other based on their
+  production behavior (see Section~\ref{sec:learnability}), we want a definition of speaker
+  types which also send any message in any state with positive probability.} For literal
+speakers, utility only tracks truthfulness. Literal speakers choose any true message with equal
+probability but may send false messages as well with a probability dependent on $\lambda$.
 
 In words, an agent's linguistic behavior -- what message to send when or which message to
 interpret how -- is defined by (i) her reasoning level and (ii) her lexicon. In what follows,
@@ -574,13 +586,33 @@ For $\lambda = 20$, pragmatic speaker behavior of level 1 is instead as follows:
 \end{align*}
 
 
-There are two particularly important things to note. First, in contrast to their literal counterparts of level $0$, pragmatic agents of level $1$ using $\Llack$ associate $\msome$ preferentially with $\ssome$. This association is not perfect, and usually less strong than what agents with a lexicalized upper bound in $\Lbound$ can achieve -- with or without pragmatic reasoning. Higher order reasoning beyond level $1$ leads to stronger associations of $\msome$ and $\ssome$ also for the receiver. Still, the case study presented in Section~\ref{sec:si-case-study} will consider
-sender and receiver behavior at levels 0 and 1, as the latter are the simplest pragmatic reasoning types which show a tendency to communicatively attuned pragmatic enrichment. Using only level 1 reasoning and possibly small $\lambda$ is therefore a conservative choice that works against the fitness-based selection of pragmatic language use for a notion of fitness defined as communicative success, which is introduced next. Second, when it comes to competition between types of use of lexicon $\Lbound$, pragmatic reasoning at level $1$ is not advantageous. The reason for this is that literal use of $\Lbound$ already endows agents with a behavioral strategy that associates a single state with a single message (in tendency; depending on $\lambda$ for senders). For $\Lbound$-receivers of level $1$, reasoning over stochasticity introduced at $S_0( \cdot \mid \cdot, \Lbound)$ will generally decrease the association of one state with one message. This decrease is only slight if $\lambda$ is high, but nevertheless present. That is to say, level-$1$ reasoning does not necessarily confer a functional advantage. For some types, such as users of $\Lbound$, literal signaling is preferable.
+In contrast to their literal counterparts of level $0$, pragmatic agents of level $1$ who use
+$\Llack$ associate $\msome$ preferentially with $\ssome$. This association is not perfect, and
+usually less strong than what agents with a lexicalized upper bound in $\Lbound$ can achieve --
+with or without pragmatic reasoning. Higher order reasoning beyond level $1$ leads to stronger
+associations of $\msome$ and $\ssome$ also for the receiver. Still, the case study presented in
+Section~\ref{sec:si-case-study} will consider sender and receiver behavior at levels 0 and 1,
+as the latter are the simplest pragmatic reasoning types which show a tendency to
+communicatively attuned pragmatic enrichment. Using only level 1 reasoning and possibly small
+$\lambda$ is therefore a conservative choice that works \emph{against} the fitness-based
+selection of pragmatic language use for a notion of fitness defined as communicative success,
+which is introduced next. 
 
+When it comes to competition between types of use of lexicon $\Lbound$, pragmatic reasoning at
+level $1$ is not advantageous. The reason for this is that literal use of $\Lbound$ already
+endows agents with a behavioral strategy that associates a single state with a single message
+(in tendency; depending on $\lambda$ for senders). For $\Lbound$-receivers of level $1$,
+reasoning over stochasticity introduced at $S_0( \cdot \mid \cdot, \Lbound)$ will generally
+decrease the association of one state with one message. This decrease is only slight if
+$\lambda$ is high, but nevertheless present. That is to say, level-$1$ reasoning does not
+necessarily confer a functional advantage. For some types, such as users of $\Lbound$, literal
+signaling is preferable. In sum, the definition of types introduced here constitute conditions
+that are purposefully averse to what we would like to show; the evolution of is not immediate
+just based on fitness-based selection, to which we turn next.
 
 \subsubsection{Fitness \& fitness-based selection based on communicative success}\label{sec:expressivity}
 
-n the context of language evolution, fitness is usually associated with the ability to
+In the context of language evolution, fitness is usually associated with the ability to
 successfully communicate with other language users from the same population
 \citep[e.g.,][]{nowak+krakauer:1999,nowak+etal:2000, nowak+etal:2002}. Concretely, the fitness
 of type $i$ is its average expected communicative success, or \emph{expected utility} (EU),
@@ -588,7 +620,7 @@ given the relative frequencies $x_j$ of types $j$ in the current population:
 \begin{align*}
   f_i = \sum_j x_j \text{EU}(t_i,t_j)\,.
 \end{align*}
-In signaling games, the expected utility $\text{EU}(t_i,t_j)$ for type $i$ when communicating with type $j$ is the
+The expected utility $\text{EU}(t_i,t_j)$ for type $i$ when communicating with type $j$ is the
 average success of $i$ when talking or listening to $j$. If, as standardly assumed, agents are speakers half of the
 time, this yields:
 \begin{align*}
@@ -604,28 +636,32 @@ are type $i$'s and type $j$'s pragmatic reasoning types and $L_i$ and $L_j$ are 
 \end{flalign*}
 As usual, we assume that agents are cooperative: $\delta(s,s') = 1$ iff $s = s'$ and $0$ otherwise.
 
-In words, expected utility $\text{EU}(t_i,t_j)$ quantifies how successful communication between agents of types $i$ and $j$ is, with each type's behavior resulting from a combination of a lexicon and a reasoning level (Section~\ref{sec:languages+use}). Fitness $f_i$ indicates how well type $i$ fares in a population given what other types are found in it: it is type $i$'s weighted expected utility.
+In words, expected utility $\text{EU}(t_i,t_j)$ quantifies how successful communication between
+agents of types $i$ and $j$ is, with each type's behavior resulting from a combination of a
+lexicon and a reasoning level (Section~\ref{sec:languages+use}). Fitness $f_i$ indicates how
+well type $i$ fares in a population $\vec{x}$ where the probability of meeting a type $j$ is
+$x_j$.
 
 \subsubsection{Learnability}
 \label{sec:learnability}
-Languages are shaped not only by functionalist forces towards greater communicative success. Another
-important factor is the fidelity with which linguistic knowledge is transmitted. Among others,
-linguistic production can be prone to errors, states or messages may be perceived incorrectly,
-and multiple linguistic hypotheses may be compatible with the data learners are exposed to. These sources
-of uncertainty introduce variation in the transmission of linguistic knowledge from one
-generation to the next. In particular, learning biases in the iterated transmission process can
-influence language evolution substantially.
 
-In biological evolution, where types are expressed genetically, transmission infidelity comes
-into the picture through infrequent and mostly random mutation and genetic drift
-\citep{kimura:1983}. However, an agent's lexicon and pragmatic reasoning behavior is likely not
-inherited genetically. They need to be learned from observation, such as in conditional
-imitation (see Appendix~\ref{sec:deriv-repl-mutat}).  Concretely, when agents learn from or
-imitate type $j$, they observe the overt linguistic behavior of type $j$ and need to infer the
-covert type that most likely produced the observed behavior.
+Languages are shaped not only by functionalist forces towards greater communicative
+success. Another important factor is the fidelity with which linguistic knowledge is
+transmitted. In biological evolution, where types are expressed genetically, transmission
+infidelity comes into the picture through infrequent and mostly random mutation and genetic
+drift \citep{kimura:1983}. However, an agent's lexicon and a disposition for pragmatic
+reasoning are likely not inherited genetically. They need to be learned from observation, such
+as in conditional imitation (see Appendix~\ref{sec:deriv-repl-mutat}).  Concretely, when agents
+learn from or imitate type $j$, they observe the overt linguistic behavior of type $j$ and need
+to infer the covert type that most likely produced the observed behavior.
 
-Iterated learning is a process in which languages are learned repeatedly from the observation of linguistic behavior of agents who have themselves acquired their behavior from observation and inference. In the simplest case there is a single teacher and a single learner in each generation \citep[e.g.,][]{kirby:2001,brighton:2002}. After sufficient training the learner becomes a teacher and produces behavior that serves as input for a new learner. Due to the pressure towards learnability it exerts, iterated learning alone generally leads to simpler
-and more regular languages (see \citealt{kirby+etal:2014} and \citealt{tamariz+kirby:2016} for
+Iterated learning is a process in which languages are learned repeatedly from the observation
+of linguistic behavior of agents who have themselves acquired their behavior from observation
+and inference. In the simplest case there is a single teacher and a single learner in each
+generation \citep[e.g.,][]{kirby:2001,brighton:2002}. After sufficient training the learner
+becomes a teacher and produces behavior that serves as input for a new learner. Due to the
+pressure towards learnability it exerts, iterated learning alone generally leads to simpler and
+more regular languages (see \citealt{kirby+etal:2014} and \citealt{tamariz+kirby:2016} for
 recent surveys).
 
 Following \citet{griffiths+kalish:2005,griffiths+kalish:2007} we model language acquisition as
@@ -635,18 +671,18 @@ can be codified in a prior $P \in \Delta(T)$, which reflects the amount of data 
 requires to faithfully acquire the language of the teacher
 \citep[cf.][450]{griffiths+kalish:2007}. Put differently, types favored by the prior are easier
 to learn because they require less data than less favored types to be inferred, even if they
-are both compatible with the learning data at hand. The extent of the prior's influence has
-been shown to heavily depend on the learning strategy assumed to underlie the inference
-process. On the one hand, early simulation results suggested that weak biases could be
-magnified by exposing learners to only small data samples \citep[e.g. in][]{brighton:2002}. On
-the other, \citeposs{griffiths+kalish:2007} mathematical characterization showed that iterated
-learning converges to the prior in the limit, i.e., that the resulting distribution over types
+are both compatible with the learning data at hand. 
+
+The extent of the prior's influence has been shown to heavily depend on the learning strategy
+assumed to underlie the inference process. Early simulation results suggested that weak biases
+could be magnified by exposing learners to only small data samples
+\citep[e.g. in][]{brighton:2002}. \citet{griffiths+kalish:2007} showed that iterated learning
+converges to the prior in the limit, i.e., that the resulting distribution over types
 corresponds to the learners' prior distribution and is not influenced by the amount of input
-given to them. This difference in predictions can be traced back to differences in the
-selection of hypotheses from the posterior. Griffith \& Kalish's convergence to the prior holds
-for learners that sample from the posterior. More deterministic strategies such as the adoption
-of the type with the highest posterior probability, so-called {\it maximum a posterior
-  estimation} (MAP), increase the influence of both the prior and the data
+given to them, if learners select random hypothesis from their posterior beliefs about which
+types may have generated the learning data that they saw. More deterministic strategies such as
+the adoption of the type with the highest posterior probability, so-called {\it maximum a
+  posterior estimation} (MAP), increase the influence of both the prior and the data
 \citep{griffiths+kalish:2007,kirby+etal:2007}. In the following, we use a parameter $l\ge1$ to
 modulate between posterior sampling and the MAP strategy. When $l = 1$ learners sample from the
 posterior. The learners' propensity to maximize the posterior grows as $l$
@@ -659,7 +695,9 @@ increases.\footnote{The way the posterior over types is formed and how learners 
   utterances based on the type she sampled, as done in \citet{kirby+etal:2015}. Beyond adding
   complexity to the model, a disadvantage of this approach is that it could happen that a
   speaker that first uttered a Hungarian utterance speaks Quechua in the next, so to speak. We
-  stick to the simpler assumption of a single type being acquired, which we now define.}
+  therefore maintain the simpler assumption of a single type being acquired in the present
+  context, and postpone further investigation of more complex type-adoption schemes to future
+  research.}
 
 Let $D$ be the set of possible data that learners may be exposed to. This set contains all
 sequences of state-message pairs of length $k$, e.g.,
@@ -674,10 +712,10 @@ linguistic behavior:
   P(d = \tuple{\tuple{s_1,m_1},\dots , \tuple{s_k,m_k}} \mid t_j) = \prod_{i = 1}^k S_{n_j}(m_i
   \mid s_i; L_{j})\,,
 \end{align*}
-where, as before, $n_j$ is $j$'s pragmatic reasoning type and $L_j$ is $j$'s lexicon. For a
+where, as before, $n_j$ is $j$'s pragmatic reasoning level and $L_j$ is $j$'s lexicon. For a
 given observation $d$, the probability of acquiring type $i$ is $F(t_i \mid d)$, so that:
 \begin{flalign*}
-  Q_{ji} \propto \sum_{d \in D} P(d \mid t_j) F(t_i \mid d)\,.
+  Q_{ji} = \sum_{d \in D} P(d \mid t_j) F(t_i \mid d)\,.
 \end{flalign*}
 
 The acquisition probability $F(t_i \mid  d)$ given datum $d$ is obtained by probability matching $l = 1$ or a tendency towards choosing the most likely type $l > 1$ from the posterior distribution $P(\cdot \mid d)$ over types given the data. This is calculated by Bayes' rule:
@@ -685,6 +723,20 @@ The acquisition probability $F(t_i \mid  d)$ given datum $d$ is obtained by prob
   & F(t_i \mid d) \propto P(t_i \mid d)^l \; \text{ and }\\
   & P(t_i \mid d) \propto P(t_i) P(d \mid t_i)\,.
 \end{flalign*}
+
+When $l=1$ learners sample a type to adopt from their posterior distribution which they obtain
+from observing the teacher produce utterances in particular states. From
+\citet{griffiths+kalish:2007}, we know that under $l=1$ iterated Bayesian learning will
+converge to a population proportion that reflects that prior over types. If $l>1$ learners tend
+to pick types which are \emph{a posteriori} more likely with a higher probability than less
+likely types. Even in the absence of a prior bias, iterated Bayesian learning with $l>1$ can
+lead to populations in which a particular type $t_i$ has a higher proportion than other
+types. For $l>1$, much hinges on particular asymmetries in production likelihoods
+$P(d \mid t_j)$, and therefore on the composition of the set of types in general. Intuitively
+put, if there are many types $t_j$ which all happen to produce data that is most likely to be
+produced by $t_i$, this can lead to a larger proportion of $t_i$ in the long run even when
+priors over types are uniform. Appendix~\ref{sec:example-iter-bayes} provides an abstract
+example.
 
 \subsection{Model summary}
 
@@ -696,13 +748,14 @@ the discrete time replicator mutator dynamic in (\ref{eq:RMD_discrete}), repeate
   x'_i = \sum_j Q_{ji} \frac{x_jf_j}{\sum_h x_h f_h}\,.
 \end{align*}
 This equation defines the frequency $x'_i$ of type $i$ at the next time step, based on its
-frequency $x_i$ before the step, its fitness $f_i$, and the probability that a learner infers
-$i$ when observing the behavior of a type-$j$ agent. Fitness-based can be thought of as
+frequency $x_i$ before the update step, its fitness $f_i$, and the probability that a learner
+infers $i$ when observing the behavior of a type-$j$ agent. Fitness-based can be thought of as
 biological (fitness as expected relative number of offspring) or cultural evolution (fitness as
-likelihood of being imitated or repeated). A type's communicative success depends on how well
-it communicates within a population while its learnability depends on the fidelity by which it
-is inferred by new generations of learners. The learners' task is consequently to perform a
-joint inference over types of linguistic behavior and lexical meaning.
+likelihood of being imitated or repeated, see Appendix~\ref{sec:deriv-repl-mutat} for a
+concrete example). A type's communicative success depends on how well it communicates within a
+population while its learnability depends on the fidelity by which it is inferred by new
+generations of learners. The learners' task is consequently to perform a joint inference over
+types of linguistic behavior and lexical meaning.
 
 The model has three parameters: $\lambda$ regulates the degree to which speakers
 choose messages that appear optimal from the point of view of the agent's own utility measure
@@ -721,24 +774,20 @@ teacher type.
 This section engages in a formal thought experiment to address the question: if a population of
 language users could freely combine different lexica with different dispositions to act on
 them, what are conditions under which the majority view of scalar implicatures could have
-evolved?
-
-Recall that the majority view is that scalar implicatures are non-lexicalized pragmatic
-enrichments. Scalar implicature triggers like \emph{some}, \emph{warm} or \emph{may} are
-semantically weak expressions for which logically stronger expressions are salient, e.g.,
+evolved? --- Recall that the majority view is that scalar implicatures are non-lexicalized
+pragmatic enrichments. Scalar implicature triggers like \emph{some}, \emph{warm} or \emph{may}
+are semantically weak expressions for which logically stronger expressions are salient, e.g.,
 \emph{all}, \emph{hot} or \emph{must}. For instance, {\em some} is entailed by {\em
   all}. Still, the use of a less informative expression (\emph{some}) when a more informative
 one (\emph{all}) could have been used can license a defeasible inference (\emph{some but not
   all}) that stronger alternative is false (cf. \citealt{horn:1972,gazdar:1979}). According to
 the majority view, this is a pragmatic inference, not part of the conventional meaning.
 
-In the following we consider a specific application of the model from Section~\ref{sec:model}
-which allows us to address the question if or when scalar inferences might (not) lexicalize. We
-consider what are perhaps two of the simplest non-trivial setups that speak to this matter and
-reflect on their limitations in Section~\ref{sec:discussion}. Section \ref{subsec:example}
-first considers a minimal example intended to isolate effects of replication and mutation and
-to gain insights into the sense in which semantic meaning and pragmatic use can be said to
-co-evolve. We then turn to a larger and more realistic setup in
+In the following we consider what are perhaps two of the simplest non-trivial setups that speak
+to this matter and reflect on their limitations in Section~\ref{sec:discussion}. Section
+\ref{subsec:example} first investigates a minimal example intended to isolate effects of
+replication and mutation and to gain insights into the sense in which semantic meaning and
+pragmatic use can be said to co-evolve. We then turn to a larger and more realistic setup in
 Section~\ref{sec:setup:-stat-conc}. Section~\ref{sec:simulation-results} describes simulations
 for this case and their results.
 
@@ -746,9 +795,6 @@ for this case and their results.
 \subsection{Co-evolution of semantics \& pragmatics in a restricted type space}
 \label{subsec:example}
 
-This section illustrates how replication and mutation act on the evolution of semantic meaning
-and pragmatic use in the simplest non-trivial type space. Our goal is to sharpen intuitions
-about the sense in which semantics and pragmatics might be said to co-evolve.
 
 \begin{figure}
 \centering
@@ -789,47 +835,54 @@ about the sense in which semantics and pragmatics might be said to co-evolve.
 \label{fig:sketch}
 \end{figure}
 
-The population under consideration consists of only the four types from
-Section~\ref{sec:languages+use}. Recall that these types are made up of a combination of either
-lexicon $\Llack$ or $\Lbound$ and either literal (level-$0$) or pragmatic (level-$1$)
-behavior. We may think of such a population as a point in a two-dimensional space. The grey
-dotted square in Fig.~\ref{fig:sketch} outlines this space. The space's first dimension
-determines the proportion of types that lexicalize ambiguous $\msome$ (the $y$-axis in
-Fig.~\ref{fig:sketch}). That is, the proportion of types with $\Llack$. The second dimension
-determines the proportion of pragmatic language users (the $x$-axis in
-Fig.~\ref{fig:sketch}). Populations at the corners of this space are monomorphic; all agents in
-them are of a single type. Points away from the corners represent mixed populations of various
-types.\footnote{This two-dimensional representation underspecifies the exact proportions of
-  types found in a mixed population. The space's center, for instance, could be composed 50\%
-  of pragmatic $\Llack$ and of an equal proportion of literal $\Lbound$. But it could equally
-  well be a population that has each type with the same frequency. This level of granularity
-  will nevertheless be sufficient for our purposes, as we are only interested in sketching
-  rough trajectories after replicator or mutator steps.}
+This section illustrates how replication and mutation act on the evolution of semantic meaning
+and pragmatic use in the simplest non-trivial type space, which consists of only the four types
+from Section~\ref{sec:languages+use}: a type has either lexicon $\Llack$ or $\Lbound$ and is
+either a literal (level-$0$) or a pragmatic (level-$1$) language user. We may think of such a
+population as a point in a two-dimensional space. The grey dotted square in
+Fig.~\ref{fig:sketch} outlines this space. The space's first dimension determines the
+proportion of types that lexicalize ambiguous $\msome$ (the $y$-axis in
+Fig.~\ref{fig:sketch}). The second dimension determines the proportion of pragmatic language
+users (the $x$-axis in Fig.~\ref{fig:sketch}). Populations at the corners of this space are
+monomorphic; all agents in them are of a single type. Points away from the corners represent
+mixed populations of various types.\footnote{This two-dimensional representation underspecifies
+  the exact proportions of types found in a mixed population. The space's center, for instance,
+  could be composed in equal parts of pragmatic $\Llack$ and of literal $\Lbound$. But it could
+  equally well be a population that has all four types in equal proportions. This level of
+  granularity will nevertheless be sufficient for our purposes, as we are only interested in
+  sketching rough trajectories after replicator or mutator steps.} We can predict general
+trends in evolutionary trajectories in this space based on what we know from the literature and
+the setup from Section~\ref{sec:fitn--learn}, even before any further simulation results.
 
-From Section~\ref{sec:languages+use}, we already know some things about this type space. When
-it comes to communicative success, types with $\Lbound$ have a functional advantage over
+When it comes to communicative success, types with $\Lbound$ have a functional advantage over
 $\Llack$; literal $\Lbound$ has a slight advantage over pragmatic $\Lbound$; all have a sizable
-advantage over literal $\Llack$. The red arrows in Fig.~\ref{fig:sketch} sketch out these
-relationships. They depict the rough trajectories we can expect if there is only pressure for
-communicative success. How much each replicator step moves a population through this space
-ultimately depends on the rationality parameter $\lambda$. Functional differences decrease as
-$\lambda$ increases: if $\lambda$ is sufficiently high, all types except for literal $\Llack$
-speakers will show a strong tendency to associate $\ssome$ with $\msome$ and $\sall$ with
-$\mall$.
+advantage over literal $\Llack$. The red arrows in Fig.~\ref{fig:sketch} sketch trajectories we
+can expect if there is only pressure for communicative success. How much each replicator step
+moves a population through this space ultimately depends on the rationality parameter
+$\lambda$. Functional differences decrease as $\lambda$ increases: if $\lambda$ is sufficiently
+high, all types except for literal $\Llack$ speakers will show a strong tendency to associate
+$\ssome$ with $\msome$ and $\sall$ with $\mall$.
 
-As a consequence, when it comes to learnability and transmission fidelity, the likelihood that
-any of these three types produces a given datum $d$ will be approximately equal. We can
-therefore expect that, if the prior is flat, no type is passed on very faithfully in this
-space. This would lead populations to gravitate toward the space's center after mutator
-steps. This is sketched by the blue dash-dotted arrows in Fig.~\ref{fig:sketch}. Neither prior
-nor likelihood alone, but their combination, are what determines the effects of (iterated)
-Bayesian learning. If, instead of a flat prior, there is a prior that favors, say, $\Llack$
-over $\Lbound$ we can expect mutator steps to be skewed toward the upper-half of the
-space. This is suggested by the solid purple arrows in Fig.~\ref{fig:sketch}. \mf{Should we
-  include here a sentence on why the top-most arrow for biased learning points to pragmatic
-  L-lack?} Taking stock, the effects of iterated learning will depend not only on $\lambda$,
-affecting the likelihood, but also on the prior (how strong of a bias there is) and the degree
-to which learners tend to maximize the posterior (controlled by parameter $l$).
+Under probability matching $l=1$, iterated Bayesian learning converges to the prior over types
+\citep{griffiths+kalish:2007}. If the prior on types is uniform, populations gravitate toward
+the space's center under repeated mutator steps. This is sketched by the blue dash-dotted
+arrows in Fig.~\ref{fig:sketch}. If instead the prior favors $\Llack$ over $\Lbound$, we expect
+repeated mutator steps to drive the population toward the upper-half of the space. This is
+suggested by the solid purple arrows in Fig.~\ref{fig:sketch}. The system's predictions are
+more difficult to predict when $l>1$, because now individual mutator steps may also be
+influenced not only by the priors, but also by the differential likelihood with which a
+particular type $i$ can be confused for any other type $j$ (see Section~\ref{sec:learnability}
+and Appendix~\ref{sec:example-iter-bayes}).
+
+Despite its simplicity, the diagram in Figure~\ref{fig:sketch} makes clear the sense in which
+semantics and pragmatics might co-evolve. Pragmatic language use will not evolve under a strong
+and fully expressive semantics (bottom part of Figure~\ref{fig:sketch}). A weak semantic
+convention will not evolve without disposition towards pragmatic enrichments (left part of
+Figure~\ref{fig:sketch}). But together a weak semantics and a pragmatic disposition for
+enrichment can co-evolve. These abstract theoretical considerations also suggest that we need
+both fitness based selection of communicative efficiency and pressure towards learnability to
+see underspecified semantics and pragmatic language use emerge together.
+
 
 \begin{figure}[t]
 \centering
@@ -848,45 +901,33 @@ to which learners tend to maximize the posterior (controlled by parameter $l$).
 \end{figure}
 
 Fig.~\ref{fig:quiver} shows actual evolutionary trajectories in this type space. The replicator
-steps make the functional disadvantage of $\Llack$ against $\Lbound$ apparent, particularly for
-its literal users and/or low $\lambda$. They also highlight that the functional difference
-between literal and pragmatic $\Lbound$ is small. Under functional pressure only, populations
-move toward the lower part of the square but the steps become small as the lower edge,
-representing populations composed only of $\Llack$ users, are reached. As for the mutator
-diagrams, there are two main things to note. As expected, a small bias for a type will lead to
-larger proportions to adopt it, provided that likelihood offers little to no differentiation
-between types (see lower left space in Figure~\ref{fig:quiver}). However, the bias is far from
-absolute. If, instead, certain types are more likely to be recovered based on the linguistic
-input they produce, they will be passed on more faithfully. This is why, for instance,
-populations move toward a majority of $\Llack$-types for $\lambda = 5$ and $l = 10$.\mf{last
-  sentence: I don't get it; looks to me as if they are going the other direction; only in the
-  lower right case do I see a shift in that direction}
+steps shown in the top row of Fig.~\ref{fig:quiver} make the functional disadvantage of
+$\Llack$ against $\Lbound$ apparent, particularly for its literal users and/or low
+$\lambda$. They also highlight that the functional difference between literal and pragmatic
+$\Lbound$ is small. Under functional pressure only, populations move toward the lower part of
+the square but the steps become small as the lower edge, representing populations composed only
+of $\Llack$ users, are reached. As for the mutator diagrams (bottom row of
+Fig.~\ref{fig:quiver}), there are three main things to note. First, as expected from the
+literature, a small bias for a type will lead to larger proportions to adopt it under $l=1$
+(see lower left space in Figure~\ref{fig:quiver}). Second, if $l>0$, the dynamic is influenced
+heavily also by asymmetries in production likelihoods. Third, these asymmetries in the
+production likelihoods are in turn influenced by $\lambda$, so that $\lambda$ also has an
+effect on iterated Bayesian learning (compare the middle and right-most diagram in the bottom
+row of Fig.~\ref{fig:quiver}).
 
+Fig.~\ref{fig:sketch} and \ref{fig:quiver} investigate replicator and mutator steps in
+isolation. It remains to investigate how exactly these forces shape a population over time when
+they apply together. This will also hinge on which types are present because the space of all
+types determines whether production likelihoods asymmetrically favor certain types over others
+(when $l>1$; see Appendix~\ref{sec:example-iter-bayes}). For this reason, we turn to a larger
+setup next with a larger and more realistic set of types. Additionally, we want to explore
+the effects of a learning bias in favor of simple lexical representations. One way of
+motivating and formalizing such a bias is introduced in Section~\ref{sec:an-induct-learn}.
 
-Fig.~\ref{fig:sketch} and \ref{fig:quiver} depict replicator and mutator steps in isolation to
-better showcase their effects. How exactly these forces shape a population over time also
-hinges on which types are present. Especially the effects of learning biases affected by
-this. If, hypothetically, we add many functionally dispreferred types which all happen to
-mutate with a high probability to the same type, this can strongly bias the dynamics in favor
-of this type. \mf{maybe a sentence here about the top-most arrow in Figure 1?} For this reason,
-we turn to a larger setup next with a larger and more realistic set of types and a suggestion
-for how to formalize potential learning biases in lexical inferences.
-
-Despite its simplicity, the diagram in Figure~\ref{fig:sketch} makes clear the sense in which
-semantics and pragmatics might co-evolve. Pragmatic language use will not evolve under a strong
-and fully expressive semantics (bottom part of Figure~\ref{fig:sketch}). A weak semantic
-convention will not evolve without disposition towards pragmatic enrichments (left part of
-Figure~\ref{fig:sketch}). But together a weak semantics and a pragmatic disposition for
-enrichment can co-evolve.
 
 
 \subsection{Setup}
 \label{sec:setup:-stat-conc}
-
-The effects of learning biases can depend on the set of types. We therefore consider next
-larger and more realistic sets of states, messages and lexica. Additionally, we want to explore
-the effects of a learning bias in favor of simple lexical representations. One way of
-motivating and formalizing such a bias is introduced in Section~\ref{sec:an-induct-learn}.
 
 
 \subsubsection{States, messages, lexical representations, and lexica} 
@@ -1629,6 +1670,59 @@ In this way, the discrete-time replicator mutator equation in (\ref{eq:RMD_discr
 captures the expected difference in relative frequency of type $i$ from one discrete time step
 to the next (relative to current baseline fitness $\Phi$, which is constant for all types, and
 so only governs the absolute speed of change).
+
+\section{Example of iterated Bayesian learning}
+\label{sec:example-iter-bayes}
+
+We consider three types and three possible data observations they can produce. Types are
+equally likely \emph{a priori}, but show different and crucially asymmetric production
+behavior. The likelihood with which type $t_i$ produces datum $d_j$ is $LH_{ij}$:
+\begin{align*}
+  LH & = \begin{blockarray}{lccc}
+    & d_1 & d_2 & d_3 \\
+    \begin{block}{l[ccc]}
+      t_1 & 1-2\epsilon & \epsilon & \epsilon \\
+      t_2 & \delta & 1-(\epsilon + \delta) & \epsilon \\
+      t_2 & \delta & \epsilon & 1-(\epsilon + \delta)  \\
+    \end{block}
+  \end{blockarray}
+\end{align*}
+If $\delta > \epsilon$, production likelihoods are asymmetrically skewed to possibly favor
+$t_1$, in the sense that both types $t_2$ and $t_3$  produce behavior that is strong
+evidence for $t_1$ more often than behavior that is strong evidence for any other
+type other then themselves. Type $t_1$ makes no such ``asymmetric mistakes''. 
+
+Using the definitions from Section~\ref{sec:learnability}, we calculate mutation matrices $Q$ for
+$l=1$ and $l=10$ when $\epsilon = 0.1$ and $\delta = 0.2$:
+\begin{align*}
+  Q_{l = 1} & \approx \begin{blockarray}{lccc}
+    & t_1 & t_2 & t_3 \\
+    \begin{block}{l[ccc]}
+      t_1 & 0.56 & 0.22 & 0.22 \\
+      t_2 & 0.22 & 0.59 & 0.19 \\
+      t_2 & 0.22 & 0.19 & 0.59  \\
+    \end{block}
+  \end{blockarray} & 
+  Q_{l = 10} & \approx \begin{blockarray}{lccc}
+    & t_1 & t_2 & t_3 \\
+    \begin{block}{l[ccc]}
+      t_1 & 0.8 & 0.1 & 0.1 \\
+      t_2 & 0.2 & 0.7 & 0.1 \\
+      t_2 & 0.2 & 0.1 & 0.7  \\
+    \end{block}
+  \end{blockarray}
+\end{align*}
+Despite flat priors over types, the mutation matrix for $l=10$ is skewed towards $t_1$ in the
+sense that the probability of any type mutating to $t_1$, $\sum_i Q_{i1} = 1.2$, is higher than
+the probability of $\sum_i Q_{ij} = 0.8$ for $j \in \set{2,3}$. For $l=1$, these probabilities
+are all equal for all three types. Consequently, under iterated Bayesian learning with $l=1$
+the population will converge to a uniform distribution over all three types in the limit, but
+for $l=10$ it converges to a skewed population vector $\vec{x} \approx \tuple{0.5, 0.25, 0.25}$
+where $t_1$ is a clear majority type. This demonstrates how iterated Bayesian learning with
+$l>1$ can be sensitive to the set of types represented in the model, in particular when
+production likelihoods are asymmetrically in favor of some types. With probability matching
+learners ($l = 1$), these considerations do not play a role, as the system will gravitate to
+the prior distribution over types nonetheless.
 
 \bibliographystyle{chicago}
 \bibliography{./bounds-rmd}

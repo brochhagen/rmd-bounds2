@@ -14,7 +14,7 @@ e$type = sapply(1:nrow(e), function(i) ifelse(strsplit(e$strategy[i], split = ".
                                               strsplit(e$strategy[i], split = ".", fixed = T)[[1]][2]))
                        
 
-f = e %>% filter(rank >= 6) %>% arrange(runID, lambda, type, - proportion) %>% group_by(runID, lambda, type) %>% mutate(rank = 1:n())
+f = e %>% filter(type != "other") %>% arrange(runID, lambda, type, - proportion) %>% group_by(runID, lambda, type) %>% mutate(rank = 1:n())
 
 plot.data = f %>% group_by(lambda, type, rank) %>%
   summarize(mean = mean(proportion),
@@ -37,7 +37,7 @@ e = melt(d, id.vars = c(1,2,3), variable.name = "strategy", value.name = "propor
 e$type = sapply(1:nrow(e), function(i) ifelse(strsplit(e$strategy[i], split = ".", fixed = T)[[1]][1] == "other", "other",
                                               strsplit(e$strategy[i], split = ".", fixed = T)[[1]][2]))
 
-f = e %>% filter(rank >= 6) %>% arrange(runID, lambda, l, type, - proportion) %>% 
+f = e %>% filter(type != "other") %>% arrange(runID, lambda, l, type, - proportion) %>% 
   group_by(runID, lambda, l, type) %>% mutate(rank = 1:n())
 
 plot.data = f %>% group_by(l, lambda, type, rank) %>%
@@ -60,7 +60,7 @@ e = melt(d, id.vars = c(1,2,3), variable.name = "strategy", value.name = "propor
 e$type = sapply(1:nrow(e), function(i) ifelse(strsplit(e$strategy[i], split = ".", fixed = T)[[1]][1] == "other", "other",
                                               strsplit(e$strategy[i], split = ".", fixed = T)[[1]][2]))
 
-f = e %>% filter(rank >= 6) %>% arrange(runID, lambda, l, type, - proportion) %>% 
+f = e %>% filter(type != "other") %>% arrange(runID, lambda, l, type, - proportion) %>% 
   group_by(runID, lambda, l, type) %>% mutate(rank = 1:n())
 
 plot.data = f %>% group_by(l, lambda, type, rank) %>%
