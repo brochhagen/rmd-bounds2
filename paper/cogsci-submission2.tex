@@ -122,17 +122,15 @@
 
 \begin{abstract}
   According to standard linguistic theory, the meaning of an utterance is the product of
-  conventional semantic meaning and general pragmatic rules on language use. To investigate how
-  cultural evolution of language plays out under this picture of the semantics-pragmatics
-  interface, we present a game-theoretic model of the competition between types of language
-  users, each endowed with certain lexical representations and a particular pragmatic
-  disposition to act on them. Our model traces two evolutionary forces and their interaction:
-  (i) pressure towards communicative efficiency and (ii) transmission perturbations during the
-  acquisition of linguistic knowledge. We illustrate the model based on a case study on scalar
-  implicatures, which suggests that the relationship between underspecified semantics and
-  pragmatic inference is one of co-evolution. The evolution of underspecified semantics
-  requires pragmatic reasoning, while pragmatic reasoning may not evolve if lexical meanings do
-  not require pragmatic enrichment.
+  conventional semantic meaning and general pragmatic rules on language use. We investigate how
+  such a division of labor between semantics and pragmatics could evolve under general
+  processes of selection and learning. We present a game-theoretic model of the competition
+  between types of language users, each endowed with certain lexical representations and a
+  particular pragmatic disposition to act on them. Our model traces two evolutionary forces and
+  their interaction: (i) pressure towards communicative efficiency and (ii) transmission
+  perturbations during the acquisition of linguistic knowledge. We illustrate the model based
+  on a case study on scalar implicatures, which suggests that the relationship between
+  underspecified semantics and pragmatic inference is one of co-evolution.
 \end{abstract}
 
 \section{Introduction}\label{sec:introduction}
@@ -181,10 +179,10 @@ pragmatic use. What is more, many mathematical models explain evolved meaning as
 in the overt behavior of agents, abstracting from complex interactions between semantic
 representations and pragmatic use. 
 
-In contrast, we will here look at language users with a richer linguistic make-up. The objects
-of replication and selection in our model are pairs consisting of a set of lexical meanings and
-a manner of pragmatic behavior, which together define an agent's linguistic choices. Types of
-pragmatic behavior are represented using probabilistic models of pragmatic language use
+In contrast, we will here represent explicitly language users' representations of lexical
+meanings and their own particular manner of manner of production and interpretation based on
+these lexical representation. Different types of pragmatic behavior are represented using
+probabilistic models of pragmatic language use
 \citep{frank+goodman:2012,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}. Replication
 and selection are described by the \emph{replicator mutator dynamic}, a general and established
 model of evolutionary change in large and homogeneous populations
@@ -192,9 +190,10 @@ model of evolutionary change in large and homogeneous populations
 approach allows us to study the interaction between (i) pressure towards communicative
 efficiency and (ii) infidelity in the transmission of linguistic knowledge, caused by factors
 such as inductive learning biases and sparse learning data
-\citep{KirbyHurford2002:The-Emergence-o,SmithKirby2003:Iterated-Learni,KirbyGriffith2014:Iterated-Learni}. Considering
-the effects that the transmission of linguistic knowledge through (iterated) learning have is
-important because neither semantic meaning nor pragmatic usage patterns are directly
+\citep{KirbyHurford2002:The-Emergence-o,SmithKirby2003:Iterated-Learni,KirbyGriffith2014:Iterated-Learni}. 
+
+It is important to consider the effects of transmission of linguistic knowledge through
+(iterated) learning because neither semantic meaning nor pragmatic usage patterns are directly
 observable. Instead, language learners have to infer these unobservables from the observable
 behavior in which they result. We formalize this process as a form of Bayesian inference. Our
 approach thereby contains a well-understood model of iterated Bayesian learning
@@ -208,7 +207,7 @@ shows that inductive learning biases of Bayesian learners that favor simpler lex
 may play a role in preventing the lexicalization of scalar inferences and thereby lead to the
 emergence of Gricean-like pragmatic reasoning types, but only if there is selective pressure
 for communicative efficiency and learnability. The results of this study are critically
-assessed in the light of the assumptions that feed our model in Section~\ref{sec:discussion}.
+assessed in the light of the simplifying assumptions inherent in our abstract model in Section~\ref{sec:discussion}.
 
 % We see the main contribution of this work as conceptual and technical, not as a definite answer
 % to the question why scalar implicatures emerge. It rather demonstrates how current
@@ -224,12 +223,12 @@ assessed in the light of the assumptions that feed our model in Section~\ref{sec
 
 \subsection{Communicative success and learnability}
 
-The emergence and change of linguistic structure is influenced by many intertwined
-factors. These range from biological and socio-ecological to cultural ones \citep{benz+etal:2005b,steels:2011,tamariz+kirby:2016}. Social and ecological pressures determine communicative needs, while
-biology determines the architecture that enables and constrains the means by which they can be
-fulfilled. In the following, our focus lies on cultural aspects, wherein processes of
-linguistic change are viewed as shaped by language use and its transmission, i.e., as a result
-of a process of cultural evolution
+The emergence and change of linguistic structure is influenced by many factors in complex ways
+\citep{benz+etal:2005b,steels:2011,tamariz+kirby:2016}. Social and ecological pressures
+determine communicative needs, while biology determines the architecture that enables and
+constrains the means by which they can be fulfilled. In the following, our focus lies on
+cultural aspects, wherein processes of linguistic change are viewed as shaped by language use
+and its transmission, i.e., as a result of a process of cultural evolution
 \citep{Pagel2009:Human-Language-,ThompsonKirby2016:Culture-Shapes-}.
 
 The idea that language is an adaptation to serve a communicative function is fundamental to
@@ -237,12 +236,12 @@ many synchronic and diachronic analyses, at least since \citeposs{zipf:1949} exp
 word frequency rankings as a result of competing hearer and speaker preferences \citep[e.g.,
 in][]{martinet:1962, horn:1984,jaeger+vRooij:2007,jaeger:2007,
   piantadosi:2014,kirby+etal:2015}. If processes of selection, such as conditional imitation or
-reinforcement, favor more communicatively efficient types of behavior, languages are driven
-towards semantic expressivity \citep[e.g.,][]{nowak+krakauer:1999,Skyrms2010:Signals}. But
-pressure towards communicative efficiency is not the only force that shapes
-language. Learnability is another, as natural languages need to be learnable to survive their
-faithful transmission across generations. Furthermore, the effects of even small learning
-biases can have striking effects on an evolving language in a process of iterated learning
+reinforcement, favors communicative efficiency, languages are driven towards semantic
+expressivity \citep[e.g.,][]{nowak+krakauer:1999,Skyrms2010:Signals}. But pressure towards
+communicative efficiency is not the only force that shapes language. Learnability is another.
+Natural languages need to be learnable to survive their faithful transmission across
+generations. Furthermore, the effects of even small learning biases can have striking effects
+on an evolving language in a process of iterated learning
 \citep{KirbyHurford2002:The-Emergence-o,SmithKirby2003:Iterated-Learni,kirby+etal:2014}.
 
 While natural languages are pressured for both communicative efficiency and learnability, these forces may
@@ -259,13 +258,13 @@ efficiency and learnability is the \emph{replicator mutator dynamic}
 RMD is a population dynamic which describes the average change in the composition of a
 community of agents of different types. The dynamic assumes a virtually infinite population, so
 that it is able to abstract away from what individual agents do. It describes the most probable
-trajectory of change in the population vector $\vec{x}$, which codifies relative frequencies of
-types, so that $x_i$ is the relative frequency of type $i$ and $\sum\nolimits_i x_i = 1$. In
-its simplest discrete-time formulation, the RMD defines the frequency $x'_i$ of each type $i$
-in the population at the next time step as a function of: (i) the frequency $x_i$ of each type
-$i$ before the update step, (ii) the fitness $f_i$ of each type $i$ before the update, and
-(iii) the probability $Q_{ji}$ that an agent who observes the behavior of an agent with type
-$j$ ends up acquiring type $i$ (with $\sum_k Q_{jk} = 1$ for all $j$):
+trajectory of change in the population vector $\vec{x}$, in which each component $x_i$ gives
+the relative frequency of type $i$ and $\sum\nolimits_i x_i = 1$. In its simplest discrete-time
+formulation, the RMD defines the frequency $x'_i$ of each type $i$ in the population at the
+next time step as a function of: (i) the frequency $x_i$ of each type $i$ before the update
+step, (ii) the fitness $f_i$ of each type $i$ before the update, and (iii) the probability
+$Q_{ji}$ that an agent who observes the behavior of an agent with type $j$ ends up acquiring
+type $i$ (with $\sum_k Q_{jk} = 1$ for all $j$):
 \begin{align}
   \label{eq:RMD_discrete}
   x'_i = \sum_j \frac{x_jf_j Q_{ji}}{\Phi}\,,
@@ -298,10 +297,10 @@ mutation. Appendix~\ref{sec:minim-example-repl} provides an abstract minimal exa
 
 \subsection{Interpreting the replicator mutator dynamic}
 
-The RMD is an abstract description of population-level changes. It abstracts away from specific
-assumptions about how agents interact and what causes selection and mutation. To understand
-this better, the following looks at each component in isolation: first replication, then
-mutation.
+The RMD is an abstract description of population-level changes. It abstracts away, to the
+extent possible, from specific assumptions about how agents interact and what exactly causes
+selection and mutation. To understand this better, the following looks at each component in
+isolation: first replication, then mutation.
 
 According to the replicator dynamic the relative frequency $x_i$ of type $i$ increases
 proportional to its average fitness in the population. This dynamic is popular and versatile
@@ -324,10 +323,12 @@ population: the better the behavior $j$, the more likely it is to be imitated.\f
   type, that is optimal given the current population state. They are also not able to
   strategically adapt their behavior to any particular agent they are interacting with on some
   given occasion. Such minimalism about the strategic capacities of agents is a conservative
-  methodological choice. It allows us to study ---as the formal thought experiment that any
-  such model is--- how fitness-based selection changes a population in the absence of optimal
-  agent-level reasoning and it abstracts away from specific assumptions about how fitness-based
-  selection might be realized concretely.}
+  methodological choice. It is one thing to be able to demonstrate that phenomenon $X$ is what
+  a rational agent would do. This is useful but may not always be the most satisfactory answer
+  to the question how $X$ happened to evolve. It is another thing to show that even if no agent
+  was individually capable of seeing $X$ as the rational thing to do, $X$ would still evolve if
+  every agent at least sometimes, locally and myopically tried to optimize its behavior, e.g.,
+  by imitating what seems to be working well for others \citep{Skyrms2010:Signals}.}
 
 If all types have equal fitness at all times, the replicator mutator dynamic reduces to a
 process of iterated mutation. Mutation can be interpreted as biological or cultural as
@@ -335,17 +336,16 @@ well. Under a biological interpretation where types are genetically encoded beha
 $Q_{ji}$ is the probability by which offspring of type $j$ genetically mutates into type
 $i$. Under a cultural interpretation where types are transmitted by observation or learning,
 such as in conditional imitation, $Q_{ji}$ is the probability that an agent trying to learn,
-adopt or imitate the behavior of an agent with type $j$ acquires type $i$. As detailed below,
-in this way, the process in (\ref{eq:RMD_discrete}), and its equivalent in
-(\ref{eq:RMD_discrete_recast}), can contain a model of iterated learning
-\citep{griffiths+kalish:2005,griffiths+kalish:2007}.
+adopt or imitate the behavior of an agent with type $j$ acquires type $i$.
 
 In the following application to language evolution, we prefer a cultural interpretation of the
 mutator component as the perturbation induced by how easy different linguistic traits are
-learnable from observation of language use. Nothing of current relevance hinges on whether the
-replicator component is interpreted as a biological process or a cultural process. We believe
-that this flexibility of interpretation is an asset. It abstracts away from specific
-assumptions and focuses on a general and versatile description of fitness-based
+learnable from observation of language use. In this way, the RMD contains a chain of iterated
+(Bayesian) learning as a special case
+\citep{griffiths+kalish:2005,griffiths+kalish:2007}. Nothing of current relevance hinges on
+whether the replicator component is interpreted as a biological process or a cultural
+process. We believe that this flexibility of interpretation is an asset. It abstracts away from
+specific assumptions and focuses on a general and versatile description of fitness-based
 selection. Still, to have something concrete in mind when interpreting the following
 application, Appendix~\ref{sec:deriv-repl-mutat} derives the RMD from a specific scheme of
 agent-level conditional imitation.
