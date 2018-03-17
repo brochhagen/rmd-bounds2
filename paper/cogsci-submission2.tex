@@ -362,7 +362,7 @@ is computed. These issues are addressed, one by one, in the following.
 
 \subsubsection{Types: Lexica and pragmatic strategies}
 \label{sec:languages+use}
-Types are what evolution operates on. A type is what determines an agent's behavior and thereby
+Types are what evolution promotes or demotes. A type determines an agent's behavior and thereby
 an agent's fitness, so that it makes sense to speak of the fitness of a type itself. To study
 the joint evolution of semantic meaning and pragmatic use, types are pairs consisting of a
 lexicon and a linguistic strategy of language use.
@@ -372,12 +372,7 @@ message $m$ to a hearer who receives $m$ but does not know $s$
 \citep[e.g.][]{lewis:1969,Skyrms2010:Signals}. A lexicon associates each message with a set of
 states. A linguistic behavior specifies a probabilistic speaker rule (a probabilistic choice of
 message for each state) and a probabilistic hearer rule (a probabilistic choice of state for
-each message) given a lexicon. There are many ways of making these general notions
-concrete. In the following we aim at a general formulation of speaker and listener
-behavior which is as simple as possible but still in line with both a game-theoretic tradition
-\citep[e.g.,][]{benz:2006,benz+vRooij:2007,jaeger:2007b,franke+jaeger:2014} and a Bayesian
-tradition
-\citep[e.g.,][]{frank+goodman:2012,goodman+stuhlmueller:2013,GoodmanFrank2016:Pragmatic-Langu}. 
+each message) given a lexicon.
 
 Lexica codify the truth-conditions of expressions. A convenient way to represent lexica is by
 $(\card{\States}, \card{\Messgs})$-Boolean matrices, where $\States$ is a set of states
@@ -409,16 +404,21 @@ $\Llack$.
 \end{align*}
 
 Linguistic strategies define dispositions to produce and interpret messages given a lexicon. We
-distinguish between two kinds strategies. {\em Literal interlocutors} produce and
-interpret messages literally, being guided only by their lexica. {\em Pragmatic interlocutors}
-instead engage in mutual reasoning to inform their choices. Recent probabilistic models of
-rational language use
-\citep{frank+goodman:2012,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}
-capture different types of pragmatic behavior in a reasoning hierarchy. The hierarchy's bottom,
-level $0$, corresponds to literal language use, as in Equations~(\ref{h:level0}) and
-(\ref{s:level0}). Pragmatic language users of level $n + 1$ act (approximately) rational with
-respect to level-$n$ behavior of their interlocutors, as in Equations~(\ref{h:leveln}) and
-(\ref{s:leveln}).
+distinguish between two kinds strategies. {\em Literal interlocutors} produce and interpret
+messages literally, being guided only by their lexica. {\em Pragmatic interlocutors} instead
+engage in mutual reasoning to inform their choices. Recent game-theoretic
+\citep[e.g.,][]{benz:2006,benz+vRooij:2007,jaeger:2007b,franke+jaeger:2014} and probabilistic
+models of rational language use
+\citep[e.g.,][]{frank+goodman:2012,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}
+capture different types of pragmatic behavior in a reasoning hierarchy. In the following we aim
+at a general formulation of speaker and listener behavior which is as simple and as practical
+as possible for our current purposes, but
+still in line with both the game-theoretic and the Bayesian traditions.
+
+The hierarchy's bottom, level $0$, corresponds to literal language use, as in
+Equations~(\ref{h:level0}) and (\ref{s:level0}). Pragmatic language users of level $n + 1$ act
+(approximately) rational with respect to level-$n$ behavior of their interlocutors, as in
+Equations~(\ref{h:leveln}) and (\ref{s:leveln}).
 \begin{alignat}{3}
 &H_{0}(s \mid m;L) &&\propto pr(s) L_{[s,m]} \label{h:level0}\\
 &S_{0}(m \mid s;L) &&\propto \exp(\lambda \; L_{[s,m]}) \label{s:level0}\\
@@ -436,19 +436,19 @@ behavior is regulated by a soft-max parameter $\lambda \geq 0$
 maximization of expected utilities. Expected utility of a message $\messg$ in state $\state$
 for a level $n+1$ speaker is here defined as $H_{n}(s|m;L)$, the probability that the hearer
 will assign to or choose the correct meaning.\footnote{An alternative choice for the speaker's
-  utility function is $\log H_{n}(s|m;L)$. Conceptually, the difference is that without the
-  logarithm, utilities are derived from action choices, while with the logarithm utilities are
-  derived from how closely the listener's beliefs (after hearing an utterance) align with the
-  speaker's, as measure by Kullback-Leibler divergence
-  \cite{frank+goodman:2012,qing+franke:2015}. In an evolutionary context, where fitness comes
-  from actual interactions with the environment, not just beliefs held about it, the
+  utility function, frequently made in Bayesian approaches after \citet{frank+goodman:2012}, is
+  $\log H_{n}(s|m;L)$. Conceptually, the difference is that without the logarithm, utilities
+  are derived from action choices, while with the logarithmic utilities are derived from how
+  closely the listener's beliefs (after hearing an utterance) align with the speaker's, as
+  measure by Kullback-Leibler divergence. In an evolutionary context, where fitness comes from
+  actual interactions with the environment, not just solemn beliefs held about it, the
   formulation without the logarithm may be slightly more appealing. Moreover, log-based speaker
   utilities cause the speaker never to use false utterances. Since we aim here for a situation
   in which any type has a reasonable chance to be mistaken for any other based on their
-  production behavior (see Section~\ref{sec:learnability}), we want a definition of speaker
-  types which also send any message in any state with positive probability.} For literal
-speakers, utility only tracks truthfulness. Literal speakers choose any true message with equal
-probability but may send false messages as well with a probability dependent on $\lambda$.
+  production behavior (see Section~\ref{sec:learnability}), we want speaker types which send
+  any message in any state with positive probability.} For literal speakers, utility only
+tracks truthfulness. Literal speakers choose any true message with equal probability but may
+send false messages as well with a probability dependent on $\lambda$.
 
 In words, an agent's linguistic behavior -- what message to send when or which message to
 interpret how -- is defined by (i) her reasoning level and (ii) her lexicon. In what follows,
@@ -593,10 +593,7 @@ with or without pragmatic reasoning. Higher order reasoning beyond level $1$ lea
 associations of $\msome$ and $\ssome$ also for the receiver. Still, the case study presented in
 Section~\ref{sec:si-case-study} will consider sender and receiver behavior at levels 0 and 1,
 as the latter are the simplest pragmatic reasoning types which show a tendency to
-communicatively attuned pragmatic enrichment. Using only level 1 reasoning and possibly small
-$\lambda$ is therefore a conservative choice that works \emph{against} the fitness-based
-selection of pragmatic language use for a notion of fitness defined as communicative success,
-which is introduced next. 
+communicatively attuned pragmatic enrichment.
 
 When it comes to competition between types of use of lexicon $\Lbound$, pragmatic reasoning at
 level $1$ is not advantageous. The reason for this is that literal use of $\Lbound$ already
@@ -645,15 +642,13 @@ $x_j$.
 \subsubsection{Learnability}
 \label{sec:learnability}
 
-Languages are shaped not only by functionalist forces towards greater communicative
-success. Another important factor is the fidelity with which linguistic knowledge is
-transmitted. In biological evolution, where types are expressed genetically, transmission
-infidelity comes into the picture through infrequent and mostly random mutation and genetic
-drift \citep{kimura:1983}. However, an agent's lexicon and a disposition for pragmatic
-reasoning are likely not inherited genetically. They need to be learned from observation, such
-as in conditional imitation (see Appendix~\ref{sec:deriv-repl-mutat}).  Concretely, when agents
-learn from or imitate type $j$, they observe the overt linguistic behavior of type $j$ and need
-to infer the covert type that most likely produced the observed behavior.
+In biological evolution, where types are expressed genetically, transmission infidelity comes
+into the picture through infrequent and mostly random mutation and genetic drift
+\citep{kimura:1983}. However, an agent's lexicon and a disposition for pragmatic reasoning are
+likely not inherited genetically. They need to be learned from observation, such as in
+conditional imitation (see Appendix~\ref{sec:deriv-repl-mutat}).  Concretely, when agents learn
+from or imitate type $j$, they observe the overt linguistic behavior of type $j$ and need to
+infer the covert type that most likely produced the observed behavior.
 
 Iterated learning is a process in which languages are learned repeatedly from the observation
 of linguistic behavior of agents who have themselves acquired their behavior from observation
@@ -669,35 +664,31 @@ a process of Bayesian inference in which learners combine the likelihood of a ty
 the witnessed learning input with prior inductive biases. In a Bayesian setting these biases
 can be codified in a prior $P \in \Delta(T)$, which reflects the amount of data a learner
 requires to faithfully acquire the language of the teacher
-\citep[cf.][450]{griffiths+kalish:2007}. Put differently, types favored by the prior are easier
-to learn because they require less data than less favored types to be inferred, even if they
-are both compatible with the learning data at hand. 
+\citep[cf.][450]{griffiths+kalish:2007}.
 
-The extent of the prior's influence has been shown to heavily depend on the learning strategy
-assumed to underlie the inference process. Early simulation results suggested that weak biases
-could be magnified by exposing learners to only small data samples
-\citep[e.g. in][]{brighton:2002}. \citet{griffiths+kalish:2007} showed that iterated learning
-converges to the prior in the limit, i.e., that the resulting distribution over types
-corresponds to the learners' prior distribution and is not influenced by the amount of input
-given to them, if learners select random hypothesis from their posterior beliefs about which
-types may have generated the learning data that they saw. More deterministic strategies such as
-the adoption of the type with the highest posterior probability, so-called {\it maximum a
-  posterior estimation} (MAP), increase the influence of both the prior and the data
-\citep{griffiths+kalish:2007,kirby+etal:2007}. In the following, we use a parameter $l\ge1$ to
-modulate between posterior sampling and the MAP strategy. When $l = 1$ learners sample from the
-posterior. The learners' propensity to maximize the posterior grows as $l$
-increases.\footnote{The way the posterior over types is formed and how learners employ it are
-  important design choices. There are other alternatives as well. For instance, instead of
-  adopting a single type, learners could keep their uncertainty over types and base their
-  production behavior on the posterior over types they form \citep{burkett+griffiths:2010}. A
-  straightforward operationalization of this idea would then see production defined as a
-  two-step process wherein a speaker first samples from her posterior and then produces
-  utterances based on the type she sampled, as done in \citet{kirby+etal:2015}. Beyond adding
-  complexity to the model, a disadvantage of this approach is that it could happen that a
-  speaker that first uttered a Hungarian utterance speaks Quechua in the next, so to speak. We
-  therefore maintain the simpler assumption of a single type being acquired in the present
-  context, and postpone further investigation of more complex type-adoption schemes to future
-  research.}
+The prior's influence depends on particulars of the learning or inference process. Early
+simulation results suggested that weak biases could be magnified by exposing learners to only
+small data samples \citep[e.g. in][]{brighton:2002}. \citet{griffiths+kalish:2007} proved that
+if learners adopt a random type as a sample from their posterior beliefs about which types may
+have generated the learning data that they saw, the population distribution of types will
+eventually come to match the learners' prior distribution over types exactly. More
+deterministic strategies such as the adoption of the type with the highest posterior
+probability, so-called {\it maximum a posterior estimation} (MAP), increase the influence of
+both the prior and the data \citep{griffiths+kalish:2007,kirby+etal:2007}. In the following, we
+use a parameter $l\ge1$ to modulate between posterior sampling and the MAP strategy. When
+$l = 1$ learners sample from the posterior. The learners' propensity to maximize the posterior
+grows as $l$ increases.\footnote{The way the posterior over types is formed and how learners
+  employ it are important design choices. There are other alternatives as well. For instance,
+  instead of adopting a single type, learners could keep their uncertainty over types and base
+  their production behavior on the posterior over types they form
+  \citep{burkett+griffiths:2010}. A straightforward operationalization of this idea would then
+  see production defined as a two-step process wherein a speaker first samples from her
+  posterior and then produces utterances based on the type she sampled, as done in
+  \citet{kirby+etal:2015}. Beyond adding complexity to the model, a disadvantage of this
+  approach is that it could happen that a speaker that first uttered a Hungarian utterance
+  speaks Quechua in the next, so to speak. We therefore maintain the simpler assumption of a
+  single type being acquired in the present context, and postpone further investigation of more
+  complex type-adoption schemes to future research.}
 
 Let $D$ be the set of possible data that learners may be exposed to. This set contains all
 sequences of state-message pairs of length $k$, e.g.,
@@ -727,16 +718,16 @@ The acquisition probability $F(t_i \mid  d)$ given datum $d$ is obtained by prob
 When $l=1$ learners sample a type to adopt from their posterior distribution which they obtain
 from observing the teacher produce utterances in particular states. From
 \citet{griffiths+kalish:2007}, we know that under $l=1$ iterated Bayesian learning will
-converge to a population proportion that reflects that prior over types. If $l>1$ learners tend
-to pick types which are \emph{a posteriori} more likely with a higher probability than less
-likely types. Even in the absence of a prior bias, iterated Bayesian learning with $l>1$ can
-lead to populations in which a particular type $t_i$ has a higher proportion than other
-types. For $l>1$, much hinges on particular asymmetries in production likelihoods
+converge to a population proportion that exactly matches the agents' prior over types. If $l>1$
+learners tend to pick types which are \emph{a posteriori} more likely with a higher probability
+than less likely types. Even in the absence of a prior bias, iterated Bayesian learning with
+$l>1$ can lead to populations in which a particular type $t_i$ has a higher proportion than
+other types. For $l>1$, much hinges on particular asymmetries in production likelihoods
 $P(d \mid t_j)$, and therefore on the composition of the set of types in general. Intuitively
-put, if there are many types $t_j$ which all happen to produce data that is most likely to be
-produced by $t_i$, this can lead to a larger proportion of $t_i$ in the long run even when
-priors over types are uniform. Appendix~\ref{sec:example-iter-bayes} provides an abstract
-example.
+put, if there are many types $t_j$ which all happen to (``erroneously'') produce data that is
+most likely produced (``correctly'') by $t_i$, this can lead to a larger proportion of $t_i$ in
+the long run even when priors over types are uniform. Appendix~\ref{sec:example-iter-bayes}
+provides an abstract example for these likelihood driven effects.
 
 \subsection{Model summary}
 
