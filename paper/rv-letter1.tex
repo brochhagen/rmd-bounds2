@@ -33,14 +33,44 @@
 \newcounter{reviewerCommentCounter}[reviewerCounter]
 	\date{}
 
+\definecolor{Red}{RGB}{178,34,34}
+\definecolor{Steelblue}{RGB}{70,130,180}
+\newcommand{\mf}[1]{\textcolor{Red}{[MF: #1]}} 
+\newcommand{\tb}[1]{\textcolor[rgb]{.8,.33,.0}{[TB: #1]}}% prints in orange
+\newcommand{\rvv}[1]{\textcolor{Steelblue}{#1}}% prints in steel blue
+
 \title{\Large Co-evolution of lexical meaning \& pragmatic use\\ {\bf Revision Cover letter}}
 
 	\maketitle
 \normalsize
 
-We would like to thank the reviewers for their helpful comments and suggestions. They are very welcome and have certainly helped improve the manuscript. 
+We would like to thank the reviewers for their helpful comments and suggestions which have
+certainly helped improve the manuscript. The main changes in response to the reviewers comments
+are the following. 
 
-We have taken care to improve the exposition of the model; to clarify the  motivations underlying the modeling choices we make in the case study, and to make more precise and explicit how the components of the model lead to the results they do. In what follows we address the reviewers' main comments and questions one by one, with pointers to respective changes effected on the manuscript. 
+\begin{itemize}
+\item We have tried to improve the exposition of the model, both on the technical side and on
+  the way the model can be interpreted (re reviewer 1's concerns about how to interpret
+  particular formulas and the model as a whole). There are now three very short appendix
+  chapters, each with formal detail about how to better understand the abstract model. There is
+  also the new section~2.3 dedicated to an explicit discussion of how to interpret the replicator
+  mutator dynamic and a formal derivation of one particular agent-level update process which
+  gives rise to this dynamic at the population level (appendix B).
+\item Where previously we only had one simulation-based case study, we now complement these
+  results with a more in-depth case study, presented in the new section 3.1, which focuses on a
+  subset of types present in the larger case study presented in sections 3.2 and 3.3. This
+  helps tie in our results closer to known results from the literature (re reviewer 2's comment
+  2) and also helps understand the inner workings of the model better for the case at hand. It
+  also makes clearer in which sense we may speak of ``co-evolution of semantics and
+  pragmatics'' (in response to reviewer 1's comment).
+\item To compensate for the added material, we also tried to shorten the paper. We tried to
+  avoid repetitive formulations, delegated more detailed explanations to footnotes and omitted
+  certain passages that we feel are interesting, but are possibly also too distracting in a
+  paper that is already quite long and also partly rather technical.
+\end{itemize}
+
+In what follows we address the reviewers' main comments and questions one by one, with pointers
+to respective changes effected on the manuscript.
 
 
 \vspace{1cm}
@@ -56,7 +86,17 @@ the co-evolutionary dynamic mentioned in the title could be better justified [..
 
 \end{mdframed}
 
-This is an important point that we now stress and highlight more throughout the paper. In particular the material surrounding Figure $2$ and $3$ in the new Section~2.4 illustrates how one factor has an impact on the evolution of the other. In a nutshell: a pragmatic strategy (level-$1$ reasoning) favors the evolution of underspecified semantics of the target kind ($L_{\text{lack}}$) as it allows for the maintenance of simpler lexical representations that are easier to learn without functional disadvantages otherwise incurred in communication (e.g., by level-$0$ reasoners). In the other direction, underspecified semantics of the target kind also favors the evolution of a pragmatic disposition to act on them. When paired with other semantics, pragmatic refinement can instead be (close to a) neutral trait (e.g., $L_{\text{bound}}$ paired with high $\lambda$) or it can even lead to  functional disadvantages when compared with level-$0$ reasoning (e.g., $L_{\text{bound}}$ with low $\lambda$). In this way both features benefit from each other.
+This is an important point that we now stress and highlight more throughout the paper. In
+particular, section 3.1 illustrates how one factor has an impact on the evolution of the
+other. In a nutshell: a pragmatic strategy (level-$1$ reasoning) favors the evolution of
+underspecified semantics of the target kind ($L_{\text{lack}}$) as it allows for the
+maintenance of simpler lexical representations that are easier to learn without functional
+disadvantages otherwise incurred in communication (e.g., by level-$0$ reasoners). In the other
+direction, underspecified semantics of the target kind also favors the evolution of a pragmatic
+disposition to act on them. When paired with other semantics, pragmatic refinement can instead
+be (close to a) neutral trait (e.g., $L_{\text{bound}}$ paired with high $\lambda$) or it can
+even lead to functional disadvantages when compared with level-$0$ reasoning (e.g.,
+$L_{\text{bound}}$ with low $\lambda$). In this way both features benefit from each other.
 
 %
 
@@ -68,7 +108,14 @@ This is an important point that we now stress and highlight more throughout the 
 the mapping between the model and the example of choice (scalar implicatures) could be better motivated
 \end{mdframed}
 
-As we discuss in Section~1, our case study focuses on scalar implicatures because they are well-studied systematic pragmatic inferences that have received much attention, both theoretically and experimentally. This makes them suitable candidates for the study of the evolution of regular pragmatic inferences; past research can guide our modeling choices and aid in evaluating our application to the study of these inferences. This ties in with our particular choices to model the pragmatic use of scalar expressions. As we now make more explicit in \S 2.3.1, these draw from a growing game-theoretic and Bayesian tradition \citep[e.g.,][]{franke:2009,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}. 
+As we discuss in Section~1, our case study focuses on scalar implicatures because they are
+well-studied systematic pragmatic inferences that have received much attention, both
+theoretically and experimentally. This makes them suitable candidates for the study of the
+evolution of regular pragmatic inferences; past research can guide our modeling choices and aid
+in evaluating our application to the study of these inferences. This ties in with our
+particular choices to model the pragmatic use of scalar expressions. As we now make more
+explicit in \S 2.3.1, these draw from a growing game-theoretic and Bayesian tradition
+\citep[e.g.,][]{franke:2009,FrankeJager2015:Probabilistic-p,GoodmanFrank2016:Pragmatic-Langu}.
 
 %
 \vspace{.75cm}
@@ -76,45 +123,84 @@ As we discuss in Section~1, our case study focuses on scalar implicatures becaus
 \vspace{.1cm}
 
 \stepcounter{reviewerCommentCounter} %increase counter
-\noindent Reviewer \thereviewerCounter~asks for a clearer description of the model. As noted earlier, we have taken care to make the exposition more accessible and to guide the reader more through the technical details of Section 2. In particular, the newly added Section 2.4 should help readers unravel the model. We used the following questions from Reviewer 1, briefly answered below, to guide the changes made in Section~2.
+\noindent Reviewer \thereviewerCounter~asks for a clearer description of the model. As noted
+earlier, we have taken care to make the exposition more accessible and to guide the reader more
+through the technical details of Section 2. In particular, the newly added sections 2.3, 3.1,
+and the appendix sections should help readers unravel the model and understand its conceptual
+interpretation and inner mechanisms much better than before. We used the following questions
+from Reviewer 1, briefly answered below, to guide the changes made in this new version.
 
 \vspace{.5cm}
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
 How is generation transmission implemented?
 \end{mdframed}
-As it is unlikely that lexical representations and/or pragmatic reasoning are inherited genetically, we model the transmission of linguistic knowledge across generations as  iterated Bayesian learning. Technical details and motivations are given in \S 2.3.3.
+As it is unlikely that lexical representations and/or pragmatic reasoning are inherited
+genetically, we model the transmission of linguistic knowledge across generations as  iterated
+Bayesian learning. Technical details and motivations are given in \S 2.3 and appendix B.
 
 \vspace{.5cm}
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
 Do agents in a population die little by little and are replaced by new agents? Or all at once?
 \end{mdframed}
-As now made more explicit in \S2.2, steps of the discrete-time replicator mutator dynamic correspond to generational turn-overs of the entire population (definitions (1) and (2)). That is to say, all agents die at once, being replaced by the following generation in a single swoop. 
+This question clearly demonstrates a failure on our part to make clear enough how the
+replicator mutator dynamic can be interpreted. To answer the question posed here directly: all
+of the above possibilities \emph{could} give rise to the replicator dynamic. It is a deliberate
+choice of abstract evolutionary modeling to \emph{not} to have to commit to any particular
+model, when it is also possible to answer what would happen under \emph{many} different regimes
+of fitness-based selection. To give a concrete interpretation of the population-level dynamic
+nonetheless, appendix B sketches the mean-field derivation of one form of an agent-level
+conditional imitation scheme.
 
 \vspace{.5cm}
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
 Do the models consider just a single teacher and a single learner at a time (I don't think this is the case, since the results refer speak of ``majority type, i.e., the type with the highest proportion in the final population'')?
 \end{mdframed}
-The parenthetical remark is correct. The amount of teachers of a given type is proportional to the frequency of this type in the population after the replicator step. The population is infinite so there are technically infinite learners/teachers. This was implicit in the definitions of the replicator mutator dynamic in (1) and (2), and is now explicitly stated in Section~2.2 in the prose that motivates and explicates these definitions.
+The parenthetical remark is correct. The amount of teachers of a given type is proportional to
+the frequency of this type in the population after the replicator step. The population is
+infinite so there are technically infinitely many learners/teachers. This was implicit in the
+definitions of the replicator mutator dynamic in (1) and (2), and is now more explicitly stated
+in sections 2.2 and 2.3.
 
 \vspace{.5cm}
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
  How many agents were there per population? And per generation?
 \end{mdframed}
-The prose surrounding definitions (1) and (2) in Section 2.2 now makes explicit that the population is infinite. This allows us to track change that does not depend on varying population sizes nor their growth rate. This is why we speak of proportions of a type in a population, rather than of there being a particular number of agents of a type. 
+The prose surrounding definitions (1) and (2) in Section 2.2 and 2.3 now makes explicit that
+the population is infinite. This allows us to track change that does not depend on varying
+population sizes nor their growth rate. This is why we speak of proportions of a type in a
+population, rather than of there being a particular number of agents of a type.
 
 \vspace{.5cm}
   \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
 Within one run of the model, do all agents in a population have the same lambda, l and k? If so, please this homogeneous population, and discuss the possible consequences of variation in the population in these parameters.
 \end{mdframed}
-While our model is compatible with the assumption that every agent comes with her own parameter values, the reviewer is correct in pointing out that we assume they all to have the same values (explicit in \S3.2). Variation across agents would mean having many more types: one for each combination of a possible lexicon, pragmatic strategy, $\lambda$-, $l$- and $k$-value. This would allow us to trace the evolutionary trajectory of not only lexica and pragmatic strategies, which is our goal here, but of all these factors combined. As mentioned in Section~$4$, this would be interesting future research.
+While our model is compatible with the assumption that every agent comes with her own parameter
+values, the reviewer is correct in pointing out that we assume they all to have the same values
+(explicit in \S3.3). Variation across agents would mean having many more types: one for each
+combination of a possible lexicon, pragmatic strategy, $\lambda$-, $l$- and $k$-value. This
+would allow us to trace the evolutionary trajectory of not only lexica and pragmatic
+strategies, which is our goal here, but of all these factors combined. As mentioned in
+Section~$4$, this would be interesting future research, but we cannot go into this here for
+reasons of space and a huge increase of complexity in the resulting model. 
 
 \vspace{.5cm}
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
 Does the model assume that learners observe not only the behaviour (the message, e.g. agent A hearing agent B say: "I own some of JC's albums") but also the true state of the world (i.e. agent A also knows whether agent B owns all or some-but-not-all albums)? Or do they get feedback on their communicative success? In other words, how do they learn the correct state-message mappings that form the lexicon? 
 \end{mdframed}
-Learners witness sequences of data $d$. Such a sequence is composed of message-state pairings. In other words, learners do witness the true state of the world (Section~2.3.3, {\em learnability}).
+Learners witness sequences of data $d$. Such a sequence is composed of message-state
+pairings. In other words, learners do witness the true state of the world (Section~2.3.3, {\em
+  learnability}). This, however, is a widely made assumption in the literature on iterated
+learning. 
 
-The probability of the learner receiving learning input $d$ depends only on the likelihood of the teacher producing it. This is determined by the teacher's production probabilities; the speaker behavior of her type. Communicative success accordingly does not come into play, only speaker behavior. It would certainly be possible to let learners witness proficient users communicate and to have them infer types from such interactions instead. However, we wanted to keep our assumptions close to the well-studied assumptions standardly made in the iterated (Bayesian) learning tradition. Iterated learning only considers production, rather than production and comprehension. Details on how learners infer types are given in Section~2.3.3.
+Additionally, some interpretations of the replicator mutator dynamic would require agents to
+have some rudimentary access to how good their own and/or other agents' behavior is. For
+example, the conditional imitation scheme sketched in appendix B assumes that agents imitate
+with a probability that depends on how good the possibly to be imitated behavior is. A
+biological interpretation or an interpretation in terms of reinforcement learning, for example,
+would not require this. In other words, even if this assumption is felt to be too strong, it is
+not necessary to discredit the model proposed here, because it is compatible with many
+agent-level update schemes, some of which are very innocuous when it comes to what each agent
+knows or sees or learns.
 
 \vspace{.5cm}
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
@@ -132,13 +218,20 @@ We follow the Gricean tradition of viewing pragmatic inference as effected by mu
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
 I thought $\lambda$ was the parameter that modeled communication, so it should not be present in the iterated-learning-without-communication models; why is $\lambda$ set to 20 here, and why discuss lower levels of lambda? 
 \end{mdframed}
-This parameter regulates the linguistic production behavior of types, i.e., speaker behavior. Speaker behavior is relevant both for communication with hearers as well as for the learning input that a teacher produces. When considering only iterated Bayesian learning $\lambda$ accordingly also plays a role because different $\lambda$ values yield different likelihoods of producing particular data (see above and Section~2.3.3). 
+This parameter regulates the linguistic production behavior of types, i.e., speaker
+behavior. Speaker behavior is relevant both for communication with hearers as well as for the
+learning input that a teacher produces. When considering only iterated Bayesian learning
+$\lambda$ accordingly also plays a role because different $\lambda$ values yield different
+likelihoods of producing particular data. Section 3.2 and appendix B zoom into this topic and
+make this point more explicit. We regret that this was not ideally transparent in the previous
+version.
 
 \vspace{.5cm}
 \begin{mdframed}[backgroundcolor=gray!25,linecolor=gray!25]
 Also [in the Subsection {\em learnability only}], why isn't the proportion of Lall highest, given that it has the lowest complexity (highest prior)?
 \end{mdframed}
 %
+\mf{We need to possibly rewrite this.}
 Due to their stochastic speaker behavior, the data produced by $L_{\text{all}}$-teachers tends to be compatible with the behavior of many other types. Intuitively, the data such teachers produce are all over the place and do not do a good job in setting them apart from other types. Consequently, even if the prior favors $L_{\text{all}}$, this type is not transmitted very faithfully; learners reason that the input they get from $L_{\text{all}}$-teachers could also come from other types and may adopt those instead. If there are types that are transmitted more faithfully, the population will, over time, transition to these types rather than to $L_{\text{all}}$. As we put it in Section~4, iterated learning does not necessarily promote the {\em a priori} more likely type, but tends to promote a type $t$ based on a gradient of how many other types might likely mutate into $t$, so to speak. We stress this in Section~3.2.2 and Section~4.
 
 \vspace{1cm}
