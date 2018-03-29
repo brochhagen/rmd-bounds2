@@ -805,7 +805,7 @@ def get_subfigs_hist_mutation(type_list,list1,list2):
     plt.barh(X,Y1_large,color=colors,alpha=al)
     plt.gca().invert_yaxis()
     plt.axvline(x=df1_majority,linestyle='dashed')
-    plt.text(df1_majority-0.004,10,'majority type',color='royalblue',fontweight='extra bold',rotation=90)
+    plt.text(df1_majority-0.001,10,'majority type',color='royalblue',fontweight='extra bold',rotation=90)
 
     ax2_large = plt.subplot(1,3,2);
     plt.barh(X,Y2_large,color=colors,alpha=al)
@@ -913,6 +913,9 @@ def get_subfigs_hist_mutation(type_list,list1,list2):
         label.set_visible(False)
     for label in ax2_large.get_yticklabels():
         label.set_visible(False)
+    for label in ax_prior.get_yticklabels():
+        label.set_visible(False)
+
 
     p1 = patches.Rectangle((0, 0), 1, 1, fc="green", alpha=al)
     p2 = patches.Rectangle((0, 0), 1, 1, fc="darkorange",alpha=al)
@@ -1014,7 +1017,7 @@ def get_subfigs_hist_rmd(type_list,list1,list2):
             p1 = patches.Rectangle((0, 0), 1, 1, fc="green", alpha=al)
             p2 = patches.Rectangle((0, 0), 1, 1, fc="darkorange",alpha=al)
             p3 = patches.Rectangle((0, 0), 1, 1, fc="red",alpha=al)
-            ax.legend([p1, p2, p3], ['Target types','Competitor types','prag. L-all'],loc='best',prop={'size':14})
+            ax.legend([p1, p2, p3], ['Target types','Competitor types','L-all'],loc='best',prop={'size':14})
 
         for label in ax.get_xticklabels():
             label.set_visible(False)
