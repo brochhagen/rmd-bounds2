@@ -25,22 +25,34 @@ def summarize_counts(lst,states,messages):
 
 def get_obs(s_amount,m_amount,k,likelihoods,state_freq,sample_amount):
     """Returns summarized counts of k-length <s_i,m_j> production observations as [#(<s_0,m_0>), #(<s_0,m_1), #(<s_1,m_0>, #(s_1,m_1)], ...]] = k"""
-    s = list(xrange(s_amount))
-    m = list(xrange(m_amount))
-    atomic_observations = list(product(s,m))
+    if k == 1 and s_amount == 3 and m_amount == 3: #If k = 1 then no sampling, compute Q with full set of possible observations
+        all_data = [[0,0,0,0,0,0,0,0,1],\
+                [0,0,0,0,0,0,0,1,0],\
+                [0,0,0,0,0,0,1,0,0],\
+                [0,0,0,0,0,1,0,0,0],\
+                [0,0,0,0,1,0,0,0,0],\
+                [0,0,0,1,0,0,0,0,0],\
+                [0,0,1,0,0,0,0,0,0],\
+                [0,1,0,0,0,0,0,0,0],\
+                [1,0,0,0,0,0,0,0,0]]
+        return [all_data for _ in xrange(432)] #all data for each parent type possible
+    else:
+        s = list(xrange(s_amount))
+        m = list(xrange(m_amount))
+        atomic_observations = list(product(s,m))
    
-    obs = [] #store all produced k-length (s,m) sequences 
-    for t in xrange(len(likelihoods)):
-        produced_obs = [] #store k-length (s,m) sequences of a type
-        production_vector = likelihoods[t].flatten()
-        doubled_state_freq = np.column_stack(tuple(state_freq for _ in xrange(m_amount))).flatten() # P(s)
-        sample_vector = production_vector * doubled_state_freq #P(s) * P(m|s,t_i)
-        for i in xrange(sample_amount):
-            sample_t = [np.random.choice(len(atomic_observations),p=sample_vector) for _ in xrange(k)]
-            sampled_obs = [atomic_observations[i] for i in sample_t]
-            produced_obs.append(summarize_counts(sampled_obs,s_amount,m_amount))
-        obs.append(produced_obs)
-    return obs
+        obs = [] #store all produced k-length (s,m) sequences 
+        for t in xrange(len(likelihoods)):
+            produced_obs = [] #store k-length (s,m) sequences of a type
+            production_vector = likelihoods[t].flatten()
+            doubled_state_freq = np.column_stack(tuple(state_freq for _ in xrange(m_amount))).flatten() # P(s)
+            sample_vector = production_vector * doubled_state_freq #P(s) * P(m|s,t_i)
+            for i in xrange(sample_amount):
+                sample_t = [np.random.choice(len(atomic_observations),p=sample_vector) for _ in xrange(k)]
+                sampled_obs = [atomic_observations[i] for i in sample_t]
+                produced_obs.append(summarize_counts(sampled_obs,s_amount,m_amount))
+            obs.append(produced_obs)
+        return obs
 
 def get_likelihood(obs,likelihoods):
     out = np.zeros([len(likelihoods), len(obs)]) # matrix to store results in
@@ -57,8 +69,6 @@ def get_mutation_matrix(s_amount,m_amount,state_freq, likelihoods,lexica_prior,l
         return np.genfromtxt('./matrices/qmatrix-s%d-m%d-lam%d-a%d-k%d-samples%d-l%d-me%s.csv' %(s_amount,m_amount,lam,alpha,k,sample_amount,learning_parameter,str(mutual_exclusivity)), delimiter=',')
     else:
         print '#Computing mutation matrix, ', datetime.datetime.now()
-    
-
         obs = get_obs(s_amount,m_amount,k,likelihoods,state_freq,sample_amount) #get production data from all types
         out = np.zeros([len(likelihoods),len(likelihoods)]) #matrix to store Q
     
@@ -67,10 +77,10 @@ def get_mutation_matrix(s_amount,m_amount,state_freq, likelihoods,lexica_prior,l
             lhs = get_likelihood(type_obs,likelihoods) #P(parent data|t_i) for all types
             post = normalize(lexica_prior * np.transpose(lhs)) #P(t_j|parent data) for all types; P(d|t_j)P(t_j)
             parametrized_post = normalize(post**learning_parameter)
+            normed_lhs = lhs[parent_type] / np.sum(lhs[parent_type]) #norm P(parent_data|parent_type)
+            out[parent_type] = np.dot(np.transpose(normed_lhs),parametrized_post)
     
-            out[parent_type] = np.dot(np.transpose(lhs[parent_type]),parametrized_post)
-    
-        q = normalize(out)
+        q = out
         f_q = csv.writer(open('./matrices/qmatrix-s%d-m%d-lam%d-a%d-k%d-samples%d-l%d-me%s.csv' %(s_amount,m_amount,lam,alpha,k,sample_amount,learning_parameter,str(mutual_exclusivity)),'wb'))
         for i in q:
             f_q.writerow(i)
