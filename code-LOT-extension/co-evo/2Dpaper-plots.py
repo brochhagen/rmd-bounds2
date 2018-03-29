@@ -40,7 +40,7 @@ def get_q(lexica_prior,learning_parameter,k,types):
     lhs = get_likelihood(D,likelihoods)
     post = normalize(lexica_prior * np.transpose(lhs))
     parametrized_post = normalize(post**learning_parameter)
-    return normalize(np.dot(lhs,parametrized_post))
+    return np.dot(normalize(lhs),parametrized_post)
 
 
 def learning_prior(types,c):
@@ -164,7 +164,6 @@ def quiver_contour(lam_lst,bias_para,post_para_lst,k,cont):
         post_para = post_para_lst[i]
         types = [LiteralPlayer(lam,lex) for lex in lexica] + [GriceanPlayer(1,lam,lex) for lex in lexica]
         lexica_prior = learning_prior(types,bias_para)
-        print lexica_prior
         Q = get_q(lexica_prior,post_para,k,types)
         U = get_u(types)
         
