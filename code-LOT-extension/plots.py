@@ -961,9 +961,9 @@ list2 = [5,15]
 #get_subfigs_hist_mutation(types,list1,list2)
 
 #Plot 3:
-list1 = [1,2,20]
+list1 = [1,10,20]
 list2 = [5,10,15]
-#get_subfigs_hist_rmd(types,list1,list2)
+get_subfigs_hist_rmd(types,list1,list2)
 
 
 ##Plot 4 in 3D:
